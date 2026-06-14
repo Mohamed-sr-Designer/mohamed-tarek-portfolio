@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import VisualIndex from "@/components/VisualIndex";
 import SelectedWork from "@/components/SelectedWork";
+import Campaigns from "@/components/Campaigns";
 import Logos from "@/components/Logos";
 import Motion from "@/components/Motion";
 import About from "@/components/About";
@@ -24,6 +25,7 @@ export default function Home() {
         <Marquee />
         <VisualIndex />
         <SelectedWork />
+        <Campaigns />
         <Logos />
         <Motion />
         <About />

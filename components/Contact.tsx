@@ -14,7 +14,7 @@ export default function Contact() {
 
       <div className="container-edge mx-auto max-w-edge">
         <Reveal>
-          <SectionLabel index="11">Contact</SectionLabel>
+          <SectionLabel index="12">Contact</SectionLabel>
         </Reveal>
 
         <Reveal delay={0.05}>

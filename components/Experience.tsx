@@ -1,38 +1,71 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const phases = [
+// Reverse-chronological work history (Egypt + KSA markets).
+const jobs = [
   {
-    n: "01",
-    phase: "Foundation",
-    role: "Graphic Designer",
-    org: "Across agencies & brands · Egypt",
-    body: "Where the craft was built — type, layout, colour and composition — designing on-brand graphics for web, social and print.",
-    gained: ["Typography", "Composition", "Production craft"],
+    company: "Evolutions",
+    role: "Art Team Lead",
+    period: "2023 — Present",
+    place: "Makkah, KSA",
+    type: "Full-time",
+    current: true,
   },
   {
-    n: "02",
-    phase: "Specialist",
+    company: "JUMPPEAK",
+    role: "Senior Designer / Team Lead",
+    period: "2026",
+    place: "Remote",
+    type: "Full-time",
+  },
+  {
+    company: "Freepik",
+    role: "Senior Graphic Designer",
+    period: "2025 — 2026",
+    place: "Remote",
+    type: "Part-time",
+  },
+  {
+    company: "Flowmatia",
+    role: "Senior Graphic Designer",
+    period: "2025",
+    place: "Cairo, Egypt",
+    type: "Full-time",
+  },
+  {
+    company: "Bundle",
     role: "Senior / Visual Designer",
-    org: "Bundle · Flowmatia · Freepik · Pola",
-    body: "Where the work met the business — from automotive campaigns and BTL activations to brand systems and UI, across the Egyptian, Saudi and Kuwaiti markets.",
-    gained: ["Campaigns & BTL", "Brand systems", "UI design"],
+    period: "2021 — 2026",
+    place: "Giza, Egypt",
+    type: "Automotive · BTL",
   },
   {
-    n: "03",
-    phase: "Mentor",
+    company: "Pola",
+    role: "Senior Graphic Designer",
+    period: "2024 — 2025",
+    place: "Jeddah, KSA",
+    type: "Freelance",
+  },
+  {
+    company: "Alphabaer",
+    role: "Graphic & UI Designer",
+    period: "2023 — 2024",
+    place: "Riyadh, KSA",
+    type: "Part-time",
+  },
+  {
+    company: "Teaching Planet Academy",
+    role: "Senior Designer & Instructor",
+    period: "2021 — 2024",
+    place: "Egypt",
+    type: "Instructor",
+  },
+  {
+    company: "Raya Academy",
     role: "Graphic Design Instructor",
-    org: "Raya Academy · Teaching Planet Academy",
-    body: "Where I give it back — teaching Photoshop, Illustrator and InDesign, and guiding students from fundamentals to a real design mindset.",
-    gained: ["Teaching", "Mentorship", "Design leadership"],
-  },
-  {
-    n: "04",
-    phase: "Leadership",
-    role: "Art Team Lead — current",
-    org: "Evolutions · Makkah",
-    body: "Where I lead — owning the concept and visual language, directing the art team and turning strategy into work that performs and feels premium.",
-    gained: ["Art direction", "Team leadership", "Visual consistency"],
+    period: "2022 — 2023",
+    place: "Cairo, Egypt",
+    type: "Instructor",
   },
 ];
 
@@ -45,54 +78,44 @@ export default function Experience() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="06">Experience</SectionLabel>
+            <SectionLabel index="07">Experience</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              Not a job history — a{" "}
-              <span className="font-serif italic text-mint">growth story</span>.
+              The companies that{" "}
+              <span className="font-serif italic text-mint">shaped</span> me.
             </h2>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            From craft, to commercial thinking, to teaching, to leading an art
-            team — six years across Egypt, KSA and Kuwait.
+            Six years across Egypt &amp; Saudi Arabia — from graphic designer, to
+            teaching, to leading an art team. Several roles ran in parallel.
           </p>
         </Reveal>
       </div>
 
-      <div className="mt-14 border-t border-line/10">
-        {phases.map((p) => (
-          <Reveal key={p.n}>
-            <div className="group grid grid-cols-1 gap-4 border-b border-line/10 py-9 md:grid-cols-12 md:gap-8 md:py-11">
-              <div className="md:col-span-4">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-serif text-2xl text-bone-500 transition-colors duration-500 group-hover:text-mint">
-                    {p.n}
-                  </span>
-                  <span className="text-xs uppercase tracking-ultra text-bone-400">
-                    {p.phase}
-                  </span>
-                </div>
-                <h3 className="mt-3 text-2xl font-medium tracking-tight text-bone-50 md:text-3xl">
-                  {p.role}
+      <div className="mt-12 border-t border-line/10">
+        {jobs.map((j) => (
+          <Reveal key={j.company + j.period}>
+            <div className="group grid grid-cols-1 items-baseline gap-2 border-b border-line/10 py-6 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-7">
+              <div className="flex items-center gap-3 md:col-span-4">
+                <h3 className="text-xl font-medium tracking-tight text-bone-50 md:text-2xl">
+                  {j.company}
                 </h3>
-                <p className="mt-1 text-sm text-bone-400">{p.org}</p>
+                {j.current ? (
+                  <span className="flex items-center gap-1.5 rounded-full border border-mint/40 bg-mint/5 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-mint">
+                    <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                    Now
+                  </span>
+                ) : null}
               </div>
-              <p className="text-pretty text-base leading-relaxed text-bone-200 md:col-span-5 md:text-lg">
-                {p.body}
-              </p>
-              <ul className="flex flex-wrap content-start gap-2 md:col-span-3 md:justify-end">
-                {p.gained.map((x) => (
-                  <li
-                    key={x}
-                    className="h-fit rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
-                  >
-                    {x}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-bone-200 md:col-span-4">{j.role}</p>
+              <p className="text-sm text-bone-400 md:col-span-2">{j.type}</p>
+              <div className="md:col-span-2 md:text-right">
+                <p className="text-sm text-bone-200">{j.period}</p>
+                <p className="text-xs text-bone-400">{j.place}</p>
+              </div>
             </div>
           </Reveal>
         ))}

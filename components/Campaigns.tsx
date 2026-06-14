@@ -1,0 +1,136 @@
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+
+// Social-media campaigns from the portfolio deck — concept, insight and
+// creative fields in Mohamed's own framing.
+const campaigns = [
+  {
+    n: "01",
+    brand: "prepd",
+    category: "Food-tech · Campaign",
+    concept:
+      "Turning cooking into a shared, joyful moment — connecting chefs, creators and food lovers where real dishes, real energy and real interaction come together.",
+    insight:
+      "Influencers create content, but turning engagement into real orders is hard, and people hesitate to trust influencer meals. The move: an experience-driven event that makes influencers live chefs and positions the app as the bridge between creators and consumers.",
+    fields: ["Creative Concept", "Art Direction", "Social", "AI Prompt Engineering"],
+  },
+  {
+    n: "02",
+    brand: "Rolls-Royce",
+    category: "Automotive Luxury · Kuwait",
+    concept:
+      "Communication worthy of the marque — a buying experience that reflects Rolls-Royce as the pinnacle of automotive luxury.",
+    insight:
+      "At this tier, restraint is the message. Every frame is built on craft, retouching and quiet confidence rather than volume.",
+    fields: ["Social Media", "Retouching", "Art Direction"],
+  },
+  {
+    n: "03",
+    brand: "Pala De 7",
+    category: "Sports App · Padel",
+    concept:
+      "Your gateway to the padel world — book courts, join tournaments and connect with a growing community. Not just sport: energy, community, and turning every match into a shared experience.",
+    insight:
+      "Padel is exploding, but booking and community are fragmented. The brand owns the energy and the social ritual, not just the booking.",
+    fields: ["Social Media", "Campaign", "AI Prompt Engineering"],
+  },
+  {
+    n: "04",
+    brand: "Teaching Academy",
+    category: "Tech Education",
+    concept:
+      "A modern tech-education brand built to shift people from hesitation to action — the bridge between curiosity and a real career, with learning that feels accessible, human and achievable.",
+    insight:
+      "Course providers sell features; Gen-Z buys belief. We position learning as a path to a real career, not just another course.",
+    fields: ["Social Media", "AI Prompt Engineering"],
+  },
+  {
+    n: "05",
+    brand: "AlGhanim Parts",
+    category: "Automotive Parts · Kuwait",
+    concept:
+      "The trusted partner for tires, oils and batteries — authentic products, professional service and peace of mind for every driver.",
+    insight:
+      "In auto parts, trust is the product. The work leads with reliability and expert care, making the functional feel premium.",
+    fields: ["Social Media", "Key Visuals", "Retouching"],
+  },
+];
+
+export default function Campaigns() {
+  return (
+    <section
+      id="campaigns"
+      className="border-y border-line/10 bg-ink-800/40 scroll-mt-24"
+    >
+      <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Reveal>
+              <SectionLabel index="02">Campaigns</SectionLabel>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
+                The thinking behind the{" "}
+                <span className="font-serif italic text-mint">work</span>.
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <p className="max-w-xs text-sm leading-relaxed text-bone-400">
+              Social-media campaigns across food-tech, automotive luxury, sport
+              and education — each with its own concept, insight and craft.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10">
+          {campaigns.map((c) => (
+            <Reveal key={c.n}>
+              <div className="group grid grid-cols-1 gap-6 bg-ink-900 p-6 transition-colors duration-300 hover:bg-ink-800 md:grid-cols-12 md:gap-8 md:p-8">
+                <div className="md:col-span-3">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-serif text-lg text-bone-500 transition-colors duration-300 group-hover:text-mint">
+                      {c.n}
+                    </span>
+                    <span className="text-xs uppercase tracking-ultra text-bone-400">
+                      {c.category}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-2xl font-medium tracking-tight text-bone-50 md:text-3xl">
+                    {c.brand}
+                  </h3>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {c.fields.map((f) => (
+                      <li
+                        key={f}
+                        className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="md:col-span-5">
+                  <p className="text-xs uppercase tracking-ultra text-mint">
+                    Concept
+                  </p>
+                  <p className="mt-2 text-pretty text-base leading-relaxed text-bone-200">
+                    {c.concept}
+                  </p>
+                </div>
+                <div className="md:col-span-4">
+                  <p className="text-xs uppercase tracking-ultra text-bone-400">
+                    Insight
+                  </p>
+                  <p className="mt-2 text-pretty text-sm leading-relaxed text-bone-400">
+                    {c.insight}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
