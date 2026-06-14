@@ -1,0 +1,51 @@
+import Image from "next/image";
+import { getAsset } from "@/lib/assets";
+
+// Optimized image wrapper. Pulls width/height/blur from the generated manifest
+// so every image ships a blur-up placeholder and correct intrinsic ratio.
+export function Media({
+  src,
+  alt,
+  sizes = "100vw",
+  priority = false,
+  fill = false,
+  className,
+}: {
+  src: string;
+  alt: string;
+  sizes?: string;
+  priority?: boolean;
+  fill?: boolean;
+  className?: string;
+}) {
+  const meta = getAsset(src);
+
+  if (fill) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        placeholder="blur"
+        blurDataURL={meta.blur}
+        className={className}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={meta.width}
+      height={meta.height}
+      sizes={sizes}
+      priority={priority}
+      placeholder="blur"
+      blurDataURL={meta.blur}
+      className={className}
+    />
+  );
+}
