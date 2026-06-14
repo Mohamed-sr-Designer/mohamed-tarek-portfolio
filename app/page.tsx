@@ -2,11 +2,13 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import VisualIndex from "@/components/VisualIndex";
+import SelectedWork from "@/components/SelectedWork";
+import Logos from "@/components/Logos";
+import Motion from "@/components/Motion";
 import About from "@/components/About";
 import Clients from "@/components/Clients";
-import SelectedWork from "@/components/SelectedWork";
-import Process from "@/components/Process";
 import Experience from "@/components/Experience";
+import Process from "@/components/Process";
 import Skills from "@/components/Skills";
 import Tools from "@/components/Tools";
 import Vision from "@/components/Vision";
@@ -21,11 +23,13 @@ export default function Home() {
         <Hero />
         <Marquee />
         <VisualIndex />
+        <SelectedWork />
+        <Logos />
+        <Motion />
         <About />
         <Clients />
-        <SelectedWork />
-        <Process />
         <Experience />
+        <Process />
         <Skills />
         <Tools />
         <Vision />

@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "tilal-film",
+    "title": "Tilal Village — Brand Film",
+    "kind": "Real Estate · Film",
+    "src": "/motion/tilal-film.mp4",
+    "poster": "/motion/tilal-film.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "tilal-aerial",
+    "title": "Tilal Village — Aerial",
+    "kind": "Real Estate · Motion",
+    "src": "/motion/tilal-aerial.mp4",
+    "poster": "/motion/tilal-aerial.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "tilal-community",
+    "title": "Tilal Village — Community",
+    "kind": "Real Estate · Motion",
+    "src": "/motion/tilal-community.mp4",
+    "poster": "/motion/tilal-community.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "reel-product",
+    "title": "Product Reel",
+    "kind": "Social · Reel",
+    "src": "/motion/reel-product.mp4",
+    "poster": "/motion/reel-product.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "social-motion",
+    "title": "Social Motion",
+    "kind": "Social · Animation",
+    "src": "/motion/social-motion.mp4",
+    "poster": "/motion/social-motion.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "ai-motion",
+    "title": "AI-Generated Spot",
+    "kind": "AI · Motion",
+    "src": "/motion/ai-motion.mp4",
+    "poster": "/motion/ai-motion.jpg",
+    "width": 675,
+    "height": 1200
+  }
+]
