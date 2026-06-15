@@ -27,15 +27,6 @@
     "height": 675
   },
   {
-    "slug": "reel-product",
-    "title": "Product Reel",
-    "kind": "Social · Reel",
-    "src": "/motion/reel-product.mp4",
-    "poster": "/motion/reel-product.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
     "slug": "social-motion",
     "title": "Social Motion",
     "kind": "Social · Animation",

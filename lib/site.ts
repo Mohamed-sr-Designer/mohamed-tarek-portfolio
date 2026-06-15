@@ -28,9 +28,7 @@ export const contacts = [
 ];
 
 export const nav = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Clients", href: "#clients" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];

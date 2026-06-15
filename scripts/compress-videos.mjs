@@ -17,7 +17,6 @@ const LIST = [
   ["Video.mp4", "tilal-film", "Tilal Village — Brand Film", "Real Estate · Film"],
   ["v3.mp4", "tilal-aerial", "Tilal Village — Aerial", "Real Estate · Motion"],
   ["v4.mp4", "tilal-community", "Tilal Village — Community", "Real Estate · Motion"],
-  ["Reel 1.mp4", "reel-product", "Product Reel", "Social · Reel"],
   ["Comp 3_3.mp4", "social-motion", "Social Motion", "Social · Animation"],
   ["Ai option.mp4", "ai-motion", "AI-Generated Spot", "AI · Motion"],
 ];

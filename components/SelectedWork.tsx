@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import ProjectCard from "@/components/ProjectCard";
@@ -6,7 +7,10 @@ import { projects } from "@/lib/projects";
 // Editorial rhythm: featured rows alternate full-width and paired.
 const spans: ("full" | "half")[] = ["full", "half", "half", "full", "half", "half"];
 
-export default function SelectedWork() {
+export default function SelectedWork({ limit }: { limit?: number }) {
+  const shown = limit ? projects.slice(0, limit) : projects;
+  const featured = Boolean(limit);
+
   return (
     <section
       id="work"
@@ -15,7 +19,9 @@ export default function SelectedWork() {
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="01">Selected Work</SectionLabel>
+            <SectionLabel index="01">
+              {featured ? "Featured Work" : "Selected Work"}
+            </SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -26,15 +32,27 @@ export default function SelectedWork() {
           </Reveal>
         </div>
         <Reveal delay={0.1}>
-          <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Six projects, each a full case study — challenge, strategy,
-            direction, execution and impact.
-          </p>
+          {featured ? (
+            <Link
+              href="/work"
+              className="group inline-flex items-center gap-2 text-bone-50"
+            >
+              <span className="link-underline">View all work</span>
+              <span className="text-mint transition-transform duration-300 group-hover:translate-x-1">
+                ↗
+              </span>
+            </Link>
+          ) : (
+            <p className="max-w-xs text-sm leading-relaxed text-bone-400">
+              Six projects, each a full case study — challenge, strategy,
+              direction, execution and impact.
+            </p>
+          )}
         </Reveal>
       </div>
 
       <div className="mt-14 grid grid-cols-12 gap-x-5 gap-y-14 md:gap-y-20">
-        {projects.map((p, i) => (
+        {shown.map((p, i) => (
           <ProjectCard
             key={p.slug}
             project={p}

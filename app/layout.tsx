@@ -3,6 +3,7 @@ import { Inter, Fraunces } from "next/font/google";
 import { site } from "@/lib/site";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body className="bg-ink-900 font-sans text-bone-50 antialiased">
         <SmoothScroll />
         <ScrollProgress />
+        <WhatsAppButton />
         {children}
       </body>
     </html>

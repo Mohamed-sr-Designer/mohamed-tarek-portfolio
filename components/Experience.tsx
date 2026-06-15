@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-type Role = { title: string; period: string; current?: boolean };
+type Role = { title: string; period: string; current?: boolean; returned?: boolean };
 type Job = {
   company: string;
   type: string;
@@ -13,18 +13,17 @@ type Job = {
   role?: string; // single role
 };
 
-// Verified work history (provided directly by Mohamed).
+// Verified work history — newest to oldest (provided by Mohamed).
 const jobs: Job[] = [
   {
     company: "Osolutions",
     type: "Full-time · On-site",
-    period: "Jan 2023 — Present · 3 yrs 6 mos",
+    period: "Jan 2023 — Aug 2024 · Returned May 2026 — Present",
     place: "Makkah, KSA",
     current: true,
-    note: "Promoted three times in three years — from Graphic Designer to Art Team Lead — now leading the design team and the brand's visual standard.",
+    note: "Joined as a Graphic Designer and grew to Mid-Level, moved on in 2024 — then returned in May 2026 to lead the art team and own the brand's visual standard.",
     roles: [
-      { title: "Art Team Lead", period: "May 2026 — Present", current: true },
-      { title: "Senior Graphic Designer", period: "Aug 2024 — Present", current: true },
+      { title: "Art Team Lead", period: "May 2026 — Present", current: true, returned: true },
       { title: "Mid-Level Designer", period: "Jan 2024 — Aug 2024" },
       { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
     ],
@@ -54,20 +53,20 @@ const jobs: Job[] = [
     note: "Worked with the Art Director on an automotive campaign — BTL, brand activation and event management, concept to execution.",
   },
   {
-    company: "Flowrista",
-    role: "Senior Graphic Designer",
-    type: "Full-time",
-    period: "Jan — Aug 2025",
-    place: "New Cairo, Egypt",
-    note: "Floral-gifting brand — marketing materials, digital interfaces and video that made gifting unforgettable.",
-  },
-  {
     company: "Teaching Planet Academy",
     role: "Senior Designer & Graphic Design Instructor",
     type: "Part-time · Instructor",
     period: "May 2022 — Dec 2025",
     place: "Giza, Egypt",
     note: "Designed brand materials and taught Photoshop, Illustrator and InDesign through hands-on sessions.",
+  },
+  {
+    company: "Flowrista",
+    role: "Senior Graphic Designer",
+    type: "Full-time",
+    period: "Jan — Aug 2025",
+    place: "New Cairo, Egypt",
+    note: "Floral-gifting brand — marketing materials, digital interfaces and video that made gifting unforgettable.",
   },
   {
     company: "Pala De 7",
@@ -114,7 +113,11 @@ function Ladder({ roles }: { roles: Role[] }) {
               >
                 {r.title}
               </span>
-              {i !== roles.length - 1 ? (
+              {r.returned ? (
+                <span className="text-[10px] uppercase tracking-widest text-mint">
+                  ↩ Returned to lead
+                </span>
+              ) : i !== roles.length - 1 ? (
                 <span className="text-[10px] uppercase tracking-widest text-mint">
                   ↑ Promoted
                 </span>
@@ -137,7 +140,7 @@ export default function Experience() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="07">Experience</SectionLabel>
+            <SectionLabel index="02">Experience</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -148,8 +151,8 @@ export default function Experience() {
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Across Egypt &amp; Saudi Arabia — from graphic designer, to teaching,
-            to leading an art team. Several roles ran in parallel.
+            Across Egypt &amp; Saudi Arabia — newest first. From graphic
+            designer, to teaching, to leading an art team.
           </p>
         </Reveal>
       </div>
@@ -178,9 +181,7 @@ export default function Experience() {
               </div>
 
               <div className="md:col-span-8">
-                {j.roles ? (
-                  <Ladder roles={j.roles} />
-                ) : null}
+                {j.roles ? <Ladder roles={j.roles} /> : null}
                 <p
                   className={`text-pretty text-sm leading-relaxed text-bone-400 md:text-base ${
                     j.roles ? "mt-4 border-t border-line/10 pt-4" : ""

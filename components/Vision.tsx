@@ -23,7 +23,7 @@ export default function Vision() {
       className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-36"
     >
       <Reveal>
-        <SectionLabel index="11">Vision</SectionLabel>
+        <SectionLabel index="06">Vision</SectionLabel>
       </Reveal>
 
       <Reveal delay={0.05}>

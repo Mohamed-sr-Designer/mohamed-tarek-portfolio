@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, site } from "@/lib/site";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -9,6 +10,10 @@ import ThemeToggle from "@/components/ThemeToggle";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -35,7 +40,7 @@ export default function Nav() {
       >
         <div className="container-edge mx-auto flex max-w-edge items-center justify-between">
           <Link
-            href="/#top"
+            href="/"
             className="group flex items-center gap-3"
             aria-label="Mohamed Tarek — home"
           >
@@ -50,24 +55,28 @@ export default function Nav() {
 
           <nav className="hidden items-center gap-8 md:flex">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="link-underline text-sm text-bone-200 transition-colors hover:text-bone-50"
+                className={`link-underline text-sm transition-colors ${
+                  isActive(item.href)
+                    ? "text-mint"
+                    : "text-bone-200 hover:text-bone-50"
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="hidden rounded-full border border-line/20 px-5 py-2 text-sm text-bone-50 transition-all duration-300 hover:border-mint/50 hover:bg-mint/5 md:inline-block"
             >
               Let&apos;s talk
-            </a>
+            </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
@@ -100,20 +109,23 @@ export default function Nav() {
           >
             <nav className="flex flex-col gap-2">
               {nav.map((item, i) => (
-                <motion.a
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 * i + 0.1, duration: 0.5 }}
-                  className="font-serif text-4xl text-bone-50"
                 >
-                  <span className="mr-3 align-top text-sm text-bone-400">
-                    0{i + 1}
-                  </span>
-                  {item.label}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="font-serif text-4xl text-bone-50"
+                  >
+                    <span className="mr-3 align-top text-sm text-bone-400">
+                      0{i + 1}
+                    </span>
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
             <a href={`mailto:${site.email}`} className="mt-12 text-sm text-mint">
