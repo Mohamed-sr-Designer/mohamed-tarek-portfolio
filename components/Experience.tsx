@@ -1,17 +1,33 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
+type Role = { title: string; period: string; current?: boolean };
+type Job = {
+  company: string;
+  type: string;
+  period: string;
+  place: string;
+  current?: boolean;
+  note: string;
+  roles?: Role[]; // promotion ladder (newest first)
+  role?: string; // single role
+};
+
 // Verified work history (provided directly by Mohamed).
-const jobs = [
+const jobs: Job[] = [
   {
     company: "Osolutions",
-    role: "Art Team Lead",
-    progression: "Art Team Lead · Senior Graphic Designer · Mid-Level · Graphic Designer",
     type: "Full-time · On-site",
-    period: "Jan 2023 — Present",
+    period: "Jan 2023 — Present · 3 yrs 6 mos",
     place: "Makkah, KSA",
     current: true,
-    note: "Grew from Graphic Designer to Art Team Lead — leading the design team, refining brand visuals and delivering on-brand assets across web, app and social.",
+    note: "Promoted three times in three years — from Graphic Designer to Art Team Lead — now leading the design team and the brand's visual standard.",
+    roles: [
+      { title: "Art Team Lead", period: "May 2026 — Present", current: true },
+      { title: "Senior Graphic Designer", period: "Aug 2024 — Present", current: true },
+      { title: "Mid-Level Designer", period: "Jan 2024 — Aug 2024" },
+      { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
+    ],
   },
   {
     company: "JUMPPEAK",
@@ -79,6 +95,39 @@ const jobs = [
   },
 ];
 
+function Ladder({ roles }: { roles: Role[] }) {
+  return (
+    <ol className="relative ml-1 border-l border-line/15">
+      {roles.map((r, i) => (
+        <li key={r.title} className="relative pl-6 pb-5 last:pb-0">
+          <span
+            className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ${
+              r.current ? "bg-mint" : "bg-bone-500"
+            }`}
+          />
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <div className="flex items-center gap-2">
+              <span
+                className={`text-base md:text-lg ${
+                  i === 0 ? "font-medium text-bone-50" : "text-bone-200"
+                }`}
+              >
+                {r.title}
+              </span>
+              {i !== roles.length - 1 ? (
+                <span className="text-[10px] uppercase tracking-widest text-mint">
+                  ↑ Promoted
+                </span>
+              ) : null}
+            </div>
+            <span className="text-xs text-bone-400">{r.period}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export default function Experience() {
   return (
     <section
@@ -108,7 +157,7 @@ export default function Experience() {
       <div className="mt-12 border-t border-line/10">
         {jobs.map((j) => (
           <Reveal key={j.company + j.period}>
-            <div className="group grid grid-cols-1 gap-3 border-b border-line/10 py-7 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-8">
+            <div className="group grid grid-cols-1 gap-4 border-b border-line/10 py-7 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-8">
               <div className="md:col-span-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <h3 className="text-xl font-medium tracking-tight text-bone-50 md:text-2xl">
@@ -121,20 +170,24 @@ export default function Experience() {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-1.5 text-bone-200">{j.role}</p>
-                {j.progression ? (
-                  <p className="mt-1 text-xs leading-relaxed text-bone-500">
-                    {j.progression}
-                  </p>
-                ) : null}
+                {j.role ? <p className="mt-1.5 text-bone-200">{j.role}</p> : null}
+                <p className="mt-2 text-sm text-bone-200">{j.period}</p>
+                <p className="text-xs text-bone-400">
+                  {j.place} · {j.type}
+                </p>
               </div>
-              <p className="text-pretty text-sm leading-relaxed text-bone-400 md:col-span-5 md:text-base">
-                {j.note}
-              </p>
-              <div className="md:col-span-3 md:text-right">
-                <p className="text-sm text-bone-200">{j.period}</p>
-                <p className="text-xs text-bone-400">{j.place}</p>
-                <p className="mt-1 text-xs text-bone-500">{j.type}</p>
+
+              <div className="md:col-span-8">
+                {j.roles ? (
+                  <Ladder roles={j.roles} />
+                ) : null}
+                <p
+                  className={`text-pretty text-sm leading-relaxed text-bone-400 md:text-base ${
+                    j.roles ? "mt-4 border-t border-line/10 pt-4" : ""
+                  }`}
+                >
+                  {j.note}
+                </p>
               </div>
             </div>
           </Reveal>
