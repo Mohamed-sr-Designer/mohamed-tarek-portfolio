@@ -1,71 +1,81 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-// Reverse-chronological work history (Egypt + KSA markets).
+// Verified work history (provided directly by Mohamed).
 const jobs = [
   {
-    company: "Evolutions",
+    company: "Osolutions",
     role: "Art Team Lead",
-    period: "2023 — Present",
+    progression: "Art Team Lead · Senior Graphic Designer · Mid-Level · Graphic Designer",
+    type: "Full-time · On-site",
+    period: "Jan 2023 — Present",
     place: "Makkah, KSA",
-    type: "Full-time",
     current: true,
+    note: "Grew from Graphic Designer to Art Team Lead — leading the design team, refining brand visuals and delivering on-brand assets across web, app and social.",
   },
   {
     company: "JUMPPEAK",
-    role: "Senior Designer / Team Lead",
-    period: "2026",
-    place: "Remote",
+    role: "Senior Graphic Designer — Team Lead",
     type: "Full-time",
+    period: "Mar — May 2026",
+    place: "Al Jizah, Egypt",
+    note: "Led junior and mid-level designers; refined brand visuals for consistency across platforms.",
   },
   {
-    company: "Freepik",
+    company: "Prepd",
     role: "Senior Graphic Designer",
-    period: "2025 — 2026",
-    place: "Remote",
-    type: "Part-time",
+    type: "Part-time · Remote",
+    period: "Nov 2025 — May 2026",
+    place: "Makkah, KSA",
+    note: "High-impact marketing materials and digital interfaces that positioned Prepd as a memorable, premium brand.",
   },
   {
-    company: "Flowmatia",
-    role: "Senior Graphic Designer",
-    period: "2025",
-    place: "Cairo, Egypt",
-    type: "Full-time",
-  },
-  {
-    company: "Bundle",
+    company: "Bundle IMS",
     role: "Senior / Visual Designer",
-    period: "2021 — 2026",
+    type: "Full-time · Automotive · BTL",
+    period: "Aug 2025 — Mar 2026",
     place: "Giza, Egypt",
-    type: "Automotive · BTL",
+    note: "Worked with the Art Director on an automotive campaign — BTL, brand activation and event management, concept to execution.",
   },
   {
-    company: "Pola",
+    company: "Flowrista",
     role: "Senior Graphic Designer",
-    period: "2024 — 2025",
-    place: "Jeddah, KSA",
-    type: "Freelance",
-  },
-  {
-    company: "Alphabaer",
-    role: "Graphic & UI Designer",
-    period: "2023 — 2024",
-    place: "Riyadh, KSA",
-    type: "Part-time",
+    type: "Full-time",
+    period: "Jan — Aug 2025",
+    place: "New Cairo, Egypt",
+    note: "Floral-gifting brand — marketing materials, digital interfaces and video that made gifting unforgettable.",
   },
   {
     company: "Teaching Planet Academy",
-    role: "Senior Designer & Instructor",
-    period: "2021 — 2024",
-    place: "Egypt",
-    type: "Instructor",
+    role: "Senior Designer & Graphic Design Instructor",
+    type: "Part-time · Instructor",
+    period: "May 2022 — Dec 2025",
+    place: "Giza, Egypt",
+    note: "Designed brand materials and taught Photoshop, Illustrator and InDesign through hands-on sessions.",
+  },
+  {
+    company: "Pala De 7",
+    role: "Senior Graphic Designer",
+    type: "Freelance · Remote",
+    period: "Jul 2024 — Jul 2025",
+    place: "Jeddah, KSA",
+    note: "Led social-media graphics and UI in Adobe and Figma, keeping the padel brand consistent and engaging.",
+  },
+  {
+    company: "Alkhabeer for Training",
+    role: "Graphic & UI Designer",
+    type: "Part-time · Remote",
+    period: "Oct 2023 — Aug 2024",
+    place: "Riyadh, KSA",
+    note: "Digital assets for web, app, social and video, backed by style guides and a strong brand persona.",
   },
   {
     company: "Raya Academy",
     role: "Graphic Design Instructor",
-    period: "2022 — 2023",
+    type: "Part-time · Instructor",
+    period: "Nov 2022 — Nov 2023",
     place: "Cairo, Egypt",
-    type: "Instructor",
+    note: "Taught Photoshop, Illustrator and InDesign across offline sessions; mentored students to real proficiency.",
   },
 ];
 
@@ -89,8 +99,8 @@ export default function Experience() {
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Six years across Egypt &amp; Saudi Arabia — from graphic designer, to
-            teaching, to leading an art team. Several roles ran in parallel.
+            Across Egypt &amp; Saudi Arabia — from graphic designer, to teaching,
+            to leading an art team. Several roles ran in parallel.
           </p>
         </Reveal>
       </div>
@@ -98,23 +108,33 @@ export default function Experience() {
       <div className="mt-12 border-t border-line/10">
         {jobs.map((j) => (
           <Reveal key={j.company + j.period}>
-            <div className="group grid grid-cols-1 items-baseline gap-2 border-b border-line/10 py-6 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-7">
-              <div className="flex items-center gap-3 md:col-span-4">
-                <h3 className="text-xl font-medium tracking-tight text-bone-50 md:text-2xl">
-                  {j.company}
-                </h3>
-                {j.current ? (
-                  <span className="flex items-center gap-1.5 rounded-full border border-mint/40 bg-mint/5 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-mint">
-                    <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-                    Now
-                  </span>
+            <div className="group grid grid-cols-1 gap-3 border-b border-line/10 py-7 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-8">
+              <div className="md:col-span-4">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl font-medium tracking-tight text-bone-50 md:text-2xl">
+                    {j.company}
+                  </h3>
+                  {j.current ? (
+                    <span className="flex items-center gap-1.5 rounded-full border border-mint/40 bg-mint/5 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-mint">
+                      <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                      Now
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-1.5 text-bone-200">{j.role}</p>
+                {j.progression ? (
+                  <p className="mt-1 text-xs leading-relaxed text-bone-500">
+                    {j.progression}
+                  </p>
                 ) : null}
               </div>
-              <p className="text-bone-200 md:col-span-4">{j.role}</p>
-              <p className="text-sm text-bone-400 md:col-span-2">{j.type}</p>
-              <div className="md:col-span-2 md:text-right">
+              <p className="text-pretty text-sm leading-relaxed text-bone-400 md:col-span-5 md:text-base">
+                {j.note}
+              </p>
+              <div className="md:col-span-3 md:text-right">
                 <p className="text-sm text-bone-200">{j.period}</p>
                 <p className="text-xs text-bone-400">{j.place}</p>
+                <p className="mt-1 text-xs text-bone-500">{j.type}</p>
               </div>
             </div>
           </Reveal>
