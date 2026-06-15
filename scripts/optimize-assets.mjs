@@ -96,6 +96,8 @@ const MANIFEST = [
   ["Social media posts story/ihsjun7.png", "work/ihs/room-7.webp", 1200],
 
   // ---------- Automotive — key visuals ----------
+  [raw("auto/geely-rental.png"), "work/auto/geely-rental.webp", 2400],
+  [raw("auto/geely-monjaro.png"), "work/auto/geely-monjaro.webp", 2400],
   ["KV/before 1.png", "work/auto/hero.webp", 2200],
   ["KV/before 8.png", "work/auto/02.webp", 2000],
   ["KV/before 2.png", "work/auto/03.webp", 2000],

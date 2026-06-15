@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
+// basePath is set by the GitHub Pages workflow (repo name). Empty locally.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig = {
+  output: "export", // static site, deployable to GitHub Pages
   reactStrictMode: true,
+  trailingSlash: true,
+  basePath,
+  assetPrefix: basePath || undefined,
   images: {
-    formats: ["image/avif", "image/webp"],
+    unoptimized: true, // required for static export; images are already optimized WebP
   },
-  // The project lives inside a OneDrive-synced folder; keep builds deterministic.
   poweredByHeader: false,
 };
 

@@ -209,29 +209,31 @@ export const projects: Project[] = [
   {
     slug: "automotive-kv",
     index: "05",
-    title: "Automotive — Cinematic Key Visuals",
-    client: "Automotive · Geely · GWM",
+    title: "Geely — Cinematic Automotive KVs",
+    client: "Geely · GWM",
     year: "2024",
-    category: "Key Visuals",
-    discipline: "Key Visual · Compositing · Retouching",
+    category: "Automotive · Key Visuals",
+    discipline: "Key Visuals · Retouching · Color Grading",
     accent: "electric",
     summary:
-      "The car as hero — global-grade key visuals built through light, compositing and craft, with no physical shoot.",
-    cover: "/work/auto/hero.webp",
-    hero: "/work/auto/hero.webp",
-    tags: ["Key Visual", "Compositing", "Retouching", "Cinematic"],
+      "Premium, calm key visuals for Geely — communicating reliability and after-sales service through retouching, light and colour, never feeling generic.",
+    cover: "/work/auto/geely-rental.webp",
+    hero: "/work/auto/geely-rental.webp",
+    tags: ["Service Communication", "Advertising", "Key Visual", "Retouching"],
     challenge:
-      "Automotive key visuals live and die on craft. The brief: hero imagery that feels like a global campaign — dramatic, premium, flawless — without a physical shoot or a location budget.",
+      "Maintaining a premium, calm visual tone while communicating reliability and technical after-sales service — without making the visuals feel commercial or generic.",
     strategy:
-      "Treat the vehicle as a character and the environment as cinematography. Each KV is composed around a single light story and a clear hero silhouette, so the car commands the frame before a word is read.",
+      "The visual language highlights calm confidence rather than motion. Clean architecture, balanced lighting and controlled colour grading present after-sales service as seamless, dependable and professionally managed.",
     direction:
-      "Cinematic, high-contrast environments — water, dusk skylines, sculptural architecture — with controlled reflections and grounded shadows. Confident, restrained, aspirational.",
+      "A cinematic, restrained automotive aesthetic — sculptural architecture, dusk skies and controlled reflections — so the car commands the frame and the brand feels effortlessly premium.",
     execution:
-      "A set of key visuals built through compositing, lighting and retouching — vehicle, environment and light combined and finished to campaign standard.",
+      "I supported the project through retouching and colour grading, ensuring visual consistency across lighting, reflections and materials — enhancing realism, depth and premium finish while preserving Geely's official visual standards.",
     impact:
-      "Gallery-grade automotive imagery that demonstrates the technical craft and art direction behind a believable, premium hero shot.",
-    contribution: ["Art Direction", "Compositing", "Lighting & Retouch", "Finishing"],
+      "Campaign-grade key visuals that feel like global automotive work — premium, believable and unmistakably on-brand.",
+    contribution: ["Image Retouching", "Color Grading", "Visual Consistency", "Art Direction"],
     gallery: g(
+      "/work/auto/geely-rental.webp",
+      "/work/auto/geely-monjaro.webp",
       "/work/auto/hero.webp",
       "/work/auto/02.webp",
       "/work/auto/03.webp",

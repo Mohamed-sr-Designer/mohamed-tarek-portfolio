@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getAsset } from "@/lib/assets";
+import { withBase } from "@/lib/base";
 
 // Optimized image wrapper. Pulls width/height/blur from the generated manifest
 // so every image ships a blur-up placeholder and correct intrinsic ratio.
@@ -19,11 +20,12 @@ export function Media({
   className?: string;
 }) {
   const meta = getAsset(src);
+  const url = withBase(src);
 
   if (fill) {
     return (
       <Image
-        src={src}
+        src={url}
         alt={alt}
         fill
         sizes={sizes}
@@ -37,7 +39,7 @@ export function Media({
 
   return (
     <Image
-      src={src}
+      src={url}
       alt={alt}
       width={meta.width}
       height={meta.height}

@@ -79,7 +79,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="grain bg-ink-900 font-sans text-bone-50 antialiased">
+      <body className="bg-ink-900 font-sans text-bone-50 antialiased">
         <SmoothScroll />
         <ScrollProgress />
         {children}

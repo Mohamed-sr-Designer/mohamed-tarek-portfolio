@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { withBase } from "@/lib/base";
 import motionData from "@/lib/motion.json";
 
 type Clip = {
@@ -41,8 +42,8 @@ function VideoCard({ clip }: { clip: Clip }) {
     <div className="group relative mb-4 break-inside-avoid overflow-hidden rounded-xl bg-ink-700">
       <video
         ref={ref}
-        src={clip.src}
-        poster={clip.poster}
+        src={withBase(clip.src)}
+        poster={withBase(clip.poster)}
         muted
         loop
         playsInline
