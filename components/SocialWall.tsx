@@ -39,8 +39,8 @@ export default function SocialWall() {
     <section className="overflow-hidden py-20 md:py-28">
       <div className="container-edge mx-auto mb-8 flex max-w-edge items-center justify-between text-xs uppercase tracking-ultra text-bone-400">
         <span>Social media — a wall of recent posts</span>
-        <a href="/work" className="link-underline text-bone-200">
-          See the work ↘
+        <a href="#work" className="link-underline text-bone-200">
+          Browse the work ↑
         </a>
       </div>
 

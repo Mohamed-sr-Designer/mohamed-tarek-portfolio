@@ -10,6 +10,7 @@ export type Project = {
   discipline: string;
   accent: "electric" | "mint";
   summary: string;
+  tagline: string;
   cover: string;
   hero: string;
   logo?: string;
@@ -37,6 +38,7 @@ export const projects: Project[] = [
     accent: "mint",
     summary:
       "A warm, editorial brand world for a premium handmade gifting label — full campaign craft produced with AI, no shoot.",
+    tagline: "How we turned gifting from a transaction into a feeling.",
     cover: "/work/axia/hero.webp",
     hero: "/work/axia/hero.webp",
     tags: ["Creative Direction", "Brand World", "AI Production", "Social System"],
@@ -89,6 +91,7 @@ export const projects: Project[] = [
     accent: "mint",
     summary:
       "A complete brand identity that premiumises produce — logo, palette, packaging, stationery and fleet, from shelf to doorstep.",
+    tagline: "How we made everyday produce look deliberately premium.",
     cover: "/work/fresh-valley/packaging.webp",
     hero: "/work/fresh-valley/van-life.webp",
     logo: "/work/fresh-valley/logo.webp",
@@ -140,6 +143,7 @@ export const projects: Project[] = [
     accent: "electric",
     summary:
       "A luxury community campaign built on belonging and faith — not square metres — for a residence beside the Holy Haram.",
+    tagline: "How we sold belonging and faith — not square metres.",
     cover: "/work/tilal/hero.webp",
     hero: "/work/tilal/02.webp",
     tags: ["Campaign", "Brand Storytelling", "Bilingual AR/EN", "Art Direction"],
@@ -180,6 +184,7 @@ export const projects: Project[] = [
     accent: "electric",
     summary:
       "Making the unglamorous aspirational — a cinematic B2B campaign for 50 years of trust in hospitality supply.",
+    tagline: "How we made 50 years of trust feel five-star.",
     cover: "/work/ihs/hero.webp",
     hero: "/work/ihs/hero.webp",
     tags: ["Campaign", "B2B", "Cross-Channel", "Bilingual", "Social"],
@@ -217,6 +222,7 @@ export const projects: Project[] = [
     accent: "electric",
     summary:
       "Premium, calm key visuals for Geely — communicating reliability and after-sales service through retouching, light and colour, never feeling generic.",
+    tagline: "How we kept it premium and calm while selling reliability.",
     cover: "/work/auto/geely-rental.webp",
     hero: "/work/auto/geely-rental.webp",
     tags: ["Service Communication", "Advertising", "Key Visual", "Retouching"],
@@ -254,6 +260,7 @@ export const projects: Project[] = [
     accent: "mint",
     summary:
       "Repeatable, on-brand social systems across food, hospitality, FMCG and lifestyle — design rules, not one-off posts.",
+    tagline: "How we built social that scales without losing the brand.",
     cover: "/work/social/02.webp",
     hero: "/work/social/02.webp",
     tags: ["Social-First Design", "Templates", "Content Systems", "Bilingual"],

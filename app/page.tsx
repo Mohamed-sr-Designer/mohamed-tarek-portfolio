@@ -2,6 +2,9 @@ import SiteShell from "@/components/SiteShell";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import SelectedWork from "@/components/SelectedWork";
+import Campaigns from "@/components/Campaigns";
+import Logos from "@/components/Logos";
+import Motion from "@/components/Motion";
 import Clients from "@/components/Clients";
 import SocialWall from "@/components/SocialWall";
 
@@ -10,7 +13,10 @@ export default function Home() {
     <SiteShell>
       <Hero />
       <Marquee />
-      <SelectedWork limit={3} />
+      <SelectedWork />
+      <Campaigns />
+      <Logos />
+      <Motion />
       <Clients />
       <SocialWall />
     </SiteShell>

@@ -1,8 +1,9 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Carousel } from "@/components/ui/Carousel";
 
-// Social-media campaigns from the portfolio deck — concept, insight and
-// creative fields in Mohamed's own framing.
+// Social-media campaigns — concept, insight and creative fields in Mohamed's
+// own framing. Presented as a full-width slider (arrows switch between them).
 const campaigns = [
   {
     n: "01",
@@ -78,58 +79,63 @@ export default function Campaigns() {
           <Reveal delay={0.1}>
             <p className="max-w-xs text-sm leading-relaxed text-bone-400">
               Social-media campaigns across food-tech, automotive luxury, sport
-              and education — each with its own concept, insight and craft.
+              and education — slide through with the arrows.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-12 flex flex-col gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10">
-          {campaigns.map((c) => (
-            <Reveal key={c.n}>
-              <div className="group grid grid-cols-1 gap-6 bg-ink-900 p-6 transition-colors duration-300 hover:bg-ink-800 md:grid-cols-12 md:gap-8 md:p-8">
-                <div className="md:col-span-3">
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-serif text-lg text-bone-500 transition-colors duration-300 group-hover:text-mint">
-                      {c.n}
-                    </span>
-                    <span className="text-xs uppercase tracking-ultra text-bone-400">
-                      {c.category}
-                    </span>
+        <Reveal delay={0.1}>
+          <div className="mt-12">
+            <Carousel ariaLabel="Campaigns">
+              {campaigns.map((c) => (
+                <article
+                  key={c.n}
+                  className="w-full shrink-0 snap-start rounded-2xl border border-line/10 bg-ink-900 p-7 md:w-[94%] md:p-12"
+                >
+                  <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+                    <div className="md:col-span-4">
+                      <span className="font-serif text-3xl text-bone-500">
+                        {c.n}
+                      </span>
+                      <p className="mt-3 text-xs uppercase tracking-ultra text-bone-400">
+                        {c.category}
+                      </p>
+                      <h3 className="mt-2 font-sans text-3xl font-medium tracking-tight text-bone-50 md:text-5xl">
+                        {c.brand}
+                      </h3>
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {c.fields.map((f) => (
+                          <li
+                            key={f}
+                            className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
+                          >
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="md:col-span-5">
+                      <p className="text-xs uppercase tracking-ultra text-mint">
+                        Concept
+                      </p>
+                      <p className="mt-2 text-pretty text-lg leading-relaxed text-bone-200 md:text-xl">
+                        {c.concept}
+                      </p>
+                    </div>
+                    <div className="md:col-span-3">
+                      <p className="text-xs uppercase tracking-ultra text-bone-400">
+                        Insight
+                      </p>
+                      <p className="mt-2 text-pretty text-sm leading-relaxed text-bone-400">
+                        {c.insight}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="mt-3 text-2xl font-medium tracking-tight text-bone-50 md:text-3xl">
-                    {c.brand}
-                  </h3>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {c.fields.map((f) => (
-                      <li
-                        key={f}
-                        className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
-                      >
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="md:col-span-5">
-                  <p className="text-xs uppercase tracking-ultra text-mint">
-                    Concept
-                  </p>
-                  <p className="mt-2 text-pretty text-base leading-relaxed text-bone-200">
-                    {c.concept}
-                  </p>
-                </div>
-                <div className="md:col-span-4">
-                  <p className="text-xs uppercase tracking-ultra text-bone-400">
-                    Insight
-                  </p>
-                  <p className="mt-2 text-pretty text-sm leading-relaxed text-bone-400">
-                    {c.insight}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+                </article>
+              ))}
+            </Carousel>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
