@@ -19,13 +19,15 @@ const LIST = [
   ["v4.mp4", "tilal-community", "Tilal Village — Community", "Real Estate · Motion"],
   ["Comp 3_3.mp4", "social-motion", "Social Motion", "Social · Animation"],
   ["Ai option.mp4", "ai-motion", "AI-Generated Spot", "AI · Motion"],
+  ["D:\\New folder (5)\\2.mp4", "teaser", "Cinematic Teaser", "Motion · Teaser"],
+  ["D:\\New folder (5)\\3.mp4", "space", "Interior Reveal", "Motion · Space"],
 ];
 
 await fs.mkdir(OUT, { recursive: true });
 const manifest = [];
 
 for (const [file, slug, title, kind] of LIST) {
-  const input = path.join(SRC, file);
+  const input = path.isAbsolute(file) ? file : path.join(SRC, file);
   try {
     await fs.access(input);
   } catch {

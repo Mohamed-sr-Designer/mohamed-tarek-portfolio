@@ -43,5 +43,23 @@
     "poster": "/motion/ai-motion.jpg",
     "width": 675,
     "height": 1200
+  },
+  {
+    "slug": "teaser",
+    "title": "Cinematic Teaser",
+    "kind": "Motion · Teaser",
+    "src": "/motion/teaser.mp4",
+    "poster": "/motion/teaser.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "space",
+    "title": "Interior Reveal",
+    "kind": "Motion · Space",
+    "src": "/motion/space.mp4",
+    "poster": "/motion/space.jpg",
+    "width": 675,
+    "height": 1200
   }
 ]
