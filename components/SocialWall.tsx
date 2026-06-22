@@ -1,11 +1,8 @@
 import { Media } from "@/components/ui/Media";
 
 // Social-media designs only (from the Social media posts library).
-const rows = [
-  ["/work/social/01.webp", "/work/social/02.webp", "/work/social/03.webp", "/work/social/04.webp", "/work/social/05.webp", "/work/social/06.webp", "/work/social/07.webp"],
-  ["/work/social/08.webp", "/work/social/09.webp", "/work/social/10.webp", "/work/social/11.webp", "/work/social/12.webp", "/work/social/13.webp", "/work/social/14.webp"],
-  ["/work/social/15.webp", "/work/social/16.webp", "/work/social/17.webp", "/work/social/18.webp", "/work/social/19.webp", "/work/social/20.webp", "/work/social/21.webp"],
-];
+const all = Array.from({ length: 33 }, (_, i) => `/work/social/${String(i + 1).padStart(2, "0")}.webp`);
+const rows = [all.slice(0, 11), all.slice(11, 22), all.slice(22, 33)];
 
 function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
   const track = [...imgs, ...imgs];

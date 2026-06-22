@@ -12,7 +12,7 @@ const groups = [
   },
   {
     title: "Production",
-    items: ["Photo Manipulation", "Key Visuals", "UI Design", "AI Prompt Engineering"],
+    items: ["Photo Manipulation", "Key Visuals", "UI Design", "AI Prompt Engineering", "Vibe Coding"],
   },
 ];
 

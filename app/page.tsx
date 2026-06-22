@@ -5,6 +5,7 @@ import SelectedWork from "@/components/SelectedWork";
 import Campaigns from "@/components/Campaigns";
 import Logos from "@/components/Logos";
 import Motion from "@/components/Motion";
+import WebProjects from "@/components/WebProjects";
 import Clients from "@/components/Clients";
 import SocialWall from "@/components/SocialWall";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Campaigns />
       <Logos />
       <Motion />
+      <WebProjects />
       <Clients />
       <SocialWall />
     </SiteShell>

@@ -21,6 +21,10 @@ const LIST = [
   ["Ai option.mp4", "ai-motion", "AI-Generated Spot", "AI · Motion"],
   ["D:\\New folder (5)\\2.mp4", "teaser", "Cinematic Teaser", "Motion · Teaser"],
   ["D:\\New folder (5)\\3.mp4", "space", "Interior Reveal", "Motion · Space"],
+  ["D:\\magnific_cinematic-coffee-shop-adv_3GgbvunREY (1).mp4", "coffee-ad", "Coffee Shop — Cinematic Ad", "AI · Cinematic"],
+  ["C:\\Users\\tarek\\Downloads\\Video v5.mp4", "film-2024", "2024 — Brand Film", "Brand · Film"],
+  ["C:\\Users\\tarek\\Downloads\\alpha_13_prob3.mp4", "alpha", "Motion Study", "Motion · Experimental"],
+  ["C:\\Users\\tarek\\Downloads\\Video promo #02.mp4", "promo-02", "Promo 02", "Social · Promo"],
 ];
 
 await fs.mkdir(OUT, { recursive: true });
@@ -36,6 +40,28 @@ for (const [file, slug, title, kind] of LIST) {
   }
   const mp4 = path.join(OUT, slug + ".mp4");
   const poster = path.join(OUT, slug + ".jpg");
+
+  // skip re-encoding if already produced (keeps re-runs fast)
+  let already = false;
+  try {
+    await fs.access(mp4);
+    await fs.access(poster);
+    already = true;
+  } catch {}
+  if (already) {
+    const meta = await sharp(poster).metadata();
+    manifest.push({
+      slug,
+      title,
+      kind,
+      src: "/motion/" + slug + ".mp4",
+      poster: "/motion/" + slug + ".jpg",
+      width: meta.width,
+      height: meta.height,
+    });
+    console.log(`  - ${slug} (cached)`);
+    continue;
+  }
 
   // poster
   execFileSync(

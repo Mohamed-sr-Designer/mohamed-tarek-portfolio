@@ -61,5 +61,41 @@
     "poster": "/motion/space.jpg",
     "width": 675,
     "height": 1200
+  },
+  {
+    "slug": "coffee-ad",
+    "title": "Coffee Shop — Cinematic Ad",
+    "kind": "AI · Cinematic",
+    "src": "/motion/coffee-ad.mp4",
+    "poster": "/motion/coffee-ad.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "film-2024",
+    "title": "2024 — Brand Film",
+    "kind": "Brand · Film",
+    "src": "/motion/film-2024.mp4",
+    "poster": "/motion/film-2024.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "alpha",
+    "title": "Motion Study",
+    "kind": "Motion · Experimental",
+    "src": "/motion/alpha.mp4",
+    "poster": "/motion/alpha.jpg",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "slug": "promo-02",
+    "title": "Promo 02",
+    "kind": "Social · Promo",
+    "src": "/motion/promo-02.mp4",
+    "poster": "/motion/promo-02.jpg",
+    "width": 675,
+    "height": 1200
   }
 ]

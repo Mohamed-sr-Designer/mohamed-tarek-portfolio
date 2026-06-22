@@ -128,6 +128,20 @@ const MANIFEST = [
   ["Social media posts story/Post 2_2.png", "work/social/19.webp", 1100],
   ["Social media posts story/Post 5_1.png", "work/social/20.webp", 1100],
   ["Social media posts story/Mix-post-and-story_14.png", "work/social/21.webp", 1100],
+
+  // ---------- New designs (cyber-security + Dubai real estate) ----------
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\1.png", "work/social/22.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\1 (2).png", "work/social/23.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\2.png", "work/social/24.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\2-1.png", "work/social/25.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\3-1.png", "work/social/26.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\4.png", "work/social/27.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\5.png", "work/social/28.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\6.png", "work/social/29.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\7.png", "work/social/30.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\7 (2).png", "work/social/31.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\8 copy.png", "work/social/32.webp", 1100],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\Artboard 1.png", "work/social/33.webp", 1100],
 ];
 
 // Open Graph share image
