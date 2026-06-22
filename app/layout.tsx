@@ -1,26 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, Fraunces } from "next/font/google";
 import { site } from "@/lib/site";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Cursor from "@/components/Cursor";
 import "./globals.css";
 
-const inter = Inter({
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const sans = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const serif = Fraunces({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  style: ["normal", "italic"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#100F0D",
   width: "device-width",
   initialScale: 1,
 };
@@ -63,7 +70,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-// Sets the theme before paint to avoid a flash of the wrong theme.
 const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
 
 export default function RootLayout({
@@ -75,7 +81,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${inter.variable} ${fraunces.variable}`}
+      className={`${display.variable} ${sans.variable} ${serif.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
@@ -83,6 +89,7 @@ export default function RootLayout({
       <body className="bg-ink-900 font-sans text-bone-50 antialiased">
         <SmoothScroll />
         <ScrollProgress />
+        <Cursor />
         <WhatsAppButton />
         {children}
       </body>

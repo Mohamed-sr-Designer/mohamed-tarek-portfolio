@@ -2,41 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---- Dark theme (default) ---- */
+/* ---- Dark (default): warm charcoal + ivory, molten-amber accent ---- */
 :root,
 :root[data-theme="dark"] {
-  --bg: 10 10 10;
-  --bg2: 17 17 17;
-  --bg3: 23 23 23;
-  --bg4: 31 31 31;
-  --bg5: 42 42 42;
-  --fg: 245 245 245;
-  --fg2: 217 217 217;
-  --fg3: 140 140 140;
-  --fg4: 102 102 102;
-  --line: 255 255 255;
-  --electric: 45 127 249;
-  --mint: 69 230 184;
-  --grain-opacity: 0.05;
-  --clients: url("/me/clients.webp");
+  --bg: 16 15 13;
+  --bg2: 24 22 19;
+  --bg3: 31 29 25;
+  --bg4: 41 38 33;
+  --bg5: 56 52 45;
+  --fg: 243 239 231;
+  --fg2: 201 195 183;
+  --fg3: 150 144 132;
+  --fg4: 110 104 94;
+  --line: 243 239 231;
+  --electric: 242 181 60; /* gold */
+  --mint: 255 90 31; /* molten amber (primary accent) */
 }
 
-/* ---- Light theme ---- */
+/* ---- Light: warm ivory ---- */
 :root[data-theme="light"] {
-  --bg: 248 247 244;
-  --bg2: 255 255 255;
-  --bg3: 241 240 236;
-  --bg4: 233 232 227;
-  --bg5: 222 221 215;
-  --fg: 17 17 17;
-  --fg2: 41 41 41;
-  --fg3: 92 92 92;
-  --fg4: 120 120 120;
-  --line: 17 17 17;
-  --electric: 18 99 224;
-  --mint: 14 150 112;
-  --grain-opacity: 0.035;
-  --clients: url("/me/clients-light.webp");
+  --bg: 244 240 232;
+  --bg2: 253 250 244;
+  --bg3: 235 230 220;
+  --bg4: 227 221 210;
+  --bg5: 214 207 195;
+  --fg: 22 20 15;
+  --fg2: 54 50 42;
+  --fg3: 102 95 84;
+  --fg4: 132 124 112;
+  --line: 22 20 15;
+  --electric: 178 120 16;
+  --mint: 214 64 14;
 }
 
 * {
@@ -51,9 +47,18 @@ html {
 body {
   background-color: rgb(var(--bg));
   color: rgb(var(--fg));
-  font-feature-settings: "ss01", "cv01";
+  font-feature-settings: "ss01";
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1,
+h2,
+h3,
+h1.font-sans,
+h2.font-sans,
+h3.font-sans {
+  font-family: var(--font-display), system-ui, sans-serif;
 }
 
 ::selection {
@@ -61,7 +66,7 @@ body {
   color: rgb(var(--bg));
 }
 
-/* Lenis smooth scroll */
+/* Lenis */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -84,6 +89,16 @@ html.lenis body {
   border-radius: 999px;
 }
 
+/* Custom cursor: hide native only when JS-driven cursor is active */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.cursor-ready,
+  html.cursor-ready a,
+  html.cursor-ready button,
+  html.cursor-ready * {
+    cursor: none;
+  }
+}
+
 @layer components {
   .container-edge {
     padding-left: clamp(1.25rem, 5vw, 6rem);
@@ -99,13 +114,6 @@ html.lenis body {
   .link-underline:hover {
     background-size: 100% 1px;
   }
-  /* Clients board swaps source per theme via CSS variable */
-  .clients-board {
-    background-image: var(--clients);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
 }
 
 @layer utilities {
@@ -114,15 +122,6 @@ html.lenis body {
   }
   .text-pretty {
     text-wrap: pretty;
-  }
-  .grain::before {
-    content: "";
-    position: fixed;
-    inset: -50%;
-    z-index: 60;
-    pointer-events: none;
-    opacity: var(--grain-opacity);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
