@@ -38,6 +38,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const gallery = project.gallery.filter((g) => g.src !== project.hero);
   const others = projects.filter((p) => p.slug !== project.slug);
 
+  // Visual rhythm: every 3rd image runs full-width, the rest pair up.
+  const span = (i: number) =>
+    i % 3 === 0 ? "col-span-2" : "col-span-2 sm:col-span-1";
+
   return (
     <>
       {/* top bar */}
@@ -50,7 +54,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <span className="text-bone-200 group-hover:text-bone-50">All work</span>
           </Link>
           <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center rounded-full border border-line/20 font-serif text-xs">
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-line/20 font-display text-xs">
               MT
             </span>
           </Link>
@@ -66,10 +70,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         </div>
       </header>
 
-      {/* title + tagline */}
-      <section className="container-edge mx-auto max-w-edge pt-32 text-center md:pt-44">
+      {/* title */}
+      <section className="container-edge mx-auto max-w-edge pt-32 text-center md:pt-40">
         <Reveal>
-          <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs uppercase tracking-ultra text-bone-400">
+          <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs uppercase tracking-[0.28em] text-bone-400">
             <span className={accent}>{project.category}</span>
             <span className="h-px w-6 bg-line/30" />
             <span>{project.client}</span>
@@ -78,7 +82,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </p>
         </Reveal>
         <Reveal delay={0.06}>
-          <h1 className="mx-auto mt-6 max-w-4xl text-balance font-sans text-5xl font-medium leading-[1.0] tracking-tightest text-bone-50 md:text-7xl">
+          <h1 className="mx-auto mt-6 max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-tightest text-bone-50 md:text-8xl">
             {project.title}
           </h1>
         </Reveal>
@@ -89,37 +93,29 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         </Reveal>
       </section>
 
-      {/* master visual */}
-      <section className="container-edge mx-auto mt-12 max-w-edge md:mt-16">
+      {/* full-bleed master visual */}
+      <section className="mt-12 px-2 md:mt-16 md:px-3">
         <Reveal>
           <div className="overflow-hidden rounded-2xl bg-ink-700">
             <Media
               src={project.hero}
               alt={project.title}
               priority
-              sizes="(max-width: 1024px) 100vw, 1400px"
+              sizes="100vw"
               className="h-auto w-full"
             />
           </div>
         </Reveal>
       </section>
 
-      {/* client block */}
-      <section className="container-edge mx-auto max-w-edge py-14 md:py-20">
-        <div className="grid gap-8 border-y border-line/10 py-10 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
-            <p className="text-xs uppercase tracking-ultra text-bone-400">Client</p>
-            <p className="mt-2 text-lg text-bone-50">{project.client}</p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-ultra text-bone-400">Industry</p>
-            <p className="mt-2 text-lg text-bone-50">{project.category}</p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-ultra text-bone-400">
-              Solutions &amp; Services
+      {/* compact approach — visuals do the talking */}
+      <section className="container-edge mx-auto max-w-edge py-16 md:py-20">
+        <div className="grid gap-10 border-y border-line/10 py-10 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-3">
+            <p className="text-xs uppercase tracking-[0.28em] text-bone-400">
+              {project.client} · {project.category}
             </p>
-            <ul className="mt-3 flex flex-wrap gap-2">
+            <ul className="mt-4 flex flex-wrap gap-2">
               {project.contribution.map((c) => (
                 <li
                   key={c}
@@ -130,81 +126,49 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               ))}
             </ul>
           </div>
-        </div>
-      </section>
-
-      {/* long story short */}
-      <section className="container-edge mx-auto max-w-edge pb-16 md:pb-24">
-        <Reveal>
-          <h2 className="font-sans text-3xl font-light tracking-tight text-bone-50 md:text-5xl">
-            Long story short.
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
-          <Reveal>
-            <div>
-              <h3 className={`text-lg font-medium ${accent}`}>The Challenge</h3>
-              <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
-                {project.challenge}
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div>
-              <h3 className={`text-lg font-medium ${accent}`}>The Solution</h3>
-              <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
-                {project.strategy}
-              </p>
-              <p className="mt-4 text-pretty text-base leading-relaxed text-bone-400">
-                {project.direction}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-        <Reveal delay={0.1}>
-          <div className="mt-12 border-t border-line/10 pt-8">
-            <h3 className="text-xs uppercase tracking-ultra text-bone-400">
-              My role
-            </h3>
-            <p className="mt-3 max-w-3xl text-pretty text-lg leading-relaxed text-bone-200">
-              {project.execution}
+          <div className="md:col-span-4">
+            <h2 className={`text-sm font-medium ${accent}`}>The Challenge</h2>
+            <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
+              {project.challenge}
             </p>
           </div>
-        </Reveal>
+          <div className="md:col-span-5">
+            <h2 className={`text-sm font-medium ${accent}`}>The Solution</h2>
+            <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
+              {project.strategy}
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* master visuals — full-width slider */}
+      {/* immersive gallery — big visuals, scroll */}
       {gallery.length > 0 ? (
-        <section className="container-edge mx-auto max-w-edge pb-20 md:pb-28">
-          <Reveal>
-            <p className="mb-6 text-xs uppercase tracking-ultra text-bone-400">
-              Master visuals — slide ›
-            </p>
-          </Reveal>
-          <Carousel ariaLabel="Project visuals">
-            {gallery.map((g) => (
-              <figure
-                key={g.src}
-                className="aspect-[4/5] w-[86%] shrink-0 snap-start overflow-hidden rounded-2xl bg-ink-700 sm:aspect-[3/2] sm:w-[62%] lg:w-[48%]"
-              >
-                <Media
-                  src={g.src}
-                  alt={g.caption ?? project.title}
-                  sizes="(max-width: 640px) 86vw, 60vw"
-                  className="h-full w-full object-cover"
-                />
-              </figure>
+        <section className="px-2 pb-8 md:px-3">
+          <div className="grid grid-cols-2 gap-2 md:gap-3">
+            {gallery.map((g, i) => (
+              <Reveal key={g.src} className={span(i)}>
+                <figure className="overflow-hidden rounded-xl bg-ink-700">
+                  <Media
+                    src={g.src}
+                    alt={g.caption ?? project.title}
+                    sizes={span(i).includes("sm:col-span-1") ? "(max-width: 640px) 100vw, 50vw" : "100vw"}
+                    className="h-auto w-full"
+                  />
+                </figure>
+              </Reveal>
             ))}
-          </Carousel>
+          </div>
         </section>
       ) : null}
 
-      {/* main CTA */}
+      {/* CTA */}
       <section className="border-y border-line/10 bg-ink-800/40">
         <div className="container-edge mx-auto flex max-w-edge flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center md:py-24">
-          <h2 className="max-w-2xl text-balance font-sans text-3xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-5xl">
+          <h2 className="max-w-2xl text-balance text-3xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-5xl">
             Got a brand worth building?{" "}
-            <span className="font-serif italic text-mint">Let&apos;s talk.</span>
+            <span className="font-serif font-normal italic text-mint">
+              Let&apos;s talk.
+            </span>
           </h2>
           <Link
             href="/contact"
@@ -215,11 +179,11 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* continue reading */}
+      {/* continue */}
       <section className="container-edge mx-auto max-w-edge py-16 md:py-24">
         <Reveal>
-          <h2 className="mb-8 font-sans text-3xl font-light tracking-tight text-bone-50 md:text-4xl">
-            Continue reading
+          <h2 className="mb-8 text-3xl font-semibold tracking-tight text-bone-50 md:text-4xl">
+            Continue
           </h2>
         </Reveal>
         <Carousel ariaLabel="More case studies">
@@ -241,8 +205,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               <h3 className="mt-3 text-lg font-medium tracking-tight text-bone-50">
                 {p.title}
               </h3>
-              <p className="text-sm text-bone-400">{p.category}</p>
-              <span className="mt-2 inline-block text-sm text-mint">Read more ↗</span>
+              <span className="text-sm text-mint">Read more ↗</span>
             </Link>
           ))}
         </Carousel>

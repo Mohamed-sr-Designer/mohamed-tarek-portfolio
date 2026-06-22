@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Cursor from "@/components/Cursor";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   description: site.description,
   keywords: [
     "Art Director",
-    "Jr. Art Director",
+    "Team Lead",
     "Creative Direction",
     "Brand Identity",
     "Campaign Design",
@@ -87,6 +88,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="bg-ink-900 font-sans text-bone-50 antialiased">
+        <Preloader />
         <SmoothScroll />
         <ScrollProgress />
         <Cursor />

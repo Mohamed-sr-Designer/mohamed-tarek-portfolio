@@ -1,9 +1,9 @@
 export const site = {
   name: "Mohamed Tarek",
-  role: "Jr. Art Director",
-  title: "Mohamed Tarek — Jr. Art Director",
+  role: "Team Lead",
+  title: "Mohamed Tarek — Team Lead",
   description:
-    "Mohamed Tarek is a Jr. Art Director based in Egypt, working across the Egyptian, Saudi and Kuwaiti markets — building brands, campaigns and visual systems that connect business goals with human attention.",
+    "Mohamed Tarek is an art Team Lead based in Egypt, working across the Egyptian, Saudi and Kuwaiti markets — building brands, campaigns and visual systems that connect business goals with human attention.",
   url: "https://mohamedtarek.design",
   email: "mohamed.tarek.ahmed1@gmail.com",
   phoneDisplay: "+20 10 1145 8929",

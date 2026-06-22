@@ -51,7 +51,7 @@ export default function Nav() {
             </span>
             <span className="hidden text-sm tracking-tight text-bone-200 sm:block">
               Mohamed Tarek
-              <span className="text-bone-400"> — Jr. Art Director</span>
+              <span className="text-bone-400"> — Team Lead</span>
             </span>
           </Link>
 

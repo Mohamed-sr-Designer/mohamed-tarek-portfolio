@@ -90,47 +90,32 @@ export default function Campaigns() {
               {campaigns.map((c) => (
                 <article
                   key={c.n}
-                  className="w-full shrink-0 snap-start rounded-2xl border border-line/10 bg-ink-900 p-7 md:w-[94%] md:p-12"
+                  className="flex w-full shrink-0 snap-start flex-col justify-between gap-8 rounded-2xl border border-line/10 bg-ink-900 p-7 md:min-h-[26rem] md:w-[94%] md:p-12"
                 >
-                  <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-                    <div className="md:col-span-4">
-                      <span className="font-serif text-3xl text-bone-500">
-                        {c.n}
-                      </span>
-                      <p className="mt-3 text-xs uppercase tracking-ultra text-bone-400">
-                        {c.category}
-                      </p>
-                      <h3 className="mt-2 font-sans text-3xl font-medium tracking-tight text-bone-50 md:text-5xl">
-                        {c.brand}
-                      </h3>
-                      <ul className="mt-5 flex flex-wrap gap-2">
-                        {c.fields.map((f) => (
-                          <li
-                            key={f}
-                            className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
-                          >
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="md:col-span-5">
-                      <p className="text-xs uppercase tracking-ultra text-mint">
-                        Concept
-                      </p>
-                      <p className="mt-2 text-pretty text-lg leading-relaxed text-bone-200 md:text-xl">
-                        {c.concept}
-                      </p>
-                    </div>
-                    <div className="md:col-span-3">
-                      <p className="text-xs uppercase tracking-ultra text-bone-400">
-                        Insight
-                      </p>
-                      <p className="mt-2 text-pretty text-sm leading-relaxed text-bone-400">
-                        {c.insight}
-                      </p>
-                    </div>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="font-serif text-2xl text-bone-500">{c.n}</span>
+                    <span className="text-xs uppercase tracking-[0.28em] text-bone-400">
+                      {c.category}
+                    </span>
                   </div>
+                  <div>
+                    <h3 className="text-5xl font-semibold tracking-tightest text-bone-50 md:text-8xl">
+                      {c.brand}
+                    </h3>
+                    <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-bone-200 md:text-2xl">
+                      {c.concept}
+                    </p>
+                  </div>
+                  <ul className="flex flex-wrap gap-2">
+                    {c.fields.map((f) => (
+                      <li
+                        key={f}
+                        className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-400"
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </Carousel>

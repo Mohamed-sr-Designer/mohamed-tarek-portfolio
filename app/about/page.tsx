@@ -10,7 +10,7 @@ import Vision from "@/components/Vision";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Mohamed Tarek — a Jr. Art Director based in Egypt. Experience, creative process, capabilities, toolkit and vision.",
+    "About Mohamed Tarek — an art Team Lead based in Egypt. Experience, creative process, capabilities, toolkit and vision.",
 };
 
 export default function AboutPage() {

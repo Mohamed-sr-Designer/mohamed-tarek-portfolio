@@ -72,7 +72,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.35 }}
           className="mb-8 max-w-xl text-sm leading-relaxed text-bone-200 md:text-base"
         >
-          <span className="text-bone-400">{site.name},</span> Jr. Art Director —
+          <span className="text-bone-400">{site.name},</span> Team Lead —
           building brands, campaigns and visual experiences.
           <span className="text-bone-50"> Strategy first, craft always.</span>
         </motion.p>

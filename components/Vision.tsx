@@ -4,7 +4,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 const pillars = [
   {
     k: "Where I am",
-    v: "A Jr. Art Director with a designer's craft and a strategist's instinct — already leading an art team and building work that performs in market.",
+    v: "An art Team Lead with a designer's craft and a strategist's instinct — already leading the team and building work that performs in market.",
   },
   {
     k: "Where I'm heading",

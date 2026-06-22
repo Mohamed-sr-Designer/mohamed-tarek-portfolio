@@ -53,7 +53,7 @@ export default function About() {
           <div className="mt-8 grid gap-5 text-pretty text-base leading-relaxed text-bone-200 md:text-lg">
             <Reveal delay={0.05}>
               <p>
-                I&apos;m Mohamed Tarek, a Jr. Art Director based in {site.location}{" "}
+                I&apos;m Mohamed Tarek, an art Team Lead based in {site.location}{" "}
                 with professional experience across the Egyptian, Saudi and
                 Kuwaiti markets — focused on clean, strategic, performance-driven
                 design that strengthens brand identity and supports real
