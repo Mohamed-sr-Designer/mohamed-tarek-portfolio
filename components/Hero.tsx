@@ -59,7 +59,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-70" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
           </span>
-          Open to Art Direction roles
+          Open to new opportunities
         </span>
         <span className="hidden sm:block">Portfolio — 2026</span>
       </motion.div>
@@ -77,7 +77,7 @@ export default function Hero() {
           <span className="text-bone-50"> Strategy first, craft always.</span>
         </motion.p>
 
-        <h1 className="font-display text-[13.5vw] font-semibold leading-[0.9] tracking-[-0.03em] text-bone-50 sm:text-[10.5vw] lg:text-[7.6vw]">
+        <h1 className="font-display text-[8.5vw] font-semibold leading-[0.96] tracking-[-0.03em] text-bone-50 sm:text-[7vw] lg:text-[5vw]">
           <Line delay={0.45}>Brands, campaigns</Line>
           <Line delay={0.58}>
             &amp; experiences that <span className="text-bone-400">connect</span>

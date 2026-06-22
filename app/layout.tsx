@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "Art Director",
+    "Brand Design",
     "Team Lead",
     "Creative Direction",
     "Brand Identity",

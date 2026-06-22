@@ -51,7 +51,7 @@ const jobs: Job[] = [
     type: "Full-time · Automotive · BTL",
     period: "Aug 2025 — Mar 2026",
     place: "Giza, Egypt",
-    note: "Worked with the Art Director on an automotive campaign — BTL, brand activation and event management, concept to execution.",
+    note: "Worked with the creative lead on an automotive campaign — BTL, brand activation and event management, concept to execution.",
   },
   {
     company: "Teaching Planet Academy",

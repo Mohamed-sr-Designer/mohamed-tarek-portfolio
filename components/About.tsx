@@ -12,7 +12,7 @@ const traits = [
   "Collaborative Team Player",
 ];
 
-const focus = ["2D Visual Design", "Art Direction", "AI Prompt Engineering"];
+const focus = ["2D Visual Design", "Brand Systems", "AI Prompt Engineering"];
 
 export default function About() {
   return (
@@ -44,7 +44,7 @@ export default function About() {
         <div className="lg:col-span-7">
           <Reveal>
             <p className="text-balance font-sans text-3xl font-light leading-[1.18] tracking-tight text-bone-50 md:text-[2.6rem]">
-              A designer becoming an art director — treating every brand as a{" "}
+              A designer who leads — treating every brand as a{" "}
               <span className="font-serif italic text-mint">business problem</span>{" "}
               with a creative answer.
             </p>

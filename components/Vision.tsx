@@ -12,7 +12,7 @@ const pillars = [
   },
   {
     k: "Why direction",
-    v: "My strongest work was never about decoration — it's about decisions. Art direction is where strategy, craft and leadership meet.",
+    v: "My strongest work was never about decoration — it's about decisions. That's where strategy, craft and leadership meet.",
   },
 ];
 

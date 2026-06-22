@@ -26,7 +26,7 @@ export default function Contact() {
 
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-bone-200">
-            Open to Art Direction roles, freelance projects and creative
+            Open to new roles, freelance projects and creative
             collaborations across {site.markets}. If you&apos;re building
             something ambitious, I&apos;d love to hear about it.
           </p>

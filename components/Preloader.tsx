@@ -71,7 +71,7 @@ export default function Preloader() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="mt-2 font-serif text-lg italic text-mint md:text-2xl"
             >
-              {site.role} · Art Direction
+              {site.role} · Brand & Visual
             </motion.span>
           </div>
 

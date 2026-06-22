@@ -4,6 +4,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const nextConfig = {
   output: "export", // static site, deployable to GitHub Pages
+  // Local Windows/OneDrive builds can race the .next folder; allow routing it
+  // outside the synced folder via env. CI leaves this unset (uses .next).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   reactStrictMode: true,
   trailingSlash: true,
   basePath,

@@ -13,7 +13,7 @@ const campaigns = [
       "Turning cooking into a shared, joyful moment — connecting chefs, creators and food lovers where real dishes, real energy and real interaction come together.",
     insight:
       "Influencers create content, but turning engagement into real orders is hard, and people hesitate to trust influencer meals. The move: an experience-driven event that makes influencers live chefs and positions the app as the bridge between creators and consumers.",
-    fields: ["Creative Concept", "Art Direction", "Social", "AI Prompt Engineering"],
+    fields: ["Creative Concept", "Creative Direction", "Social", "AI Prompt Engineering"],
   },
   {
     n: "02",
@@ -23,7 +23,7 @@ const campaigns = [
       "Communication worthy of the marque — a buying experience that reflects Rolls-Royce as the pinnacle of automotive luxury.",
     insight:
       "At this tier, restraint is the message. Every frame is built on craft, retouching and quiet confidence rather than volume.",
-    fields: ["Social Media", "Retouching", "Art Direction"],
+    fields: ["Social Media", "Retouching", "Creative Direction"],
   },
   {
     n: "03",

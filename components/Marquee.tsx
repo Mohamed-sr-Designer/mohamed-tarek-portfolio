@@ -7,7 +7,7 @@ const items = [
   "Packaging",
   "Motion",
   "AI Production",
-  "Art Direction",
+  "Creative Direction",
   "Marketing Communication",
 ];
 

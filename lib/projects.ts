@@ -52,7 +52,7 @@ export const projects: Project[] = [
       "I used AI image tooling as a production engine — directing, curating and retouching to a consistent standard — and delivered hero visuals, gifting pages, seasonal banners, an Instagram grid and the product line.",
     impact:
       "A cohesive, premium brand world that punches far above its budget, and a scalable system AXIA can extend across every season and channel.",
-    contribution: ["Creative & Art Direction", "Brand Visual System", "AI Image Production", "Social & Landing"],
+    contribution: ["Creative Direction", "Brand Visual System", "AI Image Production", "Social & Landing"],
     gallery: g(
       "/work/axia/hero.webp",
       "/work/axia/gift-her.webp",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     cover: "/work/fresh-valley/packaging.webp",
     hero: "/work/fresh-valley/van-life.webp",
     logo: "/work/fresh-valley/logo.webp",
-    tags: ["Visual Identity", "Packaging", "Brand System", "Art Direction"],
+    tags: ["Visual Identity", "Packaging", "Brand System", "Creative Direction"],
     challenge:
       "Fresh produce is the definition of a commodity — bought on price, rarely on brand. Fresh Valley wanted to own the export-grade, premium tier and needed an identity that signals quality the instant you see it.",
     strategy:
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     tagline: "How we sold belonging and faith — not square metres.",
     cover: "/work/tilal/hero.webp",
     hero: "/work/tilal/02.webp",
-    tags: ["Campaign", "Brand Storytelling", "Bilingual AR/EN", "Art Direction"],
+    tags: ["Campaign", "Brand Storytelling", "Bilingual AR/EN", "Creative Direction"],
     challenge:
       "Tilal Village is a premium residential community moments from the Holy Haram in Makkah. The category sells on specs; Tilal needed to sell the feeling of raising a family in a place of meaning.",
     strategy:
@@ -157,7 +157,7 @@ export const projects: Project[] = [
       "Campaign key visuals and a bilingual art-direction system across hero, lifestyle and architectural frames — engineered so the Arabic and English layouts each feel native, never translated.",
     impact:
       "A residential development repositioned as an emotional brand — the kind of campaign audiences remember long after the specs are forgotten.",
-    contribution: ["Campaign Concept", "Art Direction", "Bilingual Type", "Key Visuals"],
+    contribution: ["Campaign Concept", "Creative Direction", "Bilingual Type", "Key Visuals"],
     gallery: g(
       "/work/tilal/02.webp",
       "/work/tilal/hero.webp",
@@ -198,7 +198,7 @@ export const projects: Project[] = [
       "A cross-channel system: campaign key visuals, product hero compositions with technical detailing, social-first posts and stories — all on one confident visual standard.",
     impact:
       "A B2B brand that finally looks the part of its 50-year reputation — proof that craft and strategy belong in the categories that usually skip them.",
-    contribution: ["Campaign Art Direction", "Product Key Visuals", "Social System", "Bilingual Layout"],
+    contribution: ["Campaign Creative Direction", "Product Key Visuals", "Social System", "Bilingual Layout"],
     gallery: g(
       "/work/ihs/hero.webp",
       "/work/ihs/02.webp",
@@ -236,7 +236,7 @@ export const projects: Project[] = [
       "I supported the project through retouching and colour grading, ensuring visual consistency across lighting, reflections and materials — enhancing realism, depth and premium finish while preserving Geely's official visual standards.",
     impact:
       "Campaign-grade key visuals that feel like global automotive work — premium, believable and unmistakably on-brand.",
-    contribution: ["Image Retouching", "Color Grading", "Visual Consistency", "Art Direction"],
+    contribution: ["Image Retouching", "Color Grading", "Visual Consistency", "Creative Direction"],
     gallery: g(
       "/work/auto/geely-rental.webp",
       "/work/auto/geely-monjaro.webp",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
       "Feed and story templates, campaign adaptations and bilingual AR/EN layouts delivered across food, hospitality, FMCG, sports and lifestyle brands.",
     impact:
       "Repeatable, on-brand social output that protects brand equity at the speed social actually demands.",
-    contribution: ["Social Art Direction", "Template Systems", "Bilingual Layout", "Content Design"],
+    contribution: ["Social Creative Direction", "Template Systems", "Bilingual Layout", "Content Design"],
     gallery: g(
       "/work/social/01.webp",
       "/work/social/02.webp",
