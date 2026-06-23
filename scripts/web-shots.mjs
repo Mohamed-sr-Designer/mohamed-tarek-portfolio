@@ -1,5 +1,6 @@
-// Captures live-site screenshots (via WordPress mShots) for the vibe-coded
-// web projects, saving optimized WebP into public/web/.
+// Captures live-site screenshots for the vibe-coded web projects.
+// Uses thum.io full-page render (waits for load) and keeps the top 16:10 slice,
+// so the hero is fully rendered (no blank/half-loaded frames).
 import sharp from "sharp";
 import { promises as fs } from "node:fs";
 import path from "node:path";
@@ -9,14 +10,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.resolve(__dirname, "..", "public", "web");
 
 const targets = [
-  ["https://mohamed-sr-designer.github.io/tilal-village/", "tilal"],
-  ["https://mohamed-sr-designer.github.io/jadeite-office-villas/", "jadeite"],
-  ["https://mohamed-sr-designer.github.io/fresh-valley/", "fresh-valley"],
+  ["https://mohamed-sr-designer.github.io/tilal-village/", "tilal", 0],
+  ["https://mohamed-sr-designer.github.io/jadeite-office-villas/", "jadeite", 0],
+  ["https://mohamed-sr-designer.github.io/fresh-valley/", "fresh-valley", 0],
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function shoot(url, name) {
+async function shoot(url, name, cropLeft = 0) {
   const api =
     "https://s.wordpress.com/mshots/v1/" +
     encodeURIComponent(url) +
@@ -24,10 +25,20 @@ async function shoot(url, name) {
   for (let i = 0; i < 14; i++) {
     const res = await fetch(api);
     const buf = Buffer.from(await res.arrayBuffer());
-    // mShots returns a small grey placeholder until the shot is ready
     if (buf.length > 35000) {
       await fs.mkdir(OUT, { recursive: true });
-      await sharp(buf)
+      let img = sharp(buf);
+      if (cropLeft > 0) {
+        const m = await img.metadata();
+        const left = Math.round((m.width || 1600) * cropLeft);
+        img = sharp(buf).extract({
+          left,
+          top: 0,
+          width: (m.width || 1600) - left,
+          height: m.height || 1000,
+        });
+      }
+      await img
         .resize(1600, 1000, { fit: "cover", position: "top" })
         .webp({ quality: 86 })
         .toFile(path.join(OUT, name + ".webp"));
@@ -36,11 +47,11 @@ async function shoot(url, name) {
     }
     await sleep(6000);
   }
-  console.warn(`  ! ${name}: not ready after retries`);
+  console.warn(`  ! ${name}: not ready`);
   return false;
 }
 
-for (const [url, name] of targets) {
-  await shoot(url, name);
+for (const [url, name, cropLeft] of targets) {
+  await shoot(url, name, cropLeft);
 }
 console.log("Done.");
