@@ -1,8 +1,13 @@
 import { Media } from "@/components/ui/Media";
 
 // Social-media designs only (from the Social media posts library).
-const all = Array.from({ length: 33 }, (_, i) => `/work/social/${String(i + 1).padStart(2, "0")}.webp`);
-const rows = [all.slice(0, 11), all.slice(11, 22), all.slice(22, 33)];
+// Exclude duplicate/near-duplicate designs (23, 29, 30, 31).
+const exclude = new Set([23, 29, 30, 31]);
+const all = Array.from({ length: 33 }, (_, i) => i + 1)
+  .filter((n) => !exclude.has(n))
+  .map((n) => `/work/social/${String(n).padStart(2, "0")}.webp`);
+const per = Math.ceil(all.length / 3);
+const rows = [all.slice(0, per), all.slice(per, per * 2), all.slice(per * 2)];
 
 function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
   const track = [...imgs, ...imgs];

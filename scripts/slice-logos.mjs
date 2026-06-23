@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT = path.resolve(__dirname, "..");
-const COLS = 8;
+const COLS = 9;
 const ROWS = 4;
 
 async function sliceBoard(srcPath, outDir) {

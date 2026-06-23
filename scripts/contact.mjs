@@ -12,7 +12,7 @@ const perSheet = cols * 4; // 4 rows per sheet
 
 await fs.mkdir(outDir, { recursive: true });
 const all = (await fs.readdir(inDir))
-  .filter((f) => /\.(pdf|png|jpe?g)$/i.test(f))
+  .filter((f) => /\.(pdf|png|jpe?g|webp)$/i.test(f))
   .sort();
 
 async function thumb(file) {

@@ -25,6 +25,11 @@ const LIST = [
   ["C:\\Users\\tarek\\Downloads\\Video v5.mp4", "film-2024", "2024 — Brand Film", "Brand · Film"],
   ["C:\\Users\\tarek\\Downloads\\alpha_13_prob3.mp4", "alpha", "Motion Study", "Motion · Experimental"],
   ["C:\\Users\\tarek\\Downloads\\Video promo #02.mp4", "promo-02", "Promo 02", "Social · Promo"],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (16)\\1.mp4", "reel-a", "Social Reel", "Social · Reel"],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (16)\\2.mp4", "reel-b", "Social Reel", "Social · Reel"],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (16)\\3.mp4", "reel-c", "Social Reel", "Social · Reel"],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (16)\\4.mp4", "reel-d", "Motion Loop", "Motion · Loop"],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (16)\\5.mp4", "reel-e", "Motion Loop", "Motion · Loop"],
 ];
 
 await fs.mkdir(OUT, { recursive: true });

@@ -97,5 +97,50 @@
     "poster": "/motion/promo-02.jpg",
     "width": 675,
     "height": 1200
+  },
+  {
+    "slug": "reel-a",
+    "title": "Social Reel",
+    "kind": "Social · Reel",
+    "src": "/motion/reel-a.mp4",
+    "poster": "/motion/reel-a.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "reel-b",
+    "title": "Social Reel",
+    "kind": "Social · Reel",
+    "src": "/motion/reel-b.mp4",
+    "poster": "/motion/reel-b.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "reel-c",
+    "title": "Social Reel",
+    "kind": "Social · Reel",
+    "src": "/motion/reel-c.mp4",
+    "poster": "/motion/reel-c.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "reel-d",
+    "title": "Motion Loop",
+    "kind": "Motion · Loop",
+    "src": "/motion/reel-d.mp4",
+    "poster": "/motion/reel-d.jpg",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "slug": "reel-e",
+    "title": "Motion Loop",
+    "kind": "Motion · Loop",
+    "src": "/motion/reel-e.mp4",
+    "poster": "/motion/reel-e.jpg",
+    "width": 360,
+    "height": 640
   }
 ]

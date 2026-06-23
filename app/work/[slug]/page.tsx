@@ -38,10 +38,6 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const gallery = project.gallery.filter((g) => g.src !== project.hero);
   const others = projects.filter((p) => p.slug !== project.slug);
 
-  // Visual rhythm: every 3rd image runs full-width, the rest pair up.
-  const span = (i: number) =>
-    i % 3 === 0 ? "col-span-2" : "col-span-2 sm:col-span-1";
-
   return (
     <>
       {/* top bar */}
@@ -141,21 +137,22 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* immersive gallery — big visuals, scroll */}
+      {/* gallery — tidy masonry */}
       {gallery.length > 0 ? (
-        <section className="px-2 pb-8 md:px-3">
-          <div className="grid grid-cols-2 gap-2 md:gap-3">
-            {gallery.map((g, i) => (
-              <Reveal key={g.src} className={span(i)}>
-                <figure className="overflow-hidden rounded-xl bg-ink-700">
-                  <Media
-                    src={g.src}
-                    alt={g.caption ?? project.title}
-                    sizes={span(i).includes("sm:col-span-1") ? "(max-width: 640px) 100vw, 50vw" : "100vw"}
-                    className="h-auto w-full"
-                  />
-                </figure>
-              </Reveal>
+        <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
+          <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
+            {gallery.map((g) => (
+              <figure
+                key={g.src}
+                className="mb-3 break-inside-avoid overflow-hidden rounded-lg bg-ink-700"
+              >
+                <Media
+                  src={g.src}
+                  alt={g.caption ?? project.title}
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                  className="h-auto w-full"
+                />
+              </figure>
             ))}
           </div>
         </section>

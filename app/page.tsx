@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import SelectedWork from "@/components/SelectedWork";
 import Campaigns from "@/components/Campaigns";
-import Logos from "@/components/Logos";
 import Motion from "@/components/Motion";
 import WebProjects from "@/components/WebProjects";
 import Clients from "@/components/Clients";
@@ -16,7 +15,6 @@ export default function Home() {
       <Marquee />
       <SelectedWork />
       <Campaigns />
-      <Logos />
       <Motion />
       <WebProjects />
       <Clients />
