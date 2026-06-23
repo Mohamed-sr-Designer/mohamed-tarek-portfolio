@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SiteShell from "@/components/SiteShell";
 import About from "@/components/About";
-import Logos from "@/components/Logos";
 import Experience from "@/components/Experience";
 import Process from "@/components/Process";
 import Skills from "@/components/Skills";
@@ -18,7 +17,6 @@ export default function AboutPage() {
   return (
     <SiteShell pad>
       <About />
-      <Logos />
       <Experience />
       <Process />
       <Skills />

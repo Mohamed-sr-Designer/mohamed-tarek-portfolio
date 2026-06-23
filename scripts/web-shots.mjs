@@ -20,16 +20,16 @@ async function shoot(url, name) {
   const api =
     "https://s.wordpress.com/mshots/v1/" +
     encodeURIComponent(url) +
-    "?w=1440&h=900";
-  for (let i = 0; i < 12; i++) {
+    "?w=1600&h=1000";
+  for (let i = 0; i < 14; i++) {
     const res = await fetch(api);
     const buf = Buffer.from(await res.arrayBuffer());
     // mShots returns a small grey placeholder until the shot is ready
     if (buf.length > 35000) {
       await fs.mkdir(OUT, { recursive: true });
       await sharp(buf)
-        .resize(1440, 900, { fit: "cover", position: "top" })
-        .webp({ quality: 82 })
+        .resize(1600, 1000, { fit: "cover", position: "top" })
+        .webp({ quality: 86 })
         .toFile(path.join(OUT, name + ".webp"));
       console.log(`  ✓ ${name} (${Math.round(buf.length / 1024)}KB, try ${i + 1})`);
       return true;

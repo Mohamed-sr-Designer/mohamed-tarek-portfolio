@@ -46,7 +46,7 @@ export default function Tools() {
   return (
     <section className="container-edge mx-auto max-w-edge py-20 md:py-28">
       <Reveal>
-        <SectionLabel index="06">Toolkit</SectionLabel>
+        <SectionLabel index="05">Toolkit</SectionLabel>
       </Reveal>
       <Reveal delay={0.05}>
         <h2 className="mt-6 max-w-2xl text-balance font-sans text-3xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-5xl">
