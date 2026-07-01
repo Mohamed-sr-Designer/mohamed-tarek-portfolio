@@ -28,7 +28,7 @@ export default function SelectedWork() {
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Six case studies — slide through with the arrows, click any to open.
+            Nine case studies — slide through with the arrows, click any to open.
           </p>
         </Reveal>
       </div>

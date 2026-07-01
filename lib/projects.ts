@@ -28,8 +28,47 @@ const g = (...srcs: string[]): GalleryItem[] => srcs.map((src) => ({ src }));
 
 export const projects: Project[] = [
   {
-    slug: "axia",
+    slug: "secure-tomorrow",
     index: "01",
+    title: "Secure Tomorrow — Fear, Made Cinematic",
+    client: "Secure Tomorrow · Cybersecurity Academy",
+    year: "2025",
+    category: "Brand Campaign · Cybersecurity",
+    discipline: "Creative Direction · Campaign · Social",
+    accent: "electric",
+    summary:
+      "A cinematic recruitment campaign for a cybersecurity academy — turning an abstract, technical field into something you feel in your gut.",
+    tagline: "How we made cybersecurity feel like a thriller, not a syllabus.",
+    cover: "/work/secure/cover.webp",
+    hero: "/work/secure/hero.webp",
+    tags: ["Creative Direction", "Campaign", "AI Production", "Social System"],
+    challenge:
+      "Cybersecurity education is sold on curricula and certificates — dry, technical, forgettable. Secure Tomorrow needed a campaign that made young talent want to defend the digital world, not just study it.",
+    strategy:
+      "I leaned into tension. Every frame is built on the quiet dread of a threat you can’t see — then flips it into agency: you are the one who sees it, stops it, secures tomorrow. Fear as the hook, mastery as the payoff.",
+    direction:
+      "A noir, blood-red aesthetic — Kali-Linux glow, moody server-room light, hooded silhouettes and neon data. High contrast, cinematic grade and one aggressive accent red, so every post reads as a single universe on the feed.",
+    execution:
+      "A full social campaign system: recruitment key visuals (SOC Analyst, Cybersecurity Diploma), concept-led awareness posts (“What is DNS?”, “Understand who will see it”) and sharp hooks — art-directed and produced end to end with AI imaging.",
+    impact:
+      "A cybersecurity brand that finally looks as sharp as the field it teaches — scroll-stopping, unmistakable, and built to convert curiosity into enrolment.",
+    contribution: ["Campaign Concept", "Creative Direction", "AI Image Production", "Social System"],
+    gallery: g(
+      "/work/secure/hero.webp",
+      "/work/secure/cover.webp",
+      "/work/secure/02.webp",
+      "/work/secure/03.webp",
+      "/work/secure/04.webp",
+      "/work/secure/05.webp",
+      "/work/secure/06.webp",
+      "/work/secure/07.webp",
+      "/work/secure/08.webp",
+      "/work/secure/09.webp"
+    ),
+  },
+  {
+    slug: "axia",
+    index: "02",
     title: "AXIA — Gifting, Reimagined",
     client: "AXIA",
     year: "2025",
@@ -82,7 +121,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fresh-valley",
-    index: "02",
+    index: "03",
     title: "Fresh Valley — Premium by Nature",
     client: "Fresh Valley",
     year: "2024",
@@ -134,7 +173,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tilal-village",
-    index: "03",
+    index: "04",
     title: "Tilal Village — Where Life Finds Its Place",
     client: "Tilal Village · Makkah",
     year: "2025",
@@ -174,8 +213,49 @@ export const projects: Project[] = [
     ),
   },
   {
+    slug: "brand-vitals",
+    index: "05",
+    title: "BrandVitals — Marketing, Built in Blocks",
+    client: "BrandVitals · Growth Agency",
+    year: "2025",
+    category: "Brand Campaign · 3D Social",
+    discipline: "Creative Direction · 3D Concept · Social System",
+    accent: "electric",
+    summary:
+      "A playful, punchy 3D campaign that turns dry marketing truths into toy-brick metaphors you can’t scroll past.",
+    tagline: "How we made marketing advice look like a toy box — and land like a punch.",
+    cover: "/work/brandvitals/cover.webp",
+    hero: "/work/brandvitals/hero.webp",
+    tags: ["Creative Direction", "3D Concept", "Campaign", "Social System"],
+    challenge:
+      "Marketing agencies all say the same things — “strategy matters”, “ads need funnels”. BrandVitals needed those tired truths to feel fresh, ownable and impossible to ignore in a crowded B2B feed.",
+    strategy:
+      "Turn every insight into a visual metaphor built from toy bricks: a pawn crowned into a king, a cracked Ctrl+Z, an ant hauling a boulder. Familiar toys, sharp copy — smart made playful.",
+    direction:
+      "A bold, tactile 3D world — deep navy and electric blue, glossy brick textures, dramatic studio light and one confident headline per frame. Consistent lighting and palette make the whole set read as one system.",
+    execution:
+      "A rolling social campaign of concept posts, each pairing a 3D brick build with a one-line hook (“Digital marketing turns pawns into kings”, “You can’t undo bad marketing”, “Built to perform”) — a repeatable engine for the brand’s feed.",
+    impact:
+      "A B2B marketing brand that finally feels as creative as the work it sells — memorable, thumb-stopping and instantly recognisable across the grid.",
+    contribution: ["Campaign Concept", "3D Art Direction", "Copy Direction", "Social System"],
+    gallery: g(
+      "/work/brandvitals/hero.webp",
+      "/work/brandvitals/cover.webp",
+      "/work/brandvitals/01.webp",
+      "/work/brandvitals/02.webp",
+      "/work/brandvitals/03.webp",
+      "/work/brandvitals/04.webp",
+      "/work/brandvitals/05.webp",
+      "/work/brandvitals/06.webp",
+      "/work/brandvitals/07.webp",
+      "/work/brandvitals/08.webp",
+      "/work/brandvitals/09.webp",
+      "/work/brandvitals/10.webp"
+    ),
+  },
+  {
     slug: "bnum-rajeh",
-    index: "04",
+    index: "06",
     title: "Bnum Rajeh — Built on Trust",
     client: "Bnum Rajeh Commercial Group · IHS",
     year: "2025",
@@ -212,8 +292,49 @@ export const projects: Project[] = [
     ),
   },
   {
+    slug: "hr-link",
+    index: "07",
+    title: "HR Link — Software, Sold Simply",
+    client: "HR Link · نظام لينك",
+    year: "2025",
+    category: "B2B SaaS Campaign",
+    discipline: "Campaign · Product Marketing · Bilingual AR/EN",
+    accent: "mint",
+    summary:
+      "A clean, confident launch campaign for an all-in-one HR platform — making enterprise software feel effortless and human.",
+    tagline: "How we made HR software feel effortless — and worth switching for.",
+    cover: "/work/hrlink/cover.webp",
+    hero: "/work/hrlink/hero.webp",
+    tags: ["Product Marketing", "Campaign", "Bilingual AR/EN", "Social System"],
+    challenge:
+      "HR software is a hard sell — dense, feature-heavy and easy to make boring. HR Link needed a campaign that showed the relief of automation, not a checklist of modules.",
+    strategy:
+      "Sell the outcome, not the features. Each piece answers a real decision-maker worry — “too many branches?”, “takes months to set up?” — then shows the product resolving it in one calm, credible frame.",
+    direction:
+      "A bright, trustworthy system — brand purple, generous whitespace and crisp product UI floating in clean 3D space, paired with warm human moments. Bilingual AR/EN layouts that each feel native, never translated.",
+    execution:
+      "A full launch set: brand hero, benefit-led key visuals, the hiring-journey explainer and offer posts (“free for a year”, “live in 5 days”) — a cohesive campaign spanning product, people and promotion.",
+    impact:
+      "A SaaS brand that looks as modern as the product it sells — clear enough for a busy HR director to get it in a single scroll.",
+    contribution: ["Campaign Direction", "Product Visual System", "Bilingual Layout", "Social & Landing"],
+    gallery: g(
+      "/work/hrlink/hero.webp",
+      "/work/hrlink/cover.webp",
+      "/work/hrlink/01.webp",
+      "/work/hrlink/02.webp",
+      "/work/hrlink/03.webp",
+      "/work/hrlink/04.webp",
+      "/work/hrlink/05.webp",
+      "/work/hrlink/06.webp",
+      "/work/hrlink/07.webp",
+      "/work/hrlink/08.webp",
+      "/work/hrlink/09.webp",
+      "/work/hrlink/10.webp"
+    ),
+  },
+  {
     slug: "automotive-kv",
-    index: "05",
+    index: "08",
     title: "Geely — Cinematic Automotive KVs",
     client: "Geely · GWM",
     year: "2024",
@@ -251,7 +372,7 @@ export const projects: Project[] = [
   },
   {
     slug: "social-systems",
-    index: "06",
+    index: "09",
     title: "Social Systems — Design That Scales",
     client: "Multiple Brands",
     year: "2023–2025",
@@ -312,28 +433,36 @@ export function getAdjacent(slug: string): { next: Project } {
 
 // A flat, shuffled-ish pool of strong frames for the home "visual index" mosaic.
 export const visualIndex: string[] = [
+  "/work/secure/hero.webp",
   "/work/axia/hero.webp",
+  "/work/brandvitals/hero.webp",
   "/work/tilal/02.webp",
+  "/work/hrlink/hero.webp",
   "/work/auto/hero.webp",
   "/work/fresh-valley/packaging.webp",
+  "/work/secure/cover.webp",
   "/work/ihs/hero.webp",
   "/work/social/01.webp",
   "/work/axia/p12.webp",
+  "/work/brandvitals/06.webp",
   "/work/tilal/hero.webp",
   "/work/fresh-valley/fleet.webp",
+  "/work/secure/02.webp",
   "/work/auto/02.webp",
+  "/work/hrlink/cover.webp",
   "/work/social/04.webp",
   "/work/axia/gift-her.webp",
   "/work/ihs/room-2.webp",
   "/work/fresh-valley/gift-1.webp",
   "/work/tilal/06.webp",
+  "/work/brandvitals/hero.webp",
   "/work/social/14.webp",
+  "/work/secure/03.webp",
   "/work/auto/04.webp",
   "/work/axia/p4.webp",
   "/work/fresh-valley/palette.webp",
   "/work/social/03.webp",
   "/work/tilal/10.webp",
   "/work/ihs/room-5.webp",
-  "/work/axia/insta-2.webp",
-  "/work/auto/05.webp",
+  "/work/hrlink/01.webp",
 ];

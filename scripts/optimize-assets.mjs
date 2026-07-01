@@ -15,7 +15,8 @@ const a = "Ai iamge genrator/1";
 // [src (abs or relative to SRC_ROOT), out (relative to /public), width]
 const MANIFEST = [
   // ---------- ME ----------
-  [raw("me/portrait.png"), "me/portrait.webp", 1200],
+  [raw("me/portrait.png"), "me/portrait-old.webp", 1200],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\123451.png", "me/portrait.webp", 1500],
   [raw("me/clients-trim.png"), "me/clients.webp", 2400],
   [raw("me/clients-light-trim.png"), "me/clients-light.webp", 2400],
 
@@ -142,6 +143,46 @@ const MANIFEST = [
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\7 (2).png", "work/social/31.webp", 1100],
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\8 copy.png", "work/social/32.webp", 1100],
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (13)\\Artboard 1.png", "work/social/33.webp", 1100],
+
+  // ---------- Secure Tomorrow — cyber-security brand campaign (New folder 30) ----------
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\11.png", "work/secure/hero.webp", 1600],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\9.png", "work/secure/cover.webp", 1600],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\7.png", "work/secure/02.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\10.png", "work/secure/03.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\8.png", "work/secure/04.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\3.png", "work/secure/05.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\12.png", "work/secure/06.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\2.png", "work/secure/07.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\5.png", "work/secure/08.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (30)\\New folder\\6.png", "work/secure/09.webp", 1400],
+
+  // ---------- HR Link (نظام لينك) — B2B SaaS campaign (New folder 36) ----------
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\7.png", "work/hrlink/hero.webp", 1600],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\1.png", "work/hrlink/cover.webp", 1600],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\2.png", "work/hrlink/01.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\2-1.png", "work/hrlink/02.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\3.png", "work/hrlink/03.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\3-3.png", "work/hrlink/04.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\4.png", "work/hrlink/05.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\4-1.png", "work/hrlink/06.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\5.png", "work/hrlink/07.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\5-1.png", "work/hrlink/08.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\1-1.png", "work/hrlink/09.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (36)\\7-1.png", "work/hrlink/10.webp", 1400],
+
+  // ---------- BrandVitals — marketing agency 3D campaign (New folder 25) ----------
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 10.png", "work/brandvitals/hero.webp", 1500],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 3.png", "work/brandvitals/cover.webp", 1500],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 11.png", "work/brandvitals/01.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 2.png", "work/brandvitals/02.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 4.png", "work/brandvitals/03.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 5.png", "work/brandvitals/04.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 6.png", "work/brandvitals/05.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 7.png", "work/brandvitals/06.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 8.png", "work/brandvitals/07.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 9.png", "work/brandvitals/08.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy.png", "work/brandvitals/09.webp", 1400],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6.png", "work/brandvitals/10.webp", 1400],
 ];
 
 // Open Graph share image
