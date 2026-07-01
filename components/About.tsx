@@ -30,7 +30,7 @@ export default function About() {
           <Reveal>
             <div className="relative overflow-hidden rounded-2xl bg-ink-700">
               <Media
-                src="/me/portrait-old.webp"
+                src="/me/portrait.webp"
                 alt="Mohamed Tarek"
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="h-auto w-full"

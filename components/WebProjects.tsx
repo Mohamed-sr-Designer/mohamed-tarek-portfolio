@@ -24,6 +24,20 @@ const sites = [
     img: "/web/fresh-valley.webp",
     host: "fresh-valley",
   },
+  {
+    name: "HR Link",
+    type: "HR SaaS Platform · KSA",
+    url: "https://mohamed-sr-designer.github.io/hrlink-redesign/",
+    img: "/web/hrlink.webp",
+    host: "hrlink-redesign",
+  },
+  {
+    name: "SOIC",
+    type: "Digital Cinema Campus",
+    url: "https://mohamed-sr-designer.github.io/soic-campus/",
+    img: "/web/soic.webp",
+    host: "soic-campus",
+  },
 ];
 
 export default function WebProjects() {

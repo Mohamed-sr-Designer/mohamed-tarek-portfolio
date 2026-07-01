@@ -7,6 +7,7 @@ export type Project = {
   client: string;
   year: string;
   category: string;
+  sector: string;
   discipline: string;
   accent: "electric" | "mint";
   summary: string;
@@ -34,6 +35,7 @@ export const projects: Project[] = [
     client: "Secure Tomorrow · Cybersecurity Academy",
     year: "2025",
     category: "Brand Campaign · Cybersecurity",
+    sector: "Technology",
     discipline: "Creative Direction · Campaign · Social",
     accent: "electric",
     summary:
@@ -73,6 +75,7 @@ export const projects: Project[] = [
     client: "AXIA",
     year: "2025",
     category: "Brand Campaign",
+    sector: "Food & Retail",
     discipline: "Creative Direction · Brand World · Social",
     accent: "mint",
     summary:
@@ -126,6 +129,7 @@ export const projects: Project[] = [
     client: "Fresh Valley",
     year: "2024",
     category: "Brand Identity",
+    sector: "Food & Retail",
     discipline: "Visual Identity · Packaging · Brand System",
     accent: "mint",
     summary:
@@ -178,6 +182,7 @@ export const projects: Project[] = [
     client: "Tilal Village · Makkah",
     year: "2025",
     category: "Real Estate Campaign",
+    sector: "Real Estate",
     discipline: "Campaign · Brand Storytelling · Bilingual AR/EN",
     accent: "electric",
     summary:
@@ -219,6 +224,7 @@ export const projects: Project[] = [
     client: "BrandVitals · Growth Agency",
     year: "2025",
     category: "Brand Campaign · 3D Social",
+    sector: "Marketing & Agency",
     discipline: "Creative Direction · 3D Concept · Social System",
     accent: "electric",
     summary:
@@ -260,6 +266,7 @@ export const projects: Project[] = [
     client: "Bnum Rajeh Commercial Group · IHS",
     year: "2025",
     category: "B2B Brand Campaign",
+    sector: "Hospitality",
     discipline: "Campaign · Cross-Channel · Social System",
     accent: "electric",
     summary:
@@ -298,6 +305,7 @@ export const projects: Project[] = [
     client: "HR Link · نظام لينك",
     year: "2025",
     category: "B2B SaaS Campaign",
+    sector: "Technology",
     discipline: "Campaign · Product Marketing · Bilingual AR/EN",
     accent: "mint",
     summary:
@@ -339,6 +347,7 @@ export const projects: Project[] = [
     client: "Geely · GWM",
     year: "2024",
     category: "Automotive · Key Visuals",
+    sector: "Automotive",
     discipline: "Key Visuals · Retouching · Color Grading",
     accent: "electric",
     summary:
@@ -377,6 +386,7 @@ export const projects: Project[] = [
     client: "Multiple Brands",
     year: "2023–2025",
     category: "Social Media Systems",
+    sector: "Marketing & Agency",
     discipline: "Social-First Design · Templates · Content Systems",
     accent: "mint",
     summary:
@@ -421,6 +431,11 @@ export const projects: Project[] = [
     ),
   },
 ];
+
+// Unique industries, in the order projects first appear — drives the work filter.
+export const sectors: string[] = Array.from(
+  new Set(projects.map((p) => p.sector))
+);
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
