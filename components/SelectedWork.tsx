@@ -33,35 +33,38 @@ const blurbs: Record<string, string> = {
 
 function Card({ p }: { p: Project }) {
   return (
-    <Link href={`/work/${p.slug}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-700">
-        <Media
-          src={p.cover}
-          alt={p.title}
-          fill
-          sizes="(max-width: 640px) 92vw, 42vw"
-          className="object-cover transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.05]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90" />
-        <span className="absolute left-5 top-5 font-display text-sm text-white/80">
-          {p.index}
-        </span>
-        <span className="absolute right-5 top-5 rounded-full border border-white/25 bg-black/30 px-4 py-1.5 text-xs uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
-          View case ↗
-        </span>
-        <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-          <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
-            {p.title}
-          </h3>
+    <Link href={`/work/${p.slug}`} className="group block h-full">
+      <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-ink-800/60 p-4 transition-all duration-500 ease-cinema hover:-translate-y-1.5 hover:border-line/25 md:p-5">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-700">
+          <Media
+            src={p.cover}
+            alt={p.title}
+            fill
+            sizes="(max-width: 640px) 92vw, 42vw"
+            className="object-cover transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.04]"
+          />
+          <span className="absolute right-4 top-4 rounded-full border border-white/25 bg-black/30 px-4 py-1.5 text-xs uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
+            View case ↗
+          </span>
         </div>
-      </div>
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <p className="text-sm text-bone-200">
-          <span className={p.accent === "mint" ? "text-mint" : "text-electric"}>
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs text-bone-300">
+            {p.year}
+          </span>
+          <span
+            className={`rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs ${
+              p.accent === "mint" ? "text-mint" : "text-electric"
+            }`}
+          >
             {p.category}
           </span>
+        </div>
+        <h3 className="mt-3 text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
+          {p.title}
+        </h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-bone-400">
+          {p.tagline}
         </p>
-        <span className="text-sm text-bone-400">{p.year}</span>
       </div>
     </Link>
   );

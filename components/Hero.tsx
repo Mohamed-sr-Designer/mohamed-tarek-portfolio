@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/site";
 import { Media } from "@/components/ui/Media";
 import Magnetic from "@/components/ui/Magnetic";
+import GridField from "@/components/ui/GridField";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -23,6 +24,30 @@ function Line({ children, delay }: { children: React.ReactNode; delay: number })
   );
 }
 
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Magnetic>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className="grid h-11 w-11 place-items-center rounded-full border border-line/20 text-bone-200 transition-colors hover:border-mint/60 hover:text-mint"
+      >
+        {children}
+      </a>
+    </Magnetic>
+  );
+}
+
 export default function Hero() {
   const reduce = useReducedMotion();
 
@@ -31,24 +56,19 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-14 pt-28"
     >
-      {/* warm ambient atmosphere */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      {/* backdrop: ambient glow, then grid paper + mouse-reactive squares */}
+      <div className="pointer-events-none absolute inset-0">
         <motion.div
           aria-hidden
-          className="absolute left-[-5%] top-[-10%] h-[55vw] w-[55vw] rounded-full bg-mint/15 blur-[130px]"
-          animate={reduce ? {} : { opacity: [0.5, 0.85, 0.5], scale: [1, 1.1, 1] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute bottom-[-15%] right-[-5%] h-[45vw] w-[45vw] rounded-full bg-electric/15 blur-[140px]"
+          className="absolute left-[-8%] top-[-12%] h-[50vw] w-[50vw] rounded-full bg-mint/10 blur-[140px]"
           animate={reduce ? {} : { opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-900" />
       </div>
+      <GridField />
 
-      <div className="container-edge mx-auto w-full max-w-edge">
+      <div className="container-edge relative z-10 mx-auto w-full max-w-edge">
         {/* eyebrow */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -73,34 +93,28 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.35 }}
-              className="mb-7 max-w-xl text-sm leading-relaxed text-bone-200 md:text-base"
+              className="mb-6 text-sm text-bone-400 md:text-base"
             >
-              <span className="text-bone-400">{site.name},</span> Graphic
-              Designer &amp; Art Director — leading teams, building brands,
-              campaigns and visual experiences.
-              <span className="text-bone-50"> Strategy first, craft always.</span>
+              {site.name} · Team Lead · based in {site.location}
             </motion.p>
 
-            <h1 className="font-display text-[12vw] font-semibold leading-[0.95] tracking-[-0.03em] text-bone-50 sm:text-[8.5vw] lg:text-[4.4vw]">
-              <Line delay={0.45}>Brands, campaigns</Line>
-              <Line delay={0.58}>
-                &amp; experiences that{" "}
-                <span className="text-bone-400">connect</span>
-              </Line>
+            <h1 className="font-display text-[11vw] font-semibold leading-[0.98] tracking-[-0.03em] text-bone-50 sm:text-[8vw] lg:text-[4.3vw]">
+              <Line delay={0.45}>I&apos;m a graphic designer</Line>
+              <Line delay={0.58}>&amp; art director focused on</Line>
               <Line delay={0.71}>
-                goals with{" "}
+                brands, campaigns &amp;{" "}
                 <span className="font-serif font-light italic text-mint">
-                  human attention.
+                  visual systems.
                 </span>
               </Line>
             </h1>
 
-            {/* CTAs + meta */}
+            {/* CTAs + socials + meta */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1 }}
-              className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center"
+              className="mt-10 flex flex-col gap-6"
             >
               <div className="flex flex-wrap items-center gap-4">
                 <Magnetic>
@@ -125,9 +139,19 @@ export default function Hero() {
                     Hire me ↗
                   </Link>
                 </Magnetic>
+                <SocialIcon href={site.linkedin} label="LinkedIn">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.27 2.2-3.27 4.5V24H8V8z" />
+                  </svg>
+                </SocialIcon>
+                <SocialIcon href={site.github} label="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.15c0 .3.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                  </svg>
+                </SocialIcon>
               </div>
-              <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-                Based in {site.location}, working across {site.markets}.
+              <p className="max-w-sm text-sm leading-relaxed text-bone-400">
+                Working across {site.markets} — strategy first, craft always.
               </p>
             </motion.div>
           </div>
@@ -144,7 +168,7 @@ export default function Hero() {
               <div className="relative overflow-hidden rounded-[1.6rem] border border-line/15 bg-ink-700 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
                 <Media
                   src="/me/portrait.webp"
-                  alt="Mohamed Tarek"
+                  alt="Mohamed Tarek — graphic designer and art director"
                   sizes="(max-width: 1024px) 80vw, 34vw"
                   className="h-auto w-full"
                   priority
