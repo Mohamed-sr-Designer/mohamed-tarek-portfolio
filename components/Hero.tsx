@@ -61,7 +61,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
             </span>
-            Open to new opportunities
+            Available — Freelance · Part-time · Hybrid
           </span>
           <span className="hidden sm:block">Portfolio — 2026</span>
         </motion.div>
@@ -75,8 +75,9 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.35 }}
               className="mb-7 max-w-xl text-sm leading-relaxed text-bone-200 md:text-base"
             >
-              <span className="text-bone-400">{site.name},</span> Team Lead —
-              building brands, campaigns and visual experiences.
+              <span className="text-bone-400">{site.name},</span> Graphic
+              Designer &amp; Art Director — leading teams, building brands,
+              campaigns and visual experiences.
               <span className="text-bone-50"> Strategy first, craft always.</span>
             </motion.p>
 
@@ -121,7 +122,7 @@ export default function Hero() {
                     href="/contact"
                     className="rounded-full border border-line/25 px-6 py-3 text-sm text-bone-50 transition-colors hover:border-mint/60 hover:text-mint"
                   >
-                    Let&apos;s talk ↗
+                    Hire me ↗
                   </Link>
                 </Magnetic>
               </div>

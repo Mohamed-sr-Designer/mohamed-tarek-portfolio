@@ -3,9 +3,10 @@ import SiteShell from "@/components/SiteShell";
 import Contact from "@/components/Contact";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Hire a Graphic Designer & Art Director",
   description:
-    "Get in touch with Mohamed Tarek — open to new roles, freelance projects and collaborations across Egypt, Saudi Arabia and Kuwait.",
+    "Hire Mohamed Tarek — graphic designer and art director available for freelance, part-time and hybrid full-time roles across Egypt, Saudi Arabia and Kuwait. Email, WhatsApp and LinkedIn.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

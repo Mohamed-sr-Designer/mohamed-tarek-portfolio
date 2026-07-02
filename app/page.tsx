@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import SelectedWork from "@/components/SelectedWork";
 import Gallery from "@/components/Gallery";
+import Services from "@/components/Services";
+import HireCta from "@/components/HireCta";
 import Motion from "@/components/Motion";
 import WebProjects from "@/components/WebProjects";
 import Clients from "@/components/Clients";
@@ -15,10 +17,12 @@ export default function Home() {
       <Marquee />
       <SelectedWork />
       <Gallery />
+      <Services />
       <Motion />
       <WebProjects />
       <Clients />
       <SocialWall />
+      <HireCta />
     </SiteShell>
   );
 }

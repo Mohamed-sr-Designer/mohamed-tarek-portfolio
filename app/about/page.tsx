@@ -8,9 +8,10 @@ import Tools from "@/components/Tools";
 import Vision from "@/components/Vision";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Graphic Designer & Art Director",
   description:
-    "About Mohamed Tarek — an art Team Lead based in Egypt. Experience, creative process, capabilities, toolkit and vision.",
+    "About Mohamed Tarek — graphic designer and art director (Team Lead) based in Egypt, working across Egypt, Saudi Arabia and Kuwait. Experience, creative process, capabilities, toolkit and vision.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
