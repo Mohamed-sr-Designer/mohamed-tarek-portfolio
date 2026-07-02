@@ -2,7 +2,6 @@ import SiteShell from "@/components/SiteShell";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import SelectedWork from "@/components/SelectedWork";
-import Gallery from "@/components/Gallery";
 import Services from "@/components/Services";
 import HireCta from "@/components/HireCta";
 import Motion from "@/components/Motion";
@@ -16,7 +15,6 @@ export default function Home() {
       <Hero />
       <Marquee />
       <SelectedWork />
-      <Gallery />
       <Services />
       <Motion />
       <WebProjects />
