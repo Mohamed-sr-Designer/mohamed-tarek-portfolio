@@ -81,7 +81,7 @@ export const projects: Project[] = [
     summary:
       "A warm, editorial brand world for a premium handmade gifting label — full campaign craft produced with AI, no shoot.",
     tagline: "How we turned gifting from a transaction into a feeling.",
-    cover: "/work/axia/hero.webp",
+    cover: "/work/axia/insta-2.webp",
     hero: "/work/axia/hero.webp",
     tags: ["Creative Direction", "Brand World", "AI Production", "Social System"],
     challenge:
@@ -272,7 +272,7 @@ export const projects: Project[] = [
     summary:
       "Making the unglamorous aspirational — a cinematic B2B campaign for 50 years of trust in hospitality supply.",
     tagline: "How we made 50 years of trust feel five-star.",
-    cover: "/work/ihs/hero.webp",
+    cover: "/work/ihs/room-2.webp",
     hero: "/work/ihs/hero.webp",
     tags: ["Campaign", "B2B", "Cross-Channel", "Bilingual", "Social"],
     challenge:
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     summary:
       "Premium, calm key visuals for Geely — communicating reliability and after-sales service through retouching, light and colour, never feeling generic.",
     tagline: "How we kept it premium and calm while selling reliability.",
-    cover: "/work/auto/geely-rental.webp",
+    cover: "/work/auto/hero.webp",
     hero: "/work/auto/geely-rental.webp",
     tags: ["Service Communication", "Advertising", "Key Visual", "Retouching"],
     challenge:

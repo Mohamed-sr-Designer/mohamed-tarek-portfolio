@@ -38,6 +38,13 @@ const sites = [
     img: "/web/soic.webp",
     host: "soic-campus",
   },
+  {
+    name: "THE NINE",
+    type: "Digital Menu · Café",
+    url: "https://mohamed-sr-designer.github.io/the-9-menu/",
+    img: "/web/the9.webp",
+    host: "the-9-menu",
+  },
 ];
 
 export default function WebProjects() {
