@@ -738,5 +738,20 @@
     "width": 1080,
     "height": 1350,
     "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASoQABQAPwFqrE6rJiQiMAgBYCAJbACdMoR3ACUHJdUBGuTIcAD+8N0aJP4MH9GfFAqusm8H2+05Q7LNO7Nk0XUKbvxigZClL8tzIrGo5CXbUsEna6gabPKl5Xf0Ximtyl3eAAAA"
+  },
+  "/work/secure/wide.webp": {
+    "width": 1920,
+    "height": 1080,
+    "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABwAwCdASoUAAsAPwFqrE6rJiQiMAgBYCAJZQAAUzDW4JUbEAAA/t2icgyh7SmM35XNqX5YimKcoSYxU/TB4Sm+YYb66fQjMnHP4u7S8u2y9GcIl/C2gAAA"
+  },
+  "/work/hrlink/wide.webp": {
+    "width": 1920,
+    "height": 1080,
+    "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwAwCdASoUAAsAPwFqrE8rJiQiMAgBYCAJZAAAUz23fR5YsU02gADOGWJhLtbVQq8Z4qfattbOPnhe4I5Ia2N9X+1cUK7ooYmJ8EbacAbwVsenr/Iy7R5PkvuNqHlkbZ80xHxrBhKS0++cgDwAAA=="
+  },
+  "/work/brandvitals/wide.webp": {
+    "width": 2400,
+    "height": 1000,
+    "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoUAAgAPwForE6rJaQiMAgBYCAJQBOgBH20u7eaxGDRaAAA/uonud97zVmH+4t0FO6DNQTdnu9R0QLzOkvvkJat33MZ3V3XT5xdBuvoSIICcJf3f5MhQAAA"
   }
 }

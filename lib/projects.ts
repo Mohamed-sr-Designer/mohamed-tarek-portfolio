@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "A cinematic recruitment campaign for a cybersecurity academy — turning an abstract, technical field into something you feel in your gut.",
     tagline: "How we made cybersecurity feel like a thriller, not a syllabus.",
     cover: "/work/secure/cover.webp",
-    hero: "/work/secure/hero.webp",
+    hero: "/work/secure/wide.webp",
     tags: ["Creative Direction", "Campaign", "AI Production", "Social System"],
     challenge:
       "Cybersecurity education is sold on curricula and certificates — dry, technical, forgettable. Secure Tomorrow needed a campaign that made young talent want to defend the digital world, not just study it.",
@@ -231,7 +231,7 @@ export const projects: Project[] = [
       "A playful, punchy 3D campaign that turns dry marketing truths into toy-brick metaphors you can’t scroll past.",
     tagline: "How we made marketing advice look like a toy box — and land like a punch.",
     cover: "/work/brandvitals/cover.webp",
-    hero: "/work/brandvitals/hero.webp",
+    hero: "/work/brandvitals/wide.webp",
     tags: ["Creative Direction", "3D Concept", "Campaign", "Social System"],
     challenge:
       "Marketing agencies all say the same things — “strategy matters”, “ads need funnels”. BrandVitals needed those tired truths to feel fresh, ownable and impossible to ignore in a crowded B2B feed.",
@@ -312,7 +312,7 @@ export const projects: Project[] = [
       "A clean, confident launch campaign for an all-in-one HR platform — making enterprise software feel effortless and human.",
     tagline: "How we made HR software feel effortless — and worth switching for.",
     cover: "/work/hrlink/cover.webp",
-    hero: "/work/hrlink/hero.webp",
+    hero: "/work/hrlink/wide.webp",
     tags: ["Product Marketing", "Campaign", "Bilingual AR/EN", "Social System"],
     challenge:
       "HR software is a hard sell — dense, feature-heavy and easy to make boring. HR Link needed a campaign that showed the relief of automation, not a checklist of modules.",
@@ -372,11 +372,7 @@ export const projects: Project[] = [
       "/work/auto/geely-monjaro.webp",
       "/work/auto/hero.webp",
       "/work/auto/02.webp",
-      "/work/auto/03.webp",
-      "/work/auto/04.webp",
-      "/work/auto/05.webp",
-      "/work/auto/06.webp",
-      "/work/auto/07.webp"
+      "/work/auto/04.webp"
     ),
   },
   {
@@ -411,23 +407,14 @@ export const projects: Project[] = [
       "/work/social/02.webp",
       "/work/social/03.webp",
       "/work/social/04.webp",
-      "/work/social/05.webp",
-      "/work/social/06.webp",
-      "/work/social/07.webp",
       "/work/social/08.webp",
       "/work/social/09.webp",
-      "/work/social/10.webp",
-      "/work/social/11.webp",
       "/work/social/12.webp",
-      "/work/social/13.webp",
       "/work/social/14.webp",
       "/work/social/15.webp",
-      "/work/social/16.webp",
-      "/work/social/17.webp",
-      "/work/social/18.webp",
-      "/work/social/19.webp",
       "/work/social/20.webp",
-      "/work/social/21.webp"
+      "/work/social/28.webp",
+      "/work/social/31.webp"
     ),
   },
 ];

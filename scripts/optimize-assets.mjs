@@ -183,6 +183,11 @@ const MANIFEST = [
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy 9.png", "work/brandvitals/08.webp", 1400],
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6 copy.png", "work/brandvitals/09.webp", 1400],
   ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (25)\\Artboard 6.png", "work/brandvitals/10.webp", 1400],
+
+  // ---------- Wide cover art (New folder 38) — case-study master visuals ----------
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (38)\\Cover Secure Tomorrow · Cybersecurity Academy.png", "work/secure/wide.webp", 2200],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (38)\\cover Hr Link.png", "work/hrlink/wide.webp", 2200],
+  ["C:\\Users\\tarek\\OneDrive\\Desktop\\New folder (38)\\BrandVitals-—-Marketing,-Built-in-Blocks.png", "work/brandvitals/wide.webp", 2400],
 ];
 
 // Open Graph share image

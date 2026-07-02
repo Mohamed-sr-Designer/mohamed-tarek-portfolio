@@ -73,12 +73,12 @@
   },
   {
     "slug": "film-2024",
-    "title": "2024 — Brand Film",
+    "title": "Wattnia — Brand Film",
     "kind": "Brand · Film",
     "src": "/motion/film-2024.mp4",
     "poster": "/motion/film-2024.jpg",
-    "width": 1200,
-    "height": 675
+    "width": 675,
+    "height": 1200
   },
   {
     "slug": "alpha",

@@ -5,8 +5,10 @@ import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { Carousel } from "@/components/ui/Carousel";
 import ThemeToggle from "@/components/ThemeToggle";
+import Flipbook from "@/components/Flipbook";
 import { site } from "@/lib/site";
 import { projects, getProject } from "@/lib/projects";
+import bookFreshValley from "@/lib/book-fresh-valley.json";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -137,8 +139,34 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Fresh Valley: the brand book itself, as an interactive reader */}
+      {project.slug === "fresh-valley" ? (
+        <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
+          <Reveal>
+            <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+              <h2 className="text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
+                Read the{" "}
+                <span className="font-serif font-normal italic text-mint">
+                  brand book
+                </span>
+                .
+              </h2>
+              <p className="text-sm text-bone-400">
+                66 pages — flip with the arrows, edges or your keyboard.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <Flipbook
+              pages={bookFreshValley}
+              title="Fresh Valley — Marketing × Design Direction × Rebranding"
+            />
+          </Reveal>
+        </section>
+      ) : null}
+
       {/* gallery — tidy masonry */}
-      {gallery.length > 0 ? (
+      {project.slug !== "fresh-valley" && gallery.length > 0 ? (
         <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
           <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
             {gallery.map((g) => (

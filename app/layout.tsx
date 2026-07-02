@@ -122,6 +122,12 @@ const jsonLd = {
         "Creative Direction",
       ],
       knowsLanguage: ["ar", "en"],
+      affiliation: [
+        { "@type": "Organization", name: "SOIC — School of Cinema" },
+        { "@type": "Organization", name: "EDUX Academy" },
+        { "@type": "Organization", name: "Easily" },
+        { "@type": "Organization", name: "Raya Academy" },
+      ],
       sameAs: [site.linkedin, site.github],
       seeks: {
         "@type": "Demand",
