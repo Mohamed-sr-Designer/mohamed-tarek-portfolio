@@ -54,7 +54,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-14 pt-28"
+      className="relative overflow-hidden pb-12 pt-24 md:pb-16 md:pt-32"
     >
       {/* backdrop: ambient glow, then grid paper + mouse-reactive squares */}
       <div className="pointer-events-none absolute inset-0">
@@ -86,7 +86,7 @@ export default function Hero() {
           <span className="hidden sm:block">Portfolio — 2026</span>
         </motion.div>
 
-        <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-14">
+        <div className="mt-8 grid items-center gap-10 lg:mt-10 lg:grid-cols-12 lg:gap-14">
           {/* Left — statement */}
           <div className="lg:col-span-7">
             <motion.p
@@ -95,16 +95,17 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.35 }}
               className="mb-6 text-sm text-bone-400 md:text-base"
             >
-              {site.name} · Team Lead · based in {site.location}
+              {site.name} · Art Director &amp; Team Lead · based in{" "}
+              {site.location}
             </motion.p>
 
             <h1 className="font-display text-[11vw] font-semibold leading-[0.98] tracking-[-0.03em] text-bone-50 sm:text-[8vw] lg:text-[4.3vw]">
-              <Line delay={0.45}>I&apos;m a graphic designer</Line>
-              <Line delay={0.58}>&amp; art director focused on</Line>
+              <Line delay={0.45}>The graphic designer</Line>
+              <Line delay={0.58}>brands call when they</Line>
               <Line delay={0.71}>
-                brands, campaigns &amp;{" "}
+                need to be{" "}
                 <span className="font-serif font-light italic text-mint">
-                  visual systems.
+                  unmissable.
                 </span>
               </Line>
             </h1>

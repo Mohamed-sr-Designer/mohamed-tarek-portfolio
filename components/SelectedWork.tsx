@@ -40,7 +40,7 @@ function Card({ p }: { p: Project }) {
             src={p.cover}
             alt={p.title}
             fill
-            sizes="(max-width: 640px) 92vw, 42vw"
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
             className="object-cover transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.04]"
           />
           <span className="absolute right-4 top-4 rounded-full border border-white/25 bg-black/30 px-4 py-1.5 text-xs uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
@@ -59,7 +59,7 @@ function Card({ p }: { p: Project }) {
             {p.category}
           </span>
         </div>
-        <h3 className="mt-3 text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
+        <h3 className="mt-3 text-lg font-semibold tracking-tight text-bone-50 md:text-xl">
           {p.title}
         </h3>
         <p className="mt-1.5 text-sm leading-relaxed text-bone-400">
@@ -150,7 +150,7 @@ export default function SelectedWork() {
           <p className="max-w-2xl text-pretty text-base leading-relaxed text-bone-300 md:text-lg">
             {blurbs[g.sector]}
           </p>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {g.items.map((p) => (
               <Card key={p.slug} p={p} />
             ))}
