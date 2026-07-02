@@ -13,20 +13,20 @@ export default function LogoMarquee() {
       className="relative overflow-hidden border-y border-line/10 py-8"
     >
       <div
-        className="flex w-max animate-marquee items-center gap-16 pr-16"
-        style={{ animationDuration: "80s" }}
+        className="flex w-max animate-marquee items-center gap-20 pr-20"
+        style={{ animationDuration: "130s" }}
       >
         {[...logos, ...logos].map((n, i) => (
           <span
             key={`${n}-${i}`}
-            className="relative block h-9 w-24 shrink-0 opacity-70 transition-opacity duration-300 hover:opacity-100"
+            className="relative block h-14 w-36 shrink-0 opacity-75 transition-opacity duration-300 hover:opacity-100"
           >
             <span className="hidden h-full w-full dark:block">
               <Media
                 src={`/logos/dark/${n}.webp`}
                 alt="Client logo"
                 fill
-                sizes="96px"
+                sizes="144px"
                 className="object-contain"
               />
             </span>
@@ -35,7 +35,7 @@ export default function LogoMarquee() {
                 src={`/logos/light/${n}.webp`}
                 alt="Client logo"
                 fill
-                sizes="96px"
+                sizes="144px"
                 className="object-contain"
               />
             </span>

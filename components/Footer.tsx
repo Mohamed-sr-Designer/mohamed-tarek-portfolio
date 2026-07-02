@@ -2,10 +2,13 @@ import Link from "next/link";
 import { site, nav } from "@/lib/site";
 
 const social = [
-  { label: "LinkedIn", href: site.linkedin },
-  { label: "GitHub", href: site.github },
-  { label: "WhatsApp", href: `https://wa.me/${site.whatsapp}` },
-  { label: "Email", href: `mailto:${site.email}` },
+  { label: "LinkedIn", value: site.linkedinHandle, href: site.linkedin },
+  {
+    label: "WhatsApp",
+    value: site.whatsappDisplay,
+    href: `https://wa.me/${site.whatsapp}`,
+  },
+  { label: "Email", value: site.email, href: `mailto:${site.email}` },
 ];
 
 export default function Footer() {
@@ -53,7 +56,7 @@ export default function Footer() {
             <p className="text-xs uppercase tracking-ultra text-bone-500">
               Connect
             </p>
-            <ul className="mt-4 grid gap-2 text-sm">
+            <ul className="mt-4 grid gap-3 text-sm">
               {social.map((s) => (
                 <li key={s.label}>
                   <a
@@ -64,9 +67,14 @@ export default function Footer() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="text-bone-300 transition-colors hover:text-bone-50"
+                    className="group block"
                   >
-                    {s.label} ↗
+                    <span className="block text-xs uppercase tracking-ultra text-bone-500">
+                      {s.label}
+                    </span>
+                    <span className="mt-0.5 block break-words text-bone-300 transition-colors group-hover:text-bone-50">
+                      {s.value} ↗
+                    </span>
                   </a>
                 </li>
               ))}
