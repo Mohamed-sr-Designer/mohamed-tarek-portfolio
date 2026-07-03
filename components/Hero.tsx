@@ -89,9 +89,9 @@ export default function Hero() {
           <span className="hidden sm:block">{t.hero.portfolio}</span>
         </motion.div>
 
-        <div className="mt-8 grid items-center gap-10 lg:mt-10 lg:grid-cols-12 lg:gap-14">
+        <div className="mt-8 grid items-center gap-8 lg:mt-10 lg:grid-cols-12 lg:gap-14">
           {/* Left — statement */}
-          <div className="lg:col-span-7">
+          <div className="order-2 lg:order-1 lg:col-span-7">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -168,9 +168,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, ease, delay: 0.5 }}
-            className="lg:col-span-5"
+            className="order-1 lg:order-2 lg:col-span-5"
           >
-            <div className="relative mx-auto max-w-[22rem] lg:max-w-none">
+            <div className="relative mx-auto max-w-[15rem] sm:max-w-[19rem] lg:max-w-none">
               <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-mint/25 via-transparent to-electric/25 blur-2xl" />
               <div className="relative overflow-hidden rounded-[1.6rem] border border-line/15 bg-ink-700 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
                 <Media

@@ -18,7 +18,6 @@ const LIST = [
   ["v3.mp4", "tilal-aerial", "Tilal Village — Aerial", "Real Estate · Motion"],
   ["v4.mp4", "tilal-community", "Tilal Village — Community", "Real Estate · Motion"],
   ["Comp 3_3.mp4", "social-motion", "Social Motion", "Social · Animation"],
-  ["Ai option.mp4", "ai-motion", "AI-Generated Spot", "AI · Motion"],
   ["D:\\New folder (5)\\2.mp4", "teaser", "Cinematic Teaser", "Motion · Teaser"],
   ["D:\\New folder (5)\\3.mp4", "space", "Interior Reveal", "Motion · Space"],
   ["D:\\magnific_cinematic-coffee-shop-adv_3GgbvunREY (1).mp4", "coffee-ad", "Coffee Shop — Cinematic Ad", "AI · Cinematic"],

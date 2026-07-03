@@ -1,15 +1,22 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { withBase } from "@/lib/base";
 import { useLang } from "@/lib/i18n";
 
 type Page = { src: string; width: number; height: number };
 
-// Interactive brand-book reader with a real page-flip: the top page rotates
-// on its spine (origin edge) in 3D to reveal the next. Arrow keys, edge taps,
-// buttons and horizontal swipe all turn pages.
+// Interactive brand-book reader. Cover shows alone, then facing two-page
+// spreads. A leaf hinges on the spine and follows the pointer as you drag;
+// release completes based on distance + velocity. The turning leaf carries a
+// soft drop shadow so the motion feels physical.
 export default function Flipbook({
   pages,
   title = "Brand book",
@@ -19,23 +26,127 @@ export default function Flipbook({
 }) {
   const reduce = useReducedMotion();
   const { t } = useLang();
-  const [i, setI] = useState(0);
-  const [flip, setFlip] = useState<null | { dir: number; from: number }>(null);
-  const [swipeX, setSwipeX] = useState(0);
+  const stageRef = useRef<HTMLDivElement>(null);
 
-  const landscape = pages.length > 0 && pages[0].width > pages[0].height;
-  const ratio = pages.length ? pages[0].width / pages[0].height : 1.4;
+  const [twoUp, setTwoUp] = useState(true);
+  const [si, setSi] = useState(0); // spread index
+  const [flip, setFlip] = useState<null | {
+    dir: number; // 1 forward, -1 back
+    front: string;
+    back: string;
+    committing: boolean;
+  }>(null);
+  const [rot, setRot] = useState(0); // live leaf rotation in deg
 
-  const go = useCallback(
+  const ratio = pages.length ? pages[0].width / pages[0].height : 1.6;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setTwoUp(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  // spreads: [cover], [1,2], [3,4] … on desktop; one page each on mobile
+  const spreads = useMemo<number[][]>(() => {
+    if (!twoUp) return pages.map((_, i) => [i]);
+    const s: number[][] = [[0]];
+    for (let i = 1; i < pages.length; i += 2) {
+      s.push(i + 1 < pages.length ? [i, i + 1] : [i]);
+    }
+    return s;
+  }, [pages, twoUp]);
+
+  const clampedSi = Math.min(si, spreads.length - 1);
+  const cur = spreads[clampedSi];
+  const url = (i?: number) =>
+    i == null ? "" : withBase(pages[i].src);
+
+  const startFlip = useCallback(
     (dir: number) => {
-      setI((v) => {
-        const next = Math.max(0, Math.min(pages.length - 1, v + dir));
-        if (next !== v && !reduce) setFlip({ dir, from: v });
-        return next;
-      });
+      const target = clampedSi + dir;
+      if (target < 0 || target >= spreads.length || flip) return false;
+      const next = spreads[target];
+      if (dir > 0) {
+        setFlip({
+          dir,
+          front: url(cur[cur.length - 1]), // leaving right page
+          back: url(next[0]), // becomes new left
+          committing: false,
+        });
+      } else {
+        setFlip({
+          dir,
+          front: url(cur[0]), // leaving left page
+          back: url(next[next.length - 1]), // becomes new right
+          committing: false,
+        });
+      }
+      setRot(0);
+      return true;
     },
-    [pages.length, reduce]
+    [clampedSi, spreads, flip, cur]
   );
+
+  const finish = useCallback(
+    (commit: boolean, dir: number) => {
+      if (commit) {
+        setFlip((f) => (f ? { ...f, committing: true } : f));
+        setRot(dir > 0 ? -180 : 180);
+        window.setTimeout(() => {
+          setSi((v) => Math.max(0, Math.min(spreads.length - 1, v + dir)));
+          setFlip(null);
+          setRot(0);
+        }, 480);
+      } else {
+        setRot(0);
+        window.setTimeout(() => setFlip(null), 320);
+      }
+    },
+    [spreads.length]
+  );
+
+  // pointer drag
+  const drag = useRef<{ x: number; t: number; w: number; dir: number } | null>(
+    null
+  );
+  const onDown = (e: React.PointerEvent) => {
+    if (flip) return;
+    drag.current = {
+      x: e.clientX,
+      t: performance.now(),
+      w: stageRef.current?.clientWidth || 600,
+      dir: 0,
+    };
+  };
+  const onMove = (e: React.PointerEvent) => {
+    const d = drag.current;
+    if (!d) return;
+    const dx = e.clientX - d.x;
+    if (!d.dir && Math.abs(dx) > 6) {
+      d.dir = dx < 0 ? 1 : -1;
+      if (!startFlip(d.dir)) drag.current = null;
+      return;
+    }
+    if (!d.dir || !flip) return;
+    const p = Math.max(0, Math.min(1, Math.abs(dx) / d.w));
+    setRot(d.dir > 0 ? -p * 180 : p * 180);
+  };
+  const onUp = (e: React.PointerEvent) => {
+    const d = drag.current;
+    drag.current = null;
+    if (!d || !d.dir || !flip) return;
+    const dx = e.clientX - d.x;
+    const dt = Math.max(1, performance.now() - d.t);
+    const vel = Math.abs(dx) / dt; // px/ms
+    const p = Math.abs(dx) / d.w;
+    finish(p > 0.35 || vel > 0.5, d.dir);
+  };
+
+  const go = (dir: number) => {
+    if (startFlip(dir)) finish(true, dir);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -44,19 +155,36 @@ export default function Flipbook({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [go]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clampedSi, spreads, flip]);
 
-  const prevSrc = useMemo(
-    () => (flip ? withBase(pages[flip.from].src) : null),
-    [flip, pages]
-  );
+  // base pages shown under the leaf (reveal target during a flip)
+  const leftIdx = flip && flip.dir < 0 ? spreads[clampedSi - 1]?.[0] : cur[0];
+  const rightIdx =
+    flip && flip.dir > 0
+      ? spreads[clampedSi + 1]?.[spreads[clampedSi + 1].length - 1]
+      : cur[cur.length - 1];
+  const single = cur.length === 1;
 
+  const shadow = Math.min(0.45, (Math.abs(rot) / 180) * 0.5);
   const btn =
-    "grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line/20 bg-ink-900/80 text-bone-50 backdrop-blur-md transition-colors duration-300 hover:border-mint/60 hover:text-mint disabled:opacity-30 disabled:hover:border-line/20 disabled:hover:text-bone-50";
+    "grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line/20 bg-ink-900/80 text-bone-50 backdrop-blur-md transition-colors duration-300 hover:border-mint/60 hover:text-mint disabled:opacity-30";
+
+  const Face = ({ src }: { src: string }) =>
+    src ? (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={title}
+        draggable={false}
+        className="pointer-events-none absolute inset-0 h-full w-full object-contain [backface-visibility:hidden]"
+      />
+    ) : (
+      <span className="absolute inset-0 bg-ink-700" />
+    );
 
   return (
     <div className="overflow-hidden rounded-2xl border border-line/10 bg-ink-800/60">
-      {/* header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/10 px-5 py-4">
         <p className="text-sm font-medium text-bone-50">
           {title}
@@ -65,97 +193,114 @@ export default function Flipbook({
           </span>
         </p>
         <p className="text-sm tabular-nums text-bone-400">
-          {i + 1} / {pages.length}
+          {cur[0] + 1}
+          {cur.length > 1 ? `–${cur[cur.length - 1] + 1}` : ""} / {pages.length}
         </p>
       </div>
 
-      {/* book stage */}
       <div
+        ref={stageRef}
         className="relative select-none px-3 py-6 md:px-8 md:py-10"
-        style={{ perspective: 2000 }}
-        onPointerDown={(e) => {
-          const startX = e.clientX;
-          const onUp = (ev: PointerEvent) => {
-            const dx = ev.clientX - startX;
-            setSwipeX(0);
-            if (Math.abs(dx) > 60) go(dx < 0 ? 1 : -1);
-            window.removeEventListener("pointerup", onUp);
-            window.removeEventListener("pointermove", onMove);
-          };
-          const onMove = (ev: PointerEvent) =>
-            setSwipeX(Math.max(-40, Math.min(40, ev.clientX - startX)));
-          window.addEventListener("pointerup", onUp);
-          window.addEventListener("pointermove", onMove);
-        }}
+        style={{ perspective: 2400, touchAction: "pan-y" }}
+        onPointerDown={onDown}
+        onPointerMove={onMove}
+        onPointerUp={onUp}
+        onPointerCancel={onUp}
       >
         <div
-          className="relative mx-auto w-full"
+          className="relative mx-auto flex w-full items-stretch justify-center"
           style={{
-            maxWidth: landscape ? "64rem" : "40rem",
-            aspectRatio: String(ratio),
+            maxWidth: single ? "42rem" : "66rem",
+            aspectRatio: String(single ? ratio : ratio * 2),
             transformStyle: "preserve-3d",
           }}
         >
-          {/* current page */}
-          <motion.img
-            key={"cur-" + i}
-            src={withBase(pages[i].src)}
-            alt={`${title} — page ${i + 1}`}
-            className="absolute inset-0 h-full w-full rounded-md bg-ink-700 object-contain shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)]"
-            initial={reduce ? false : { opacity: 0.6 }}
-            animate={{ opacity: 1, x: swipeX }}
-            transition={{ duration: 0.3 }}
-          />
+          {/* left base */}
+          {!single && (
+            <div className="relative h-full w-1/2 overflow-hidden rounded-l-md bg-ink-700 shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)]">
+              <Face src={url(leftIdx)} />
+            </div>
+          )}
+          {/* right base (or single) */}
+          <div
+            className={`relative h-full overflow-hidden bg-ink-700 shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] ${
+              single ? "w-full rounded-md" : "w-1/2 rounded-r-md"
+            }`}
+          >
+            <Face src={url(single ? cur[0] : rightIdx)} />
+          </div>
 
-          {/* flipping page (previous), rotates away on its spine */}
-          {flip && prevSrc ? (
+          {/* turning leaf */}
+          {flip ? (
             <motion.div
-              key={"flip-" + flip.from}
-              className="absolute inset-0 origin-left overflow-hidden rounded-md bg-ink-700"
+              className="absolute top-0 h-full w-1/2 overflow-hidden rounded-md"
               style={{
-                transformStyle: "preserve-3d",
+                left: flip.dir > 0 ? "50%" : "0%",
                 transformOrigin: flip.dir > 0 ? "left center" : "right center",
-                backfaceVisibility: "hidden",
-                zIndex: 5,
+                transformStyle: "preserve-3d",
+                zIndex: 20,
               }}
-              initial={{ rotateY: 0 }}
-              animate={{ rotateY: flip.dir > 0 ? -160 : 160 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              onAnimationComplete={() => setFlip(null)}
+              animate={{ rotateY: rot }}
+              transition={
+                flip.committing || drag.current == null
+                  ? { duration: 0.48, ease: [0.16, 1, 0.3, 1] }
+                  : { duration: 0 }
+              }
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={prevSrc}
-                alt=""
-                className="h-full w-full object-contain"
+              {/* front (leaving) */}
+              <div className="absolute inset-0 overflow-hidden rounded-md bg-ink-700 [backface-visibility:hidden]">
+                <Face src={flip.front} />
+              </div>
+              {/* back (incoming), pre-rotated */}
+              <div
+                className="absolute inset-0 overflow-hidden rounded-md bg-ink-700"
+                style={{
+                  transform: "rotateY(180deg)",
+                  backfaceVisibility: "hidden",
+                }}
+              >
+                <Face src={flip.back} />
+              </div>
+              {/* soft page shadow that deepens as it lifts */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-md"
+                style={{
+                  background:
+                    flip.dir > 0
+                      ? `linear-gradient(to right, rgba(0,0,0,${shadow}), rgba(0,0,0,0))`
+                      : `linear-gradient(to left, rgba(0,0,0,${shadow}), rgba(0,0,0,0))`,
+                }}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/0 via-black/0 to-black/30" />
             </motion.div>
           ) : null}
+
+          {/* spine */}
+          {!single && (
+            <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 w-px -translate-x-1/2 bg-black/40" />
+          )}
 
           {/* edge tap zones */}
           <button
             type="button"
             aria-label={t.case.prev}
             onClick={() => go(-1)}
-            className="absolute inset-y-0 left-0 z-10 w-1/4 cursor-w-resize"
+            className="absolute inset-y-0 left-0 z-0 w-[14%] cursor-w-resize"
           />
           <button
             type="button"
             aria-label={t.case.next}
             onClick={() => go(1)}
-            className="absolute inset-y-0 right-0 z-10 w-1/4 cursor-e-resize"
+            className="absolute inset-y-0 right-0 z-0 w-[14%] cursor-e-resize"
           />
         </div>
       </div>
 
-      {/* controls */}
       <div className="flex items-center gap-4 border-t border-line/10 px-5 py-4">
         <button
           type="button"
           className={btn}
           onClick={() => go(-1)}
-          disabled={i === 0}
+          disabled={clampedSi === 0}
           aria-label={t.case.prev}
         >
           ‹
@@ -163,14 +308,14 @@ export default function Flipbook({
         <div className="h-1 flex-1 overflow-hidden rounded-full bg-line/10">
           <div
             className="h-full rounded-full bg-mint transition-all duration-500"
-            style={{ width: `${((i + 1) / pages.length) * 100}%` }}
+            style={{ width: `${((clampedSi + 1) / spreads.length) * 100}%` }}
           />
         </div>
         <button
           type="button"
           className={btn}
           onClick={() => go(1)}
-          disabled={i === pages.length - 1}
+          disabled={clampedSi === spreads.length - 1}
           aria-label={t.case.next}
         >
           ›

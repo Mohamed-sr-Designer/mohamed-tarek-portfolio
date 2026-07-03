@@ -39,11 +39,20 @@ export default function ConsultModal() {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    // restore the native cursor inside the modal (see globals.css)
+    document.documentElement.classList.add("modal-open");
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.documentElement.classList.remove("modal-open");
     };
   }, [open]);
+
+  // Teaching/training is on-site only in Egypt; elsewhere it's online.
+  const isTraining =
+    form.need === m.needs[2] || form.need === m.needs[3];
+  const showOnlineNote =
+    isTraining && form.country !== "" && form.country !== m.countries[0];
 
   const set = (k: keyof typeof form) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -57,10 +66,11 @@ export default function ConsultModal() {
       `• ${m.country}: ${form.country || "—"}`,
       `• ${m.industry}: ${form.industry || "—"}`,
       `• ${m.need}: ${form.need || "—"}`,
+      showOnlineNote ? `• (${m.onlineNote})` : "",
       form.message ? `• ${form.message}` : "",
     ].filter(Boolean);
     return lines.join("\n");
-  }, [form, m]);
+  }, [form, m, showOnlineNote]);
 
   const sendWhatsApp = () => {
     const url = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(compose())}`;
@@ -200,6 +210,13 @@ export default function ConsultModal() {
                 placeholder={m.message}
                 className={`${field} resize-none`}
               />
+
+              {showOnlineNote ? (
+                <p className="flex items-start gap-2 rounded-lg border border-electric/30 bg-electric/5 px-3 py-2.5 text-xs leading-relaxed text-bone-200">
+                  <span className="mt-0.5 text-electric">◆</span>
+                  {m.onlineNote}
+                </p>
+              ) : null}
 
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <button

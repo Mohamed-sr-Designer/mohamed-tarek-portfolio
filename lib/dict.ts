@@ -369,6 +369,8 @@ const en = {
       "Other",
     ],
     waIntro: "New consultation request from the portfolio:",
+    onlineNote:
+      "On-site training is available in Egypt only — outside Egypt, academy training runs online.",
   },
   course: {
     metaTitle: "Course — AI Photoshoot, Prompt Engineering & AI Video",
@@ -379,6 +381,19 @@ const en = {
     intro:
       "A practical, studio-style course I teach — from a single prompt to a campaign-ready set, then from stills to a finished AI video. This page is the blueprint (wireframe) of the curriculum.",
     forWho: "For designers, marketers and creative teams",
+    free: "Free",
+    freeTag: "100% free course",
+    freeLine: "Free to learn — and free to share.",
+    share: "Share",
+    copied: "Link copied ✓",
+    lessonPreview: "Lesson preview",
+    comingSoon: "Video — coming soon",
+    materialsLabel: "Downloadable materials",
+    materialsNote:
+      "Slides, prompt sheets and source files will be attached to each lesson.",
+    materials: ["Lesson slides (PDF)", "Prompt sheet (TXT)", "Source files (ZIP)"],
+    watch: "Open lesson",
+    closeLesson: "Close",
     ctaTitle: "Want this for your team or academy?",
     ctaBtn: "Book the course ✦",
     outcomesLabel: "What you walk out with",
@@ -864,6 +879,8 @@ const ar: typeof en = {
       "أخرى",
     ],
     waIntro: "طلب استشارة جديد من البورتفوليو:",
+    onlineNote:
+      "التدريب الحضوري متاح داخل مصر فقط — خارج مصر يكون تدريب الأكاديميات أونلاين.",
   },
   course: {
     metaTitle: "كورس — فوتوشوت بالذكاء الاصطناعي وهندسة البرومبت وفيديو AI",
@@ -874,6 +891,18 @@ const ar: typeof en = {
     intro:
       "كورس عملي بأسلوب الاستوديو أُدرّسه — من برومبت واحد إلى سِت جاهز للحملة، ثم من الصور الثابتة إلى فيديو AI متكامل. هذه الصفحة هي المخطط (وايرفريم) للمنهج.",
     forWho: "للمصممين والمسوّقين والفرق الإبداعية",
+    free: "مجاني",
+    freeTag: "كورس مجاني ١٠٠٪",
+    freeLine: "مجاني تتعلّمه — ومجاني تشاركه.",
+    share: "شارك",
+    copied: "تم نسخ الرابط ✓",
+    lessonPreview: "معاينة الدرس",
+    comingSoon: "الفيديو — قريبًا",
+    materialsLabel: "ملفات للتحميل",
+    materialsNote: "الشرائح وأوراق البرومبت وملفات المصدر هتترفق مع كل درس.",
+    materials: ["شرائح الدرس (PDF)", "ورقة البرومبت (TXT)", "ملفات المصدر (ZIP)"],
+    watch: "افتح الدرس",
+    closeLesson: "إغلاق",
     ctaTitle: "تريده لفريقك أو أكاديميتك؟",
     ctaBtn: "احجز الكورس ✦",
     outcomesLabel: "ماذا ستخرج به",

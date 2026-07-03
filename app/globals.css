@@ -113,6 +113,25 @@ html.lenis body {
   }
 }
 
+/* Inside the consultation modal, restore native cursors (form usability) */
+html.modal-open,
+html.modal-open * {
+  cursor: auto !important;
+}
+html.modal-open input,
+html.modal-open textarea {
+  cursor: text !important;
+}
+html.modal-open a,
+html.modal-open button,
+html.modal-open select,
+html.modal-open label {
+  cursor: pointer !important;
+}
+html.modal-open .custom-cursor {
+  display: none !important;
+}
+
 @layer components {
   .container-edge {
     padding-left: clamp(1.25rem, 5vw, 6rem);
