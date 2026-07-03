@@ -36,11 +36,11 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
-// ---- Premium course payment config ----
+// ---- Premium course payment + access config ----
 // EDIT these with your real details. Manual methods are live; the gateways
 // are UI-ready and wait for their API keys (see components/PaymentModal.tsx).
 export const payments = {
-  price: "EGP 499", // TODO: set the real course price
+  price: "EGP 750", // paid AI Video track price
   currency: "EGP",
   manual: {
     instapay: "mohamedtarek@instapay", // TODO: your real InstaPay address/handle
@@ -53,4 +53,14 @@ export const payments = {
     { id: "valu", label: "valU", enabled: false },
     { id: "aman", label: "Aman", enabled: false },
   ],
+
+  // ---- Secure access-code unlock ----
+  // The buyer types a code you gave them after payment. For real security the
+  // code MUST be validated OFF the static site: set `unlockEndpoint` to a tiny
+  // serverless function (see docs/access-worker.js) that checks the code and
+  // returns a short-lived SIGNED video URL. A pure client-side check is not
+  // secure. Until the endpoint is live, `demoCode` unlocks the sample video
+  // locally FOR TESTING ONLY — remove it before selling.
+  unlockEndpoint: "", // e.g. "https://your-worker.workers.dev/unlock"
+  demoCode: "MT-750-DEMO", // TESTING ONLY
 };

@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useLang } from "@/lib/i18n";
 import { withBase } from "@/lib/base";
+import { payments } from "@/lib/site";
 import { openConsult } from "@/components/ConsultModal";
 import { openPayment } from "@/components/PaymentModal";
 
@@ -18,6 +19,54 @@ export default function CourseView() {
   const [ti, setTi] = useState(0); // track index
   const [li, setLi] = useState(0); // lesson index
   const [copied, setCopied] = useState(false);
+
+  // premium access-code unlock
+  const [unlockedUrl, setUnlockedUrl] = useState<string | null>(null);
+  const [showCode, setShowCode] = useState(false);
+  const [codeInput, setCodeInput] = useState("");
+  const [unlocking, setUnlocking] = useState(false);
+  const [codeError, setCodeError] = useState(false);
+
+  // Validate a code and get the (signed) video URL. Real security comes from
+  // payments.unlockEndpoint — a serverless function that checks the code
+  // server-side and returns a short-lived URL. The demo branch is for testing.
+  const attemptUnlock = useCallback(async (raw: string, silent = false) => {
+    const code = raw.trim();
+    if (!code) return;
+    setUnlocking(true);
+    setCodeError(false);
+    try {
+      if (payments.unlockEndpoint) {
+        const res = await fetch(payments.unlockEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data?.url) {
+          setUnlockedUrl(data.url as string);
+          try { localStorage.setItem("course-code", code); } catch {}
+        } else if (!silent) setCodeError(true);
+      } else if (payments.demoCode && code === payments.demoCode) {
+        // TESTING ONLY — no endpoint configured yet
+        setUnlockedUrl(withBase("/course/test.mp4"));
+        try { localStorage.setItem("course-code", code); } catch {}
+      } else if (!silent) {
+        setCodeError(true);
+      }
+    } catch {
+      if (!silent) setCodeError(true);
+    } finally {
+      setUnlocking(false);
+    }
+  }, []);
+
+  // auto-unlock on return if a valid code was saved
+  useEffect(() => {
+    let saved: string | null = null;
+    try { saved = localStorage.getItem("course-code"); } catch {}
+    if (saved) attemptUnlock(saved, true);
+  }, [attemptUnlock]);
 
   // Preselect a track from ?track=<i> (used by the nav "Course" dropdown)
   useEffect(() => {
@@ -162,14 +211,28 @@ export default function CourseView() {
                 preload="metadata"
                 className="aspect-video w-full bg-black"
               />
+            ) : unlockedUrl ? (
+              /* unlocked via a valid access code — play the (signed) video */
+              <video
+                key={unlockedUrl}
+                src={unlockedUrl}
+                controls
+                controlsList="nodownload noremoteplayback noplaybackrate"
+                disablePictureInPicture
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full bg-black"
+              />
             ) : (
               /* paid track — locked / premium state */
               <div className="relative flex aspect-video items-center justify-center bg-ink-900">
                 <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
-                <div className="pointer-events-none absolute inset-8 rounded-lg border border-dashed border-line/15" />
-                <div className="relative flex max-w-sm flex-col items-center gap-3 px-6 text-center">
-                  <span className="grid h-16 w-16 place-items-center rounded-full border border-electric/40 text-electric">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <div className="pointer-events-none absolute inset-6 rounded-lg border border-dashed border-line/15" />
+                <div className="relative flex w-full max-w-sm flex-col items-center gap-3 px-6 text-center">
+                  <span className="grid h-14 w-14 place-items-center rounded-full border border-electric/40 text-electric">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <rect x="3" y="11" width="18" height="11" rx="2" />
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
@@ -187,6 +250,46 @@ export default function CourseView() {
                   >
                     {c.getAccess}
                   </button>
+
+                  {showCode ? (
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        attemptUnlock(codeInput);
+                      }}
+                      className="mt-2 flex w-full flex-col items-center gap-2"
+                    >
+                      <div className="flex w-full gap-2">
+                        <input
+                          value={codeInput}
+                          onChange={(e) => {
+                            setCodeInput(e.target.value);
+                            setCodeError(false);
+                          }}
+                          placeholder={c.codePlaceholder}
+                          className="min-w-0 flex-1 rounded-full border border-line/25 bg-ink-800 px-4 py-2 text-sm text-bone-50 outline-none focus:border-mint/60"
+                        />
+                        <button
+                          type="submit"
+                          disabled={unlocking}
+                          className="shrink-0 rounded-full border border-mint/50 px-4 py-2 text-sm text-mint transition-colors hover:bg-mint/10 disabled:opacity-50"
+                        >
+                          {unlocking ? c.unlocking : c.unlock}
+                        </button>
+                      </div>
+                      {codeError ? (
+                        <span className="text-xs text-electric">{c.codeError}</span>
+                      ) : null}
+                    </form>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setShowCode(true)}
+                      className="text-xs text-bone-400 underline-offset-4 hover:text-bone-50 hover:underline"
+                    >
+                      {c.haveCode}
+                    </button>
+                  )}
                 </div>
               </div>
             )}
