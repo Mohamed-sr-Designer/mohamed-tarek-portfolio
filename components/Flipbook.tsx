@@ -29,6 +29,7 @@ export default function Flipbook({
   const stageRef = useRef<HTMLDivElement>(null);
 
   const [twoUp, setTwoUp] = useState(true);
+  const [fs, setFs] = useState(false); // fullscreen
   const [si, setSi] = useState(0); // spread index
   const [flip, setFlip] = useState<null | {
     dir: number; // 1 forward, -1 back
@@ -47,6 +48,17 @@ export default function Flipbook({
     mq.addEventListener("change", apply);
     return () => mq.removeEventListener("change", apply);
   }, []);
+
+  useEffect(() => {
+    if (!fs) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setFs(false);
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [fs]);
 
   // spreads: [cover], [1,2], [3,4] … on desktop; one page each on mobile
   const spreads = useMemo<number[][]>(() => {
@@ -184,7 +196,13 @@ export default function Flipbook({
     );
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line/10 bg-ink-800/60">
+    <div
+      className={
+        fs
+          ? "fixed inset-0 z-[100] flex flex-col bg-ink-900"
+          : "overflow-hidden rounded-2xl border border-line/10 bg-ink-800/60"
+      }
+    >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/10 px-5 py-4">
         <p className="text-sm font-medium text-bone-50">
           {title}
@@ -192,15 +210,36 @@ export default function Flipbook({
             {t.case.interactive}
           </span>
         </p>
-        <p className="text-sm tabular-nums text-bone-400">
-          {cur[0] + 1}
-          {cur.length > 1 ? `–${cur[cur.length - 1] + 1}` : ""} / {pages.length}
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="text-sm tabular-nums text-bone-400">
+            {cur[0] + 1}
+            {cur.length > 1 ? `–${cur[cur.length - 1] + 1}` : ""} /{" "}
+            {pages.length}
+          </p>
+          <button
+            type="button"
+            onClick={() => setFs((v) => !v)}
+            aria-label={fs ? "Exit fullscreen" : "Fullscreen"}
+            className="grid h-9 w-9 place-items-center rounded-full border border-line/20 text-bone-200 transition-colors hover:border-mint/60 hover:text-mint"
+          >
+            {fs ? (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3" />
+              </svg>
+            ) : (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <div
         ref={stageRef}
-        className="relative select-none px-3 py-6 md:px-8 md:py-10"
+        className={`relative select-none px-3 py-6 md:px-8 md:py-10 ${
+          fs ? "flex flex-1 items-center justify-center" : ""
+        }`}
         style={{ perspective: 2400, touchAction: "pan-y" }}
         onPointerDown={onDown}
         onPointerMove={onMove}
@@ -210,7 +249,8 @@ export default function Flipbook({
         <div
           className="relative mx-auto flex w-full items-stretch justify-center"
           style={{
-            maxWidth: single ? "42rem" : "66rem",
+            maxWidth: single ? "42rem" : fs ? "min(96rem, 96vw)" : "66rem",
+            maxHeight: fs ? "82vh" : undefined,
             aspectRatio: String(single ? ratio : ratio * 2),
             transformStyle: "preserve-3d",
           }}
@@ -230,10 +270,11 @@ export default function Flipbook({
             <Face src={url(single ? cur[0] : rightIdx)} />
           </div>
 
-          {/* turning leaf */}
+          {/* turning leaf — NO overflow-hidden here (it would flatten the 3D
+              context and mirror the backface); rounding lives on the faces */}
           {flip ? (
             <motion.div
-              className="absolute top-0 h-full w-1/2 overflow-hidden rounded-md"
+              className="absolute top-0 h-full w-1/2"
               style={{
                 left: flip.dir > 0 ? "50%" : "0%",
                 transformOrigin: flip.dir > 0 ? "left center" : "right center",

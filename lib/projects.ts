@@ -376,8 +376,151 @@ export const projects: Project[] = [
     ),
   },
   {
+    slug: "rabiat-alghad",
+    index: "10",
+    title: "Rabiat AlGhad — Land, Positioned",
+    client: "Rabiat AlGhad",
+    year: "2024–2025",
+    category: "Real Estate · Social Campaign",
+    sector: "Real Estate",
+    discipline: "Social Campaign · Bilingual · Key Visuals",
+    accent: "electric",
+    summary:
+      "A social campaign for a master-planned land development — turning plots and infrastructure into a clear investment story.",
+    tagline: "How we turned raw plots into an investment story.",
+    cover: "/work/social/27.webp",
+    hero: "/work/social/28.webp",
+    tags: ["Social Campaign", "Real Estate", "Bilingual AR/EN", "Key Visuals"],
+    challenge:
+      "Selling land is selling potential — hard to make tangible. Rabiat AlGhad needed a feed that made plots, infrastructure and location feel like a clear, credible investment.",
+    strategy:
+      "Lead with location and readiness: aerial masterplans, billboards shown in context and confident Arabic type — every post answers “why here, why now”.",
+    direction:
+      "Warm dusk light, aerial renders and clean billboard mockups — premium, grounded and unmistakably real-estate.",
+    execution:
+      "A rolling social system — masterplan reveals, plot offers and investment angles across a consistent bilingual layout.",
+    impact:
+      "A land project that reads as a real investment opportunity — clear, credible and scroll-stopping.",
+    contribution: ["Social Direction", "Key Visuals", "Bilingual Layout", "Content System"],
+    gallery: g(
+      "/work/social/27.webp",
+      "/work/social/28.webp",
+      "/work/social/25.webp",
+      "/work/social/26.webp",
+      "/work/social/22.webp",
+      "/work/social/29.webp",
+      "/work/social/30.webp",
+      "/work/social/32.webp",
+      "/work/social/33.webp"
+    ),
+  },
+  {
+    slug: "fmcg-social",
+    index: "11",
+    title: "Appetite, by Design — F&B Social",
+    client: "Italiano · Tiger · Ouka · Goodmes",
+    year: "2023–2025",
+    category: "FMCG & F&B · Social",
+    sector: "Food & Retail",
+    discipline: "Social-First Design · Food Craft · Campaign",
+    accent: "mint",
+    summary:
+      "Appetite-driven social for food and beverage brands — pasta, snacks, coffee and olive oil, each with its own craving.",
+    tagline: "How we made everyday food brands impossible to scroll past.",
+    cover: "/work/social/15.webp",
+    hero: "/work/social/01.webp",
+    tags: ["Social-First", "Food & Beverage", "Campaign", "3D & Retouch"],
+    challenge:
+      "FMCG lives or dies on appetite appeal in a crowded feed. Each brand — pasta, chips, coffee, oil — needed to own its craving without losing shelf identity.",
+    strategy:
+      "Design for the craving first: a bold hero product, a playful concept and a clear brand cue in every frame, tuned per category.",
+    direction:
+      "Rich, appetite-led art direction — 3D characters for coffee, dramatic product light for pasta and oil — each brand distinct, all premium.",
+    execution:
+      "Concept posts and campaign frames across Italiano, Tiger, Ouka and Goodmes — a repeatable, appetite-first social approach.",
+    impact:
+      "Everyday food brands that finally look as good as they taste — and stop the thumb.",
+    contribution: ["Social Creative Direction", "3D & Retouch", "Food Craft", "Campaign"],
+    gallery: g(
+      "/work/social/15.webp",
+      "/work/social/16.webp",
+      "/work/social/01.webp",
+      "/work/social/03.webp",
+      "/work/social/20.webp"
+    ),
+  },
+  {
+    slug: "alrahden",
+    index: "12",
+    title: "AlRahden — Facilities, Elevated",
+    client: "AlRahden",
+    year: "2024",
+    category: "B2B · Facilities & Cleaning Equipment",
+    sector: "Hospitality",
+    discipline: "Product Key Visuals · Social · Retouch",
+    accent: "electric",
+    summary:
+      "Making cleaning and facilities equipment look premium — B2B product visuals shot like a consumer brand.",
+    tagline: "How we made facilities equipment look premium.",
+    cover: "/work/social/21.webp",
+    hero: "/work/social/21.webp",
+    tags: ["B2B", "Product Key Visuals", "Retouch", "Social"],
+    challenge:
+      "Cleaning and facilities equipment is the definition of unglamorous. AlRahden needed product visuals that signalled quality and reliability to serious buyers.",
+    strategy:
+      "Treat industrial products like hero products: dramatic light, clean staging and a consistent brand frame that says “professional-grade”.",
+    direction:
+      "Bold desert-and-studio staging, controlled reflections and confident Arabic type — industrial made aspirational.",
+    execution:
+      "Product key visuals and social posts across the equipment range, retouched to a premium, consistent standard.",
+    impact:
+      "A B2B supplier that looks as dependable as its equipment — trusted at first glance.",
+    contribution: ["Product Key Visuals", "Retouching", "Social Layout", "Art Direction"],
+    gallery: g(
+      "/work/social/21.webp",
+      "/work/social/02.webp",
+      "/work/social/10.webp",
+      "/work/social/11.webp"
+    ),
+  },
+  {
+    slug: "edux-cyber",
+    index: "13",
+    title: "EDUX — Cyber Security, Recruited",
+    client: "EDUX Academy",
+    year: "2024–2025",
+    category: "Tech Education · Cyber Security",
+    sector: "Technology",
+    discipline: "Social Campaign · Recruitment · Bilingual",
+    accent: "electric",
+    summary:
+      "Enrolment-driving social for a cyber-security academy — turning penetration testing and SOC into a career people want.",
+    tagline: "How we made cyber-security a career people chase.",
+    cover: "/work/social/08.webp",
+    hero: "/work/social/24.webp",
+    tags: ["Tech Education", "Recruitment", "Bilingual AR/EN", "Social"],
+    challenge:
+      "Cyber-security education is abstract and intimidating. EDUX needed social that made pen-testing and SOC roles feel exciting, attainable and worth enrolling for.",
+    strategy:
+      "Sell the identity, not the syllabus: “walk into the SOC room everyone fears”, “break the barriers” — position the learner as the hero-in-training.",
+    direction:
+      "Moody, high-contrast tech visuals — red-lit SOC rooms, neon UI and confident bilingual type — sharp and aspirational.",
+    execution:
+      "Recruitment key visuals and concept posts for diplomas and courses — a consistent, enrolment-focused social system.",
+    impact:
+      "A cyber academy that looks as sharp as the field it teaches — built to convert curiosity into enrolment.",
+    contribution: ["Social Campaign", "Recruitment Visuals", "Bilingual Layout", "Art Direction"],
+    gallery: g(
+      "/work/social/08.webp",
+      "/work/social/05.webp",
+      "/work/social/24.webp",
+      "/work/social/23.webp",
+      "/work/social/31.webp"
+    ),
+  },
+  {
     slug: "social-systems",
-    index: "09",
+    index: "14",
     title: "Social Systems — Design That Scales",
     client: "Multiple Brands",
     year: "2023–2025",
@@ -388,8 +531,8 @@ export const projects: Project[] = [
     summary:
       "Repeatable, on-brand social systems across food, hospitality, FMCG and lifestyle — design rules, not one-off posts.",
     tagline: "How we built social that scales without losing the brand.",
-    cover: "/work/social/02.webp",
-    hero: "/work/social/02.webp",
+    cover: "/work/social/14.webp",
+    hero: "/work/social/09.webp",
     tags: ["Social-First Design", "Templates", "Content Systems", "Bilingual"],
     challenge:
       "Social is where brands live daily — but consistency breaks down fast across dozens of posts, formats and two languages. Brands needed systems, not one-off artwork.",
@@ -403,18 +546,16 @@ export const projects: Project[] = [
       "Repeatable, on-brand social output that protects brand equity at the speed social actually demands.",
     contribution: ["Social Creative Direction", "Template Systems", "Bilingual Layout", "Content Design"],
     gallery: g(
-      "/work/social/01.webp",
-      "/work/social/02.webp",
-      "/work/social/03.webp",
-      "/work/social/04.webp",
-      "/work/social/08.webp",
-      "/work/social/09.webp",
-      "/work/social/12.webp",
       "/work/social/14.webp",
-      "/work/social/15.webp",
-      "/work/social/20.webp",
-      "/work/social/28.webp",
-      "/work/social/31.webp"
+      "/work/social/17.webp",
+      "/work/social/09.webp",
+      "/work/social/04.webp",
+      "/work/social/06.webp",
+      "/work/social/07.webp",
+      "/work/social/12.webp",
+      "/work/social/18.webp",
+      "/work/social/19.webp",
+      "/work/social/13.webp"
     ),
   },
 ];

@@ -1,40 +1,52 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useLang } from "@/lib/i18n";
 import { openConsult } from "@/components/ConsultModal";
 
-type Mod = { n: string; title: string; dur: string; detail: string };
-
-// Wireframe-styled curriculum blueprint. Deliberately schematic — dashed
-// guides, annotation ticks, runtime bars — but kept elegant and premium.
+// LMS-style course player (reference: al mentor). A track dropdown up top,
+// a wireframe video player on the left, and a curriculum sidebar on the
+// right. The video is a "coming soon" placeholder; the chrome reads like a
+// real player. A cross-sell hint points to the sibling track.
 export default function CourseView() {
   const { t } = useLang();
   const c = t.course;
-  const [lesson, setLesson] = useState<{ track: string; mod: Mod } | null>(null);
+  const [ti, setTi] = useState(0); // track index
+  const [li, setLi] = useState(0); // lesson index
   const [copied, setCopied] = useState(false);
 
+  const track = c.tracks[ti];
+  const lesson = track.modules[li];
+  const other = c.tracks[(ti + 1) % c.tracks.length];
+  const otherIndex = (ti + 1) % c.tracks.length;
+  const progress = ((li + 1) / track.modules.length) * 100;
+
+  const pick = (i: number) => {
+    setTi(i);
+    setLi(0);
+  };
+
   const share = async () => {
-    const url =
-      typeof window !== "undefined" ? window.location.href : "";
-    const data = { title: c.metaTitle, text: c.freeLine, url };
+    const url = typeof window !== "undefined" ? window.location.href : "";
     try {
-      if (navigator.share) await navigator.share(data);
+      if (navigator.share) await navigator.share({ title: c.metaTitle, text: c.freeLine, url });
       else {
         await navigator.clipboard.writeText(url);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }
     } catch {
-      /* user cancelled */
+      /* cancelled */
     }
   };
 
+  const ctrlBtn =
+    "grid h-9 w-9 place-items-center rounded-full text-white/80 transition-colors hover:text-white";
+
   return (
-    <section className="container-edge mx-auto max-w-edge scroll-mt-24 py-28 md:py-36">
+    <section className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32">
       {/* header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <Reveal>
@@ -49,7 +61,7 @@ export default function CourseView() {
             <button
               type="button"
               onClick={share}
-              className="flex items-center gap-2 rounded-full border border-line/20 px-4 py-1.5 text-xs text-bone-200 transition-colors hover:border-mint/50 hover:text-mint"
+              className="rounded-full border border-line/20 px-4 py-1.5 text-xs text-bone-200 transition-colors hover:border-mint/50 hover:text-mint"
             >
               {copied ? c.copied : `${c.share} ↗`}
             </button>
@@ -57,118 +69,206 @@ export default function CourseView() {
         </Reveal>
       </div>
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <Reveal delay={0.05}>
-            <h1 className="text-balance text-4xl font-semibold leading-[1.03] tracking-tight text-bone-50 md:text-6xl">
-              {c.title}
-            </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-bone-300 md:text-lg">
-              {c.intro}
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-line/25 px-4 py-1.5 text-xs uppercase tracking-ultra text-bone-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-                {c.forWho}
-              </span>
-              <span className="font-serif text-lg italic text-mint">
-                {c.freeLine}
-              </span>
-            </div>
-          </Reveal>
-        </div>
+      <Reveal delay={0.05}>
+        <h1 className="mt-8 max-w-3xl text-balance text-3xl font-semibold leading-[1.04] tracking-tight text-bone-50 md:text-5xl">
+          {c.title}
+        </h1>
+      </Reveal>
 
-        {/* outcomes — wireframe card */}
-        <div className="lg:col-span-5">
-          <Reveal delay={0.1}>
-            <div className="relative rounded-xl border border-dashed border-line/25 bg-ink-800/40 p-6">
-              <span className="absolute -top-2.5 left-5 bg-ink-900 px-2 text-[10px] uppercase tracking-ultra text-bone-500">
-                {c.outcomesLabel}
-              </span>
-              <ul className="mt-2 grid gap-3">
-                {c.outcomes.map((o) => (
-                  <li key={o} className="flex items-start gap-3 text-sm text-bone-200">
-                    <span className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-[3px] border border-mint/50 text-[9px] text-mint">
-                      ✓
-                    </span>
-                    {o}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+      {/* track dropdown */}
+      <Reveal delay={0.1}>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <label className="text-xs uppercase tracking-ultra text-bone-500">
+            {c.choose}
+          </label>
+          <div className="relative">
+            <select
+              value={ti}
+              onChange={(e) => pick(Number(e.target.value))}
+              className="appearance-none rounded-full border border-line/20 bg-ink-800 py-2.5 pl-5 pr-10 text-sm font-medium text-bone-50 outline-none transition-colors hover:border-mint/50 focus:border-mint/60 rtl:pl-10 rtl:pr-5"
+            >
+              {c.tracks.map((tr, i) => (
+                <option key={tr.n} value={i}>
+                  {tr.n} — {tr.title}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-bone-400 rtl:left-4 rtl:right-auto">
+              ▾
+            </span>
+          </div>
+          <span className="rounded-full bg-line/10 px-3 py-1 text-xs text-bone-300">
+            {track.runtime}
+          </span>
         </div>
-      </div>
+      </Reveal>
 
-      {/* tracks */}
-      <div className="mt-16 grid gap-8 lg:grid-cols-2">
-        {c.tracks.map((track) => (
-          <Reveal key={track.n}>
-            <div className="flex h-full flex-col rounded-2xl border border-line/12 bg-ink-800/30 p-6 md:p-8">
-              <div className="flex items-start justify-between gap-4 border-b border-dashed border-line/20 pb-5">
-                <div>
-                  <span className="font-serif text-sm italic text-mint">
-                    {track.n}
-                  </span>
-                  <h2 className="mt-1 text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
-                    {track.title}
-                  </h2>
-                </div>
-                <span className="shrink-0 rounded-full border border-line/20 px-3 py-1 text-xs text-bone-300">
-                  {track.runtime}
+      {/* player + curriculum */}
+      <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        {/* player */}
+        <div className="lg:col-span-2">
+          <div className="overflow-hidden rounded-2xl border border-line/12 bg-ink-800/40">
+            {/* wireframe video */}
+            <div className="relative flex aspect-video items-center justify-center bg-ink-900">
+              <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
+              <div className="pointer-events-none absolute inset-8 rounded-lg border border-dashed border-line/15" />
+              <div className="relative flex flex-col items-center gap-3 text-center">
+                <span className="grid h-16 w-16 place-items-center rounded-full border border-line/25 text-bone-200">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                <span className="text-xs uppercase tracking-ultra text-bone-400">
+                  {c.comingSoon}
                 </span>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-bone-400">
-                {track.desc}
-              </p>
+              {/* fake controls bar */}
+              <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 px-4 pb-3 pt-8">
+                <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/15">
+                  <div className="h-full w-0 rounded-full bg-mint" />
+                </div>
+                <span className="text-[11px] tabular-nums text-white/70">
+                  00:00 / {lesson.dur}
+                </span>
+                <span className={ctrlBtn}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </div>
+            </div>
 
-              <p className="mt-6 text-[10px] uppercase tracking-ultra text-bone-500">
-                {c.modulesLabel}
+            {/* lesson meta */}
+            <div className="p-5 md:p-6">
+              <p className="text-[10px] uppercase tracking-ultra text-bone-500">
+                {track.title} · {c.nowPlaying}
               </p>
-              <Stagger className="mt-3 grid gap-2.5">
-                {track.modules.map((mod) => (
-                  <StaggerItem key={mod.n}>
+              <h2 className="mt-1.5 text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
+                {lesson.n} · {lesson.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-bone-300">
+                {lesson.detail}
+              </p>
+              <p className="mt-3 text-xs text-bone-500">{c.playerNote}</p>
+
+              {/* materials */}
+              <div className="mt-6 border-t border-line/10 pt-5">
+                <p className="text-[10px] uppercase tracking-ultra text-bone-500">
+                  {c.materialsLabel}
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                  {c.materials.map((mt) => (
+                    <span
+                      key={mt}
+                      className="flex items-center gap-2 rounded-lg border border-dashed border-line/20 bg-ink-900 px-3 py-2.5 text-xs text-bone-300"
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                      </svg>
+                      {mt}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* curriculum sidebar */}
+        <aside className="lg:col-span-1">
+          <div className="flex h-full flex-col rounded-2xl border border-line/12 bg-ink-800/40 p-5">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-bone-50">
+                {c.curriculum}
+              </h3>
+              <span className="text-xs tabular-nums text-bone-400">
+                {li + 1} / {track.modules.length} {c.lessonsWord}
+              </span>
+            </div>
+            {/* progress */}
+            <div className="mt-3 h-1 overflow-hidden rounded-full bg-line/10">
+              <div
+                className="h-full rounded-full bg-mint transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+
+            {/* lessons */}
+            <ul className="mt-4 grid gap-1.5">
+              {track.modules.map((mod, i) => {
+                const active = i === li;
+                const done = i < li;
+                return (
+                  <li key={mod.n}>
                     <button
                       type="button"
-                      onClick={() => setLesson({ track: track.title, mod })}
-                      className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg border border-line/10 bg-ink-900 px-4 py-3 text-start transition-colors duration-300 hover:border-mint/40"
+                      onClick={() => setLi(i)}
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-start transition-colors ${
+                        active
+                          ? "bg-mint/10 ring-1 ring-mint/30"
+                          : "hover:bg-ink-900"
+                      }`}
                     >
-                      <span className="grid h-8 w-8 place-items-center rounded-md border border-line/15 text-bone-500 transition-colors group-hover:border-mint/50 group-hover:text-mint">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                      <span
+                        className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[10px] ${
+                          done
+                            ? "bg-mint/20 text-mint"
+                            : active
+                            ? "bg-mint text-ink-900"
+                            : "border border-line/20 text-bone-400"
+                        }`}
+                      >
+                        {done ? "✓" : (
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        )}
                       </span>
-                      <span>
-                        <span className="block text-sm font-medium text-bone-50">
-                          <span className="text-bone-500">{mod.n} · </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm text-bone-100">
                           {mod.title}
                         </span>
-                        <span className="block text-xs text-bone-400">
-                          {mod.detail}
+                        <span className="block text-[11px] text-bone-500">
+                          {c.videoWord} · {mod.dur}
                         </span>
                       </span>
-                      <span className="rounded-full bg-line/10 px-2.5 py-1 text-[11px] tabular-nums text-bone-300">
-                        {mod.dur}
-                      </span>
                     </button>
-                  </StaggerItem>
-                ))}
-              </Stagger>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* cross-sell hint */}
+            <div className="mt-5 rounded-xl border border-dashed border-electric/30 bg-electric/5 p-4">
+              <p className="text-[10px] uppercase tracking-ultra text-electric">
+                {c.related}
+              </p>
+              <p className="mt-1.5 text-sm font-medium text-bone-50">
+                {other.n} — {other.title}
+              </p>
+              <button
+                type="button"
+                onClick={() => pick(otherIndex)}
+                className="mt-2 text-sm text-electric underline-offset-4 hover:underline"
+              >
+                {c.relatedCta}
+              </button>
             </div>
-          </Reveal>
-        ))}
+          </div>
+        </aside>
       </div>
 
       {/* CTA */}
       <Reveal>
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 rounded-2xl border border-dashed border-line/25 bg-ink-800/40 p-8 md:flex-row md:items-center md:p-12">
-          <h2 className="text-2xl font-semibold tracking-tight text-bone-50 md:text-4xl">
-            {c.ctaTitle}
-          </h2>
+        <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-2xl border border-dashed border-line/25 bg-ink-800/40 p-8 md:flex-row md:items-center md:p-12">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-bone-50 md:text-4xl">
+              {c.ctaTitle}
+            </h2>
+            <p className="mt-2 font-serif text-lg italic text-mint">
+              {c.freeLine}
+            </p>
+          </div>
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
@@ -187,94 +287,6 @@ export default function CourseView() {
           </div>
         </div>
       </Reveal>
-
-      {/* Lesson lightbox — wireframe video + materials */}
-      <AnimatePresence>
-        {lesson && (
-          <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm md:p-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLesson(null)}
-          >
-            <motion.div
-              initial={{ y: 30, opacity: 0, scale: 0.98 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: 20, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-3xl overflow-hidden rounded-2xl border border-line/15 bg-ink-800"
-            >
-              <div className="flex items-start justify-between gap-4 border-b border-line/10 px-6 py-4">
-                <div>
-                  <p className="text-[10px] uppercase tracking-ultra text-bone-500">
-                    {lesson.track} · {c.lessonPreview}
-                  </p>
-                  <h3 className="mt-1 text-lg font-semibold text-bone-50">
-                    {lesson.mod.n} · {lesson.mod.title}
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setLesson(null)}
-                  aria-label={c.closeLesson}
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-line/20 text-bone-300 transition-colors hover:border-mint/50 hover:text-mint"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* wireframe video player */}
-              <div className="p-6">
-                <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-xl border border-dashed border-line/25 bg-ink-900">
-                  {/* schematic guides */}
-                  <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
-                  <div className="pointer-events-none absolute inset-6 rounded-lg border border-dashed border-line/15" />
-                  <div className="relative flex flex-col items-center gap-3 text-center">
-                    <span className="grid h-16 w-16 place-items-center rounded-full border border-line/25 text-bone-300">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </span>
-                    <span className="text-xs uppercase tracking-ultra text-bone-400">
-                      {c.comingSoon}
-                    </span>
-                    <span className="rounded-full bg-line/10 px-3 py-1 text-[11px] tabular-nums text-bone-300">
-                      {lesson.mod.dur}
-                    </span>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-sm leading-relaxed text-bone-300">
-                  {lesson.mod.detail}
-                </p>
-
-                {/* materials */}
-                <div className="mt-6">
-                  <p className="text-[10px] uppercase tracking-ultra text-bone-500">
-                    {c.materialsLabel}
-                  </p>
-                  <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                    {c.materials.map((mt) => (
-                      <span
-                        key={mt}
-                        className="flex items-center gap-2 rounded-lg border border-dashed border-line/20 bg-ink-900 px-3 py-2.5 text-xs text-bone-300"
-                      >
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                        </svg>
-                        {mt}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="mt-3 text-xs text-bone-500">{c.materialsNote}</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

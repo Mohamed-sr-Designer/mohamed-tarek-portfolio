@@ -33,7 +33,7 @@ const en = {
     h2a: "Work, organised by the",
     h2i: "industry",
     h2b: "it was built for.",
-    note: "Nine case studies across six industries — pick a sector, open a case.",
+    note: "Case studies across six industries — pick a sector, open a case.",
     viewCase: "VIEW CASE ↗",
     sectors: {
       Technology: "Technology",
@@ -394,6 +394,15 @@ const en = {
     materials: ["Lesson slides (PDF)", "Prompt sheet (TXT)", "Source files (ZIP)"],
     watch: "Open lesson",
     closeLesson: "Close",
+    choose: "Choose your track",
+    nowPlaying: "Now playing",
+    lessonsWord: "lessons",
+    lessonWord: "Lesson",
+    videoWord: "Video",
+    curriculum: "Curriculum",
+    related: "Pairs well with",
+    relatedCta: "Switch to this track →",
+    playerNote: "Free video lessons — publishing soon.",
     ctaTitle: "Want this for your team or academy?",
     ctaBtn: "Book the course ✦",
     outcomesLabel: "What you walk out with",
@@ -468,7 +477,7 @@ const ar: typeof en = {
     h2a: "الأعمال، منظّمة حسب",
     h2i: "الصناعة",
     h2b: "التي صُمّمت لها.",
-    note: "تسع دراسات حالة عبر ست صناعات — اختر قطاعًا وافتح الحالة.",
+    note: "دراسات حالة عبر ست صناعات — اختر قطاعًا وافتح الحالة.",
     viewCase: "عرض الحالة ↗",
     sectors: {
       Technology: "التقنية",
@@ -492,6 +501,42 @@ const ar: typeof en = {
     },
   },
   projects: {
+    "rabiat-alghad": {
+      title: "رابية الغد — أرض في مكانها الصحيح",
+      tagline: "كيف حوّلنا قطع الأرض إلى قصة استثمار.",
+      category: "عقارات · حملة سوشيال",
+      challenge:
+        "بيع الأرض هو بيع للإمكانات — صعب تحسّه. احتاجت رابية الغد فيدًا يخلّي القطع والبنية التحتية والموقع تبان كفرصة استثمار واضحة وموثوقة.",
+      strategy:
+        "قُد بالموقع والجاهزية: مخططات جوية، ولوحات في سياقها، وخط عربي واثق — كل بوست يجاوب على «ليه هنا، وليه دلوقتي».",
+    },
+    "fmcg-social": {
+      title: "الشهية بالتصميم — سوشيال أطعمة",
+      tagline: "كيف جعلنا العلامات الغذائية اليومية يستحيل تعديها.",
+      category: "FMCG وأغذية · سوشيال",
+      challenge:
+        "الـFMCG تعيش أو تموت على الشهية في فيد مزدحم. كل علامة — مكرونة، شيبس، قهوة، زيت — محتاجة تمتلك رغبتها دون أن تفقد هويتها.",
+      strategy:
+        "صمّم للرغبة أولًا: منتج بطولي بارز، وفكرة مرحة، وإشارة علامة واضحة في كل إطار، مضبوطة لكل فئة.",
+    },
+    "alrahden": {
+      title: "الرهدن — معدات بمظهر فاخر",
+      tagline: "كيف جعلنا معدات النظافة تبدو فاخرة.",
+      category: "B2B · معدات نظافة ومرافق",
+      challenge:
+        "معدات النظافة والمرافق تعريفُ الشيء غير الجذّاب. احتاج الرهدن صور منتج توصّل الجودة والاعتمادية لمشترٍ جاد.",
+      strategy:
+        "عامل المنتجات الصناعية كمنتجات بطولية: إضاءة درامية، وستيجينج نظيف، وإطار علامة ثابت يقول «درجة احترافية».",
+    },
+    "edux-cyber": {
+      title: "EDUX — أمن سيبراني يجذب",
+      tagline: "كيف جعلنا الأمن السيبراني مهنة يسعى لها الناس.",
+      category: "تعليم تقني · أمن سيبراني",
+      challenge:
+        "تعليم الأمن السيبراني مجرّد ومخيف. احتاج EDUX سوشيال يخلّي اختبار الاختراق وغرف الـSOC مثيرة وقابلة للتحقيق وتستحق التسجيل.",
+      strategy:
+        "بِع الهوية لا المنهج: «ادخل غرفة الـSOC اللي الكل بيخافها»، «اكسر الحواجز» — ضع المتعلّم كبطلٍ قيد التدريب.",
+    },
     "secure-tomorrow": {
       title: "Secure Tomorrow — الخوف، سينمائيًا",
       tagline: "كيف جعلنا الأمن السيبراني يُحسّ كفيلم إثارة لا كمنهج دراسي.",
@@ -903,6 +948,15 @@ const ar: typeof en = {
     materials: ["شرائح الدرس (PDF)", "ورقة البرومبت (TXT)", "ملفات المصدر (ZIP)"],
     watch: "افتح الدرس",
     closeLesson: "إغلاق",
+    choose: "اختر مسارك",
+    nowPlaying: "المحاضرة الحالية",
+    lessonsWord: "محاضرة",
+    lessonWord: "محاضرة",
+    videoWord: "فيديو",
+    curriculum: "المنهج",
+    related: "يكمّله",
+    relatedCta: "انتقل لهذا المسار →",
+    playerNote: "دروس فيديو مجانية — تُنشر قريبًا.",
     ctaTitle: "تريده لفريقك أو أكاديميتك؟",
     ctaBtn: "احجز الكورس ✦",
     outcomesLabel: "ماذا ستخرج به",
