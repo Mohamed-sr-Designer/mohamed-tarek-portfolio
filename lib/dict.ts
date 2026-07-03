@@ -403,6 +403,10 @@ const en = {
     related: "Pairs well with",
     relatedCta: "Switch to this track →",
     playerNote: "Free video lessons — publishing soon.",
+    premiumTag: "Premium · Paid",
+    getAccess: "Get access ✦",
+    lockedTitle: "Premium lesson",
+    lockedNote: "This track is a paid course — get access to unlock every video lesson.",
     ctaTitle: "Want this for your team or academy?",
     ctaBtn: "Book the course ✦",
     outcomesLabel: "What you walk out with",
@@ -418,6 +422,7 @@ const en = {
         n: "Track 01",
         title: "AI Photoshoot & Prompt Engineering",
         runtime: "1h 20m · 8 videos",
+        free: true,
         desc: "Direct and produce a full photoshoot with AI — no camera — then retouch and grade it to a real campaign standard.",
         modules: [
           { n: "01", title: "What makes an AI photoshoot look real", dur: "10m", detail: "Reading light, lens, and composition like a photographer." },
@@ -434,6 +439,7 @@ const en = {
         n: "Track 03",
         title: "AI Video Generation",
         runtime: "1h 15m · 5 stages",
+        free: false,
         desc: "From prompt to a finished cut — reference, stock, AI generation and a light edit in Premiere Pro.",
         modules: [
           { n: "01", title: "Prompt engineering for video", dur: "15m", detail: "Motion, shot length and camera language in prompts." },
@@ -510,14 +516,33 @@ const ar: typeof en = {
       strategy:
         "قُد بالموقع والجاهزية: مخططات جوية، ولوحات في سياقها، وخط عربي واثق — كل بوست يجاوب على «ليه هنا، وليه دلوقتي».",
     },
-    "fmcg-social": {
-      title: "الشهية بالتصميم — سوشيال أطعمة",
-      tagline: "كيف جعلنا العلامات الغذائية اليومية يستحيل تعديها.",
-      category: "FMCG وأغذية · سوشيال",
-      challenge:
-        "الـFMCG تعيش أو تموت على الشهية في فيد مزدحم. كل علامة — مكرونة، شيبس، قهوة، زيت — محتاجة تمتلك رغبتها دون أن تفقد هويتها.",
+    italiano: {
+      title: "إيطاليانو — مكرونة فاخرة",
+      tagline: "مكرونة فاخرة تفتح النفس.",
+      category: "FMCG · أغذية",
       strategy:
-        "صمّم للرغبة أولًا: منتج بطولي بارز، وفكرة مرحة، وإشارة علامة واضحة في كل إطار، مضبوطة لكل فئة.",
+        "صورة منتج تفتح الشهية لإيطاليانو — العبوة بطلة، وضوء دافئ من حقول القمح، وإشارة علامة نظيفة تبان فاخرة على الرف وفي الفيد.",
+    },
+    tiger: {
+      title: "تايجر — طاقة السناكس",
+      tagline: "سناكس بنكهة جريئة.",
+      category: "FMCG · أغذية",
+      strategy:
+        "صورة منتج جريئة وعالية الطاقة لشيبس تايجر — ستيجينج ديناميكي وألوان قوية تلفت النظر في فيد مزدحم بالسناكس.",
+    },
+    ouka: {
+      title: "اوكا — قهوة بشخصية",
+      tagline: "قهوة لها شخصية.",
+      category: "أغذية ومشروبات · قهوة",
+      strategy:
+        "سوشيال ثلاثي الأبعاد بشخصية لقهوة اوكا — حبة قهوة تتحوّل لكاراكتر يملك صباحك والفيد.",
+    },
+    goodmes: {
+      title: "Goodmes — من مزارعنا",
+      tagline: "طعم الطبيعة من مزارعنا.",
+      category: "FMCG · أغذية",
+      strategy:
+        "صورة منتج فاخرة لزيت زيتون Goodmes — ضوء طبيعي وحِرفة صادقة وقصة من المزرعة للمائدة في إطار واحد.",
     },
     "alrahden": {
       title: "الرهدن — معدات بمظهر فاخر",
@@ -609,14 +634,40 @@ const ar: typeof en = {
       strategy:
         "لغة بصرية تحتفي بالثقة الهادئة لا بالحركة: عمارة نظيفة، إضاءة متوازنة، وتلوين مضبوط يقدّم خدمة ما بعد البيع كأمرٍ سلس يمكن الاعتماد عليه.",
     },
-    "social-systems": {
-      title: "أنظمة سوشيال — تصميم يتوسّع",
-      tagline: "كيف بنينا سوشيال ميديا تتوسّع دون أن تفقد العلامة.",
-      category: "أنظمة سوشيال ميديا",
-      challenge:
-        "السوشيال هو حياة العلامة اليومية — لكن الاتساق ينهار سريعًا عبر عشرات البوستات وبلغتين. العلامات تحتاج أنظمة، لا تصاميم متفرقة.",
+    sekka: {
+      title: "سكة — تسويق أحدّ",
+      tagline: "محتوى تسويقي يخلّيك تفكّر.",
+      category: "تسويق · سوشيال",
       strategy:
-        "صمّم القواعد لا البوستات فقط: أنظمة تنسيق معيارية — شبكات وهرمية خطوط ومنطق ثنائي اللغة — لتنتج العلامة أسابيع من المحتوى وما زال يبدو مُخرَجًا فنيًا.",
+        "محتوى تسويقي مبني على الفكرة لسكة — بوستات اقتباسات جريئة واستعارات بصرية حادّة تخلّي الاستراتيجية مثيرة لا مؤسسية.",
+    },
+    "pala-de-7": {
+      title: "بالا دي 7 — بادل منظّم",
+      tagline: "احجز، إلعب، انتمِ.",
+      category: "تطبيق رياضي · سوشيال",
+      strategy:
+        "سوشيال لتطبيق حجز بادل — يحوّل حجز الملاعب والمجتمع إلى طاقة وانتماء، لا مجرد إجراءات.",
+    },
+    albayt: {
+      title: "البيت — لبيك",
+      tagline: "حملة لموسم الحج والعمرة.",
+      category: "حملة موسمية · حج",
+      strategy:
+        "حملة موسمية بروح خاشعة للبيت — صور إحرام بتعريض مزدوج وخط هادئ محترم مصمّم لموسم الحج والعمرة.",
+    },
+    fydback: {
+      title: "فيدباك — تقييمات ببساطة",
+      tagline: "مكان واحد لتقييمات العملاء.",
+      category: "SaaS · سوشيال",
+      strategy:
+        "سوشيال منتج لفيدباك — منصة تقييمات عملاء، معروضة نظيفة وعصرية بواجهات دقيقة في مساحة ثلاثية الأبعاد ناعمة.",
+    },
+    "english-academy": {
+      title: "أكاديمية إنجليزي — تصير حريف",
+      tagline: "اتقن الإنجليزي — بأقل تكلفة.",
+      category: "تعليم · سوشيال",
+      strategy:
+        "سوشيال يركّز على التسجيل لأكاديمية لغة إنجليزية — عرض واضح وإشارات ثقة معتمدة وخطّاف طموح «تصير حريف».",
     },
   },
   services: {
@@ -957,6 +1008,10 @@ const ar: typeof en = {
     related: "يكمّله",
     relatedCta: "انتقل لهذا المسار →",
     playerNote: "دروس فيديو مجانية — تُنشر قريبًا.",
+    premiumTag: "مدفوع · بريميم",
+    getAccess: "احصل على الوصول ✦",
+    lockedTitle: "درس بريميم",
+    lockedNote: "هذا المسار كورس مدفوع — احصل على الوصول لفتح كل دروس الفيديو.",
     ctaTitle: "تريده لفريقك أو أكاديميتك؟",
     ctaBtn: "احجز الكورس ✦",
     outcomesLabel: "ماذا ستخرج به",
@@ -972,6 +1027,7 @@ const ar: typeof en = {
         n: "المسار ٠١",
         title: "فوتوشوت AI وهندسة البرومبت",
         runtime: "١س ٢٠د · ٨ فيديوهات",
+        free: true,
         desc: "أخرِج وأنتج جلسة تصوير كاملة بالذكاء الاصطناعي — بلا كاميرا — ثم اعملها ريتاتش وتلوين بمعيار حملة حقيقية.",
         modules: [
           { n: "٠١", title: "ما الذي يجعل فوتوشوت الـAI يبدو حقيقيًا", dur: "١٠د", detail: "قراءة الضوء والعدسة والتكوين كمصوّر محترف." },
@@ -988,6 +1044,7 @@ const ar: typeof en = {
         n: "المسار ٠٣",
         title: "توليد الفيديو بالذكاء الاصطناعي",
         runtime: "١س ١٥د · ٥ مراحل",
+        free: false,
         desc: "من البرومبت إلى مونتاج نهائي — ريفرنس وستوك وتوليد AI ومونتاج خفيف في بريمير برو.",
         modules: [
           { n: "٠١", title: "هندسة البرومبت للفيديو", dur: "١٥د", detail: "الحركة وطول اللقطة ولغة الكاميرا داخل البرومبت." },

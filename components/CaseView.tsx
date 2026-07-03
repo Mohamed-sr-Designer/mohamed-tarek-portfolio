@@ -89,41 +89,66 @@ export default function CaseView({ project }: { project: Project }) {
         </Reveal>
       </section>
 
-      {/* compact approach */}
+      {/* approach — full case study, or a lighter "explanation" for simple ones */}
       <section className="container-edge mx-auto max-w-edge py-16 md:py-20">
-        <div className="grid gap-10 border-y border-line/10 py-10 md:grid-cols-12 md:gap-8">
-          <div className="md:col-span-3">
-            <p className="text-xs uppercase tracking-[0.28em] text-bone-400">
-              {project.client} · {category}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {project.contribution.map((c) => (
-                <li
-                  key={c}
-                  className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-200"
-                >
-                  {c}
-                </li>
-              ))}
-            </ul>
+        {project.simple ? (
+          <div className="grid gap-8 border-y border-line/10 py-10 md:grid-cols-12 md:gap-8">
+            <div className="md:col-span-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-bone-400">
+                {project.client} · {category}
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {project.contribution.map((c) => (
+                  <li
+                    key={c}
+                    className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-200"
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:col-span-8">
+              <p className="text-pretty text-xl leading-relaxed text-bone-100 md:text-2xl">
+                {tr.strategy ?? project.summary}
+              </p>
+            </div>
           </div>
-          <div className="md:col-span-4">
-            <h2 className={`text-sm font-medium ${accent}`}>
-              {t.case.challenge}
-            </h2>
-            <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
-              {tr.challenge ?? project.challenge}
-            </p>
+        ) : (
+          <div className="grid gap-10 border-y border-line/10 py-10 md:grid-cols-12 md:gap-8">
+            <div className="md:col-span-3">
+              <p className="text-xs uppercase tracking-[0.28em] text-bone-400">
+                {project.client} · {category}
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {project.contribution.map((c) => (
+                  <li
+                    key={c}
+                    className="rounded-full border border-line/15 px-3 py-1 text-xs text-bone-200"
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:col-span-4">
+              <h2 className={`text-sm font-medium ${accent}`}>
+                {t.case.challenge}
+              </h2>
+              <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
+                {tr.challenge ?? project.challenge}
+              </p>
+            </div>
+            <div className="md:col-span-5">
+              <h2 className={`text-sm font-medium ${accent}`}>
+                {t.case.solution}
+              </h2>
+              <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
+                {tr.strategy ?? project.strategy}
+              </p>
+            </div>
           </div>
-          <div className="md:col-span-5">
-            <h2 className={`text-sm font-medium ${accent}`}>
-              {t.case.solution}
-            </h2>
-            <p className="mt-3 text-pretty text-lg leading-relaxed text-bone-200">
-              {tr.strategy ?? project.strategy}
-            </p>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* Fresh Valley: interactive brand book */}

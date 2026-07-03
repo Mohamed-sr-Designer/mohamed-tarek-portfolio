@@ -10,17 +10,18 @@ export type Project = {
   sector: string;
   discipline: string;
   accent: "electric" | "mint";
+  simple?: boolean; // lighter page: banner + explanation + images, no deep case study
   summary: string;
   tagline: string;
   cover: string;
   hero: string;
   logo?: string;
   tags: string[];
-  challenge: string;
-  strategy: string;
-  direction: string;
-  execution: string;
-  impact: string;
+  challenge?: string;
+  strategy?: string;
+  direction?: string;
+  execution?: string;
+  impact?: string;
   contribution: string[];
   gallery: GalleryItem[];
 };
@@ -269,6 +270,7 @@ export const projects: Project[] = [
     sector: "Hospitality",
     discipline: "Campaign · Cross-Channel · Social System",
     accent: "electric",
+    simple: true,
     summary:
       "Making the unglamorous aspirational — a cinematic B2B campaign for 50 years of trust in hospitality supply.",
     tagline: "How we made 50 years of trust feel five-star.",
@@ -353,7 +355,7 @@ export const projects: Project[] = [
     summary:
       "Premium, calm key visuals for Geely — communicating reliability and after-sales service through retouching, light and colour, never feeling generic.",
     tagline: "How we kept it premium and calm while selling reliability.",
-    cover: "/work/auto/04.webp",
+    cover: "/work/auto/geely-monjaro.webp",
     hero: "/work/auto/geely-rental.webp",
     tags: ["Service Communication", "Advertising", "Key Visual", "Retouching"],
     challenge:
@@ -415,39 +417,84 @@ export const projects: Project[] = [
     ),
   },
   {
-    slug: "fmcg-social",
+    slug: "italiano",
     index: "11",
-    title: "Appetite, by Design — F&B Social",
-    client: "Italiano · Tiger · Ouka · Goodmes",
-    year: "2023–2025",
-    category: "FMCG & F&B · Social",
+    title: "Italiano — Premium Pasta",
+    client: "Italiano",
+    year: "2024",
+    category: "FMCG · Food",
     sector: "Food & Retail",
-    discipline: "Social-First Design · Food Craft · Campaign",
+    discipline: "Social · Product Key Visual",
     accent: "mint",
+    simple: true,
     summary:
-      "Appetite-driven social for food and beverage brands — pasta, snacks, coffee and olive oil, each with its own craving.",
-    tagline: "How we made everyday food brands impossible to scroll past.",
-    cover: "/work/social/15.webp",
+      "An appetite-first product visual for Italiano premium pasta — the pack as hero, warm wheat-field light, and a clean brand cue that reads premium on the shelf and in the feed.",
+    tagline: "Premium pasta, made to crave.",
+    cover: "/work/social/01.webp",
     hero: "/work/social/01.webp",
-    tags: ["Social-First", "Food & Beverage", "Campaign", "3D & Retouch"],
-    challenge:
-      "FMCG lives or dies on appetite appeal in a crowded feed. Each brand — pasta, chips, coffee, oil — needed to own its craving without losing shelf identity.",
-    strategy:
-      "Design for the craving first: a bold hero product, a playful concept and a clear brand cue in every frame, tuned per category.",
-    direction:
-      "Rich, appetite-led art direction — 3D characters for coffee, dramatic product light for pasta and oil — each brand distinct, all premium.",
-    execution:
-      "Concept posts and campaign frames across Italiano, Tiger, Ouka and Goodmes — a repeatable, appetite-first social approach.",
-    impact:
-      "Everyday food brands that finally look as good as they taste — and stop the thumb.",
-    contribution: ["Social Creative Direction", "3D & Retouch", "Food Craft", "Campaign"],
-    gallery: g(
-      "/work/social/15.webp",
-      "/work/social/16.webp",
-      "/work/social/01.webp",
-      "/work/social/03.webp",
-      "/work/social/20.webp"
-    ),
+    tags: ["FMCG", "Product Key Visual", "Social"],
+    contribution: ["Product Key Visual", "Retouch", "Social"],
+    gallery: g("/work/social/01.webp"),
+  },
+  {
+    slug: "tiger",
+    index: "11b",
+    title: "Tiger — Snack Energy",
+    client: "Tiger",
+    year: "2024",
+    category: "FMCG · Food",
+    sector: "Food & Retail",
+    discipline: "Social · Product Key Visual",
+    accent: "mint",
+    simple: true,
+    summary:
+      "A bold, high-energy product visual for Tiger chips — dynamic staging and punchy colour built to pop in a crowded snack feed.",
+    tagline: "Snacks with a bite.",
+    cover: "/work/social/03.webp",
+    hero: "/work/social/03.webp",
+    tags: ["FMCG", "Product Key Visual", "Social"],
+    contribution: ["Product Key Visual", "Retouch", "Social"],
+    gallery: g("/work/social/03.webp"),
+  },
+  {
+    slug: "ouka",
+    index: "11c",
+    title: "Ouka — Coffee, With Character",
+    client: "Ouka",
+    year: "2024",
+    category: "F&B · Coffee",
+    sector: "Food & Retail",
+    discipline: "Social · 3D Concept",
+    accent: "mint",
+    simple: true,
+    summary:
+      "3D character-led social for Ouka coffee — turning a coffee bean into a personality that owns the morning routine and the feed.",
+    tagline: "Coffee with a character.",
+    cover: "/work/social/15.webp",
+    hero: "/work/social/15.webp",
+    tags: ["F&B", "3D Concept", "Social"],
+    contribution: ["Creative Direction", "3D & Retouch", "Social"],
+    gallery: g("/work/social/15.webp", "/work/social/16.webp"),
+  },
+  {
+    slug: "goodmes",
+    index: "11d",
+    title: "Goodmes — From Our Farms",
+    client: "Goodmes",
+    year: "2024",
+    category: "FMCG · Food",
+    sector: "Food & Retail",
+    discipline: "Social · Product Key Visual",
+    accent: "mint",
+    simple: true,
+    summary:
+      "A premium product visual for Goodmes olive oil — natural light, honest craft and a farm-to-table story told in a single frame.",
+    tagline: "Nature's taste, from our farms.",
+    cover: "/work/social/20.webp",
+    hero: "/work/social/20.webp",
+    tags: ["FMCG", "Product Key Visual", "Social"],
+    contribution: ["Product Key Visual", "Retouch", "Social"],
+    gallery: g("/work/social/20.webp"),
   },
   {
     slug: "alrahden",
@@ -519,44 +566,109 @@ export const projects: Project[] = [
     ),
   },
   {
-    slug: "social-systems",
+    slug: "sekka",
     index: "14",
-    title: "Social Systems — Design That Scales",
-    client: "Multiple Brands",
-    year: "2023–2025",
-    category: "Social Media Systems",
+    title: "Sekka — Marketing, Sharpened",
+    client: "Sekka",
+    year: "2024",
+    category: "Marketing · Social",
     sector: "Marketing & Agency",
-    discipline: "Social-First Design · Templates · Content Systems",
+    discipline: "Social · Concept Design",
     accent: "mint",
+    simple: true,
     summary:
-      "Repeatable, on-brand social systems across food, hospitality, FMCG and lifestyle — design rules, not one-off posts.",
-    tagline: "How we built social that scales without losing the brand.",
+      "Concept-led marketing content for Sekka — bold quote posts and sharp visual metaphors that make strategy feel exciting, not corporate.",
+    tagline: "Marketing content that makes you think.",
     cover: "/work/social/14.webp",
+    hero: "/work/social/17.webp",
+    tags: ["Marketing", "Concept Design", "Social"],
+    contribution: ["Creative Direction", "Concept Design", "Social"],
+    gallery: g("/work/social/14.webp", "/work/social/17.webp"),
+  },
+  {
+    slug: "pala-de-7",
+    index: "14b",
+    title: "Pala De 7 — Padel, Organised",
+    client: "Pala De 7",
+    year: "2024",
+    category: "Sports App · Social",
+    sector: "Marketing & Agency",
+    discipline: "Social · App Marketing",
+    accent: "mint",
+    simple: true,
+    summary:
+      "Social for a padel booking app — turning court booking and community into energy and belonging, not admin.",
+    tagline: "Book, play, belong.",
+    cover: "/work/social/09.webp",
     hero: "/work/social/09.webp",
-    tags: ["Social-First Design", "Templates", "Content Systems", "Bilingual"],
-    challenge:
-      "Social is where brands live daily — but consistency breaks down fast across dozens of posts, formats and two languages. Brands needed systems, not one-off artwork.",
-    strategy:
-      "Design the rules, not just the artwork. I build modular layout systems — grids, type hierarchies, color rules and bilingual logic — so a brand can produce weeks of content that still feels art-directed.",
-    direction:
-      "Each system is tuned to its brand: appetite-driven for FMCG, clean and premium for hospitality, warm and editorial for lifestyle — sharing a disciplined approach to hierarchy, rhythm and balance.",
-    execution:
-      "Feed and story templates, campaign adaptations and bilingual AR/EN layouts delivered across food, hospitality, FMCG, sports and lifestyle brands.",
-    impact:
-      "Repeatable, on-brand social output that protects brand equity at the speed social actually demands.",
-    contribution: ["Social Creative Direction", "Template Systems", "Bilingual Layout", "Content Design"],
+    tags: ["Sports", "App Marketing", "Social"],
+    contribution: ["Creative Direction", "Social", "App Marketing"],
+    gallery: g("/work/social/09.webp"),
+  },
+  {
+    slug: "albayt",
+    index: "14c",
+    title: "Albayt — لبيك",
+    client: "Albayt",
+    year: "2024",
+    category: "Seasonal Campaign · Hajj",
+    sector: "Hospitality",
+    discipline: "Social · Seasonal Campaign",
+    accent: "electric",
+    simple: true,
+    summary:
+      "A reverent seasonal campaign for Albayt — double-exposure Ihram imagery and quiet, respectful type made for the Hajj and Umrah season.",
+    tagline: "A campaign for the season of pilgrimage.",
+    cover: "/work/social/04.webp",
+    hero: "/work/social/06.webp",
+    tags: ["Seasonal", "Campaign", "Bilingual"],
+    contribution: ["Creative Direction", "Retouch", "Social"],
     gallery: g(
-      "/work/social/14.webp",
-      "/work/social/17.webp",
-      "/work/social/09.webp",
       "/work/social/04.webp",
       "/work/social/06.webp",
       "/work/social/07.webp",
-      "/work/social/12.webp",
-      "/work/social/18.webp",
-      "/work/social/19.webp",
-      "/work/social/13.webp"
+      "/work/social/12.webp"
     ),
+  },
+  {
+    slug: "fydback",
+    index: "14d",
+    title: "Fydback — Feedback, Simplified",
+    client: "Fydback",
+    year: "2024",
+    category: "SaaS · Social",
+    sector: "Technology",
+    discipline: "Social · Product Marketing",
+    accent: "electric",
+    simple: true,
+    summary:
+      "Product social for Fydback — a customer-feedback platform shown clean and modern, with crisp UI floating in soft 3D space.",
+    tagline: "One place for customer feedback.",
+    cover: "/work/social/18.webp",
+    hero: "/work/social/18.webp",
+    tags: ["SaaS", "Product Marketing", "Social"],
+    contribution: ["Product Marketing", "UI Visual", "Social"],
+    gallery: g("/work/social/18.webp"),
+  },
+  {
+    slug: "english-academy",
+    index: "14e",
+    title: "English Academy — تصير حريف",
+    client: "Language Academy",
+    year: "2024",
+    category: "Education · Social",
+    sector: "Technology",
+    discipline: "Social · Enrolment Campaign",
+    accent: "electric",
+    simple: true,
+    summary:
+      "Enrolment-focused social for an English-language academy — a clear offer, accreditation trust cues and an aspirational “become fluent” hook.",
+    tagline: "Become fluent — for less.",
+    cover: "/work/social/19.webp",
+    hero: "/work/social/19.webp",
+    tags: ["Education", "Enrolment", "Social"],
+    contribution: ["Creative Direction", "Social", "Enrolment"],
+    gallery: g("/work/social/19.webp"),
   },
 ];
 

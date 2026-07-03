@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useLang } from "@/lib/i18n";
+import { withBase } from "@/lib/base";
 import { openConsult } from "@/components/ConsultModal";
 
 // LMS-style course player (reference: al mentor). A track dropdown up top,
@@ -42,9 +43,6 @@ export default function CourseView() {
     }
   };
 
-  const ctrlBtn =
-    "grid h-9 w-9 place-items-center rounded-full text-white/80 transition-colors hover:text-white";
-
   return (
     <section className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32">
       {/* header */}
@@ -54,10 +52,17 @@ export default function CourseView() {
         </Reveal>
         <Reveal>
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-2 rounded-full border border-mint/40 bg-mint/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-mint">
-              <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-              {c.freeTag}
-            </span>
+            {track.free ? (
+              <span className="flex items-center gap-2 rounded-full border border-mint/40 bg-mint/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-mint">
+                <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                {c.freeTag}
+              </span>
+            ) : (
+              <span className="flex items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-electric">
+                <span className="h-1.5 w-1.5 rounded-full bg-electric" />
+                {c.premiumTag}
+              </span>
+            )}
             <button
               type="button"
               onClick={share}
@@ -108,35 +113,45 @@ export default function CourseView() {
         {/* player */}
         <div className="lg:col-span-2">
           <div className="overflow-hidden rounded-2xl border border-line/12 bg-ink-800/40">
-            {/* wireframe video */}
-            <div className="relative flex aspect-video items-center justify-center bg-ink-900">
-              <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
-              <div className="pointer-events-none absolute inset-8 rounded-lg border border-dashed border-line/15" />
-              <div className="relative flex flex-col items-center gap-3 text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full border border-line/25 text-bone-200">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-                <span className="text-xs uppercase tracking-ultra text-bone-400">
-                  {c.comingSoon}
-                </span>
-              </div>
-              {/* fake controls bar */}
-              <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 px-4 pb-3 pt-8">
-                <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/15">
-                  <div className="h-full w-0 rounded-full bg-mint" />
+            {track.free ? (
+              /* free track — real (test) video with native controls */
+              <video
+                key={ti}
+                src={withBase("/course/test.mp4")}
+                poster={withBase("/course/test.jpg")}
+                controls
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full bg-black"
+              />
+            ) : (
+              /* paid track — locked / premium state */
+              <div className="relative flex aspect-video items-center justify-center bg-ink-900">
+                <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
+                <div className="pointer-events-none absolute inset-8 rounded-lg border border-dashed border-line/15" />
+                <div className="relative flex max-w-sm flex-col items-center gap-3 px-6 text-center">
+                  <span className="grid h-16 w-16 place-items-center rounded-full border border-electric/40 text-electric">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <span className="text-sm font-semibold text-bone-50">
+                    {c.lockedTitle}
+                  </span>
+                  <span className="text-xs leading-relaxed text-bone-400">
+                    {c.lockedNote}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={openConsult}
+                    className="mt-1 rounded-full bg-bone-50 px-5 py-2.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
+                  >
+                    {c.getAccess}
+                  </button>
                 </div>
-                <span className="text-[11px] tabular-nums text-white/70">
-                  00:00 / {lesson.dur}
-                </span>
-                <span className={ctrlBtn}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
               </div>
-            </div>
+            )}
 
             {/* lesson meta */}
             <div className="p-5 md:p-6">

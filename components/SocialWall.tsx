@@ -9,8 +9,8 @@ const exclude = new Set([23, 29, 30, 31]);
 const all = Array.from({ length: 33 }, (_, i) => i + 1)
   .filter((n) => !exclude.has(n))
   .map((n) => `/work/social/${String(n).padStart(2, "0")}.webp`);
-const per = Math.ceil(all.length / 3);
-const rows = [all.slice(0, per), all.slice(per, per * 2), all.slice(per * 2)];
+const per = Math.ceil(all.length / 2);
+const rows = [all.slice(0, per), all.slice(per)];
 
 function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
   const track = [...imgs, ...imgs];
@@ -53,7 +53,6 @@ export default function SocialWall() {
       <div className="flex flex-col gap-4">
         <Row imgs={rows[0]} />
         <Row imgs={rows[1]} reverse />
-        <Row imgs={rows[2]} />
       </div>
     </section>
   );
