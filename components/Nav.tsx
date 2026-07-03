@@ -12,6 +12,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [courseOpen, setCourseOpen] = useState(false);
   const pathname = usePathname();
   const { t, toggle } = useLang();
 
@@ -41,6 +42,17 @@ export default function Nav() {
     };
   }, [open]);
 
+  // close the course dropdown on outside click
+  useEffect(() => {
+    if (!courseOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest("[data-course-menu]"))
+        setCourseOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [courseOpen]);
+
   return (
     <>
       <header
@@ -66,19 +78,86 @@ export default function Nav() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {links.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`link-underline text-sm transition-colors ${
-                  isActive(item.href)
-                    ? "text-mint"
-                    : "text-bone-200 hover:text-bone-50"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {links.map((item) =>
+              item.href === "/course" ? (
+                <div
+                  key={item.href}
+                  className="relative"
+                  data-course-menu
+                  onMouseEnter={() => setCourseOpen(true)}
+                  onMouseLeave={() => setCourseOpen(false)}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setCourseOpen((v) => !v)}
+                    className={`link-underline flex items-center gap-1 text-sm transition-colors ${
+                      isActive(item.href)
+                        ? "text-mint"
+                        : "text-bone-200 hover:text-bone-50"
+                    }`}
+                    aria-haspopup="menu"
+                    aria-expanded={courseOpen}
+                  >
+                    {item.label}
+                    <span className="text-[0.6rem]">▾</span>
+                  </button>
+                  <AnimatePresence>
+                    {courseOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.2 }}
+                        role="menu"
+                        className="absolute left-1/2 top-full w-64 -translate-x-1/2 pt-4 rtl:left-auto rtl:right-1/2 rtl:translate-x-1/2"
+                      >
+                        <div className="overflow-hidden rounded-xl border border-line/15 bg-ink-800/95 p-2 shadow-2xl backdrop-blur-xl">
+                          {t.course.tracks.map((tr, i) => (
+                            <Link
+                              key={tr.n}
+                              href={`/course?track=${i}`}
+                              onClick={() => setCourseOpen(false)}
+                              role="menuitem"
+                              className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-ink-900"
+                            >
+                              <span className="min-w-0">
+                                <span className="block text-xs text-bone-500">
+                                  {tr.n}
+                                </span>
+                                <span className="block truncate text-sm text-bone-50">
+                                  {tr.title}
+                                </span>
+                              </span>
+                              <span
+                                className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] ${
+                                  tr.free
+                                    ? "bg-mint/15 text-mint"
+                                    : "bg-electric/15 text-electric"
+                                }`}
+                              >
+                                {tr.free ? t.course.free : t.course.premiumTag}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`link-underline text-sm transition-colors ${
+                    isActive(item.href)
+                      ? "text-mint"
+                      : "text-bone-200 hover:text-bone-50"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-3">

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useLang } from "@/lib/i18n";
 import { withBase } from "@/lib/base";
 import { openConsult } from "@/components/ConsultModal";
+import { openPayment } from "@/components/PaymentModal";
 
 // LMS-style course player (reference: al mentor). A track dropdown up top,
 // a wireframe video player on the left, and a curriculum sidebar on the
@@ -18,8 +19,27 @@ export default function CourseView() {
   const [li, setLi] = useState(0); // lesson index
   const [copied, setCopied] = useState(false);
 
+  // Preselect a track from ?track=<i> (used by the nav "Course" dropdown)
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search).get("track");
+    const n = Number(p);
+    if (p !== null && !Number.isNaN(n) && n >= 0 && n < c.tracks.length) {
+      setTi(n);
+      setLi(0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const playerRef = useRef<HTMLDivElement>(null);
   const track = c.tracks[ti];
   const lesson = track.modules[li];
+
+  const toggleFullscreen = () => {
+    const el = playerRef.current;
+    if (!el) return;
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else el.requestFullscreen?.().catch(() => {});
+  };
   const other = c.tracks[(ti + 1) % c.tracks.length];
   const otherIndex = (ti + 1) % c.tracks.length;
   const progress = ((li + 1) / track.modules.length) * 100;
@@ -112,14 +132,32 @@ export default function CourseView() {
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {/* player */}
         <div className="lg:col-span-2">
-          <div className="overflow-hidden rounded-2xl border border-line/12 bg-ink-800/40">
+          <div
+            ref={playerRef}
+            className="relative overflow-hidden rounded-2xl border border-line/12 bg-ink-800/40"
+          >
+            {/* fullscreen toggle */}
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              aria-label="Fullscreen"
+              className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full border border-white/25 bg-black/40 text-white backdrop-blur-md transition-colors hover:border-mint/60 hover:text-mint"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </button>
             {track.free ? (
-              /* free track — real (test) video with native controls */
+              /* free track — real (test) video; download/PiP/right-click disabled */
               <video
                 key={ti}
                 src={withBase("/course/test.mp4")}
                 poster={withBase("/course/test.jpg")}
                 controls
+                controlsList="nodownload noremoteplayback noplaybackrate"
+                disablePictureInPicture
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
                 playsInline
                 preload="metadata"
                 className="aspect-video w-full bg-black"
@@ -144,7 +182,7 @@ export default function CourseView() {
                   </span>
                   <button
                     type="button"
-                    onClick={openConsult}
+                    onClick={openPayment}
                     className="mt-1 rounded-full bg-bone-50 px-5 py-2.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
                   >
                     {c.getAccess}

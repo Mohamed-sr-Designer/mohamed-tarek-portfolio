@@ -8,6 +8,7 @@ import {
 import { site } from "@/lib/site";
 import { LangProvider } from "@/lib/i18n";
 import ConsultModal from "@/components/ConsultModal";
+import PaymentModal from "@/components/PaymentModal";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -190,6 +191,7 @@ export default function RootLayout({
           <Cursor />
           <WhatsAppButton />
           <ConsultModal />
+          <PaymentModal />
           {children}
         </LangProvider>
       </body>

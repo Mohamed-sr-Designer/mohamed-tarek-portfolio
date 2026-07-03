@@ -35,3 +35,22 @@ export const nav = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
+// ---- Premium course payment config ----
+// EDIT these with your real details. Manual methods are live; the gateways
+// are UI-ready and wait for their API keys (see components/PaymentModal.tsx).
+export const payments = {
+  price: "EGP 499", // TODO: set the real course price
+  currency: "EGP",
+  manual: {
+    instapay: "mohamedtarek@instapay", // TODO: your real InstaPay address/handle
+    vodafoneCash: "01011458929", // TODO: your real Vodafone Cash number
+  },
+  // Payment gateways — set enabled:true once the API/keys are wired.
+  gateways: [
+    { id: "paymob", label: "Paymob", enabled: false },
+    { id: "fawry", label: "Fawry", enabled: false },
+    { id: "valu", label: "valU", enabled: false },
+    { id: "aman", label: "Aman", enabled: false },
+  ],
+};

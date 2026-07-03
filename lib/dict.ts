@@ -372,6 +372,28 @@ const en = {
     onlineNote:
       "On-site training is available in Egypt only — outside Egypt, academy training runs online.",
   },
+  pay: {
+    title: "Get Premium Access",
+    subtitle:
+      "The paid AI Video track. Choose a method, then send your payment screenshot on WhatsApp — I activate your access personally.",
+    priceLabel: "Course price",
+    manualLabel: "Pay now (instant activation)",
+    copy: "Copy",
+    copied: "Copied ✓",
+    steps: [
+      "Transfer the amount to InstaPay or Vodafone Cash below.",
+      "Take a screenshot of the transfer.",
+      "Send the screenshot to me on WhatsApp — I activate your access.",
+    ],
+    sendWa: "Send payment screenshot on WhatsApp ↗",
+    gatewaysLabel: "Or pay by card / wallet",
+    soon: "Soon",
+    secureNote:
+      "You pay the provider directly — this site stores no card data and processes no payment.",
+    close: "Close",
+    waMsg:
+      "Hi Mohamed — I'd like to enrol in the paid AI Video course. My payment screenshot is attached.",
+  },
   course: {
     metaTitle: "Course — AI Photoshoot, Prompt Engineering & AI Video",
     metaDesc:
@@ -977,6 +999,27 @@ const ar: typeof en = {
     waIntro: "طلب استشارة جديد من البورتفوليو:",
     onlineNote:
       "التدريب الحضوري متاح داخل مصر فقط — خارج مصر يكون تدريب الأكاديميات أونلاين.",
+  },
+  pay: {
+    title: "احصل على وصول بريميم",
+    subtitle:
+      "مسار الفيديو المدفوع. اختر طريقة، وابعت سكرين شوت الدفع على الواتساب — وأنا أفعّل وصولك بنفسي.",
+    priceLabel: "سعر الكورس",
+    manualLabel: "ادفع الآن (تفعيل فوري)",
+    copy: "نسخ",
+    copied: "تم النسخ ✓",
+    steps: [
+      "حوّل المبلغ على إنستا باي أو فودافون كاش تحت.",
+      "صوّر سكرين شوت للتحويل.",
+      "ابعت السكرين شوت على الواتساب — وأنا أفعّل وصولك.",
+    ],
+    sendWa: "ابعت سكرين شوت الدفع على الواتساب ↗",
+    gatewaysLabel: "أو ادفع بالكارت / المحفظة",
+    soon: "قريبًا",
+    secureNote:
+      "بتدفع للمزوّد مباشرة — الموقع لا يخزّن بيانات كروت ولا يعالج أي دفع.",
+    close: "إغلاق",
+    waMsg: "أهلاً محمد — عايز أشترك في كورس الفيديو المدفوع، ومرفق سكرين شوت الدفع.",
   },
   course: {
     metaTitle: "كورس — فوتوشوت بالذكاء الاصطناعي وهندسة البرومبت وفيديو AI",
