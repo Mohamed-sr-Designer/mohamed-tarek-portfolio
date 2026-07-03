@@ -1,5 +1,8 @@
+"use client";
+
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { useLang } from "@/lib/i18n";
 
 type Tool = { name: string; role: string; mono: string; color: string };
 
@@ -43,22 +46,24 @@ function ToolCard({ t }: { t: Tool }) {
 }
 
 export default function Tools() {
+  const { t } = useLang();
   return (
     <section className="container-edge mx-auto max-w-edge py-20 md:py-28">
       <Reveal>
-        <SectionLabel index="06">Toolkit</SectionLabel>
+        <SectionLabel index="06">{t.tools.label}</SectionLabel>
       </Reveal>
       <Reveal delay={0.05}>
         <h2 className="mt-6 max-w-2xl text-balance font-sans text-3xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-5xl">
-          Craft tools, sharpened with{" "}
-          <span className="font-serif italic text-mint">AI</span>.
+          {t.tools.h2a}{" "}
+          <span className="font-serif italic text-mint">{t.tools.h2i}</span>
+          {t.tools.h2b}
         </h2>
       </Reveal>
 
       <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="mb-5 text-xs uppercase tracking-ultra text-bone-400">
-            AI Toolkit
+            {t.tools.aiCol}
           </p>
           <Stagger className="grid gap-3 sm:grid-cols-2">
             {ai.map((t) => (
@@ -68,7 +73,7 @@ export default function Tools() {
         </div>
         <div>
           <p className="mb-5 text-xs uppercase tracking-ultra text-bone-400">
-            Design & Motion
+            {t.tools.craftCol}
           </p>
           <Stagger className="grid gap-3 sm:grid-cols-2">
             {craft.map((t) => (

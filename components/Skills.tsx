@@ -1,31 +1,20 @@
+"use client";
+
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-
-const groups = [
-  {
-    title: "Direction & Strategy",
-    items: ["Creative Direction", "Brand Strategy", "Campaign Design", "Creative Thinking"],
-  },
-  {
-    title: "Craft & Systems",
-    items: ["Visual Identity", "Social Media Systems", "Motion Design", "Marketing Communication"],
-  },
-  {
-    title: "Production",
-    items: ["Photo Manipulation", "Key Visuals", "UI Design", "AI Prompt Engineering", "Vibe Coding"],
-  },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Skills() {
+  const { t } = useLang();
   return (
     <section className="border-y border-line/10 bg-ink-800/40">
       <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
         <Reveal>
-          <SectionLabel index="05">Capabilities</SectionLabel>
+          <SectionLabel index="05">{t.skills.label}</SectionLabel>
         </Reveal>
 
         <Stagger className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
-          {groups.map((grp) => (
+          {t.skills.groups.map((grp) => (
             <StaggerItem key={grp.title}>
               <h3 className="text-sm uppercase tracking-ultra text-bone-400">
                 {grp.title}

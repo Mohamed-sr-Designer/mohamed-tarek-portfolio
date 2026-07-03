@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { withBase } from "@/lib/base";
+import { useLang } from "@/lib/i18n";
 import motionData from "@/lib/motion.json";
 
 type Clip = {
@@ -149,6 +150,7 @@ function Lightbox({ clip, onClose }: { clip: Clip; onClose: () => void }) {
 
 export default function Motion() {
   const [expanded, setExpanded] = useState<Clip | null>(null);
+  const { t } = useLang();
 
   return (
     <section
@@ -158,19 +160,21 @@ export default function Motion() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="03">Motion & Video</SectionLabel>
+            <SectionLabel index="03">{t.motion.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              When a still isn&apos;t{" "}
-              <span className="font-serif font-normal italic text-mint">enough</span>.
+              {t.motion.h2a}{" "}
+              <span className="font-serif font-normal italic text-mint">
+                {t.motion.h2i}
+              </span>
+              {t.motion.h2b}
             </h2>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Brand films, social reels and animation — tap the speaker to hear it,
-            or expand any clip to watch larger.
+            {t.motion.note}
           </p>
         </Reveal>
       </div>

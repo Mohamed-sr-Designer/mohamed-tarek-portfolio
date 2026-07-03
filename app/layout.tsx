@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Hanken_Grotesk, Fraunces } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Hanken_Grotesk,
+  Fraunces,
+  IBM_Plex_Sans_Arabic,
+} from "next/font/google";
 import { site } from "@/lib/site";
+import { LangProvider } from "@/lib/i18n";
+import ConsultModal from "@/components/ConsultModal";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -25,6 +32,13 @@ const serif = Fraunces({
   variable: "--font-serif",
   display: "swap",
   style: ["normal", "italic"],
+});
+
+const arabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-ar",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -157,22 +171,27 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${display.variable} ${sans.variable} ${serif.variable}`}
+      className={`${display.variable} ${sans.variable} ${serif.variable} ${arabic.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
       </head>
       <body className="bg-ink-900 font-sans text-bone-50 antialiased">
-        <Preloader />
-        <SmoothScroll />
-        <ScrollProgress />
-        <Cursor />
-        <WhatsAppButton />
-        {children}
+        <LangProvider>
+          <Preloader />
+          <SmoothScroll />
+          <ScrollProgress />
+          <Cursor />
+          <WhatsAppButton />
+          <ConsultModal />
+          {children}
+        </LangProvider>
       </body>
     </html>
   );

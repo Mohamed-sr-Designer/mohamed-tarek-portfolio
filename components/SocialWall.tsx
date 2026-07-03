@@ -1,4 +1,7 @@
+"use client";
+
 import { Media } from "@/components/ui/Media";
+import { useLang } from "@/lib/i18n";
 
 // Social-media designs only (from the Social media posts library).
 // Exclude duplicate/near-duplicate designs (23, 29, 30, 31).
@@ -37,12 +40,13 @@ function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
 }
 
 export default function SocialWall() {
+  const { t } = useLang();
   return (
     <section className="overflow-hidden py-20 md:py-28">
       <div className="container-edge mx-auto mb-8 flex max-w-edge items-center justify-between text-xs uppercase tracking-ultra text-bone-400">
-        <span>Social media — a wall of recent posts</span>
+        <span>{t.social.label}</span>
         <a href="#work" className="link-underline text-bone-200">
-          Browse the work ↑
+          {t.social.browse}
         </a>
       </div>
 

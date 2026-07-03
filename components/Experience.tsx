@@ -1,5 +1,8 @@
+"use client";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { useLang } from "@/lib/i18n";
 
 type Role = { title: string; period: string; current?: boolean; returned?: boolean };
 type Job = {
@@ -95,7 +98,15 @@ const jobs: Job[] = [
   },
 ];
 
-function Ladder({ roles }: { roles: Role[] }) {
+function Ladder({
+  roles,
+  promoted,
+  returned,
+}: {
+  roles: Role[];
+  promoted: string;
+  returned: string;
+}) {
   return (
     <ol className="relative ml-1 border-l border-line/15">
       {roles.map((r, i) => (
@@ -116,11 +127,11 @@ function Ladder({ roles }: { roles: Role[] }) {
               </span>
               {r.returned ? (
                 <span className="text-[10px] uppercase tracking-widest text-mint">
-                  ↩ Returned to lead
+                  {returned}
                 </span>
               ) : i !== roles.length - 1 ? (
                 <span className="text-[10px] uppercase tracking-widest text-mint">
-                  ↑ Promoted
+                  {promoted}
                 </span>
               ) : null}
             </div>
@@ -133,6 +144,7 @@ function Ladder({ roles }: { roles: Role[] }) {
 }
 
 export default function Experience() {
+  const { t } = useLang();
   return (
     <section
       id="experience"
@@ -141,19 +153,19 @@ export default function Experience() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="02">Experience</SectionLabel>
+            <SectionLabel index="02">{t.exp.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              The companies that{" "}
-              <span className="font-serif italic text-mint">shaped</span> me.
+              {t.exp.h2a}{" "}
+              <span className="font-serif italic text-mint">{t.exp.h2i}</span>{" "}
+              {t.exp.h2b}
             </h2>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Across Egypt &amp; Saudi Arabia — newest first. From graphic
-            designer, to teaching, to leading an art team.
+            {t.exp.note}
           </p>
         </Reveal>
       </div>
@@ -170,7 +182,7 @@ export default function Experience() {
                   {j.current ? (
                     <span className="flex items-center gap-1.5 rounded-full border border-mint/40 bg-mint/5 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-mint">
                       <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-                      Now
+                      {t.exp.now}
                     </span>
                   ) : null}
                 </div>
@@ -182,7 +194,13 @@ export default function Experience() {
               </div>
 
               <div className="md:col-span-8">
-                {j.roles ? <Ladder roles={j.roles} /> : null}
+                {j.roles ? (
+                  <Ladder
+                    roles={j.roles}
+                    promoted={t.exp.promoted}
+                    returned={t.exp.returned}
+                  />
+                ) : null}
                 <p
                   className={`text-pretty text-sm leading-relaxed text-bone-400 md:text-base ${
                     j.roles ? "mt-4 border-t border-line/10 pt-4" : ""

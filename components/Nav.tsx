@@ -4,13 +4,23 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { useLang } from "@/lib/i18n";
+import { openConsult } from "@/components/ConsultModal";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { t, toggle } = useLang();
+
+  const links = [
+    { label: t.nav.work, href: "/" },
+    { label: t.nav.about, href: "/about" },
+    { label: t.nav.course, href: "/course" },
+    { label: t.nav.contact, href: "/contact" },
+  ];
 
   const isActive = (href: string) =>
     href === "/"
@@ -50,13 +60,13 @@ export default function Nav() {
               MT
             </span>
             <span className="hidden text-sm tracking-tight text-bone-200 sm:block">
-              Mohamed Tarek
-              <span className="text-bone-400"> — Team Lead</span>
+              {site.name}
+              <span className="text-bone-400"> {t.nav.roleTag}</span>
             </span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {nav.map((item) => (
+            {links.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -72,13 +82,22 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggle}
+              className="rounded-full border border-line/20 px-3 py-2 text-xs font-medium text-bone-200 transition-colors hover:border-mint/50 hover:text-mint"
+              aria-label="Switch language"
+            >
+              {t.nav.langBtn}
+            </button>
             <ThemeToggle />
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={openConsult}
               className="hidden rounded-full border border-line/20 px-5 py-2 text-sm text-bone-50 transition-all duration-300 hover:border-mint/50 hover:bg-mint/5 md:inline-block"
             >
-              Let&apos;s talk
-            </Link>
+              {t.nav.letsTalk}
+            </button>
             <button
               onClick={() => setOpen((v) => !v)}
               className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
@@ -110,7 +129,7 @@ export default function Nav() {
             className="fixed inset-0 z-40 flex flex-col justify-center bg-ink-900 px-8 md:hidden"
           >
             <nav className="flex flex-col gap-2">
-              {nav.map((item, i) => (
+              {links.map((item, i) => (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, y: 20 }}
@@ -130,7 +149,17 @@ export default function Nav() {
                 </motion.div>
               ))}
             </nav>
-            <a href={`mailto:${site.email}`} className="mt-12 text-sm text-mint">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openConsult();
+              }}
+              className="mt-10 w-fit rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900"
+            >
+              {t.nav.letsTalk}
+            </button>
+            <a href={`mailto:${site.email}`} className="mt-6 text-sm text-mint">
               {site.email}
             </a>
           </motion.div>

@@ -52,6 +52,20 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* Arabic: swap type stack (incl. display headings) and relax tracking */
+[dir="rtl"] body,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] .font-display,
+[dir="rtl"] .font-serif {
+  font-family: var(--font-ar), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+[dir="rtl"] .italic {
+  font-style: normal;
+}
+
 h1,
 h2,
 h3,

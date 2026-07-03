@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
+import { useLang } from "@/lib/i18n";
 import { projects, sectors, type Project } from "@/lib/projects";
 
 // One compact, recruiter-friendly work section: industry tabs — click a
@@ -15,36 +16,22 @@ const groups = sectors.map((s) => ({
   items: projects.filter((p) => p.sector === s),
 }));
 
-// One crawlable, keyword-bearing line per industry (SEO/GEO + quick scan).
-const blurbs: Record<string, string> = {
-  Technology:
-    "Cybersecurity and HR-SaaS campaigns — complex products made human, in Arabic and English.",
-  "Food & Retail":
-    "Premium gifting and produce brands — identity, packaging and campaigns that sell the feeling.",
-  "Real Estate":
-    "Bilingual AR/EN campaigns for luxury developments in Makkah and the Gulf.",
-  "Marketing & Agency":
-    "3D concept campaigns and scalable social systems for agencies and multi-brand feeds.",
-  Hospitality:
-    "B2B hospitality supply made five-star — cinematic key visuals and cross-channel social.",
-  Automotive:
-    "Geely & GWM key visuals — retouching, colour grading and calm, premium light.",
-};
-
 function Card({ p }: { p: Project }) {
+  const { t } = useLang();
+  const tr = t.projects[p.slug] ?? {};
   return (
     <Link href={`/work/${p.slug}`} className="group block h-full">
       <div className="flex h-full flex-col rounded-2xl border border-line/10 bg-ink-800/60 p-4 transition-all duration-500 ease-cinema hover:-translate-y-1.5 hover:border-line/25 md:p-5">
         <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-700">
           <Media
             src={p.cover}
-            alt={p.title}
+            alt={tr.title ?? p.title}
             fill
             sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
             className="object-cover transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.04]"
           />
           <span className="absolute right-4 top-4 rounded-full border border-white/25 bg-black/30 px-4 py-1.5 text-xs uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
-            View case ↗
+            {t.work.viewCase}
           </span>
         </div>
         <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -56,14 +43,14 @@ function Card({ p }: { p: Project }) {
               p.accent === "mint" ? "text-mint" : "text-electric"
             }`}
           >
-            {p.category}
+            {tr.category ?? p.category}
           </span>
         </div>
         <h3 className="mt-3 text-lg font-semibold tracking-tight text-bone-50 md:text-xl">
-          {p.title}
+          {tr.title ?? p.title}
         </h3>
         <p className="mt-1.5 text-sm leading-relaxed text-bone-400">
-          {p.tagline}
+          {tr.tagline ?? p.tagline}
         </p>
       </div>
     </Link>
@@ -72,6 +59,7 @@ function Card({ p }: { p: Project }) {
 
 export default function SelectedWork() {
   const [active, setActive] = useState(groups[0].sector);
+  const { t } = useLang();
 
   return (
     <section
@@ -81,22 +69,21 @@ export default function SelectedWork() {
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="01">Selected Work</SectionLabel>
+            <SectionLabel index="01">{t.work.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              Work, organised by the{" "}
+              {t.work.h2a}{" "}
               <span className="font-serif font-normal italic text-bone-200">
-                industry
+                {t.work.h2i}
               </span>{" "}
-              it was built for.
+              {t.work.h2b}
             </h2>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            Nine case studies across six industries — pick a sector, open a
-            case.
+            {t.work.note}
           </p>
         </Reveal>
       </div>
@@ -124,7 +111,7 @@ export default function SelectedWork() {
                     : "border-line/15 text-bone-300 hover:border-line/35 hover:text-bone-50"
                 }`}
               >
-                {g.sector}
+                {t.work.sectors[g.sector] ?? g.sector}
                 <span
                   className={`text-xs ${
                     isActive ? "text-ink-900/60" : "text-bone-500"
@@ -148,7 +135,7 @@ export default function SelectedWork() {
           className="mt-10"
         >
           <p className="max-w-2xl text-pretty text-base leading-relaxed text-bone-300 md:text-lg">
-            {blurbs[g.sector]}
+            {t.work.blurbs[g.sector]}
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {g.items.map((p) => (

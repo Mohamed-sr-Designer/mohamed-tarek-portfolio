@@ -1,33 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-const ease = [0.76, 0, 0.24, 1] as const;
+const ease = [0.16, 1, 0.3, 1] as const;
 
-// Re-mounts on every route change → plays a wipe + content reveal.
+// Lightweight, creative route transition — NOT a loading screen.
+// The incoming page clips up from the bottom while a thin accent line
+// sweeps across the top. Fast and non-blocking.
 export default function Template({ children }: { children: React.ReactNode }) {
+  const reduce = useReducedMotion();
+
+  if (reduce) return <>{children}</>;
+
   return (
     <>
+      {/* accent sweep */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed inset-0 z-[80] origin-top bg-ink-900"
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
+        className="pointer-events-none fixed left-0 top-0 z-[82] h-[3px] w-full origin-left bg-mint"
+        initial={{ scaleX: 0, opacity: 1 }}
+        animate={{ scaleX: 1, opacity: 0 }}
         transition={{ duration: 0.7, ease }}
       />
+      {/* content reveal */}
       <motion.div
-        aria-hidden
-        className="pointer-events-none fixed left-1/2 top-1/2 z-[81] -translate-x-1/2 -translate-y-1/2 font-display text-2xl font-semibold tracking-tight text-mint"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 0.45, ease }}
-      >
-        MT
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease, delay: 0.18 }}
+        initial={{ clipPath: "inset(18% 0 0 0)", opacity: 0, y: 18 }}
+        animate={{ clipPath: "inset(0% 0 0 0)", opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease }}
       >
         {children}
       </motion.div>

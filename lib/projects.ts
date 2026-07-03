@@ -71,18 +71,18 @@ export const projects: Project[] = [
   {
     slug: "axia",
     index: "02",
-    title: "AXIA — Gifting, Reimagined",
+    title: "AXIA — AI Photoshoot & Retouch",
     client: "AXIA",
     year: "2025",
-    category: "Brand Campaign",
+    category: "AI Photoshoot · Retouch",
     sector: "Food & Retail",
-    discipline: "Creative Direction · Brand World · Social",
+    discipline: "AI Production · Retouching · Creative Direction",
     accent: "mint",
     summary:
-      "A warm, editorial brand world for a premium handmade gifting label — full campaign craft produced with AI, no shoot.",
-    tagline: "How we turned gifting from a transaction into a feeling.",
+      "A full premium photoshoot produced with AI — directed, retouched and graded until it reads like a real campaign. No camera, all craft.",
+    tagline: "A full campaign photoshoot — no camera, all AI and retouch.",
     cover: "/work/axia/insta-2.webp",
-    hero: "/work/axia/hero.webp",
+    hero: "/work/axia/banner-her.webp",
     tags: ["Creative Direction", "Brand World", "AI Production", "Social System"],
     challenge:
       "AXIA is a premium handmade gifting brand entering a crowded, discount-driven market — and it needed a world that felt personal and unmistakably premium, without the budget for a full photo production.",
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     summary:
       "Premium, calm key visuals for Geely — communicating reliability and after-sales service through retouching, light and colour, never feeling generic.",
     tagline: "How we kept it premium and calm while selling reliability.",
-    cover: "/work/auto/hero.webp",
+    cover: "/work/auto/04.webp",
     hero: "/work/auto/geely-rental.webp",
     tags: ["Service Communication", "Advertising", "Key Visual", "Retouching"],
     challenge:

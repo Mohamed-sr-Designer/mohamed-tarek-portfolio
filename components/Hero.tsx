@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/site";
+import { useLang } from "@/lib/i18n";
+import { openConsult } from "@/components/ConsultModal";
 import { Media } from "@/components/ui/Media";
 import Magnetic from "@/components/ui/Magnetic";
 import GridField from "@/components/ui/GridField";
@@ -50,6 +52,7 @@ function SocialIcon({
 
 export default function Hero() {
   const reduce = useReducedMotion();
+  const { t } = useLang();
 
   return (
     <section
@@ -81,9 +84,9 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
             </span>
-            Available — Freelance · Part-time · Hybrid
+            {t.hero.avail}
           </span>
-          <span className="hidden sm:block">Portfolio — 2026</span>
+          <span className="hidden sm:block">{t.hero.portfolio}</span>
         </motion.div>
 
         <div className="mt-8 grid items-center gap-10 lg:mt-10 lg:grid-cols-12 lg:gap-14">
@@ -95,17 +98,16 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.35 }}
               className="mb-6 text-sm text-bone-400 md:text-base"
             >
-              {site.name} · Art Director &amp; Team Lead · based in{" "}
-              {site.location}
+              {t.hero.intro}
             </motion.p>
 
             <h1 className="font-display text-[11vw] font-semibold leading-[0.98] tracking-[-0.03em] text-bone-50 sm:text-[8vw] lg:text-[4.3vw]">
-              <Line delay={0.45}>The graphic designer</Line>
-              <Line delay={0.58}>brands call when they</Line>
+              <Line delay={0.45}>{t.hero.l1}</Line>
+              <Line delay={0.58}>{t.hero.l2}</Line>
               <Line delay={0.71}>
-                need to be{" "}
+                {t.hero.l3pre}{" "}
                 <span className="font-serif font-light italic text-mint">
-                  unmissable.
+                  {t.hero.l3accent}
                 </span>
               </Line>
             </h1>
@@ -119,25 +121,26 @@ export default function Hero() {
             >
               <div className="flex flex-wrap items-center gap-4">
                 <Magnetic>
-                  <a
-                    href="#work"
+                  <button
+                    type="button"
+                    onClick={openConsult}
                     className="group flex items-center gap-3 rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors"
                   >
-                    Selected work
+                    {t.hero.ctaPrimary}
                     <motion.span
-                      animate={reduce ? {} : { y: [0, 4, 0] }}
+                      animate={reduce ? {} : { x: [0, 4, 0] }}
                       transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      ↓
+                      ✦
                     </motion.span>
-                  </a>
+                  </button>
                 </Magnetic>
                 <Magnetic>
                   <Link
                     href="/contact"
                     className="rounded-full border border-line/25 px-6 py-3 text-sm text-bone-50 transition-colors hover:border-mint/60 hover:text-mint"
                   >
-                    Hire me ↗
+                    {t.hero.ctaSecondary}
                   </Link>
                 </Magnetic>
                 <SocialIcon href={site.linkedin} label="LinkedIn">
@@ -155,7 +158,7 @@ export default function Hero() {
                 </SocialIcon>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-bone-400">
-                Working across {site.markets} — strategy first, craft always.
+                {t.hero.markets}
               </p>
             </motion.div>
           </div>
@@ -184,11 +187,11 @@ export default function Hero() {
                       {site.name}
                     </p>
                     <p className="text-xs uppercase tracking-[0.2em] text-white/70">
-                      Team Lead · {site.location}
+                      {t.hero.chipRole}
                     </p>
                   </div>
                   <span className="rounded-full border border-white/25 bg-black/30 px-3 py-1 text-[0.65rem] uppercase tracking-widest text-white backdrop-blur-md">
-                    Art Direction
+                    {t.hero.chipBadge}
                   </span>
                 </div>
               </div>

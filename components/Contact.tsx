@@ -1,8 +1,13 @@
+"use client";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { site, contacts } from "@/lib/site";
+import { useLang } from "@/lib/i18n";
+import { openConsult } from "@/components/ConsultModal";
 
 export default function Contact() {
+  const { t } = useLang();
   return (
     <section
       id="contact"
@@ -14,33 +19,40 @@ export default function Contact() {
 
       <div className="container-edge mx-auto max-w-edge">
         <Reveal>
-          <SectionLabel index="01">Contact</SectionLabel>
+          <SectionLabel index="01">{t.contact.label}</SectionLabel>
         </Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="mt-10 max-w-4xl text-balance font-sans text-5xl font-light leading-[1.02] tracking-tightest text-bone-50 md:text-8xl">
-            Let&apos;s make work that&apos;s{" "}
-            <span className="font-serif italic text-mint">remembered.</span>
+            {t.contact.h2a}{" "}
+            <span className="font-serif italic text-mint">{t.contact.h2i}</span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-bone-200">
-            Open to new roles, freelance projects and creative
-            collaborations across {site.markets}. If you&apos;re building
-            something ambitious, I&apos;d love to hear about it.
+            {t.contact.body}
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <a
-            href={`mailto:${site.email}`}
-            className="group mt-12 inline-flex max-w-full items-center gap-4 break-words"
-          >
-            <span className="font-sans text-[clamp(1.05rem,5vw,2.5rem)] font-light tracking-tight text-bone-50 transition-colors duration-300 group-hover:text-mint">
-              {site.email}
-            </span>
-          </a>
+          <div className="mt-12 flex flex-wrap items-center gap-4">
+            <button
+              type="button"
+              onClick={openConsult}
+              className="rounded-full bg-bone-50 px-7 py-3.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
+            >
+              {t.modal.title} ✦
+            </button>
+            <a
+              href={`mailto:${site.email}`}
+              className="group inline-flex max-w-full items-center gap-4 break-words text-bone-50"
+            >
+              <span className="font-sans text-[clamp(1rem,4vw,1.6rem)] font-light tracking-tight transition-colors duration-300 group-hover:text-mint">
+                {site.email}
+              </span>
+            </a>
+          </div>
         </Reveal>
 
         <Reveal delay={0.2}>
@@ -54,7 +66,7 @@ export default function Contact() {
                 className="group flex flex-col gap-2 bg-ink-900 p-6 transition-colors duration-300 hover:bg-ink-800"
               >
                 <span className="flex items-center gap-2 text-xs uppercase tracking-ultra text-bone-400">
-                  {c.label}
+                  {t.contact.labels[c.label] ?? c.label}
                   <span className="text-bone-500 transition-colors group-hover:text-mint">
                     ↗
                   </span>

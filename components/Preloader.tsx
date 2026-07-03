@@ -12,10 +12,18 @@ export default function Preloader() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
+    // Only ever play once per browser session (not on every route change).
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("preloaded") === "1";
+    } catch {}
+    if (reduce || seen) {
       setDone(true);
       return;
     }
+    try {
+      sessionStorage.setItem("preloaded", "1");
+    } catch {}
     document.body.style.overflow = "hidden";
     let n = 0;
     const id = setInterval(() => {

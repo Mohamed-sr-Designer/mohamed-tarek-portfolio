@@ -1,6 +1,9 @@
+"use client";
+
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
+import { useLang } from "@/lib/i18n";
 
 const sites = [
   {
@@ -48,25 +51,27 @@ const sites = [
 ];
 
 export default function WebProjects() {
+  const { t } = useLang();
   return (
     <section id="web" className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="04">Vibe Coding</SectionLabel>
+            <SectionLabel index="04">{t.web.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              I design — then I{" "}
-              <span className="font-serif font-normal italic text-mint">ship the code</span>.
+              {t.web.h2a}{" "}
+              <span className="font-serif font-normal italic text-mint">
+                {t.web.h2i}
+              </span>
+              {t.web.h2b}
             </h2>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
           <p className="max-w-sm text-sm leading-relaxed text-bone-400">
-            Live websites I designed <span className="text-bone-200">and built</span> through
-            vibe coding — AI-assisted development. Even this portfolio is
-            vibe-coded. Click any to open the live site.
+            {t.web.note}
           </p>
         </Reveal>
       </div>
@@ -107,7 +112,7 @@ export default function WebProjects() {
                   <p className="text-sm text-bone-400">{s.type}</p>
                 </div>
                 <span className="shrink-0 text-sm text-mint transition-transform duration-300 group-hover:translate-x-1">
-                  Live ↗
+                  {t.web.live}
                 </span>
               </div>
             </a>
