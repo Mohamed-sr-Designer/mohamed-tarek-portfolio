@@ -686,38 +686,3 @@ export function getAdjacent(slug: string): { next: Project } {
   return { next: projects[(i + 1) % projects.length] };
 }
 
-// A flat, shuffled-ish pool of strong frames for the home "visual index" mosaic.
-export const visualIndex: string[] = [
-  "/work/secure/hero.webp",
-  "/work/axia/hero.webp",
-  "/work/brandvitals/hero.webp",
-  "/work/tilal/02.webp",
-  "/work/hrlink/hero.webp",
-  "/work/auto/hero.webp",
-  "/work/fresh-valley/packaging.webp",
-  "/work/secure/cover.webp",
-  "/work/ihs/hero.webp",
-  "/work/social/01.webp",
-  "/work/axia/p12.webp",
-  "/work/brandvitals/06.webp",
-  "/work/tilal/hero.webp",
-  "/work/fresh-valley/fleet.webp",
-  "/work/secure/02.webp",
-  "/work/auto/02.webp",
-  "/work/hrlink/cover.webp",
-  "/work/social/04.webp",
-  "/work/axia/gift-her.webp",
-  "/work/ihs/room-2.webp",
-  "/work/fresh-valley/gift-1.webp",
-  "/work/tilal/06.webp",
-  "/work/brandvitals/hero.webp",
-  "/work/social/14.webp",
-  "/work/secure/03.webp",
-  "/work/auto/04.webp",
-  "/work/axia/p4.webp",
-  "/work/fresh-valley/palette.webp",
-  "/work/social/03.webp",
-  "/work/tilal/10.webp",
-  "/work/ihs/room-5.webp",
-  "/work/hrlink/01.webp",
-];
