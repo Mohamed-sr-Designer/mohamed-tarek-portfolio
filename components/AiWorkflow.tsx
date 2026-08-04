@@ -86,34 +86,64 @@ export default function AiWorkflow() {
                 </div>
               </div>
 
-              {/* 3 — the steps, as a calm readable strip */}
-              <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line/10 bg-line/10 sm:grid-cols-2 lg:grid-cols-5">
+              {/* 3 — the steps as a readable numbered rail */}
+              <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10 md:grid-cols-2 lg:grid-cols-3">
                 {wf.steps.map((s) => (
-                  <div key={s.n} className="bg-ink-900 p-6">
-                    <span className="font-serif text-3xl text-bone-500">
+                  <li key={s.n} className="flex gap-4 bg-ink-900 p-6">
+                    <span className="font-display text-sm tabular-nums text-mint">
                       {s.n}
                     </span>
-                    <h4 className="mt-2 text-base font-medium tracking-tight text-bone-50">
-                      {s.title}
-                    </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-bone-400">
-                      {s.body}
-                    </p>
-                  </div>
+                    <span className="min-w-0">
+                      <span className="block text-base font-medium tracking-tight text-bone-50">
+                        {s.title}
+                      </span>
+                      <span className="mt-1.5 block text-sm leading-relaxed text-bone-400">
+                        {s.body}
+                      </span>
+                    </span>
+                  </li>
                 ))}
-              </div>
-
-              {/* 4 — the outcome */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                {wf.results.map((r) => (
-                  <span
-                    key={r}
-                    className="rounded-full border border-line/15 bg-ink-900 px-4 py-2 text-sm text-bone-200"
-                  >
-                    {r}
+                {/* outcome sits in the same rail so the grid always fills */}
+                <li className="bg-ink-800/60 p-6">
+                  <span className="block text-[10px] uppercase tracking-ultra text-bone-500">
+                    {wf.resultsLabel}
                   </span>
-                ))}
-              </div>
+                  <span className="mt-3 flex flex-wrap gap-1.5">
+                    {wf.results.map((r) => (
+                      <span
+                        key={r}
+                        className="rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs text-bone-200"
+                      >
+                        {r}
+                      </span>
+                    ))}
+                  </span>
+                </li>
+              </ol>
+
+              {/* 4 — a glimpse of what the flow produced */}
+              {p.galleries?.length ? (
+                <div className="mt-6 grid grid-cols-3 gap-3 md:grid-cols-6">
+                  {p.galleries
+                    .flatMap((grp) => grp.items.slice(0, 3))
+                    .slice(0, 6)
+                    .map((it) => (
+                      <Link
+                        key={it.src}
+                        href={`/work/${p.slug}`}
+                        className="group relative aspect-square overflow-hidden rounded-lg bg-ink-700"
+                      >
+                        <Media
+                          src={it.src}
+                          alt={`${tr.title ?? p.title} — output`}
+                          fill
+                          sizes="150px"
+                          className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-110"
+                        />
+                      </Link>
+                    ))}
+                </div>
+              ) : null}
             </article>
           );
         })}

@@ -4,6 +4,7 @@ import LogoMarquee from "@/components/LogoMarquee";
 import AiWorkflow from "@/components/AiWorkflow";
 import MasterVisuals from "@/components/MasterVisuals";
 import SocialCards from "@/components/SocialCards";
+import Storyboards from "@/components/Storyboards";
 import Motion from "@/components/Motion";
 import WebProjects from "@/components/WebProjects";
 import LoopSlider from "@/components/LoopSlider";
@@ -18,6 +19,7 @@ export default function Home() {
       <AiWorkflow />
       <MasterVisuals />
       <SocialCards />
+      <Storyboards />
       <Motion />
       <WebProjects />
       <LoopSlider />

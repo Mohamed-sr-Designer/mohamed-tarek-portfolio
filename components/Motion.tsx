@@ -185,6 +185,7 @@ function Lightbox({ clip, onClose }: { clip: Clip; onClose: () => void }) {
 
 export default function Motion() {
   const [expanded, setExpanded] = useState<Clip | null>(null);
+  const [tab, setTab] = useState<"landscape" | "portrait">("landscape");
   const { t } = useLang();
 
   return (
@@ -214,29 +215,48 @@ export default function Motion() {
         </Reveal>
       </div>
 
-      {/* Landscape collection */}
-      <Reveal>
-        <p className="mt-12 text-xs uppercase tracking-ultra text-bone-400">
-          {t.motion.landscape}
-        </p>
+      {/* one collection at a time — showing all 21 at once was overwhelming */}
+      <Reveal delay={0.1}>
+        <div role="tablist" aria-label="Video collections" className="mt-10 flex flex-wrap gap-2">
+          {(["landscape", "portrait"] as const).map((k) => {
+            const on = tab === k;
+            const count = k === "landscape" ? landscape.length : portrait.length;
+            return (
+              <button
+                key={k}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => setTab(k)}
+                className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
+                  on
+                    ? "border-transparent bg-bone-50 text-ink-900"
+                    : "border-line/15 text-bone-300 hover:border-line/35 hover:text-bone-50"
+                }`}
+              >
+                {k === "landscape" ? t.motion.landscape : t.motion.portrait}
+                <span className={`text-xs ${on ? "text-ink-900/60" : "text-bone-500"}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </Reveal>
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {landscape.map((c) => (
-          <VideoCard key={c.slug} clip={c} onExpand={setExpanded} wide />
-        ))}
-      </div>
 
-      {/* Portrait collection */}
-      <Reveal>
-        <p className="mt-14 text-xs uppercase tracking-ultra text-bone-400">
-          {t.motion.portrait}
-        </p>
-      </Reveal>
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {portrait.map((c) => (
-          <VideoCard key={c.slug} clip={c} onExpand={setExpanded} />
-        ))}
-      </div>
+      {tab === "landscape" ? (
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {landscape.map((c) => (
+            <VideoCard key={c.slug} clip={c} onExpand={setExpanded} wide />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {portrait.map((c) => (
+            <VideoCard key={c.slug} clip={c} onExpand={setExpanded} />
+          ))}
+        </div>
+      )}
 
       <AnimatePresence>
         {expanded && (

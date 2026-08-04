@@ -83,7 +83,9 @@ export default function CaseView({ project }: { project: Project }) {
       </section>
 
       {/* lead visual — the flow diagram leads on workflow cases, so the
-          process is understood before anything else; otherwise the hero */}
+          process is understood before anything else; otherwise the hero.
+          Social sets skip it: their grid below is the story. */}
+      {project.simple ? null : (
       <section className="container-edge mx-auto mt-12 max-w-edge md:mt-16">
         <Reveal>
           <div
@@ -106,6 +108,7 @@ export default function CaseView({ project }: { project: Project }) {
           ) : null}
         </Reveal>
       </section>
+      )}
 
       {/* approach — full case study, or a lighter "explanation" for simple ones */}
       <section className="container-edge mx-auto max-w-edge py-16 md:py-20">
@@ -291,20 +294,22 @@ export default function CaseView({ project }: { project: Project }) {
         </section>
       ) : null}
 
-      {/* gallery — tidy masonry */}
+      {/* gallery — an Instagram-style grid so posts read left-to-right in the
+          order they were numbered (CSS columns would reflow them vertically) */}
       {gallery.length > 0 ? (
         <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
-          <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
+          <div className="mx-auto grid max-w-5xl grid-cols-3 gap-1.5 md:gap-3">
             {gallery.map((g) => (
               <figure
                 key={g.src}
-                className="mb-3 break-inside-avoid overflow-hidden rounded-lg bg-ink-700"
+                className="relative aspect-square overflow-hidden bg-ink-700"
               >
                 <Media
                   src={g.src}
                   alt={g.caption ?? title}
-                  sizes="(max-width: 640px) 50vw, 33vw"
-                  className="h-auto w-full"
+                  fill
+                  sizes="(max-width: 640px) 33vw, 22vw"
+                  className="object-cover"
                 />
               </figure>
             ))}

@@ -17,7 +17,7 @@ export default function Teaching() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Reveal>
-              <SectionLabel index="03">{t.teach.label}</SectionLabel>
+              <SectionLabel index="04">{t.teach.label}</SectionLabel>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-6 max-w-3xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">

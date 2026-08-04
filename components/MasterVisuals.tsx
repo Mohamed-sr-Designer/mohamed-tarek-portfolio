@@ -16,6 +16,50 @@ const boards = Array.from(
   (_, i) => `/work/master/${String(i + 1).padStart(2, "0")}.webp`
 );
 
+function BoardTile({
+  src,
+  i,
+  onOpen,
+  label,
+  expand,
+}: {
+  src: string;
+  i: number;
+  onOpen: (s: string) => void;
+  label: string;
+  expand: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(src)}
+      aria-label={`${label} ${i + 1} — ${expand}`}
+      className="group relative block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900 text-left"
+    >
+      <div className="relative aspect-video">
+        <Media
+          src={src}
+          alt={`${label} ${i + 1}`}
+          fill
+          sizes="(max-width: 768px) 100vw, 45vw"
+          className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-[1.03]"
+        />
+      </div>
+      {/* hover affordance */}
+      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 text-xs uppercase tracking-widest text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+        </svg>
+        {expand}
+      </span>
+      <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/45 px-2.5 py-1 text-[11px] tabular-nums text-white backdrop-blur-md">
+        {String(i + 1).padStart(2, "0")}
+      </span>
+    </button>
+  );
+}
+
 export default function MasterVisuals() {
   const { t } = useLang();
   const [open, setOpen] = useState<string | null>(null);
@@ -59,24 +103,18 @@ export default function MasterVisuals() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6">
-          {boards.map((src, i) => (
-            <Reveal key={src}>
-              <button
-                type="button"
-                onClick={() => setOpen(src)}
-                aria-label={`${t.master.label} ${i + 1} — ${t.master.expand}`}
-                className="group block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900 text-left"
-              >
-                <Media
-                  src={src}
-                  alt={`${t.master.label} ${i + 1}`}
-                  sizes="(max-width: 1024px) 100vw, 80rem"
-                  className="h-auto w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.01]"
-                />
-              </button>
-            </Reveal>
-          ))}
+        {/* first board leads full width, the rest sit two-up */}
+        <div className="mt-12 grid gap-4 md:gap-5">
+          <Reveal>
+            <BoardTile src={boards[0]} i={0} onOpen={setOpen} label={t.master.label} expand={t.master.expand} />
+          </Reveal>
+          <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+            {boards.slice(1).map((src, i) => (
+              <Reveal key={src} delay={(i % 2) * 0.05}>
+                <BoardTile src={src} i={i + 1} onOpen={setOpen} label={t.master.label} expand={t.master.expand} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -2,19 +2,18 @@ import type { Metadata } from "next";
 import SiteShell from "@/components/SiteShell";
 import AboutHero from "@/components/AboutHero";
 import About from "@/components/About";
+import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
 import Teaching from "@/components/Teaching";
-import Process from "@/components/Process";
 import Skills from "@/components/Skills";
 import Tools from "@/components/Tools";
-import Vision from "@/components/Vision";
 import HireCta from "@/components/HireCta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About — Sr Designer, Team Lead",
   description:
-    "About Mohamed Tarek — Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. Experience, creative process, capabilities, toolkit and vision.",
+    "About Mohamed Tarek — Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. Experience, clients, capabilities and toolkit.",
   alternates: { canonical: "/about" },
 };
 
@@ -27,6 +26,8 @@ const jsonLd = {
   mainEntity: { "@id": `${site.url}/#person` },
 };
 
+// Kept tight on purpose: a recruiter wants who he is, who he has worked for,
+// where he has worked, what he can do, and how to reach him.
 export default function AboutPage() {
   return (
     <SiteShell>
@@ -38,12 +39,11 @@ export default function AboutPage() {
       />
       <AboutHero />
       <About />
+      <Clients />
       <Experience />
       <Teaching />
-      <Process />
       <Skills />
       <Tools />
-      <Vision />
       <HireCta />
     </SiteShell>
   );

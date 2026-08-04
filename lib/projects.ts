@@ -226,22 +226,34 @@ export const projects: Project[] = [
   {
     slug: "amam",
     index: "03",
-    title: "Amam — Living, Well Placed",
-    client: "Amam",
+    title: "Amam · Durrat Al Arous — Life on the Water",
+    client: "Amam Real Estate · Durrat Al Arous",
     year: "2025",
-    category: "Real Estate · Social",
+    category: "Real Estate · Campaign",
     sector: "Real Estate",
-    discipline: "Social Design · Bilingual",
+    discipline: "Campaign · Social System · Bilingual",
     accent: "electric",
-    simple: true,
     summary:
-      "Social media design for a real estate brand — clear offers, calm premium visuals and Arabic type that keeps every post on brand.",
-    tagline: "Property posts that feel calm, clear and premium.",
-    cover: "/work/social/amam/01.webp",
-    hero: "/work/social/amam/02.webp",
-    tags: ["Real Estate", "Social Design", "Bilingual AR/EN"],
-    contribution: ["Social Design", "Art Direction", "Bilingual Layout"],
-    gallery: g(...seq("/work/social/amam/", 1, 9)),
+      "A lifestyle campaign for a waterfront resort community — selling the weekend you get, not the square metres you buy.",
+    tagline: "We sold the weekend, not the square metres.",
+    cover: "/work/amam-re/01.webp",
+    hero: "/work/amam-re/02.webp",
+    tags: ["Real Estate", "Campaign", "Lifestyle", "Bilingual AR/EN"],
+    challenge:
+      "Durrat Al Arous is a resort destination, but most property advertising in the category sells floor plans and prices. Amam needed the feed to make people feel the life there before they ever asked about a unit.",
+    strategy:
+      "Lead with the moments people actually buy: jet skis at noon, a boat at sunset, family time by the pool. Every post shows a life first and the property second, held together by one calm Arabic type style and the same warm water light.",
+    direction:
+      "Sunlit blues and sand tones, wide open water, and unhurried lifestyle framing — premium without shouting.",
+    execution:
+      "A full campaign set of lifestyle key visuals and social posts covering watersports, villas, family time and sunset moments, all bilingual and ready for the feed.",
+    impact:
+      "A waterfront community that reads as a lifestyle brand, giving the sales team warm interest instead of cold price questions.",
+    contribution: ["Campaign Direction", "Key Visuals", "Social System", "Bilingual Layout"],
+    gallery: g(
+      ...seq("/work/amam-re/", 1, 14),
+      "/work/amam-re/moodboard.webp"
+    ),
   },
   {
     slug: "el-raghi",
@@ -267,21 +279,30 @@ export const projects: Project[] = [
     slug: "tilal-v",
     index: "05",
     title: "Tilal Village — Where Life Finds Its Place",
-    client: "Tilal Village",
+    client: "Tilal Village · Makkah",
     year: "2025",
-    category: "Real Estate · Social",
+    category: "Real Estate · Social Campaign",
     sector: "Real Estate",
-    discipline: "Social Design · Campaign",
+    discipline: "Campaign · Social System · Bilingual",
     accent: "mint",
-    simple: true,
     summary:
-      "Social media design for a residential community in Makkah — warm family moments and a calm, premium layout system.",
-    tagline: "A community sold on belonging, not square metres.",
-    cover: "/work/social/tilal-v/01.webp",
-    hero: "/work/social/tilal-v/02.webp",
-    tags: ["Real Estate", "Social Design", "Campaign"],
-    contribution: ["Social Design", "Art Direction", "Bilingual Layout"],
-    gallery: g(...seq("/work/social/tilal-v/", 1, 9)),
+      "A social campaign for a residential community minutes from the Haram — built on belonging and family life, not floor plans.",
+    tagline: "We sold belonging and faith — not square metres.",
+    cover: "/work/tilal-social/01.webp",
+    hero: "/work/tilal-social/03.webp",
+    tags: ["Real Estate", "Campaign", "Bilingual AR/EN", "Social System"],
+    challenge:
+      "A premium community in Makkah, in a category where every developer advertises the same specifications. Tilal needed to sell the feeling of raising a family somewhere that means something.",
+    strategy:
+      "Being close to the Haram is not a feature, it is a way of life. I built the campaign on \"where life finds its place\": family moments, evening light and the city in the frame, so the location carries the message.",
+    direction:
+      "Golden evening light, classical facades and quiet family scenes, with one bilingual type system so every post is recognisably Tilal.",
+    execution:
+      "A rolling social system — hero campaign frames, lifestyle posts, interior reveals and aerials — plus the supporting website visual.",
+    impact:
+      "A development that reads as a home rather than an investment listing, and a feed that stays consistent as it scales.",
+    contribution: ["Campaign Direction", "Key Visuals", "Social System", "Bilingual Layout"],
+    gallery: g(...seq("/work/tilal-social/", 1, 15), "/work/tilal-social/site.webp"),
   },
   {
     slug: "fresh-valley",
@@ -317,7 +338,7 @@ export const projects: Project[] = [
     summary:
       "Social media design for a healthy dessert brand — playful colour, flying crumbs and appetite-first framing that still feels light.",
     tagline: "Dessert that looks indulgent and still feels light.",
-    cover: "/work/social/gf/01.webp",
+    cover: "/work/social/gf/06.webp",
     hero: "/work/social/gf/02.webp",
     tags: ["Food & Beverage", "Social Design", "Appetite Craft"],
     contribution: ["Social Design", "Art Direction", "Retouch"],

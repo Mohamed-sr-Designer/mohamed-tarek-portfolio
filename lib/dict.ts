@@ -91,6 +91,21 @@ const en = {
     posts: "designs",
     viewAll: "View the full set →",
   },
+  story: {
+    label: "Storyboards",
+    h2a: "Every film is drawn",
+    h2i: "before",
+    h2b: " it is shot.",
+    note: "Frame-by-frame boards that lock the story, the shots and the pacing before production starts.",
+    board: "Board",
+  },
+  clients: {
+    label: "Clients",
+    h2a: "Brands I have",
+    h2i: "worked with",
+    h2b: ".",
+    note: "Across real estate, F&B, retail, SaaS, hospitality and education in Egypt, Saudi Arabia and Kuwait.",
+  },
   services: {
     label: "Services",
     h2a: "What I can",
@@ -172,9 +187,9 @@ const en = {
   about: {
     label: "About",
     heroBio:
-      "Nine years turning business problems into visual answers — brand identities, campaigns and social systems for companies across Egypt, Saudi Arabia and Kuwait. Today I lead a design team, and I am looking for the next place to build one.",
+      "More than five years turning business problems into visual answers — brand identities, campaigns and social systems for companies across Egypt, Saudi Arabia and Kuwait. Today I lead a design team, and I am looking for the next place to build one.",
     record: [
-      { n: "9+", l: "years in design" },
+      { n: "5+", l: "years in design" },
       { n: "3", l: "markets served" },
       { n: "~1,200", l: "students taught" },
       { n: "11", l: "case studies" },
@@ -427,9 +442,13 @@ const ar: typeof en = {
         'بنيت الحملة كنظام إنتاج واحد. الشخصيات والمشاهد اتحدّدت من البداية واتربطت ببعض، فاللقطة الواحدة المخطّطة تخدم أكتر من فيديو والحملة كلها تفضل بشكل واحد.',
     },
     amam: {
-      title: 'أمام — سكن في مكانه الصح',
-      tagline: 'بوستات عقارية بإحساس هادي وواضح وفاخر.',
-      category: 'عقارات · سوشيال',
+      title: 'أمام · درة العروس — حياة على الماء',
+      tagline: 'بعنا الويك-إند، مش الأمتار.',
+      category: 'عقارات · حملة',
+      challenge:
+        'درة العروس وجهة منتجعات، لكن معظم إعلانات العقارات في الفئة دي بتبيع مخططات وأسعار. أمام كانت محتاجة الفيد يخلّي الناس تحس بالحياة هناك قبل ما تسأل عن وحدة أصلًا.',
+      strategy:
+        'ابدأ باللحظات اللي الناس بتشتريها فعلًا: جيت سكي الضهر، ويخت وقت الغروب، ووقت عيلة جنب المسبح. كل بوست بيعرض حياة الأول والعقار تاني، ماسكهم خط عربي هادي واحد ونفس ضوء الماء الدافي.',
     },
     'el-raghi': {
       title: 'الراجحي — مبني ليدوم',
@@ -438,8 +457,12 @@ const ar: typeof en = {
     },
     'tilal-v': {
       title: 'تلال فيليدج — حيث تجد الحياة مكانها',
-      tagline: 'مجتمع يُباع بالانتماء، مش بالأمتار.',
-      category: 'عقارات · سوشيال',
+      tagline: 'بعنا الانتماء والإيمان — مش الأمتار.',
+      category: 'عقارات · حملة سوشيال',
+      challenge:
+        'مجتمع سكني مميّز في مكة، في فئة كل مطوّر فيها بيعلن نفس المواصفات. تلال كانت محتاجة تبيع إحساس تربية عيلة في مكان له معنى.',
+      strategy:
+        'القرب من الحرم مش ميزة، ده أسلوب حياة. بنيت الحملة على «حيث تجد الحياة مكانها»: لحظات عائلية وضوء المغرب والمدينة في الكادر، عشان الموقع نفسه يوصّل الرسالة.',
     },
     'fresh-valley': {
       title: 'فريش فالي — فاخرة بطبيعتها',
@@ -497,6 +520,21 @@ const ar: typeof en = {
     keyVisual: "الصورة الرئيسية",
     posts: "تصميم",
     viewAll: "شوف السِت كامل →",
+  },
+  story: {
+    label: "ستوري بورد",
+    h2a: "كل فيلم بيتُرسم",
+    h2i: "قبل",
+    h2b: " ما يتصوّر.",
+    note: "لوحات إطار بإطار تثبّت القصة واللقطات والإيقاع قبل بدء الإنتاج.",
+    board: "لوحة",
+  },
+  clients: {
+    label: "العملاء",
+    h2a: "علامات",
+    h2i: "اشتغلت معاها",
+    h2b: ".",
+    note: "عبر العقارات والأغذية والتجزئة والتقنية والضيافة والتعليم في مصر والسعودية والكويت.",
   },
   services: {
     label: "الخدمات",
@@ -579,9 +617,9 @@ const ar: typeof en = {
   about: {
     label: "عنّي",
     heroBio:
-      "تسع سنوات بحوّل فيها مشاكل الشغل لإجابات بصرية — هويات وحملات وأنظمة سوشيال لشركات في مصر والسعودية والكويت. دلوقتي بقود فريق تصميم، وبدوّر على المكان الجاي اللي أبني فيه فريق.",
+      "أكتر من خمس سنين بحوّل فيها مشاكل الشغل لإجابات بصرية — هويات وحملات وأنظمة سوشيال لشركات في مصر والسعودية والكويت. دلوقتي بقود فريق تصميم، وبدوّر على المكان الجاي اللي أبني فيه فريق.",
     record: [
-      { n: "+٩", l: "سنوات في التصميم" },
+      { n: "+٥", l: "سنوات في التصميم" },
       { n: "٣", l: "أسواق" },
       { n: "~١٢٠٠", l: "طالب تدرّب" },
       { n: "١١", l: "دراسة حالة" },
