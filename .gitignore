@@ -29,3 +29,10 @@ next-env.d.ts
 
 # intermediate rasterized assets (optimized output lives in /public)
 /_raw
+
+# raw/source drops that must never be committed (huge PNGs, scratch scripts)
+/New folder*
+/public/New folder*
+/public/work/New folder*
+*.lnk
+/scripts/_*

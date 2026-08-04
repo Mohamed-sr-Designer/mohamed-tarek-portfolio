@@ -62,5 +62,9 @@ export const payments = {
   // secure. Until the endpoint is live, `demoCode` unlocks the sample video
   // locally FOR TESTING ONLY — remove it before selling.
   unlockEndpoint: "", // e.g. "https://your-worker.workers.dev/unlock"
-  demoCode: "MT-750-DEMO", // TESTING ONLY
+
+  // TESTING ONLY — deliberately dev-only so the demo code never ships in the
+  // production bundle (where anyone could read it out of the JS).
+  demoCode:
+    process.env.NODE_ENV === "development" ? "MT-750-DEMO" : "",
 };
