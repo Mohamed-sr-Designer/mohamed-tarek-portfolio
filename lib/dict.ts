@@ -13,7 +13,7 @@ const en = {
     langBtn: "عربي",
   },
   hero: {
-    avail: "Available — Freelance · Part-time · Hybrid",
+    avail: "Available — Full-time · Remote · Freelance · Hybrid",
     portfolio: "Portfolio — 2026",
     intro: "Mohamed Tarek · Sr Designer, Team Lead · based in Egypt",
     l1: "The graphic designer",
@@ -65,12 +65,38 @@ const en = {
     string,
     { title?: string; tagline?: string; category?: string; challenge?: string; strategy?: string }
   >,
+  ai: {
+    label: "AI Work Flow",
+    h2a: "The process comes",
+    h2i: "first",
+    h2b: "— then the work.",
+    note: "Two productions planned as systems: read the flow, then see what it produced.",
+  },
+  master: {
+    label: "Master Visuals",
+    h2a: "The campaign boards, and the",
+    h2i: "thinking",
+    h2b: " behind them.",
+    note: "Key visuals with the concept, my role and the craft that built them. Click any board to view it larger.",
+    expand: "view larger",
+    close: "Close",
+  },
+  socialCards: {
+    label: "Social Media Designs",
+    h2a: "One brand, one",
+    h2i: "system",
+    h2b: ", every post.",
+    note: "Each brand gets a key visual and a repeatable post system, so the feed stays on brand at posting speed.",
+    keyVisual: "Key visual",
+    posts: "designs",
+    viewAll: "View the full set →",
+  },
   services: {
     label: "Services",
     h2a: "What I can",
     h2i: "do",
     h2b: "for your brand.",
-    note: "Available for freelance projects, part-time and hybrid full-time roles —",
+    note: "Available for full-time, remote, freelance and hybrid roles —",
     noteLink: "start a conversation ↗",
     items: [
       {
@@ -95,8 +121,8 @@ const en = {
       },
       {
         title: "AI-Assisted Production",
-        desc: "Campaign-grade imagery produced with AI tooling — directed, curated and retouched to a professional standard.",
-        tags: ["AI Imaging", "Prompt Engineering", "Retouching"],
+        desc: "Campaign-grade imagery and AI voice-over produced with AI tooling — directed, curated and finished to a professional standard.",
+        tags: ["AI Imaging", "Prompt Engineering", "AI Voice-Over", "Retouching"],
       },
       {
         title: "Motion & Web",
@@ -127,17 +153,17 @@ const en = {
     browse: "Browse the work ↑",
   },
   hire: {
-    avail: "FREELANCE · PART-TIME · FULL-TIME HYBRID",
+    avail: "FULL-TIME · REMOTE · FREELANCE · HYBRID",
     h2a: "Have a brand that needs",
     h2i: "direction",
     h2b: "?",
-    body: "I take on freelance projects, part-time engagements and hybrid full-time roles across Egypt · Saudi Arabia · Kuwait. Tell me what you're building — I'll tell you how design gets it there.",
+    body: "I am open to full-time, remote, freelance and hybrid roles across Egypt · Saudi Arabia · Kuwait. Tell me what you're building — I'll tell you how design gets it there.",
     wa: "WhatsApp me ↗",
     all: "All contact options",
   },
   footer: {
     blurb:
-      "Sr Designer & Team Lead based in Egypt, working across Egypt · Saudi Arabia · Kuwait. Available for freelance, part-time and hybrid full-time roles.",
+      "Sr Designer & Team Lead based in Egypt, working across Egypt · Saudi Arabia · Kuwait. Available for full-time, remote, freelance and hybrid roles.",
     siteCol: "Site",
     connectCol: "Connect",
     rights: "Designed, art-directed & vibe-coded in-house.",
@@ -160,7 +186,7 @@ const en = {
     bio2: "I work across branding, campaigns, social systems, key visuals and motion — skilled in Adobe Photoshop and Illustrator, UI design, and AI-powered creative tools I use to ideate and deliver modern work tailored to Middle East markets. Alongside client work, I teach graphic design as an instructor, mentoring the next wave of designers.",
     coreFocus: "Core focus",
     traitsLabel: "Personal traits",
-    focus: ["2D Visual Design", "Brand Systems", "AI Prompt Engineering"],
+    focus: ["2D Visual Design", "Brand Systems", "AI Prompt Engineering", "AI Voice-Over"],
     traits: [
       "Creative & Strategic Thinker",
       "Performance-Driven",
@@ -265,7 +291,7 @@ const en = {
       },
       {
         title: "Production",
-        items: ["Photo Manipulation", "Key Visuals", "UI Design", "AI Prompt Engineering", "Vibe Coding"],
+        items: ["Photo Manipulation", "Key Visuals", "UI Design", "AI Prompt Engineering", "AI Voice-Over (ElevenLabs)", "Vibe Coding"],
       },
     ],
   },
@@ -337,7 +363,7 @@ const ar: typeof en = {
     langBtn: "EN",
   },
   hero: {
-    avail: "متاح — فريلانس · دوام جزئي · هجين",
+    avail: "متاح — دوام كامل · عن بُعد · فريلانس · هجين",
     portfolio: "بورتفوليو — ٢٠٢٦",
     intro: "محمد طارق · مصمم أول، قائد فريق · مقيم في مصر",
     l1: "المصمّم الذي تناديه",
@@ -446,12 +472,38 @@ const ar: typeof en = {
       category: 'تسويق · سوشيال',
     },
   },
+  ai: {
+    label: "سير عمل الذكاء الاصطناعي",
+    h2a: "الطريقة",
+    h2i: "أولًا",
+    h2b: "— وبعدها الشغل.",
+    note: "إنتاجان مخطّطان كنظام: اقرأ الفلو الأول، وبعدها شوف نتيجته.",
+  },
+  master: {
+    label: "الفيجوالز الرئيسية",
+    h2a: "لوحات الحملات، و",
+    h2i: "الفكرة",
+    h2b: " اللي وراها.",
+    note: "صور رئيسية مع المفهوم ودوري والحِرفة اللي بنتها. اضغط أي لوحة لتكبيرها.",
+    expand: "عرض أكبر",
+    close: "إغلاق",
+  },
+  socialCards: {
+    label: "تصاميم سوشيال ميديا",
+    h2a: "علامة واحدة،",
+    h2i: "نظام واحد",
+    h2b: "، وكل البوستات.",
+    note: "كل علامة ليها صورة رئيسية ونظام بوستات قابل للتكرار، فالفيد يفضل متّسق بسرعة النشر.",
+    keyVisual: "الصورة الرئيسية",
+    posts: "تصميم",
+    viewAll: "شوف السِت كامل →",
+  },
   services: {
     label: "الخدمات",
     h2a: "ماذا أستطيع أن",
     h2i: "أفعل",
     h2b: "لعلامتك.",
-    note: "متاح لمشاريع الفريلانس والدوام الجزئي والهجين —",
+    note: "متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين —",
     noteLink: "ابدأ محادثة ↗",
     items: [
       {
@@ -476,8 +528,8 @@ const ar: typeof en = {
       },
       {
         title: "إنتاج بالذكاء الاصطناعي",
-        desc: "صور بمستوى الحملات منتَجة بأدوات الذكاء الاصطناعي — مُخرجة ومنتقاة ومعالَجة باحترافية.",
-        tags: ["تصوير AI", "هندسة البرومبت", "ريتاتش"],
+        desc: "صور بمستوى الحملات وتعليق صوتي بالذكاء الاصطناعي — مُخرجة ومنتقاة ومعالَجة باحترافية.",
+        tags: ["تصوير AI", "هندسة البرومبت", "تعليق صوتي AI", "ريتاتش"],
       },
       {
         title: "الموشن والويب",
@@ -508,17 +560,17 @@ const ar: typeof en = {
     browse: "تصفّح الأعمال ↑",
   },
   hire: {
-    avail: "فريلانس · دوام جزئي · دوام كامل هجين",
+    avail: "دوام كامل · عن بُعد · فريلانس · هجين",
     h2a: "عندك علامة تحتاج",
     h2i: "اتجاهًا",
     h2b: "؟",
-    body: "أعمل على مشاريع فريلانس وارتباطات جزئية وأدوار هجينة عبر مصر · السعودية · الكويت. احكِ لي ما تبنيه — وسأخبرك كيف يوصله التصميم.",
+    body: "أنا متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين عبر مصر · السعودية · الكويت. احكِ لي ما تبنيه — وسأخبرك كيف يوصله التصميم.",
     wa: "راسلني واتساب ↗",
     all: "كل وسائل التواصل",
   },
   footer: {
     blurb:
-      "مصمم أول وقائد فريق مقيم في مصر، أعمل عبر مصر · السعودية · الكويت. متاح للفريلانس والدوام الجزئي والهجين.",
+      "مصمم أول وقائد فريق مقيم في مصر، أعمل عبر مصر · السعودية · الكويت. متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين.",
     siteCol: "الموقع",
     connectCol: "تواصل",
     rights: "صُمّم وأُخرج فنيًا وبُرمج داخليًا.",
@@ -541,7 +593,7 @@ const ar: typeof en = {
     bio2: "أعمل عبر البراندينج والحملات وأنظمة السوشيال والصور الرئيسية والموشن — متمكّن من فوتوشوب وإليستريتور وتصميم الواجهات وأدوات الذكاء الاصطناعي الإبداعية التي أستخدمها لابتكار وتسليم أعمال حديثة تناسب أسواق الشرق الأوسط. وإلى جانب عمل العملاء، أدرّس الجرافيك ديزاين كمُحاضر وأوجّه الجيل القادم من المصممين.",
     coreFocus: "التركيز الأساسي",
     traitsLabel: "سمات شخصية",
-    focus: ["تصميم بصري 2D", "أنظمة العلامات", "هندسة برومبت AI"],
+    focus: ["تصميم بصري 2D", "أنظمة العلامات", "هندسة برومبت AI", "تعليق صوتي AI"],
     traits: [
       "مفكّر إبداعي واستراتيجي",
       "مدفوع بالأداء",
@@ -645,7 +697,7 @@ const ar: typeof en = {
       },
       {
         title: "الإنتاج",
-        items: ["فوتو مانيبيوليشن", "صور رئيسية", "تصميم واجهات", "هندسة برومبت AI", "فايب كودينج"],
+        items: ["فوتو مانيبيوليشن", "صور رئيسية", "تصميم واجهات", "هندسة برومبت AI", "تعليق صوتي AI (ElevenLabs)", "فايب كودينج"],
       },
     ],
   },

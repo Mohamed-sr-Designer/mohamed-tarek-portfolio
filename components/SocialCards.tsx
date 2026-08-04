@@ -1,0 +1,131 @@
+"use client";
+
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Media } from "@/components/ui/Media";
+import { useLang } from "@/lib/i18n";
+import { projects, type Project } from "@/lib/projects";
+
+// Social media designs — one card per brand, built like the campaign cards on
+// the performance-evaluation site: a header, one large key visual, a row of
+// supporting posts, and a short note on what holds the brand together.
+const social = projects.filter(
+  (p) => p.sector !== "AI Workflow" && p.gallery.length > 0
+);
+
+function Card({ p }: { p: Project }) {
+  const { t } = useLang();
+  const tr = t.projects[p.slug] ?? {};
+  const kv = p.gallery[0];
+  const row = p.gallery.slice(1, 4);
+  const title = tr.title ?? p.title;
+
+  return (
+    <article className="flex h-full flex-col rounded-2xl border border-line/10 bg-ink-800/40 p-5 transition-colors duration-500 hover:border-line/25 md:p-6">
+      {/* header */}
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h3 className="text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
+            {p.client}
+          </h3>
+          <p className="mt-1 text-sm text-bone-400">
+            {tr.category ?? p.category}
+          </p>
+        </div>
+        <span className="shrink-0 rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs text-bone-300">
+          {p.gallery.length} {t.socialCards.posts}
+        </span>
+      </div>
+
+      {/* key visual */}
+      <Link
+        href={`/work/${p.slug}`}
+        className="group mt-5 block overflow-hidden rounded-xl bg-ink-700"
+      >
+        <div className="relative aspect-[4/5] overflow-hidden">
+          <Media
+            src={kv.src}
+            alt={`${title} — ${t.socialCards.keyVisual}`}
+            fill
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 31vw"
+            className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-[1.04]"
+          />
+          <span className="absolute left-4 top-4 rounded-full bg-black/45 px-3 py-1 text-[11px] uppercase tracking-widest text-white backdrop-blur-md">
+            {t.socialCards.keyVisual}
+          </span>
+        </div>
+      </Link>
+
+      {/* supporting posts */}
+      <div className="mt-3 grid grid-cols-3 gap-3">
+        {row.map((g) => (
+          <div
+            key={g.src}
+            className="relative aspect-square overflow-hidden rounded-lg bg-ink-700"
+          >
+            <Media
+              src={g.src}
+              alt={`${title} — post`}
+              fill
+              sizes="120px"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* note */}
+      <p className="mt-4 text-pretty text-sm leading-relaxed text-bone-400">
+        {tr.tagline ?? p.tagline}
+      </p>
+
+      <Link
+        href={`/work/${p.slug}`}
+        className="mt-auto pt-4 text-sm text-mint underline-offset-4 hover:underline"
+      >
+        {t.socialCards.viewAll}
+      </Link>
+    </article>
+  );
+}
+
+export default function SocialCards() {
+  const { t } = useLang();
+  return (
+    <section
+      id="social"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
+    >
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <Reveal>
+            <SectionLabel index="03">{t.socialCards.label}</SectionLabel>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
+              {t.socialCards.h2a}{" "}
+              <span className="font-serif font-normal italic text-mint">
+                {t.socialCards.h2i}
+              </span>
+              {t.socialCards.h2b}
+            </h2>
+          </Reveal>
+        </div>
+        <Reveal delay={0.1}>
+          <p className="max-w-xs text-sm leading-relaxed text-bone-400">
+            {t.socialCards.note}
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {social.map((p) => (
+          <Reveal key={p.slug}>
+            <Card p={p} />
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}

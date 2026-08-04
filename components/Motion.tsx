@@ -35,20 +35,21 @@ function VideoCard({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  // Posters only until you ask for a clip. Auto-playing every tile at once
+  // made scrolling heavy and the section feel noisy.
+  const play = () => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) el.play().catch(() => {});
-        else el.pause();
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    el.play().then(() => setPlaying(true)).catch(() => {});
+  };
+  const stop = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.pause();
+    setPlaying(false);
+  };
 
   const toggleSound = () => {
     const el = ref.current;
@@ -56,7 +57,7 @@ function VideoCard({
     const next = !muted;
     setMuted(next);
     el.muted = next;
-    if (!next) el.play().catch(() => {});
+    if (!next) play();
   };
 
   const btn =
@@ -64,6 +65,8 @@ function VideoCard({
 
   return (
     <div
+      onMouseEnter={play}
+      onMouseLeave={stop}
       className={`group relative overflow-hidden rounded-xl bg-ink-700 ${
         wide ? "aspect-video" : "aspect-[4/5]"
       }`}
@@ -79,6 +82,22 @@ function VideoCard({
         className="h-full w-full object-cover"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90" />
+
+      {/* play affordance — tap on touch, hover on desktop */}
+      {!playing ? (
+        <button
+          type="button"
+          onClick={play}
+          aria-label={`Play ${clip.title}`}
+          className="absolute inset-0 grid place-items-center"
+        >
+          <span className="grid h-14 w-14 place-items-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+      ) : null}
 
       <div className="absolute right-4 top-4 flex gap-2">
         <button onClick={toggleSound} aria-label={muted ? "Unmute" : "Mute"} className={btn}>

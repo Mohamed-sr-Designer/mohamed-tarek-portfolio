@@ -4,8 +4,8 @@ export const site = {
   roleFull: "Sr Designer, Team Lead",
   title: "Mohamed Tarek — Sr Designer, Team Lead | Graphic Design & Art Direction",
   description:
-    "Mohamed Tarek is a Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. He builds brand identities, ad campaigns, social media systems, key visuals and motion — and is available for freelance, part-time and hybrid full-time roles.",
-  availability: "Freelance · Part-time · Full-time hybrid",
+    "Mohamed Tarek is a Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. He builds brand identities, ad campaigns, social media systems, key visuals and motion — and is available for full-time, remote, freelance and hybrid roles.",
+  availability: "Full-time · Remote · Freelance · Hybrid",
   url: "https://mohamed-sr-designer.github.io/mohamed-tarek-portfolio",
   email: "mohamed.tarek.ahmed1@gmail.com",
   phoneDisplay: "+20 10 1145 8929",

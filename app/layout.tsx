@@ -3,7 +3,7 @@ import {
   Bricolage_Grotesque,
   Hanken_Grotesk,
   Fraunces,
-  IBM_Plex_Sans_Arabic,
+  Alexandria,
 } from "next/font/google";
 import { site } from "@/lib/site";
 import { LangProvider } from "@/lib/i18n";
@@ -33,8 +33,8 @@ const serif = Fraunces({
   style: ["normal", "italic"],
 });
 
-const arabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
+const arabic = Alexandria({
+  subsets: ["arabic", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-ar",
   display: "swap",

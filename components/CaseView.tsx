@@ -22,6 +22,9 @@ export default function CaseView({ project }: { project: Project }) {
   const caseVideos = (motionData as Clip[]).filter((c) =>
     (project.videoSlugs ?? []).includes(c.slug)
   );
+  // On workflow cases the flow diagram is the lead visual.
+  const leadIsFlow = Boolean(project.workflow?.image);
+  const leadVisual = project.workflow?.image ?? project.hero;
 
   const title = tr.title ?? project.title;
   const category = tr.category ?? project.category;
@@ -79,18 +82,28 @@ export default function CaseView({ project }: { project: Project }) {
         </Reveal>
       </section>
 
-      {/* master visual — contained, not full-bleed */}
+      {/* lead visual — the flow diagram leads on workflow cases, so the
+          process is understood before anything else; otherwise the hero */}
       <section className="container-edge mx-auto mt-12 max-w-edge md:mt-16">
         <Reveal>
-          <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-ink-700">
+          <div
+            className={`mx-auto overflow-hidden rounded-2xl bg-ink-700 ${
+              leadIsFlow ? "max-w-6xl" : "max-w-5xl"
+            }`}
+          >
             <Media
-              src={project.hero}
-              alt={title}
+              src={leadVisual}
+              alt={leadIsFlow ? `${title} — ${project.workflow!.title}` : title}
               priority
-              sizes="(max-width: 1024px) 100vw, 64rem"
-              className="h-auto max-h-[74vh] w-full object-contain"
+              sizes="(max-width: 1024px) 100vw, 72rem"
+              className="h-auto max-h-[80vh] w-full object-contain"
             />
           </div>
+          {leadIsFlow ? (
+            <p className="mx-auto mt-3 max-w-6xl text-center text-xs uppercase tracking-ultra text-bone-400">
+              {project.workflow!.title}
+            </p>
+          ) : null}
         </Reveal>
       </section>
 
@@ -258,19 +271,6 @@ export default function CaseView({ project }: { project: Project }) {
                 </div>
               ))}
             </div>
-
-            {project.workflow.image ? (
-              <Reveal>
-                <div className="mt-10 overflow-hidden rounded-2xl bg-ink-700">
-                  <Media
-                    src={project.workflow.image}
-                    alt={`${title} — ${project.workflow.title}`}
-                    sizes="(max-width: 1024px) 100vw, 80rem"
-                    className="h-auto w-full"
-                  />
-                </div>
-              </Reveal>
-            ) : null}
 
             <Reveal>
               <p className="mt-12 text-xs uppercase tracking-ultra text-bone-400">

@@ -1,23 +1,27 @@
 import SiteShell from "@/components/SiteShell";
 import Hero from "@/components/Hero";
 import LogoMarquee from "@/components/LogoMarquee";
-import SelectedWork from "@/components/SelectedWork";
-import Services from "@/components/Services";
-import HireCta from "@/components/HireCta";
+import AiWorkflow from "@/components/AiWorkflow";
+import MasterVisuals from "@/components/MasterVisuals";
+import SocialCards from "@/components/SocialCards";
 import Motion from "@/components/Motion";
 import WebProjects from "@/components/WebProjects";
 import LoopSlider from "@/components/LoopSlider";
+import Services from "@/components/Services";
+import HireCta from "@/components/HireCta";
 
 export default function Home() {
   return (
     <SiteShell>
       <Hero />
       <LogoMarquee />
-      <SelectedWork />
-      <Services />
+      <AiWorkflow />
+      <MasterVisuals />
+      <SocialCards />
       <Motion />
       <WebProjects />
       <LoopSlider />
+      <Services />
       <HireCta />
     </SiteShell>
   );

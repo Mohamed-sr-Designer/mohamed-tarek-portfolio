@@ -8,6 +8,7 @@ type Tool = { name: string; role: string; mono: string; color: string };
 
 const ai: Tool[] = [
   { name: "Seedance", role: "AI Video", mono: "SD", color: "#7C6CF6" },
+  { name: "ElevenLabs", role: "AI Voice-Over", mono: "11", color: "#E1E1E1" },
   { name: "Magnific", role: "Upscale · Freepik", mono: "M", color: "#1273EB" },
   { name: "Gemini", role: "AI Ideation", mono: "G", color: "#1A73E8" },
   { name: "ChatGPT", role: "AI Copy & Concept", mono: "AI", color: "#10A37F" },

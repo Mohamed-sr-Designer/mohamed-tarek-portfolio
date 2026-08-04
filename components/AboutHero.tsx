@@ -27,9 +27,10 @@ export default function AboutHero() {
             className="object-cover object-[center_18%]"
           />
         </div>
+        {/* fixed dark scrim (not theme-tinted) so the portrait never washes out */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-ink-900/30"
+          className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/45"
         />
 
         <div className="container-edge relative z-10 mx-auto w-full max-w-edge pb-14 pt-40">
@@ -37,7 +38,7 @@ export default function AboutHero() {
             <SectionLabel index="✦">{t.about.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.06}>
-            <h1 className="mt-6 font-display text-6xl font-semibold leading-[0.95] tracking-tightest text-bone-50 [text-shadow:0_2px_30px_rgb(0_0_0/0.5)] md:text-8xl">
+            <h1 className="mt-6 font-display text-6xl font-semibold leading-[0.95] tracking-tightest text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.5)] md:text-8xl">
               Mohamed{" "}
               <span className="font-serif font-normal italic tracking-normal text-mint">
                 Tarek
@@ -48,13 +49,13 @@ export default function AboutHero() {
           <div className="mt-7 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
               <Reveal delay={0.12}>
-                <p className="text-lg text-bone-200 md:text-xl">
+                <p className="text-lg text-white/80 md:text-xl">
                   {site.roleFull} —{" "}
-                  <span className="text-bone-400">{site.markets}</span>
+                  <span className="text-white/60">{site.markets}</span>
                 </p>
               </Reveal>
               <Reveal delay={0.16}>
-                <p className="mt-4 text-pretty text-base leading-relaxed text-bone-300">
+                <p className="mt-4 text-pretty text-base leading-relaxed text-white/70">
                   {t.about.heroBio}
                 </p>
               </Reveal>
@@ -64,7 +65,7 @@ export default function AboutHero() {
                 <Magnetic>
                   <Link
                     href="/contact"
-                    className="rounded-full bg-bone-50 px-7 py-3.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
+                    className="rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-transform duration-300 hover:scale-[1.03]"
                   >
                     {t.hero.ctaSecondary}
                   </Link>
@@ -74,7 +75,7 @@ export default function AboutHero() {
                     href={`https://wa.me/${site.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-line/25 px-7 py-3.5 text-sm text-bone-50 transition-colors hover:border-mint/60 hover:text-mint"
+                    className="rounded-full border border-white/30 px-7 py-3.5 text-sm text-white transition-colors hover:border-mint/60 hover:text-mint"
                   >
                     {t.hire.wa}
                   </a>
