@@ -1,137 +1,222 @@
 [
   {
-    "slug": "tilal-film",
-    "title": "Tilal Village — Brand Film",
-    "kind": "Real Estate · Film",
-    "src": "/motion/tilal-film.mp4",
-    "poster": "/motion/tilal-film.jpg",
-    "width": 1200,
-    "height": 675
-  },
-  {
-    "slug": "tilal-aerial",
-    "title": "Tilal Village — Aerial",
-    "kind": "Real Estate · Motion",
-    "src": "/motion/tilal-aerial.mp4",
-    "poster": "/motion/tilal-aerial.jpg",
-    "width": 1200,
-    "height": 675
-  },
-  {
-    "slug": "tilal-community",
-    "title": "Tilal Village — Community",
-    "kind": "Real Estate · Motion",
-    "src": "/motion/tilal-community.mp4",
-    "poster": "/motion/tilal-community.jpg",
-    "width": 1200,
-    "height": 675
-  },
-  {
-    "slug": "social-motion",
-    "title": "Social Motion",
-    "kind": "Social · Animation",
-    "src": "/motion/social-motion.mp4",
-    "poster": "/motion/social-motion.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
-    "slug": "teaser",
-    "title": "Cinematic Teaser",
-    "kind": "Motion · Teaser",
-    "src": "/motion/teaser.mp4",
-    "poster": "/motion/teaser.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
-    "slug": "space",
-    "title": "Interior Reveal",
-    "kind": "Motion · Space",
-    "src": "/motion/space.mp4",
-    "poster": "/motion/space.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
-    "slug": "coffee-ad",
-    "title": "Coffee Shop — Cinematic Ad",
-    "kind": "AI · Cinematic",
-    "src": "/motion/coffee-ad.mp4",
-    "poster": "/motion/coffee-ad.jpg",
-    "width": 1200,
-    "height": 675
-  },
-  {
-    "slug": "film-2024",
-    "title": "Wattnia — Brand Film",
+    "slug": "landscape-01",
+    "title": "Ai Video",
     "kind": "Brand · Film",
-    "src": "/motion/film-2024.mp4",
-    "poster": "/motion/film-2024.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
-    "slug": "alpha",
-    "title": "Motion Study",
-    "kind": "Motion · Experimental",
-    "src": "/motion/alpha.mp4",
-    "poster": "/motion/alpha.jpg",
+    "collection": "landscape",
+    "src": "/motion/landscape-01.mp4",
+    "poster": "/motion/landscape-01.jpg",
     "width": 1200,
-    "height": 675
+    "height": 676
   },
   {
-    "slug": "promo-02",
+    "slug": "landscape-02",
+    "title": "Render",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-02.mp4",
+    "poster": "/motion/landscape-02.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "landscape-03",
+    "title": "Video 1",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-03.mp4",
+    "poster": "/motion/landscape-03.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "landscape-04",
+    "title": "Alpha",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-04.mp4",
+    "poster": "/motion/landscape-04.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "landscape-05",
+    "title": "Last",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-05.mp4",
+    "poster": "/motion/landscape-05.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "landscape-06",
+    "title": "V3",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-06.mp4",
+    "poster": "/motion/landscape-06.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "landscape-07",
+    "title": "V4",
+    "kind": "Brand · Film",
+    "collection": "landscape",
+    "src": "/motion/landscape-07.mp4",
+    "poster": "/motion/landscape-07.jpg",
+    "width": 1200,
+    "height": 676
+  },
+  {
+    "slug": "portrait-01",
+    "title": "1",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-01.mp4",
+    "poster": "/motion/portrait-01.jpg",
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "slug": "portrait-02",
+    "title": "2",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-02.mp4",
+    "poster": "/motion/portrait-02.jpg",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "slug": "portrait-03",
+    "title": "3",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-03.mp4",
+    "poster": "/motion/portrait-03.jpg",
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "slug": "portrait-04",
+    "title": "Reel 1",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-04.mp4",
+    "poster": "/motion/portrait-04.jpg",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "slug": "portrait-05",
+    "title": "Reel2",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-05.mp4",
+    "poster": "/motion/portrait-05.jpg",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "slug": "portrait-06",
+    "title": "Video 2",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-06.mp4",
+    "poster": "/motion/portrait-06.jpg",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "slug": "portrait-07",
+    "title": "Wattnia V 2",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-07.mp4",
+    "poster": "/motion/portrait-07.jpg",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "slug": "portrait-08",
     "title": "Promo 02",
-    "kind": "Social · Promo",
-    "src": "/motion/promo-02.mp4",
-    "poster": "/motion/promo-02.jpg",
-    "width": 675,
-    "height": 1200
-  },
-  {
-    "slug": "reel-a",
-    "title": "Social Reel",
     "kind": "Social · Reel",
-    "src": "/motion/reel-a.mp4",
-    "poster": "/motion/reel-a.jpg",
-    "width": 675,
-    "height": 1200
+    "collection": "portrait",
+    "src": "/motion/portrait-08.mp4",
+    "poster": "/motion/portrait-08.jpg",
+    "width": 720,
+    "height": 1280
   },
   {
-    "slug": "reel-b",
-    "title": "Social Reel",
+    "slug": "portrait-09",
+    "title": "Reel A",
     "kind": "Social · Reel",
-    "src": "/motion/reel-b.mp4",
-    "poster": "/motion/reel-b.jpg",
-    "width": 675,
-    "height": 1200
+    "collection": "portrait",
+    "src": "/motion/portrait-09.mp4",
+    "poster": "/motion/portrait-09.jpg",
+    "width": 720,
+    "height": 1280
   },
   {
-    "slug": "reel-c",
-    "title": "Social Reel",
+    "slug": "portrait-10",
+    "title": "Reel B",
     "kind": "Social · Reel",
-    "src": "/motion/reel-c.mp4",
-    "poster": "/motion/reel-c.jpg",
-    "width": 675,
-    "height": 1200
+    "collection": "portrait",
+    "src": "/motion/portrait-10.mp4",
+    "poster": "/motion/portrait-10.jpg",
+    "width": 720,
+    "height": 1280
   },
   {
-    "slug": "reel-d",
-    "title": "Motion Loop",
-    "kind": "Motion · Loop",
-    "src": "/motion/reel-d.mp4",
-    "poster": "/motion/reel-d.jpg",
-    "width": 675,
-    "height": 1200
+    "slug": "portrait-11",
+    "title": "Reel C",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-11.mp4",
+    "poster": "/motion/portrait-11.jpg",
+    "width": 720,
+    "height": 1280
   },
   {
-    "slug": "reel-e",
-    "title": "Motion Loop",
-    "kind": "Motion · Loop",
-    "src": "/motion/reel-e.mp4",
-    "poster": "/motion/reel-e.jpg",
+    "slug": "portrait-12",
+    "title": "Reel D",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-12.mp4",
+    "poster": "/motion/portrait-12.jpg",
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "slug": "portrait-13",
+    "title": "Reel E",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-13.mp4",
+    "poster": "/motion/portrait-13.jpg",
     "width": 360,
     "height": 640
+  },
+  {
+    "slug": "portrait-14",
+    "title": "Social Motion",
+    "kind": "Social · Reel",
+    "collection": "portrait",
+    "src": "/motion/portrait-14.mp4",
+    "poster": "/motion/portrait-14.jpg",
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "slug": "landscape-05",
+    "title": "Last",
+    "kind": "Brand · Film",
+    "collection": "production",
+    "src": "/motion/landscape-05.mp4",
+    "poster": "/motion/landscape-05.jpg",
+    "width": 1200,
+    "height": 676
   }
 ]

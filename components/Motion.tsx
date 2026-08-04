@@ -12,6 +12,7 @@ type Clip = {
   slug: string;
   title: string;
   kind: string;
+  collection?: string;
   src: string;
   poster: string;
   width: number;
@@ -19,8 +20,19 @@ type Clip = {
 };
 
 const clips = motionData as Clip[];
+// Two separate collections; the production clip is shown inside its case study.
+const landscape = clips.filter((c) => c.collection === "landscape");
+const portrait = clips.filter((c) => c.collection === "portrait");
 
-function VideoCard({ clip, onExpand }: { clip: Clip; onExpand: (c: Clip) => void }) {
+function VideoCard({
+  clip,
+  onExpand,
+  wide = false,
+}: {
+  clip: Clip;
+  onExpand: (c: Clip) => void;
+  wide?: boolean;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
 
@@ -51,7 +63,11 @@ function VideoCard({ clip, onExpand }: { clip: Clip; onExpand: (c: Clip) => void
     "grid h-9 w-9 place-items-center rounded-full border border-white/25 bg-black/40 text-white backdrop-blur-md transition-colors duration-300 hover:border-mint/60 hover:text-mint";
 
   return (
-    <div className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-700">
+    <div
+      className={`group relative overflow-hidden rounded-xl bg-ink-700 ${
+        wide ? "aspect-video" : "aspect-[4/5]"
+      }`}
+    >
       <video
         ref={ref}
         src={withBase(clip.src)}
@@ -179,8 +195,26 @@ export default function Motion() {
         </Reveal>
       </div>
 
-      <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {clips.map((c) => (
+      {/* Landscape collection */}
+      <Reveal>
+        <p className="mt-12 text-xs uppercase tracking-ultra text-bone-400">
+          {t.motion.landscape}
+        </p>
+      </Reveal>
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {landscape.map((c) => (
+          <VideoCard key={c.slug} clip={c} onExpand={setExpanded} wide />
+        ))}
+      </div>
+
+      {/* Portrait collection */}
+      <Reveal>
+        <p className="mt-14 text-xs uppercase tracking-ultra text-bone-400">
+          {t.motion.portrait}
+        </p>
+      </Reveal>
+      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {portrait.map((c) => (
           <VideoCard key={c.slug} clip={c} onExpand={setExpanded} />
         ))}
       </div>

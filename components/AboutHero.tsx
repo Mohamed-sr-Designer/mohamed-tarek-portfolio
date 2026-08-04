@@ -1,0 +1,107 @@
+"use client";
+
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import Magnetic from "@/components/ui/Magnetic";
+import { Media } from "@/components/ui/Media";
+import { site } from "@/lib/site";
+import { useLang } from "@/lib/i18n";
+
+// Cinematic opening for the About page: full-bleed portrait, the name, the
+// role, and the two actions a hiring manager needs. Followed by the record
+// strip so the numbers land before the long-form story.
+export default function AboutHero() {
+  const { t } = useLang();
+
+  return (
+    <>
+      <section className="relative flex min-h-[86svh] flex-col justify-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Media
+            src="/me/hero-landscape.webp"
+            alt={`${site.name} — ${site.role}`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_18%]"
+          />
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-ink-900/30"
+        />
+
+        <div className="container-edge relative z-10 mx-auto w-full max-w-edge pb-14 pt-40">
+          <Reveal>
+            <SectionLabel index="✦">{t.about.label}</SectionLabel>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h1 className="mt-6 font-display text-6xl font-semibold leading-[0.95] tracking-tightest text-bone-50 [text-shadow:0_2px_30px_rgb(0_0_0/0.5)] md:text-8xl">
+              Mohamed{" "}
+              <span className="font-serif font-normal italic tracking-normal text-mint">
+                Tarek
+              </span>
+            </h1>
+          </Reveal>
+
+          <div className="mt-7 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <Reveal delay={0.12}>
+                <p className="text-lg text-bone-200 md:text-xl">
+                  {site.roleFull} —{" "}
+                  <span className="text-bone-400">{site.markets}</span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <p className="mt-4 text-pretty text-base leading-relaxed text-bone-300">
+                  {t.about.heroBio}
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={0.22}>
+              <div className="flex shrink-0 flex-wrap gap-4">
+                <Magnetic>
+                  <Link
+                    href="/contact"
+                    className="rounded-full bg-bone-50 px-7 py-3.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
+                  >
+                    {t.hero.ctaSecondary}
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <a
+                    href={`https://wa.me/${site.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-line/25 px-7 py-3.5 text-sm text-bone-50 transition-colors hover:border-mint/60 hover:text-mint"
+                  >
+                    {t.hire.wa}
+                  </a>
+                </Magnetic>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* record */}
+      <section className="border-y border-line/10 bg-ink-800/40">
+        <div className="container-edge mx-auto max-w-edge py-16 md:py-20">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10 sm:grid-cols-2 lg:grid-cols-4">
+            {t.about.record.map((x) => (
+              <div key={x.l} className="bg-ink-900 p-8 text-center">
+                <p className="font-display text-4xl font-semibold text-bone-50 md:text-5xl">
+                  {x.n}
+                </p>
+                <p className="mt-2 text-[11px] uppercase tracking-ultra text-bone-500">
+                  {x.l}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

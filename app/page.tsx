@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import HireCta from "@/components/HireCta";
 import Motion from "@/components/Motion";
 import WebProjects from "@/components/WebProjects";
+import LoopSlider from "@/components/LoopSlider";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <Motion />
       <WebProjects />
+      <LoopSlider />
       <HireCta />
     </SiteShell>
   );

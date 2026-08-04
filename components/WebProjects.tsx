@@ -48,6 +48,27 @@ const sites = [
     img: "/web/the9.webp",
     host: "the-9-menu",
   },
+  {
+    name: "HR Path",
+    type: "HR Consulting · KSA",
+    url: "https://mohamed-sr-designer.github.io/hrpath-redesign/",
+    img: "/web/hrpath.webp",
+    host: "hrpath-redesign",
+  },
+  {
+    name: "Baleine Bleu Maison",
+    type: "Commercial Tower · Riyadh",
+    url: "https://mohamed-sr-designer.github.io/baleine-bleu-maison/",
+    img: "/web/baleine.webp",
+    host: "baleine-bleu-maison",
+  },
+  {
+    name: "Miraf District",
+    type: "Real Estate · Al Khobar",
+    url: "https://mohamed-sr-designer.github.io/miraf-district/",
+    img: "/web/miraf.webp",
+    host: "miraf-district",
+  },
 ];
 
 export default function WebProjects() {

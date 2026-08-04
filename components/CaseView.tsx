@@ -5,11 +5,13 @@ import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { Carousel } from "@/components/ui/Carousel";
 import ThemeToggle from "@/components/ThemeToggle";
-import Flipbook from "@/components/Flipbook";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
+import { withBase } from "@/lib/base";
 import { projects, type Project } from "@/lib/projects";
-import bookFreshValley from "@/lib/book-fresh-valley.json";
+import motionData from "@/lib/motion.json";
+
+type Clip = { slug: string; src: string; poster: string };
 
 export default function CaseView({ project }: { project: Project }) {
   const { t } = useLang();
@@ -17,6 +19,9 @@ export default function CaseView({ project }: { project: Project }) {
   const accent = project.accent === "mint" ? "text-mint" : "text-electric";
   const gallery = project.gallery.filter((g) => g.src !== project.hero);
   const others = projects.filter((p) => p.slug !== project.slug);
+  const caseVideos = (motionData as Clip[]).filter((c) =>
+    (project.videoSlugs ?? []).includes(c.slug)
+  );
 
   const title = tr.title ?? project.title;
   const category = tr.category ?? project.category;
@@ -151,32 +156,143 @@ export default function CaseView({ project }: { project: Project }) {
         )}
       </section>
 
-      {/* Fresh Valley: interactive brand book */}
-      {project.slug === "fresh-valley" ? (
-        <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
+      {/* named gallery groups (Before / After, Characters / Scenes …) —
+          same masonry markup as the standard gallery, one block per group */}
+      {project.galleries?.map((grp) => (
+        <section
+          key={grp.label}
+          className="container-edge mx-auto max-w-edge pb-14 md:pb-20"
+        >
           <Reveal>
             <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
               <h2 className="text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
-                {t.case.bookA}{" "}
-                <span className="font-serif font-normal italic text-mint">
-                  {t.case.bookI}
-                </span>
-                {t.case.bookB}
+                {grp.label}
               </h2>
-              <p className="text-sm text-bone-400">{t.case.bookNote}</p>
+              {grp.note ? (
+                <p className="text-sm text-bone-400">{grp.note}</p>
+              ) : null}
             </div>
           </Reveal>
-          <Reveal delay={0.08}>
-            <Flipbook
-              pages={bookFreshValley}
-              title="Fresh Valley — Marketing × Design Direction × Rebranding"
-            />
+          <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
+            {grp.items.map((g) => (
+              <figure
+                key={g.src}
+                className="mb-3 break-inside-avoid overflow-hidden rounded-lg bg-ink-700"
+              >
+                <Media
+                  src={g.src}
+                  alt={g.caption ?? `${title} — ${grp.label}`}
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                  className="h-auto w-full"
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {/* final videos */}
+      {caseVideos.length > 0 ? (
+        <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
+          <Reveal>
+            <h2 className="mb-6 text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
+              {t.case.finalVideos}
+            </h2>
           </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {caseVideos.map((v) => (
+              <Reveal key={v.slug}>
+                <video
+                  src={withBase(v.src)}
+                  poster={withBase(v.poster)}
+                  controls
+                  playsInline
+                  preload="none"
+                  className="w-full rounded-xl bg-ink-700"
+                />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* production workflow — numbered steps + key results + flow diagram */}
+      {project.workflow ? (
+        <section className="border-y border-line/10 bg-ink-800/40">
+          <div className="container-edge mx-auto max-w-edge py-16 md:py-20">
+            <Reveal>
+              <h2 className="max-w-2xl text-balance text-3xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-4xl">
+                {project.workflow.title}
+              </h2>
+            </Reveal>
+            <div className="mt-6 grid gap-4 md:max-w-3xl">
+              {project.workflow.intro.map((p, i) => (
+                <Reveal key={i} delay={0.05 * i}>
+                  <p className="text-pretty text-base leading-relaxed text-bone-300 md:text-lg">
+                    {p}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal>
+              <p className="mt-12 text-xs uppercase tracking-ultra text-bone-400">
+                {project.workflow.stepsLabel}
+              </p>
+            </Reveal>
+            <div className="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line/10 bg-line/10 sm:grid-cols-2 lg:grid-cols-5">
+              {project.workflow.steps.map((s) => (
+                <div
+                  key={s.n}
+                  className="group flex flex-col gap-4 bg-ink-900 p-7 transition-colors duration-500 hover:bg-ink-800"
+                >
+                  <span className="font-serif text-5xl text-bone-500 transition-colors duration-500 group-hover:text-mint">
+                    {s.n}
+                  </span>
+                  <h3 className="text-xl font-medium tracking-tight text-bone-50">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-bone-400">
+                    {s.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {project.workflow.image ? (
+              <Reveal>
+                <div className="mt-10 overflow-hidden rounded-2xl bg-ink-700">
+                  <Media
+                    src={project.workflow.image}
+                    alt={`${title} — ${project.workflow.title}`}
+                    sizes="(max-width: 1024px) 100vw, 80rem"
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Reveal>
+            ) : null}
+
+            <Reveal>
+              <p className="mt-12 text-xs uppercase tracking-ultra text-bone-400">
+                {project.workflow.resultsLabel}
+              </p>
+            </Reveal>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.workflow.results.map((r) => (
+                <span
+                  key={r}
+                  className="rounded-full border border-line/15 bg-ink-900 px-4 py-2 text-sm text-bone-200"
+                >
+                  {r}
+                </span>
+              ))}
+            </div>
+          </div>
         </section>
       ) : null}
 
       {/* gallery — tidy masonry */}
-      {project.slug !== "fresh-valley" && gallery.length > 0 ? (
+      {gallery.length > 0 ? (
         <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
           <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
             {gallery.map((g) => (

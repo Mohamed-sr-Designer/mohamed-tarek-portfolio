@@ -1,0 +1,59 @@
+"use client";
+
+import { Media } from "@/components/ui/Media";
+import { useLang } from "@/lib/i18n";
+
+// Infinite scrolling strip at the bottom of the home page.
+// Uses the same marquee animation as the client-logo strip.
+const all = Array.from(
+  { length: 32 },
+  (_, i) => `/slider/${String(i + 1).padStart(2, "0")}.webp`
+);
+const per = Math.ceil(all.length / 2);
+const rows = [all.slice(0, per), all.slice(per)];
+
+function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
+  const track = [...imgs, ...imgs];
+  return (
+    <div className="flex w-max">
+      <div
+        className={`flex w-max gap-4 pr-4 ${
+          reverse ? "animate-marquee-rev" : "animate-marquee"
+        }`}
+      >
+        {track.map((src, i) => (
+          <div
+            key={src + i}
+            className="h-40 shrink-0 overflow-hidden rounded-xl bg-ink-700 sm:h-56"
+          >
+            <Media
+              src={src}
+              alt="Selected design"
+              sizes="240px"
+              className="h-full w-auto object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function LoopSlider() {
+  const { t } = useLang();
+  return (
+    <section className="overflow-hidden py-20 md:py-28">
+      <div className="container-edge mx-auto mb-8 flex max-w-edge items-center justify-between text-xs uppercase tracking-ultra text-bone-400">
+        <span>{t.social.label}</span>
+        <a href="#work" className="link-underline text-bone-200">
+          {t.social.browse}
+        </a>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <Row imgs={rows[0]} />
+        <Row imgs={rows[1]} reverse />
+      </div>
+    </section>
+  );
+}
