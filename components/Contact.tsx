@@ -4,7 +4,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { site, contacts } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
-import { openConsult } from "@/components/ConsultModal";
 
 export default function Contact() {
   const { t } = useLang();
@@ -37,13 +36,14 @@ export default function Contact() {
 
         <Reveal delay={0.15}>
           <div className="mt-12 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={openConsult}
+            <a
+              href={`https://wa.me/${site.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-bone-50 px-7 py-3.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
             >
-              {t.modal.title} ✦
-            </button>
+              {t.hire.wa}
+            </a>
             <a
               href={`mailto:${site.email}`}
               className="group inline-flex max-w-full items-center gap-4 break-words text-bone-50"

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
-import { openConsult } from "@/components/ConsultModal";
 
 // Closing conversion band — the last thing a potential client or employer
 // sees before the footer. One message: he's available, here's how to reach him.
@@ -49,13 +48,12 @@ export default function HireCta() {
 
         <Reveal delay={0.15}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={openConsult}
+            <a
+              href={`mailto:${site.email}`}
               className="rounded-full bg-bone-50 px-7 py-3.5 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
             >
-              {t.modal.title} ✦
-            </button>
+              {site.email}
+            </a>
             <a
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"

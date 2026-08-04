@@ -7,8 +7,6 @@ import {
 } from "next/font/google";
 import { site } from "@/lib/site";
 import { LangProvider } from "@/lib/i18n";
-import ConsultModal from "@/components/ConsultModal";
-import PaymentModal from "@/components/PaymentModal";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -71,6 +69,7 @@ export const metadata: Metadata = {
     "AI Production",
     "Motion Design",
     "Hire Graphic Designer",
+    "Sr Designer",
     "Team Lead",
     "Mohamed Tarek",
     "Portfolio",
@@ -113,7 +112,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${site.url}/#person`,
       name: site.name,
-      jobTitle: "Graphic Designer & Art Director (Team Lead)",
+      jobTitle: "Sr Designer, Team Lead",
       description: site.description,
       url: site.url,
       image: `${site.url}/me/portrait.webp`,
@@ -190,8 +189,6 @@ export default function RootLayout({
           <ScrollProgress />
           <Cursor />
           <WhatsAppButton />
-          <ConsultModal />
-          <PaymentModal />
           {children}
         </LangProvider>
       </body>

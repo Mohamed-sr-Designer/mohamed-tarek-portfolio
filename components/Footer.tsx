@@ -11,7 +11,6 @@ export default function Footer() {
   const links = [
     { label: t.nav.work, href: "/" },
     { label: t.nav.about, href: "/about" },
-    { label: t.nav.course, href: "/course" },
     { label: t.nav.contact, href: "/contact" },
   ];
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
-import { openConsult } from "@/components/ConsultModal";
 import { Media } from "@/components/ui/Media";
 import Magnetic from "@/components/ui/Magnetic";
 import GridField from "@/components/ui/GridField";
@@ -121,19 +120,18 @@ export default function Hero() {
             >
               <div className="flex flex-wrap items-center gap-4">
                 <Magnetic>
-                  <button
-                    type="button"
-                    onClick={openConsult}
+                  <a
+                    href="#work"
                     className="group flex items-center gap-3 rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900 transition-colors"
                   >
                     {t.hero.ctaPrimary}
                     <motion.span
-                      animate={reduce ? {} : { x: [0, 4, 0] }}
+                      animate={reduce ? {} : { y: [0, 4, 0] }}
                       transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      ✦
+                      ↓
                     </motion.span>
-                  </button>
+                  </a>
                 </Magnetic>
                 <Magnetic>
                   <Link

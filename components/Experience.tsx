@@ -26,7 +26,7 @@ const jobs: Job[] = [
     current: true,
     note: "Joined as a Graphic Designer and grew all the way to Senior, moved on in Aug 2024 to broaden my range — then returned in May 2026 to lead the art team and own the brand's visual standard.",
     roles: [
-      { title: "Art Team Lead", period: "May 2026 — Present", current: true, returned: true },
+      { title: "Sr Designer, Team Lead", period: "May 2026 — Present", current: true, returned: true },
       { title: "Senior Graphic Designer", period: "2024 — Aug 2024" },
       { title: "Mid-Level Designer", period: "Jan 2024" },
       { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
