@@ -17,7 +17,18 @@ export default function CaseView({ project }: { project: Project }) {
   const { t } = useLang();
   const tr = t.projects[project.slug] ?? {};
   const accent = project.accent === "mint" ? "text-mint" : "text-electric";
-  const gallery = project.gallery.filter((g) => g.src !== project.hero);
+  // The grid is laid out like an Instagram profile: the first post sits
+  // bottom-right and the newest lands top-left, so a 9-set reads
+  //   9 8 7
+  //   6 5 4
+  //   3 2 1
+  // which in DOM order is simply the set reversed.
+  //
+  // Nothing is filtered out here. `project.hero` used to be dropped from the
+  // grid because it led the page, but case pages no longer show a hero image —
+  // keeping the filter silently cost every social set its hero frame and left
+  // 8 tiles in a 9-tile grid.
+  const gallery = [...project.gallery].reverse();
   const others = projects.filter((p) => p.slug !== project.slug);
   const caseVideos = (motionData as Clip[]).filter((c) =>
     (project.videoSlugs ?? []).includes(c.slug)
@@ -311,8 +322,8 @@ export default function CaseView({ project }: { project: Project }) {
         </section>
       ) : null}
 
-      {/* gallery — an Instagram-style grid so posts read left-to-right in the
-          order they were numbered (CSS columns would reflow them vertically) */}
+      {/* gallery — an Instagram-style grid, first post bottom-right (CSS
+          columns would reflow the set vertically, so this stays a real grid) */}
       {gallery.length > 0 ? (
         <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
           <div className="mx-auto grid max-w-5xl grid-cols-3 gap-1.5 md:gap-3">

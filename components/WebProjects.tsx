@@ -120,7 +120,6 @@ export default function WebProjects() {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setActive(i)}
-                  onMouseEnter={() => setActive(i)}
                   className={`shrink-0 rounded-xl border px-4 py-3 text-start transition-colors duration-300 lg:w-full ${
                     on
                       ? "border-mint/50 bg-mint/[0.07]"

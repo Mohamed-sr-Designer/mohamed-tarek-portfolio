@@ -346,7 +346,7 @@ export const projects: Project[] = [
     hero: "/work/social/fresh-valley/02.webp",
     tags: ["Food & Retail", "Social Design", "Brand System"],
     contribution: ["Social Design", "Art Direction", "Brand System"],
-    gallery: g(...seq("/work/social/fresh-valley/", 1, 8)),
+    gallery: g(...seq("/work/social/fresh-valley/", 1, 9)),
   },
   {
     slug: "gf",
