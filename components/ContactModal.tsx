@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { site, contacts } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
+import CopyButton from "@/components/ui/CopyButton";
 
 // Glassy contact card opened from the header "Let's talk" — same details as
 // the contact page, without leaving the current page.
@@ -92,28 +93,41 @@ export default function ContactModal() {
               {t.contact.body}
             </p>
 
-            {/* channels */}
+            {/* channels — the row opens the channel, the button copies it */}
             <div className="relative mt-7 grid gap-2">
               {contacts.map((c) => (
-                <a
+                <div
                   key={c.label}
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 transition-colors duration-300 hover:border-mint/40 hover:bg-white/[0.07]"
+                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 transition-colors duration-300 focus-within:border-mint/40 hover:border-mint/40 hover:bg-white/[0.07]"
                 >
-                  <span className="min-w-0">
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      c.href.startsWith("http") ? "noopener noreferrer" : undefined
+                    }
+                    aria-label={`${t.contact.open} ${
+                      t.contact.labels[c.label] ?? c.label
+                    }`}
+                    className="min-w-0 flex-1"
+                  >
                     <span className="block text-[10px] uppercase tracking-ultra text-bone-500">
                       {t.contact.labels[c.label] ?? c.label}
                     </span>
-                    <span className="mt-0.5 block truncate text-sm text-bone-50" dir="ltr">
+                    <span
+                      className="mt-0.5 block truncate text-sm text-bone-50 transition-colors group-hover:text-mint"
+                      dir="ltr"
+                    >
                       {c.value}
                     </span>
-                  </span>
-                  <span className="shrink-0 text-bone-400 transition-colors group-hover:text-mint">
-                    ↗
-                  </span>
-                </a>
+                  </a>
+                  <CopyButton
+                    value={c.copy}
+                    label={t.contact.labels[c.label] ?? c.label}
+                    copyLabel={t.contact.copy}
+                    copiedLabel={t.contact.copied}
+                  />
+                </div>
               ))}
             </div>
 

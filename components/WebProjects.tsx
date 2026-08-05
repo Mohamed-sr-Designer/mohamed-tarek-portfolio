@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
@@ -73,6 +74,9 @@ const sites = [
 
 export default function WebProjects() {
   const { t } = useLang();
+  const [active, setActive] = useState(0);
+  const current = sites[active];
+
   return (
     <section id="web" className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -97,49 +101,92 @@ export default function WebProjects() {
         </Reveal>
       </div>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-5">
-        {sites.map((s, i) => (
-          <Reveal key={s.name} delay={i * 0.06}>
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block overflow-hidden rounded-xl border border-line/12 bg-ink-800/40"
-            >
+      {/* One preview frame plus a picker, instead of nine stacked cards — the
+          whole set now fits in a single screen rather than three long rows. */}
+      <Reveal delay={0.12}>
+        <div className="mt-12 grid gap-5 lg:grid-cols-12">
+          {/* picker */}
+          <div
+            role="tablist"
+            aria-label={t.web.label}
+            className="order-2 flex gap-2 overflow-x-auto pb-2 lg:order-1 lg:col-span-4 lg:flex-col lg:overflow-visible lg:pb-0"
+          >
+            {sites.map((s, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={s.name}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                  className={`shrink-0 rounded-xl border px-4 py-3 text-start transition-colors duration-300 lg:w-full ${
+                    on
+                      ? "border-mint/50 bg-mint/[0.07]"
+                      : "border-line/12 hover:border-line/30 hover:bg-ink-800/50"
+                  }`}
+                >
+                  <span
+                    className={`block whitespace-nowrap text-sm font-medium tracking-tight lg:text-base ${
+                      on ? "text-mint" : "text-bone-100"
+                    }`}
+                  >
+                    {s.name}
+                  </span>
+                  <span className="mt-0.5 hidden text-xs text-bone-400 lg:block">
+                    {s.type}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* preview */}
+          <div className="order-1 lg:order-2 lg:col-span-8">
+            <div className="overflow-hidden rounded-xl border border-line/12 bg-ink-800/40">
               {/* browser chrome */}
               <div className="flex items-center gap-2 border-b border-line/10 px-4 py-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-line/20" />
                 <span className="h-2.5 w-2.5 rounded-full bg-line/20" />
                 <span className="h-2.5 w-2.5 rounded-full bg-line/20" />
-                <span className="ml-2 truncate rounded-full bg-line/5 px-3 py-1 text-[11px] text-bone-400">
-                  {s.host}.github.io
+                <span className="mx-2 min-w-0 flex-1 truncate rounded-full bg-line/5 px-3 py-1 text-[11px] text-bone-400" dir="ltr">
+                  {current.host}.github.io
                 </span>
-              </div>
-              <div className="relative aspect-[16/10] overflow-hidden bg-ink-700">
-                <Media
-                  src={s.img}
-                  alt={`${s.name} website`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover object-top transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
-              <div className="flex items-center justify-between gap-3 p-5">
-                <div>
-                  <h3 className="text-xl font-medium tracking-tight text-bone-50">
-                    {s.name}
-                  </h3>
-                  <p className="text-sm text-bone-400">{s.type}</p>
-                </div>
-                <span className="shrink-0 text-sm text-mint transition-transform duration-300 group-hover:translate-x-1">
+                <a
+                  href={current.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 rounded-full border border-mint/45 px-3 py-1 text-[11px] font-medium text-mint transition-colors duration-300 hover:bg-mint hover:text-ink-900"
+                >
                   {t.web.live}
-                </span>
+                </a>
               </div>
-            </a>
-          </Reveal>
-        ))}
-      </div>
+
+              <a
+                href={current.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t.web.visit} — ${current.name}`}
+                className="group relative block aspect-[16/10] overflow-hidden bg-ink-700"
+              >
+                <Media
+                  key={current.img}
+                  src={current.img}
+                  alt={`${current.name} — ${current.type}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  className="object-cover object-top transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.03]"
+                />
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <span className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-black opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  {t.web.visit} ↗
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

@@ -19,15 +19,33 @@ export const site = {
   markets: "Egypt · Saudi Arabia · Kuwait",
 };
 
+// `copy` is what lands on the clipboard — the raw, usable value rather than
+// the prettified one shown on screen.
 export const contacts = [
-  { label: "Email", value: site.email, href: `mailto:${site.email}` },
+  {
+    label: "Email",
+    value: site.email,
+    href: `mailto:${site.email}`,
+    copy: site.email,
+  },
   {
     label: "WhatsApp",
     value: site.whatsappDisplay,
     href: `https://wa.me/${site.whatsapp}`,
+    copy: `+${site.whatsapp}`,
   },
-  { label: "Phone", value: site.phoneDisplay, href: `tel:${site.phone}` },
-  { label: "LinkedIn", value: site.linkedinHandle, href: site.linkedin },
+  {
+    label: "Phone",
+    value: site.phoneDisplay,
+    href: `tel:${site.phone}`,
+    copy: site.phone,
+  },
+  {
+    label: "LinkedIn",
+    value: site.linkedinHandle,
+    href: site.linkedin,
+    copy: site.linkedin,
+  },
 ];
 
 export const nav = [

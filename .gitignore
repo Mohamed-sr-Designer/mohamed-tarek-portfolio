@@ -36,3 +36,6 @@ next-env.d.ts
 /public/work/New folder*
 *.lnk
 /scripts/_*
+
+# local editor/agent config
+/.claude/

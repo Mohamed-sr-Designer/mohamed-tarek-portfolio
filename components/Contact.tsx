@@ -4,6 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { site, contacts } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function Contact() {
   const { t } = useLang();
@@ -58,23 +59,42 @@ export default function Contact() {
         <Reveal delay={0.2}>
           <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line/10 bg-line/10 sm:grid-cols-2 lg:grid-cols-4">
             {contacts.map((c) => (
-              <a
+              <div
                 key={c.label}
-                href={c.href}
-                target={c.href.startsWith("http") ? "_blank" : undefined}
-                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex flex-col gap-2 bg-ink-900 p-6 transition-colors duration-300 hover:bg-ink-800"
+                className="group flex flex-col gap-3 bg-ink-900 p-6 transition-colors duration-300 focus-within:bg-ink-800 hover:bg-ink-800"
               >
-                <span className="flex items-center gap-2 text-xs uppercase tracking-ultra text-bone-400">
-                  {t.contact.labels[c.label] ?? c.label}
-                  <span className="text-bone-500 transition-colors group-hover:text-mint">
-                    ↗
+                <a
+                  href={c.href}
+                  target={c.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    c.href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  aria-label={`${t.contact.open} ${
+                    t.contact.labels[c.label] ?? c.label
+                  }`}
+                  className="flex flex-col gap-2"
+                >
+                  <span className="flex items-center gap-2 text-xs uppercase tracking-ultra text-bone-400">
+                    {t.contact.labels[c.label] ?? c.label}
+                    <span className="text-bone-500 transition-colors group-hover:text-mint">
+                      ↗
+                    </span>
                   </span>
-                </span>
-                <span className="break-words text-base text-bone-50 transition-colors group-hover:text-mint">
-                  {c.value}
-                </span>
-              </a>
+                  <span
+                    className="break-words text-base text-bone-50 transition-colors group-hover:text-mint"
+                    dir="ltr"
+                  >
+                    {c.value}
+                  </span>
+                </a>
+                <CopyButton
+                  value={c.copy}
+                  label={t.contact.labels[c.label] ?? c.label}
+                  copyLabel={t.contact.copy}
+                  copiedLabel={t.contact.copied}
+                  className="self-start"
+                />
+              </div>
             ))}
           </div>
         </Reveal>

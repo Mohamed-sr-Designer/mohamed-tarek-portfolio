@@ -380,7 +380,12 @@ export default function CaseView({ project }: { project: Project }) {
                 <h3 className="mt-3 text-lg font-medium tracking-tight text-bone-50">
                   {ptr.title ?? p.title}
                 </h3>
-                <span className="text-sm text-mint">{t.case.readMore}</span>
+                <span className="text-sm text-mint">
+                  {t.case.readMore}{" "}
+                  <span aria-hidden className="inline-block rtl:rotate-180">
+                    →
+                  </span>
+                </span>
               </Link>
             );
           })}

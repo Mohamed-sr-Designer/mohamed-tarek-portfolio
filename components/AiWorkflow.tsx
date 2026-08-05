@@ -92,9 +92,12 @@ export default function AiWorkflow() {
             </h3>
             <Link
               href={`/work/${p.slug}`}
-              className="mt-4 inline-block text-sm text-mint underline-offset-4 hover:underline"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
             >
               {t.case.readMore}
+              <span aria-hidden className="rtl:rotate-180">
+                →
+              </span>
             </Link>
           </div>
           <div className="md:col-span-7">
@@ -138,28 +141,31 @@ export default function AiWorkflow() {
           </li>
         </ol>
 
-        {/* a glimpse of what it produced */}
+        {/* the outputs themselves live on the case page — one clear way in */}
         {p.galleries?.length ? (
-          <div className="mt-6 grid grid-cols-3 gap-3 md:grid-cols-6">
-            {p.galleries
-              .flatMap((grp) => grp.items.slice(0, 3))
-              .slice(0, 6)
-              .map((it) => (
-                <Link
-                  key={it.src}
-                  href={`/work/${p.slug}`}
-                  className="group relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-700"
-                >
-                  <Media
-                    src={it.src}
-                    alt={`${tr.title ?? p.title} — output`}
-                    fill
-                    sizes="150px"
-                    className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-110"
-                  />
-                </Link>
-              ))}
-          </div>
+          <Reveal>
+            <Link
+              href={`/work/${p.slug}`}
+              className="group mt-6 flex flex-col gap-4 rounded-2xl border border-line/12 bg-ink-800/40 px-6 py-6 transition-colors duration-300 hover:border-mint/40 hover:bg-ink-800/70 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <span>
+                <span className="block text-base font-medium tracking-tight text-bone-50">
+                  {tr.title ?? p.title}
+                </span>
+                <span className="mt-1 block text-sm text-bone-400">
+                  {p.galleries
+                    .map((grp) => `${grp.label} (${grp.items.length})`)
+                    .join(" · ")}
+                </span>
+              </span>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-mint/45 px-6 py-3 text-sm font-medium text-mint transition-colors duration-300 group-hover:bg-mint group-hover:text-ink-900">
+                {t.case.readMore}
+                <span aria-hidden className="rtl:rotate-180">
+                  →
+                </span>
+              </span>
+            </Link>
+          </Reveal>
         ) : null}
       </article>
     </section>

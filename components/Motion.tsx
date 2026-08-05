@@ -82,7 +82,8 @@ function VideoCard({
         preload="none"
         className="h-full w-full object-cover"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90" />
+      {/* light scrim only — the clips carry no caption, so nothing to protect */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
 
       {/* play affordance — tap on touch, hover on desktop */}
       {!playing ? (
@@ -123,10 +124,6 @@ function VideoCard({
         </button>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4">
-        <p className="text-sm font-medium text-white">{clip.title}</p>
-        <p className="text-xs text-white/70">{clip.kind}</p>
-      </div>
     </div>
   );
 }

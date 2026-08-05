@@ -17,8 +17,14 @@ const social = projects.filter(
 function Card({ p }: { p: Project }) {
   const { t } = useLang();
   const tr = t.projects[p.slug] ?? {};
-  const kv = p.gallery[0];
-  const row = p.gallery.slice(1, 4);
+  // the card leads with the project cover, then three supporting posts —
+  // curated per project when set, otherwise the next three in the feed
+  const kv = p.gallery.find((x) => x.src === p.cover) ?? p.gallery[0];
+  const row = (
+    p.cardPicks?.length
+      ? p.cardPicks.map((src) => ({ src }))
+      : p.gallery.filter((x) => x.src !== kv.src)
+  ).slice(0, 3);
   const title = tr.title ?? p.title;
   // long client strings ("Al Rajhi Union · Rawdah Residences") wrap and push
   // the count onto its own line — show the lead brand only

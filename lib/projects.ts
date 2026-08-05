@@ -51,6 +51,9 @@ export type Project = {
   impact?: string;
   contribution: string[];
   gallery: GalleryItem[];
+  // the three supporting posts on the home card, when the first three in the
+  // gallery aren't the strongest ones to lead with
+  cardPicks?: string[];
   galleries?: GalleryGroup[]; // named groups (Before / After / Characters …)
   workflow?: Workflow;
   strategyBlock?: Strategy;
@@ -162,7 +165,8 @@ export const projects: Project[] = [
     summary:
       "A full campaign built as one connected production system — characters, scenes and story links planned first, so every shot works across several deliverables.",
     tagline: "One planned system, many films — instead of many separate shoots.",
-    cover: "/work/video-production/char-01.webp",
+    // a real scene from the film, not a character sheet
+    cover: "/work/video-production/sc-01.webp",
     hero: "/work/video-production/sc-01.webp",
     tags: ["AI Video", "Character Design", "Storyboard", "Campaign"],
     challenge:
@@ -358,11 +362,17 @@ export const projects: Project[] = [
     summary:
       "Social media design for a healthy dessert brand — playful colour, flying crumbs and appetite-first framing that still feels light.",
     tagline: "Dessert that looks indulgent and still feels light.",
-    cover: "/work/social/gf/09.webp",
+    // lead with the product shots, not the typographic posts
+    cover: "/work/social/gf/06.webp",
     hero: "/work/social/gf/02.webp",
     tags: ["Food & Beverage", "Social Design", "Appetite Craft"],
     contribution: ["Social Design", "Art Direction", "Retouch"],
     gallery: g(...seq("/work/social/gf/", 1, 9)),
+    cardPicks: [
+      "/work/social/gf/09.webp",
+      "/work/social/gf/03.webp",
+      "/work/social/gf/08.webp",
+    ],
   },
   {
     slug: "the-nine",
