@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
+import { Toggle } from "@/components/ui/Toggle";
 import { useLang } from "@/lib/i18n";
 import { withBase } from "@/lib/base";
 
@@ -15,6 +16,7 @@ const boards = ["01", "02", "03"].map((n) => `/work/storyboards/${n}.webp`);
 export default function Storyboards() {
   const { t } = useLang();
   const [open, setOpen] = useState<string | null>(null);
+  const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     if (!open) return;
@@ -35,7 +37,7 @@ export default function Storyboards() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="05">{t.story.label}</SectionLabel>
+            <SectionLabel>{t.story.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -54,27 +56,38 @@ export default function Storyboards() {
         </Reveal>
       </div>
 
-      <div className="mt-12 grid gap-5">
-        {boards.map((src, i) => (
-          <Reveal key={src}>
-            <button
-              type="button"
-              onClick={() => setOpen(src)}
-              className="group relative block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900 text-left"
-            >
-              <Media
-                src={src}
-                alt={`${t.story.label} ${i + 1}`}
-                sizes="(max-width: 1024px) 100vw, 80rem"
-                className="h-auto w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.01]"
-              />
-              <span className="absolute left-5 top-5 rounded-full bg-black/50 px-3 py-1 text-[11px] uppercase tracking-widest text-white backdrop-blur-md">
-                {t.story.board} {String(i + 1).padStart(2, "0")}
-              </span>
-            </button>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal delay={0.1}>
+        <div className="mt-10">
+          <Toggle
+            ariaLabel={t.story.label}
+            value={String(idx)}
+            onChange={(v) => setIdx(Number(v))}
+            options={boards.map((_, i) => ({
+              value: String(i),
+              label: `${t.story.board} ${String(i + 1).padStart(2, "0")}`,
+            }))}
+          />
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <button
+          type="button"
+          onClick={() => setOpen(boards[idx])}
+          className="group relative mt-6 block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900 text-left"
+        >
+          <Media
+            key={boards[idx]}
+            src={boards[idx]}
+            alt={`${t.story.label} ${idx + 1}`}
+            sizes="(max-width: 1024px) 100vw, 80rem"
+            className="h-auto w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.01]"
+          />
+          <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-black/55 px-3 py-1 text-[11px] uppercase tracking-widest text-white backdrop-blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            {t.master.expand}
+          </span>
+        </button>
+      </Reveal>
 
       <AnimatePresence>
         {open && (

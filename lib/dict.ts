@@ -239,11 +239,13 @@ const en = {
     academies: [
       {
         name: "SOIC — School of Cinema",
+        logo: "/orgs/soic.webp",
         now: true,
         desc: "Teaching design craft inside a filmmaking school — visual storytelling, key art and campaign thinking for cinema.",
       },
       {
         name: "EDUX Academy",
+        logo: "/orgs/edux.webp",
         now: true,
         desc: "Graphic design tracks taking students from fundamentals to portfolio-ready execution.",
       },
@@ -254,6 +256,7 @@ const en = {
       },
       {
         name: "Raya Academy",
+        logo: "/orgs/raya.webp",
         now: false,
         desc: "Hands-on graphic design cohorts — photo manipulation, landing pages and branding, taught project by project.",
       },
@@ -668,11 +671,13 @@ const ar: typeof en = {
     academies: [
       {
         name: "SOIC — مدرسة السينما",
+        logo: "/orgs/soic.webp",
         now: true,
         desc: "تدريس حِرفة التصميم داخل مدرسة لصناعة الأفلام — السرد البصري والكي-آرت وتفكير الحملات للسينما.",
       },
       {
         name: "EDUX أكاديمي",
+        logo: "/orgs/edux.webp",
         now: true,
         desc: "مسارات جرافيك ديزاين تأخذ الطلاب من الأساسيات حتى تنفيذٍ جاهز للبورتفوليو.",
       },
@@ -683,6 +688,7 @@ const ar: typeof en = {
       },
       {
         name: "راية أكاديمي",
+        logo: "/orgs/raya.webp",
         now: false,
         desc: "دفعات جرافيك عملية — فوتو مانيبيوليشن وصفحات هبوط وبراندينج، مشروعًا بمشروع.",
       },

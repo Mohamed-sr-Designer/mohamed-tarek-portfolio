@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Media } from "@/components/ui/Media";
 import { useLang } from "@/lib/i18n";
 
 type Role = { title: string; period: string; current?: boolean; returned?: boolean };
@@ -12,6 +13,7 @@ type Job = {
   place: string;
   current?: boolean;
   note: string;
+  logo?: string;
   roles?: Role[]; // promotion ladder (newest first)
   role?: string; // single role
 };
@@ -20,6 +22,7 @@ type Job = {
 const jobs: Job[] = [
   {
     company: "Osolutions",
+    logo: "/orgs/osolutions.webp",
     type: "Full-time · On-site",
     period: "Jan 2023 — Aug 2024 · Returned May 2026 — Present",
     place: "Makkah, KSA",
@@ -34,6 +37,7 @@ const jobs: Job[] = [
   },
   {
     company: "JUMPPEAK",
+    logo: "/orgs/jumppeak.webp",
     role: "Senior Graphic Designer — Team Lead",
     type: "Full-time",
     period: "Mar — May 2026",
@@ -42,6 +46,7 @@ const jobs: Job[] = [
   },
   {
     company: "Prepd",
+    logo: "/orgs/prepd.webp",
     role: "Senior Graphic Designer",
     type: "Part-time · Remote",
     period: "Nov 2025 — May 2026",
@@ -50,6 +55,7 @@ const jobs: Job[] = [
   },
   {
     company: "Bundle IMS",
+    logo: "/orgs/bundle.webp",
     role: "Senior / Visual Designer",
     type: "Full-time · Automotive · BTL",
     period: "Aug 2025 — Mar 2026",
@@ -58,6 +64,7 @@ const jobs: Job[] = [
   },
   {
     company: "Teaching Planet Academy",
+    logo: "/orgs/teaching.webp",
     role: "Senior Designer & Graphic Design Instructor",
     type: "Part-time · Instructor",
     period: "May 2022 — Dec 2025",
@@ -66,6 +73,7 @@ const jobs: Job[] = [
   },
   {
     company: "Flowrista",
+    logo: "/orgs/flowrista.webp",
     role: "Senior Graphic Designer",
     type: "Full-time",
     period: "Jan — Aug 2025",
@@ -74,6 +82,7 @@ const jobs: Job[] = [
   },
   {
     company: "Pala De 7",
+    logo: "/orgs/pala7.webp",
     role: "Senior Graphic Designer",
     type: "Freelance · Remote",
     period: "Jul 2024 — Jul 2025",
@@ -90,6 +99,7 @@ const jobs: Job[] = [
   },
   {
     company: "Raya Academy",
+    logo: "/orgs/raya.webp",
     role: "Graphic Design Instructor",
     type: "Part-time · Instructor",
     period: "Nov 2022 — Nov 2023",
@@ -153,7 +163,7 @@ export default function Experience() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="03">{t.exp.label}</SectionLabel>
+            <SectionLabel>{t.exp.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance font-sans text-4xl font-light leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -176,6 +186,17 @@ export default function Experience() {
             <div className="group grid grid-cols-1 gap-4 border-b border-line/10 py-7 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-8">
               <div className="md:col-span-4">
                 <div className="flex flex-wrap items-center gap-3">
+                  {j.logo ? (
+                    <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-white/90">
+                      <Media
+                        src={j.logo}
+                        alt={j.company}
+                        fill
+                        sizes="36px"
+                        className="object-contain p-1"
+                      />
+                    </span>
+                  ) : null}
                   <h3 className="text-xl font-medium tracking-tight text-bone-50 md:text-2xl">
                     {j.company}
                   </h3>

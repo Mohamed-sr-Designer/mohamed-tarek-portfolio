@@ -69,7 +69,7 @@ export default function SelectedWork() {
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="01">{t.work.label}</SectionLabel>
+            <SectionLabel>{t.work.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">

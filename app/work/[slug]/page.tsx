@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import SiteShell from "@/components/SiteShell";
 import CaseView from "@/components/CaseView";
 import { projects, getProject } from "@/lib/projects";
 
@@ -29,5 +30,9 @@ export function generateMetadata({
 export default function CaseStudy({ params }: { params: { slug: string } }) {
   const project = getProject(params.slug);
   if (!project) notFound();
-  return <CaseView project={project} />;
+  return (
+    <SiteShell>
+      <CaseView project={project} />
+    </SiteShell>
+  );
 }

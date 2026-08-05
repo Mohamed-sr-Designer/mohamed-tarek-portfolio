@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
 import ThemeToggle from "@/components/ThemeToggle";
+import { openContact } from "@/components/ContactModal";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -89,12 +90,13 @@ export default function Nav() {
               {t.nav.langBtn}
             </button>
             <ThemeToggle />
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={openContact}
               className="hidden rounded-full border border-line/20 px-5 py-2 text-sm text-bone-50 transition-all duration-300 hover:border-mint/50 hover:bg-mint/5 md:inline-block"
             >
               {t.nav.letsTalk}
-            </Link>
+            </button>
             <button
               onClick={() => setOpen((v) => !v)}
               className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
@@ -146,13 +148,16 @@ export default function Nav() {
                 </motion.div>
               ))}
             </nav>
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openContact();
+              }}
               className="mt-10 w-fit rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900"
             >
               {t.nav.letsTalk}
-            </Link>
+            </button>
             <a href={`mailto:${site.email}`} className="mt-6 text-sm text-mint">
               {site.email}
             </a>

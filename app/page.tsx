@@ -22,8 +22,8 @@ export default function Home() {
       <Storyboards />
       <Motion />
       <WebProjects />
-      <LoopSlider />
       <Services />
+      <LoopSlider />
       <HireCta />
     </SiteShell>
   );

@@ -31,33 +31,7 @@ export default function CaseView({ project }: { project: Project }) {
 
   return (
     <>
-      {/* top bar */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-line/10 bg-ink-900/70 backdrop-blur-xl">
-        <div className="container-edge mx-auto flex max-w-edge items-center justify-between py-4">
-          <Link href="/" className="group flex items-center gap-3 text-sm">
-            <span className="transition-transform duration-300 group-hover:-translate-x-1 rtl:rotate-180">
-              ←
-            </span>
-            <span className="text-bone-200 group-hover:text-bone-50">
-              {t.case.allWork}
-            </span>
-          </Link>
-          <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center rounded-full border border-line/20 font-display text-xs">
-              MT
-            </span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Link
-              href="/contact"
-              className="hidden rounded-full border border-line/20 px-4 py-1.5 text-sm text-bone-50 hover:border-mint/50 hover:bg-mint/5 sm:inline-block"
-            >
-              {t.case.letsTalk}
-            </Link>
-          </div>
-        </div>
-      </header>
+
 
       {/* title */}
       <section className="container-edge mx-auto max-w-edge pt-32 text-center md:pt-40">
@@ -85,7 +59,7 @@ export default function CaseView({ project }: { project: Project }) {
       {/* lead visual — the flow diagram leads on workflow cases, so the
           process is understood before anything else; otherwise the hero.
           Social sets skip it: their grid below is the story. */}
-      {project.simple ? null : (
+      {leadIsFlow ? (
       <section className="container-edge mx-auto mt-12 max-w-edge md:mt-16">
         <Reveal>
           <div
@@ -108,7 +82,7 @@ export default function CaseView({ project }: { project: Project }) {
           ) : null}
         </Reveal>
       </section>
-      )}
+      ) : null}
 
       {/* approach — full case study, or a lighter "explanation" for simple ones */}
       <section className="container-edge mx-auto max-w-edge py-16 md:py-20">
@@ -171,6 +145,49 @@ export default function CaseView({ project }: { project: Project }) {
           </div>
         )}
       </section>
+
+      {/* strategy from the proposal deck — tone of voice + content pillars */}
+      {project.strategyBlock ? (
+        <section className="container-edge mx-auto max-w-edge pb-14 md:pb-20">
+          <div className="grid gap-6 md:grid-cols-12 md:gap-8">
+            <div className="md:col-span-5">
+              <div className="h-full rounded-2xl border border-line/10 bg-ink-800/40 p-7">
+                <p className="text-[10px] uppercase tracking-ultra text-bone-500">
+                  {project.strategyBlock.toneLabel}
+                </p>
+                <p className="mt-4 text-pretty text-lg leading-relaxed text-bone-100">
+                  {project.strategyBlock.tone}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.strategyBlock.toneTraits.map((x) => (
+                    <span
+                      key={x}
+                      className="rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs text-bone-300"
+                    >
+                      {x}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-7">
+              <p className="text-[10px] uppercase tracking-ultra text-bone-500">
+                {project.strategyBlock.pillarsLabel}
+              </p>
+              <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10 sm:grid-cols-2">
+                {project.strategyBlock.pillars.map((pl) => (
+                  <div key={pl.n} className="flex items-baseline gap-3 bg-ink-900 p-5">
+                    <span className="font-display text-sm tabular-nums text-mint">
+                      {pl.n}
+                    </span>
+                    <span className="text-base text-bone-100">{pl.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* named gallery groups (Before / After, Characters / Scenes …) —
           same masonry markup as the standard gallery, one block per group */}
@@ -302,7 +319,7 @@ export default function CaseView({ project }: { project: Project }) {
             {gallery.map((g) => (
               <figure
                 key={g.src}
-                className="relative aspect-square overflow-hidden bg-ink-700"
+                className="relative aspect-[4/5] overflow-hidden bg-ink-700"
               >
                 <Media
                   src={g.src}
@@ -351,7 +368,7 @@ export default function CaseView({ project }: { project: Project }) {
                 href={`/work/${p.slug}`}
                 className="group w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[31%]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-ink-700">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-ink-700">
                   <Media
                     src={p.cover}
                     alt={ptr.title ?? p.title}
@@ -370,16 +387,7 @@ export default function CaseView({ project }: { project: Project }) {
         </Carousel>
       </section>
 
-      <footer className="container-edge mx-auto max-w-edge border-t border-line/10 py-10 text-sm text-bone-400">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            © {new Date().getFullYear()} {site.name} — {site.role}
-          </span>
-          <Link href="/contact" className="link-underline text-bone-200">
-            {t.case.ctaBtn}
-          </Link>
-        </div>
-      </footer>
+
     </>
   );
 }

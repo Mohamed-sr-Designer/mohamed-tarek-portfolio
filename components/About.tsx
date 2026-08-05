@@ -13,7 +13,7 @@ export default function About() {
       className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
     >
       <Reveal>
-        <SectionLabel index="01">{t.about.label}</SectionLabel>
+        <SectionLabel>{t.about.label}</SectionLabel>
       </Reveal>
 
       <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">

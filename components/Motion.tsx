@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Toggle } from "@/components/ui/Toggle";
 import { withBase } from "@/lib/base";
 import { useLang } from "@/lib/i18n";
 import motionData from "@/lib/motion.json";
@@ -196,7 +197,7 @@ export default function Motion() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="03">{t.motion.label}</SectionLabel>
+            <SectionLabel>{t.motion.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -217,30 +218,16 @@ export default function Motion() {
 
       {/* one collection at a time — showing all 21 at once was overwhelming */}
       <Reveal delay={0.1}>
-        <div role="tablist" aria-label="Video collections" className="mt-10 flex flex-wrap gap-2">
-          {(["landscape", "portrait"] as const).map((k) => {
-            const on = tab === k;
-            const count = k === "landscape" ? landscape.length : portrait.length;
-            return (
-              <button
-                key={k}
-                type="button"
-                role="tab"
-                aria-selected={on}
-                onClick={() => setTab(k)}
-                className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
-                  on
-                    ? "border-transparent bg-bone-50 text-ink-900"
-                    : "border-line/15 text-bone-300 hover:border-line/35 hover:text-bone-50"
-                }`}
-              >
-                {k === "landscape" ? t.motion.landscape : t.motion.portrait}
-                <span className={`text-xs ${on ? "text-ink-900/60" : "text-bone-500"}`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
+        <div className="mt-10">
+          <Toggle
+            ariaLabel="Video collections"
+            value={tab}
+            onChange={(v) => setTab(v as "landscape" | "portrait")}
+            options={[
+              { value: "landscape", label: t.motion.landscape, hint: String(landscape.length) },
+              { value: "portrait", label: t.motion.portrait, hint: String(portrait.length) },
+            ]}
+          />
         </div>
       </Reveal>
 

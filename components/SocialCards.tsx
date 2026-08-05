@@ -20,14 +20,17 @@ function Card({ p }: { p: Project }) {
   const kv = p.gallery[0];
   const row = p.gallery.slice(1, 4);
   const title = tr.title ?? p.title;
+  // long client strings ("Al Rajhi Union · Rawdah Residences") wrap and push
+  // the count onto its own line — show the lead brand only
+  const shortClient = p.client.split(" · ")[0];
 
   return (
     <article className="flex h-full flex-col rounded-2xl border border-line/10 bg-ink-800/40 p-5 transition-colors duration-500 hover:border-line/25 md:p-6">
       {/* header */}
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
-            {p.client}
+          <h3 className="truncate text-xl font-semibold tracking-tight text-bone-50 md:text-2xl">
+            {shortClient}
           </h3>
           <p className="mt-1 text-sm text-bone-400">
             {tr.category ?? p.category}
@@ -100,7 +103,7 @@ export default function SocialCards() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
-            <SectionLabel index="03">{t.socialCards.label}</SectionLabel>
+            <SectionLabel>{t.socialCards.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">

@@ -10,7 +10,7 @@ export default function Skills() {
     <section className="border-y border-line/10 bg-ink-800/40">
       <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
         <Reveal>
-          <SectionLabel index="05">{t.skills.label}</SectionLabel>
+          <SectionLabel>{t.skills.label}</SectionLabel>
         </Reveal>
 
         <Stagger className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">

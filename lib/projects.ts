@@ -18,6 +18,15 @@ export type Workflow = {
   image?: string;
 };
 
+// Strategy block straight from the client proposal deck.
+export type Strategy = {
+  toneLabel: string;
+  tone: string;
+  toneTraits: string[];
+  pillarsLabel: string;
+  pillars: { n: string; title: string }[];
+};
+
 export type Project = {
   slug: string;
   index: string;
@@ -44,6 +53,7 @@ export type Project = {
   gallery: GalleryItem[];
   galleries?: GalleryGroup[]; // named groups (Before / After / Characters …)
   workflow?: Workflow;
+  strategyBlock?: Strategy;
   videoSlugs?: string[]; // entries from lib/motion.json shown as a video gallery
 };
 
@@ -250,10 +260,20 @@ export const projects: Project[] = [
     impact:
       "A waterfront community that reads as a lifestyle brand, giving the sales team warm interest instead of cold price questions.",
     contribution: ["Campaign Direction", "Key Visuals", "Social System", "Bilingual Layout"],
-    gallery: g(
-      ...seq("/work/amam-re/", 1, 14),
-      "/work/amam-re/moodboard.webp"
-    ),
+    gallery: g(...seq("/work/amam-re/", 1, 14)),
+    strategyBlock: {
+      toneLabel: "Tone of voice",
+      tone: "Warm, refined and human-centered — celebrating comfort, belonging, family connections and everyday moments through a seamless lifestyle experience that inspires ease and confidence.",
+      toneTraits: ["Luxurious, never stiff", "Warm and close", "Confident, no hype"],
+      pillarsLabel: "Content pillars",
+      pillars: [
+        { n: "01", title: "The project & units" },
+        { n: "02", title: "Life at AMAM" },
+        { n: "03", title: "Waterfront & marine lifestyle" },
+        { n: "04", title: "Seasons & events" },
+        { n: "05", title: "Moments" },
+      ],
+    },
   },
   {
     slug: "el-raghi",
@@ -338,7 +358,7 @@ export const projects: Project[] = [
     summary:
       "Social media design for a healthy dessert brand — playful colour, flying crumbs and appetite-first framing that still feels light.",
     tagline: "Dessert that looks indulgent and still feels light.",
-    cover: "/work/social/gf/06.webp",
+    cover: "/work/social/gf/09.webp",
     hero: "/work/social/gf/02.webp",
     tags: ["Food & Beverage", "Social Design", "Appetite Craft"],
     contribution: ["Social Design", "Art Direction", "Retouch"],

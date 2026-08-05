@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import { site } from "@/lib/site";
 import { LangProvider } from "@/lib/i18n";
+import ContactModal from "@/components/ContactModal";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -189,6 +190,7 @@ export default function RootLayout({
           <ScrollProgress />
           <Cursor />
           <WhatsAppButton />
+          <ContactModal />
           {children}
         </LangProvider>
       </body>

@@ -30,12 +30,12 @@ export default function AboutHero() {
         {/* fixed dark scrim (not theme-tinted) so the portrait never washes out */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/45"
+          className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/20"
         />
 
         <div className="container-edge relative z-10 mx-auto w-full max-w-edge pb-14 pt-40">
           <Reveal>
-            <SectionLabel index="✦">{t.about.label}</SectionLabel>
+            <SectionLabel>{t.about.label}</SectionLabel>
           </Reveal>
           <Reveal delay={0.06}>
             <h1 className="mt-6 font-display text-6xl font-semibold leading-[0.95] tracking-tightest text-white [text-shadow:0_2px_30px_rgb(0_0_0/0.5)] md:text-8xl">

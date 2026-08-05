@@ -9,59 +9,19 @@ import { useLang } from "@/lib/i18n";
 import { withBase } from "@/lib/base";
 
 // Master visuals — full campaign boards (key visual + the thinking behind it).
-// Each board carries readable text, so they are shown one per row at full
-// container width, with a lightbox for a closer look.
-const boards = Array.from(
+// Shown as one large featured board with a thumbnail rail underneath, so all
+// nine are reachable without a very long scroll. Click to view full size.
+const all = Array.from(
   { length: 9 },
   (_, i) => `/work/master/${String(i + 1).padStart(2, "0")}.webp`
 );
-
-function BoardTile({
-  src,
-  i,
-  onOpen,
-  label,
-  expand,
-}: {
-  src: string;
-  i: number;
-  onOpen: (s: string) => void;
-  label: string;
-  expand: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onOpen(src)}
-      aria-label={`${label} ${i + 1} — ${expand}`}
-      className="group relative block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900 text-left"
-    >
-      <div className="relative aspect-video">
-        <Media
-          src={src}
-          alt={`${label} ${i + 1}`}
-          fill
-          sizes="(max-width: 768px) 100vw, 45vw"
-          className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-[1.03]"
-        />
-      </div>
-      {/* hover affordance */}
-      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      <span className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 text-xs uppercase tracking-widest text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-        </svg>
-        {expand}
-      </span>
-      <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/45 px-2.5 py-1 text-[11px] tabular-nums text-white backdrop-blur-md">
-        {String(i + 1).padStart(2, "0")}
-      </span>
-    </button>
-  );
-}
+// board 04 leads; the previous lead takes its slot
+const boards = [...all];
+[boards[0], boards[3]] = [boards[3], boards[0]];
 
 export default function MasterVisuals() {
   const { t } = useLang();
+  const [i, setI] = useState(0);
   const [open, setOpen] = useState<string | null>(null);
 
   useEffect(() => {
@@ -84,7 +44,7 @@ export default function MasterVisuals() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Reveal>
-              <SectionLabel index="02">{t.master.label}</SectionLabel>
+              <SectionLabel>{t.master.label}</SectionLabel>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
@@ -103,19 +63,62 @@ export default function MasterVisuals() {
           </Reveal>
         </div>
 
-        {/* first board leads full width, the rest sit two-up */}
-        <div className="mt-12 grid gap-4 md:gap-5">
-          <Reveal>
-            <BoardTile src={boards[0]} i={0} onOpen={setOpen} label={t.master.label} expand={t.master.expand} />
-          </Reveal>
-          <div className="grid gap-4 md:grid-cols-2 md:gap-5">
-            {boards.slice(1).map((src, i) => (
-              <Reveal key={src} delay={(i % 2) * 0.05}>
-                <BoardTile src={src} i={i + 1} onOpen={setOpen} label={t.master.label} expand={t.master.expand} />
-              </Reveal>
+        {/* featured board */}
+        <Reveal delay={0.1}>
+          <button
+            type="button"
+            onClick={() => setOpen(boards[i])}
+            aria-label={`${t.master.label} ${i + 1} — ${t.master.expand}`}
+            className="group relative mt-10 block w-full overflow-hidden rounded-2xl border border-line/10 bg-ink-900"
+          >
+            <div className="relative aspect-video">
+              <Media
+                key={boards[i]}
+                src={boards[i]}
+                alt={`${t.master.label} ${i + 1}`}
+                fill
+                priority={i === 0}
+                sizes="(max-width: 1024px) 100vw, 80rem"
+                className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-[1.02]"
+              />
+            </div>
+            <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="pointer-events-none absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-black/55 px-4 py-2 text-[11px] uppercase tracking-widest text-white backdrop-blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+              {t.master.expand}
+            </span>
+          </button>
+        </Reveal>
+
+        {/* thumbnail rail */}
+        <Reveal delay={0.15}>
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
+            {boards.map((src, n) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setI(n)}
+                aria-label={`${t.master.label} ${n + 1}`}
+                aria-current={n === i}
+                className={`relative aspect-video overflow-hidden rounded-lg border transition-all duration-300 ${
+                  n === i
+                    ? "border-mint/70 opacity-100 ring-1 ring-mint/40"
+                    : "border-line/10 opacity-55 hover:opacity-90"
+                }`}
+              >
+                <Media
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="120px"
+                  className="object-cover"
+                />
+              </button>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <AnimatePresence>
