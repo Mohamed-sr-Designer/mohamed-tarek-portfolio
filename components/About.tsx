@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useLang } from "@/lib/i18n";
@@ -16,16 +15,23 @@ export default function About() {
         <SectionLabel>{t.about.label}</SectionLabel>
       </Reveal>
 
-      {/* No portrait here — the About hero above is already a full-bleed shot
-          of him, so a second photograph just pushed the reading down the page.
-          The statement now runs full width and the copy sits in two columns. */}
+      {/* No portrait here: the About hero above is already a full-bleed shot of
+          him, so a second photograph only pushed the reading further down.
+
+          One paragraph, one reveal. A previous version animated this word by
+          word, each word in an overflow-hidden span translated up from below.
+          When the per-word in-view trigger didn't fire, the words stayed parked
+          outside their own clipping box and the statement rendered blank,
+          leaving just the un-animated accent on screen. A transform inside
+          overflow-hidden fails to invisible text, which is not worth the
+          effect on the one line that has to be read. */}
       <Reveal>
         <p className="mt-10 max-w-5xl text-balance font-sans text-3xl font-light leading-[1.15] tracking-tight text-bone-50 md:text-5xl lg:text-6xl">
-          <RevealWords text={t.about.intro1} />{" "}
+          {t.about.intro1}{" "}
           <span className="font-serif italic text-mint">
             {t.about.introAccent}
           </span>{" "}
-          <RevealWords text={t.about.intro2} delay={0.25} />
+          {t.about.intro2}
         </p>
       </Reveal>
 
@@ -73,34 +79,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  );
-}
-
-// Word-by-word rise for the opening statement.
-function RevealWords({ text, delay = 0 }: { text: string; delay?: number }) {
-  const reduce = useReducedMotion();
-  const words = text.split(" ");
-
-  return (
-    <>
-      {words.map((w, i) => (
-        <span key={`${w}-${i}`} className="inline-block overflow-hidden">
-          <motion.span
-            className="inline-block"
-            initial={reduce ? { opacity: 0 } : { y: "110%" }}
-            whileInView={reduce ? { opacity: 1 } : { y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -15% 0px" }}
-            transition={{
-              duration: 0.75,
-              ease: [0.16, 1, 0.3, 1],
-              delay: delay + Math.min(i * 0.035, 0.5),
-            }}
-          >
-            {w}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
-        </span>
-      ))}
-    </>
   );
 }

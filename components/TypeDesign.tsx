@@ -70,17 +70,35 @@ export default function TypeDesign() {
         </Reveal>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+      {/* Laid out like a type specimen sheet: a hairline lattice, one piece per
+          cell, plenty of room around the letterforms.
+          The lattice comes from a 1px grid gap over a faint line colour with
+          cells painted in the page colour — so the rules read as rules and the
+          artwork still sits on the page, with no tile behind it in either
+          theme. An earlier version floated the pieces in a plain gapped grid;
+          because they have very different proportions, nothing lined up. */}
+      <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-line/12 sm:grid-cols-3 lg:grid-cols-4">
         {pieces.map((p, i) => (
-          <Reveal key={p.id} delay={Math.min(i * 0.04, 0.28)}>
-            <button
-              type="button"
-              onClick={() => setOpen(p.dark)}
-              aria-label={`${t.type.label} ${i + 1} — ${t.master.expand}`}
-              className={`group relative block aspect-[4/3] w-full transition-transform duration-500 ease-cinema hover:scale-[1.04] ${
-                p.plated ? "rounded-xl bg-ink-900 p-5 ring-1 ring-line/10" : ""
+          <button
+            key={p.id}
+            type="button"
+            onClick={() => setOpen(p.dark)}
+            aria-label={`${t.type.label} ${i + 1} — ${t.master.expand}`}
+            className={`group relative aspect-[5/4] p-7 transition-colors duration-500 md:p-9 ${
+              p.plated
+                ? "bg-[#100F0D]"
+                : "bg-ink-900 hover:bg-ink-800"
+            }`}
+          >
+            <span
+              className={`absolute left-4 top-4 font-serif text-xs italic transition-colors duration-300 group-hover:text-mint ${
+                p.plated ? "text-white/35" : "text-bone-500"
               }`}
             >
+              {p.id}
+            </span>
+
+            <span className="relative block h-full w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.06]">
               {/* white cut, dark theme */}
               <span className="absolute inset-0 hidden dark:block">
                 <Media
@@ -101,8 +119,8 @@ export default function TypeDesign() {
                   className="object-contain"
                 />
               </span>
-            </button>
-          </Reveal>
+            </span>
+          </button>
         ))}
       </div>
 
