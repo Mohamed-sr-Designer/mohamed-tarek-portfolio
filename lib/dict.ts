@@ -159,7 +159,7 @@ const en = {
   type: {
     label: "Type Design",
     h2a: "Letters drawn",
-    h2i: "by hand",
+    h2i: "from scratch",
     h2b: ".",
     note: "Custom Arabic and Latin lettering, logotypes, campaign headlines and wordmarks built letter by letter.",
   },
@@ -605,7 +605,7 @@ const ar: typeof en = {
   type: {
     label: "تصميم حروف",
     h2a: "حروفٌ تُرسَم",
-    h2i: "باليد",
+    h2i: "من الصفر",
     h2b: ".",
     note: "حروف عربية ولاتينية مخصّصة، لوجوتايبات وعناوين حملات وكلمات مرسومة حرفًا حرفًا.",
   },

@@ -84,7 +84,7 @@ export default function TypeDesign() {
             type="button"
             onClick={() => setOpen(p.dark)}
             aria-label={`${t.type.label} ${i + 1} — ${t.master.expand}`}
-            className={`group relative aspect-[5/4] p-7 transition-colors duration-500 md:p-9 ${
+            className={`group relative aspect-[5/4] p-8 transition-colors duration-500 md:p-11 ${
               p.plated
                 ? "bg-[#100F0D]"
                 : "bg-ink-900 hover:bg-ink-800"
@@ -98,7 +98,9 @@ export default function TypeDesign() {
               {p.id}
             </span>
 
-            <span className="relative block h-full w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.06]">
+            {/* the artwork sits inside the padded cell at ~78% width, so the
+                letterforms read as specimens rather than filling the tile */}
+            <span className="relative mx-auto block h-full w-[78%] transition-transform duration-700 ease-cinema group-hover:scale-[1.06]">
               {/* white cut, dark theme */}
               <span className="absolute inset-0 hidden dark:block">
                 <Media
