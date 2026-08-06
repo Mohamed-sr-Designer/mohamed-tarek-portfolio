@@ -6,7 +6,7 @@ import { useLang } from "@/lib/i18n";
 // Infinite scrolling strip at the bottom of the home page.
 // Uses the same marquee animation as the client-logo strip.
 const all = Array.from(
-  { length: 32 },
+  { length: 36 },
   (_, i) => `/slider/${String(i + 1).padStart(2, "0")}.webp`
 );
 const per = Math.ceil(all.length / 2);
@@ -42,7 +42,7 @@ function Row({ imgs, reverse }: { imgs: string[]; reverse?: boolean }) {
 export default function LoopSlider() {
   const { t } = useLang();
   return (
-    <section className="overflow-hidden py-20 md:py-28">
+    <section className="overflow-hidden section-y">
       <div className="container-edge mx-auto mb-8 flex max-w-edge items-center justify-between text-xs uppercase tracking-ultra text-bone-400">
         <span>{t.social.label}</span>
         <a href="#work" className="link-underline text-bone-200">

@@ -5,14 +5,14 @@ import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
 
-// Closing conversion band — the last thing a potential client or employer
+// Closing conversion band, the last thing a potential client or employer
 // sees before the footer. One message: he's available, here's how to reach him.
 export default function HireCta() {
   const { t } = useLang();
   return (
     <section
       id="hire"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-36"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
     >
       <div className="relative overflow-hidden rounded-3xl border border-line/10 bg-ink-800/60 px-7 py-16 text-center md:px-16 md:py-24">
         <div

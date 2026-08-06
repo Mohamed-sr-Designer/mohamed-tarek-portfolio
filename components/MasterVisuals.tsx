@@ -11,13 +11,11 @@ import { withBase } from "@/lib/base";
 // Master visuals — full campaign boards (key visual + the thinking behind it).
 // Shown as one large featured board with a thumbnail rail underneath, so all
 // nine are reachable without a very long scroll. Click to view full size.
-const all = Array.from(
-  { length: 9 },
-  (_, i) => `/work/master/${String(i + 1).padStart(2, "0")}.webp`
+// 04 (TANK 700) is the hero of this section, then the newest KV, then the rest.
+const ORDER = [4, 10, 1, 2, 3, 5, 6, 7, 8, 9];
+const boards = ORDER.map(
+  (n) => `/work/master/${String(n).padStart(2, "0")}.webp`
 );
-// board 04 leads; the previous lead takes its slot
-const boards = [...all];
-[boards[0], boards[3]] = [boards[3], boards[0]];
 
 export default function MasterVisuals() {
   const { t } = useLang();
@@ -40,7 +38,7 @@ export default function MasterVisuals() {
       id="master"
       className="border-y border-line/10 bg-ink-800/40 scroll-mt-24"
     >
-      <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
+      <div className="container-edge mx-auto max-w-edge section-y">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Reveal>
@@ -94,7 +92,7 @@ export default function MasterVisuals() {
 
         {/* thumbnail rail */}
         <Reveal delay={0.15}>
-          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-10">
             {boards.map((src, n) => (
               <button
                 key={src}

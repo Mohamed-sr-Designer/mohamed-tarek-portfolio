@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Toggle } from "@/components/ui/Toggle";
 import { Media } from "@/components/ui/Media";
 import { useLang } from "@/lib/i18n";
 
@@ -18,7 +20,7 @@ type Job = {
   role?: string; // single role
 };
 
-// Verified work history — newest to oldest (provided by Mohamed).
+// Verified work history, newest to oldest (provided by Mohamed).
 const jobs: Job[] = [
   {
     company: "Osolutions",
@@ -27,9 +29,11 @@ const jobs: Job[] = [
     period: "Jan 2023 — Aug 2024 · Returned May 2026 — Present",
     place: "Makkah, KSA",
     current: true,
-    note: "Joined as a Graphic Designer and grew all the way to Senior, moved on in Aug 2024 to broaden my range — then returned in May 2026 to lead the art team and own the brand's visual standard.",
+    note: "Joined as a Graphic Designer and grew all the way to Senior, moved on in Aug 2024 to broaden my range, then returned in May 2026 to lead the art team and own the brand's visual standard.",
+    // The return is its own chapter, it is split off from the three-year
+    // promotion ladder of the first stint rather than sitting on top of it.
     roles: [
-      { title: "Sr Designer, Team Lead", period: "May 2026 — Present", current: true, returned: true },
+      { title: "Team Lead", period: "May 2026 — Present", current: true, returned: true },
       { title: "Senior Graphic Designer", period: "2024 — Aug 2024" },
       { title: "Mid-Level Designer", period: "Jan 2024" },
       { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
@@ -38,7 +42,7 @@ const jobs: Job[] = [
   {
     company: "JUMPPEAK",
     logo: "/orgs/jumppeak.webp",
-    role: "Senior Graphic Designer — Team Lead",
+    role: "Senior Graphic Designer, Team Lead",
     type: "Full-time",
     period: "Mar — May 2026",
     place: "Al Jizah, Egypt",
@@ -60,7 +64,7 @@ const jobs: Job[] = [
     type: "Full-time · Automotive · BTL",
     period: "Aug 2025 — Mar 2026",
     place: "Giza, Egypt",
-    note: "Worked with the creative lead on an automotive campaign — BTL, brand activation and event management, concept to execution.",
+    note: "Worked with the creative lead on an automotive campaign, BTL, brand activation and event management, concept to execution.",
   },
   {
     company: "Teaching Planet Academy",
@@ -78,7 +82,7 @@ const jobs: Job[] = [
     type: "Full-time",
     period: "Jan — Aug 2025",
     place: "New Cairo, Egypt",
-    note: "Floral-gifting brand — marketing materials, digital interfaces and video that made gifting unforgettable.",
+    note: "Floral-gifting brand, marketing materials, digital interfaces and video that made gifting unforgettable.",
   },
   {
     company: "Pala De 7",
@@ -108,57 +112,109 @@ const jobs: Job[] = [
   },
 ];
 
+function Rung({
+  role,
+  lead,
+  badge,
+}: {
+  role: Role;
+  lead?: boolean;
+  badge?: string;
+}) {
+  return (
+    <li className="relative pl-6 pb-5 last:pb-0">
+      <span
+        className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ${
+          role.current ? "bg-mint" : "bg-bone-500"
+        }`}
+      />
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <div className="flex items-center gap-2">
+          <span
+            className={`text-base md:text-lg ${
+              lead ? "font-medium text-bone-50" : "text-bone-200"
+            }`}
+          >
+            {role.title}
+          </span>
+          {badge ? (
+            <span className="text-[10px] uppercase tracking-widest text-mint">
+              {badge}
+            </span>
+          ) : null}
+        </div>
+        <span className="text-xs text-bone-400">{role.period}</span>
+      </div>
+    </li>
+  );
+}
+
+// The current role sits on its own; everything before it is grouped underneath
+// as the earlier stint, so a three-year promotion ladder reads as one block
+// rather than blurring into the return.
 function Ladder({
   roles,
   promoted,
   returned,
+  earlier,
 }: {
   roles: Role[];
   promoted: string;
   returned: string;
+  earlier: string;
 }) {
+  const lead = roles[0];
+  const rest = roles.slice(1);
+
   return (
-    <ol className="relative ml-1 border-l border-line/15">
-      {roles.map((r, i) => (
-        <li key={r.title} className="relative pl-6 pb-5 last:pb-0">
-          <span
-            className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ${
-              r.current ? "bg-mint" : "bg-bone-500"
-            }`}
-          />
-          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <div className="flex items-center gap-2">
-              <span
-                className={`text-base md:text-lg ${
-                  i === 0 ? "font-medium text-bone-50" : "text-bone-200"
-                }`}
-              >
-                {r.title}
-              </span>
-              {r.returned ? (
-                <span className="text-[10px] uppercase tracking-widest text-mint">
-                  {returned}
-                </span>
-              ) : i !== roles.length - 1 ? (
-                <span className="text-[10px] uppercase tracking-widest text-mint">
-                  {promoted}
-                </span>
-              ) : null}
-            </div>
-            <span className="text-xs text-bone-400">{r.period}</span>
-          </div>
-        </li>
-      ))}
-    </ol>
+    <>
+      <ol className="relative ml-1 border-l border-line/15">
+        <Rung role={lead} lead badge={lead.returned ? returned : undefined} />
+      </ol>
+
+      {rest.length ? (
+        <div className="mt-5 border-t border-line/10 pt-5">
+          <p className="mb-3 text-[10px] uppercase tracking-ultra text-bone-500">
+            {earlier}
+          </p>
+          <ol className="relative ml-1 border-l border-line/15">
+            {rest.map((r, i) => (
+              <Rung
+                key={r.title}
+                role={r}
+                badge={i !== rest.length - 1 ? promoted : undefined}
+              />
+            ))}
+          </ol>
+        </div>
+      ) : null}
+    </>
   );
 }
 
+// "full" is a full-time on-site or hybrid post; "flex" covers part-time,
+// remote, freelance and instructor work. Read off the `type` string so the two
+// stay in step with the job list itself.
+type Filter = "all" | "full" | "flex";
+
+const bucket = (j: Job): Exclude<Filter, "all"> =>
+  /full-time/i.test(j.type) && !/part-time|freelance/i.test(j.type)
+    ? "full"
+    : "flex";
+
 export default function Experience() {
   const { t } = useLang();
+  const [filter, setFilter] = useState<Filter>("all");
+
+  const count = (f: Exclude<Filter, "all">) =>
+    jobs.filter((j) => bucket(j) === f).length;
+  const shown =
+    filter === "all" ? jobs : jobs.filter((j) => bucket(j) === filter);
+
   return (
     <section
       id="experience"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
     >
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
@@ -180,8 +236,32 @@ export default function Experience() {
         </Reveal>
       </div>
 
-      <div className="mt-12 border-t border-line/10">
-        {jobs.map((j) => (
+      <Reveal delay={0.12}>
+        <div className="mt-10">
+          <Toggle
+            ariaLabel={t.exp.label}
+            hint={t.exp.filterHint}
+            value={filter}
+            onChange={setFilter}
+            options={[
+              { value: "all", label: t.exp.all, hint: String(jobs.length) },
+              {
+                value: "full",
+                label: t.exp.fullTime,
+                hint: String(count("full")),
+              },
+              {
+                value: "flex",
+                label: t.exp.partTime,
+                hint: String(count("flex")),
+              },
+            ]}
+          />
+        </div>
+      </Reveal>
+
+      <div className="mt-8 border-t border-line/10">
+        {shown.map((j) => (
           <Reveal key={j.company + j.period}>
             <div className="group grid grid-cols-1 gap-4 border-b border-line/10 py-7 transition-colors duration-300 hover:bg-ink-800/30 md:grid-cols-12 md:gap-6 md:py-8">
               <div className="md:col-span-4">
@@ -220,6 +300,7 @@ export default function Experience() {
                     roles={j.roles}
                     promoted={t.exp.promoted}
                     returned={t.exp.returned}
+                    earlier={t.exp.earlier}
                   />
                 ) : null}
                 <p

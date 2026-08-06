@@ -11,7 +11,12 @@ import { withBase } from "@/lib/base";
 
 // Storyboards — the frame-by-frame plan behind the films. Wide boards, shown
 // full width with a lightbox, because the panels carry readable detail.
-const boards = ["01", "02", "03"].map((n) => `/work/storyboards/${n}.webp`);
+// Board 02 leads — its frames are the stronger opener — then 01, then 03.
+// 04 is a 3-across x 4-down matrix built from the film's scene frames
+// (scripts/build-storyboard-04.mjs).
+const boards = ["02", "01", "03", "04"].map(
+  (n) => `/work/storyboards/${n}.webp`
+);
 
 export default function Storyboards() {
   const { t } = useLang();
@@ -32,7 +37,7 @@ export default function Storyboards() {
   return (
     <section
       id="storyboards"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
     >
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>

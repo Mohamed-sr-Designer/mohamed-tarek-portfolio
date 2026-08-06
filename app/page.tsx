@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import LogoMarquee from "@/components/LogoMarquee";
 import AiWorkflow from "@/components/AiWorkflow";
 import MasterVisuals from "@/components/MasterVisuals";
+import TypeDesign from "@/components/TypeDesign";
 import SocialCards from "@/components/SocialCards";
 import Storyboards from "@/components/Storyboards";
 import Motion from "@/components/Motion";
@@ -18,6 +19,7 @@ export default function Home() {
       <LogoMarquee />
       <AiWorkflow />
       <MasterVisuals />
+      <TypeDesign />
       <SocialCards />
       <Storyboards />
       <Motion />

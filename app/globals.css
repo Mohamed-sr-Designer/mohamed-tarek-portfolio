@@ -52,13 +52,13 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Arabic: swap type stack (incl. display headings) and relax tracking */
+/* Arabic: Alexandria everywhere, no exceptions.
+   The old rule only named body, h1-h3 and two utility classes, so anything
+   carrying another font utility (buttons, badges, nav links) kept its Latin
+   face. `body *` outranks a single class, so this covers the whole tree —
+   Alexandria ships a Latin subset, so mixed-script strings still render. */
 [dir="rtl"] body,
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] .font-display,
-[dir="rtl"] .font-serif {
+[dir="rtl"] body * {
   font-family: var(--font-ar), var(--font-sans), system-ui, sans-serif;
   letter-spacing: 0 !important;
 }
@@ -136,6 +136,19 @@ html.modal-open .custom-cursor {
   .container-edge {
     padding-left: clamp(1.25rem, 5vw, 6rem);
     padding-right: clamp(1.25rem, 5vw, 6rem);
+  }
+  /* One vertical rhythm for every page section. Sections used to carry their
+     own py-24/py-32, py-20/py-28 and py-24/py-36, and because neighbours each
+     add their own padding the gaps compounded unevenly down the page. */
+  .section-y {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-y {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
   }
   .link-underline {
     background-image: linear-gradient(currentColor, currentColor);

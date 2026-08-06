@@ -58,7 +58,7 @@ export default function Preloader() {
             className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-bone-400"
           >
             <span>{site.name}</span>
-            <span>Portfolio — 2026</span>
+            <span>Portfolio · 2026</span>
           </motion.div>
 
           {/* center mark */}

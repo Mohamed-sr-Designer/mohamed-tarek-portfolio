@@ -8,7 +8,7 @@ export default function Skills() {
   const { t } = useLang();
   return (
     <section className="border-y border-line/10 bg-ink-800/40">
-      <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
+      <div className="container-edge mx-auto max-w-edge section-y">
         <Reveal>
           <SectionLabel>{t.skills.label}</SectionLabel>
         </Reveal>

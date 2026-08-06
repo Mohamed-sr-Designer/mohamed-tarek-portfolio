@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 export default function SmoothScroll() {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     if (
       typeof window !== "undefined" &&
@@ -18,6 +22,7 @@ export default function SmoothScroll() {
       smoothWheel: true,
       touchMultiplier: 1.6,
     });
+    lenisRef.current = lenis;
 
     // Anchor links route through Lenis for smooth in-page scrolling.
     const onClick = (e: MouseEvent) => {
@@ -44,8 +49,21 @@ export default function SmoothScroll() {
       cancelAnimationFrame(raf);
       document.removeEventListener("click", onClick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Land every route change at the top.
+  //
+  // The App Router resets window.scrollTop on navigation, but Lenis holds its
+  // own animated position and writes it straight back on the next frame — so
+  // opening a project from the "Continue" slider dropped you at the same offset
+  // partway down the new page instead of at its start.
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+    else window.scrollTo(0, 0);
+  }, [pathname]);
 
   return null;
 }

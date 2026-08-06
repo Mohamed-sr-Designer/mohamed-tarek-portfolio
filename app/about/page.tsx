@@ -11,9 +11,9 @@ import HireCta from "@/components/HireCta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About — Sr Designer, Team Lead",
+  title: "About · Sr Designer, Team Lead",
   description:
-    "About Mohamed Tarek — Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. Experience, clients, capabilities and toolkit.",
+    "About Mohamed Tarek, Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. Experience, clients, capabilities and toolkit.",
   alternates: { canonical: "/about" },
 };
 

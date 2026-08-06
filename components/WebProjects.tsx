@@ -78,7 +78,7 @@ export default function WebProjects() {
   const current = sites[active];
 
   return (
-    <section id="web" className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32">
+    <section id="web" className="container-edge mx-auto max-w-edge scroll-mt-24 section-y">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <Reveal>
@@ -101,7 +101,7 @@ export default function WebProjects() {
         </Reveal>
       </div>
 
-      {/* One preview frame plus a picker, instead of nine stacked cards — the
+      {/* One preview frame plus a picker, instead of nine stacked cards, the
           whole set now fits in a single screen rather than three long rows. */}
       <Reveal delay={0.12}>
         <div className="mt-12 grid gap-5 lg:grid-cols-12">
@@ -166,13 +166,13 @@ export default function WebProjects() {
                 href={current.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${t.web.visit} — ${current.name}`}
+                aria-label={`${t.web.visit}, ${current.name}`}
                 className="group relative block aspect-[16/10] overflow-hidden bg-ink-700"
               >
                 <Media
                   key={current.img}
                   src={current.img}
-                  alt={`${current.name} — ${current.type}`}
+                  alt={`${current.name}, ${current.type}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 66vw"
                   className="object-cover object-top transition-transform duration-[1.2s] ease-cinema group-hover:scale-[1.03]"

@@ -23,7 +23,7 @@ export default function AiWorkflow() {
   return (
     <section
       id="ai-workflow"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
     >
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
@@ -52,6 +52,7 @@ export default function AiWorkflow() {
         <div className="mt-10">
           <Toggle
             ariaLabel={t.ai.label}
+            hint={t.ai.pick}
             value={active}
             onChange={setActive}
             options={flows.map((f) => ({
@@ -65,9 +66,12 @@ export default function AiWorkflow() {
         </div>
       </Reveal>
 
-      <article key={p.slug} className="mt-8">
-        {/* the flow diagram leads */}
-        <Reveal>
+      {/* Diagram beside the summary, steps on one scrolling rail underneath.
+          The old stacked layout — full-width diagram, then a 2-column intro,
+          then six tall step cards, then a repeat CTA card — ran nearly three
+          screens for what is an intro section. */}
+      <article key={p.slug} className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <Reveal className="lg:col-span-7">
           <Link
             href={`/work/${p.slug}`}
             className="group block overflow-hidden rounded-2xl border border-line/10 bg-ink-800/40"
@@ -75,98 +79,74 @@ export default function AiWorkflow() {
             <Media
               src={wf.image!}
               alt={`${tr.title ?? p.title} — ${wf.title}`}
-              sizes="(max-width: 1024px) 100vw, 80rem"
+              sizes="(max-width: 1024px) 100vw, 55vw"
               className="h-auto w-full transition-transform duration-700 ease-cinema group-hover:scale-[1.01]"
             />
           </Link>
         </Reveal>
 
-        {/* what it is, in short */}
-        <div className="mt-8 grid gap-8 md:grid-cols-12">
-          <div className="md:col-span-5">
+        <div className="flex flex-col justify-center lg:col-span-5">
+          <Reveal delay={0.05}>
             <p className="text-xs uppercase tracking-ultra text-bone-400">
               {tr.category ?? p.category}
             </p>
             <h3 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
               {tr.title ?? p.title}
             </h3>
-            <Link
-              href={`/work/${p.slug}`}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
-            >
-              {t.case.readMore}
-              <span aria-hidden className="rtl:rotate-180">
-                →
-              </span>
-            </Link>
-          </div>
-          <div className="md:col-span-7">
-            <p className="text-pretty text-base leading-relaxed text-bone-300 md:text-lg">
+            <p className="mt-4 text-pretty text-base leading-relaxed text-bone-300">
               {wf.intro[0]}
             </p>
-          </div>
-        </div>
 
-        {/* the steps */}
-        <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line/10 bg-line/10 md:grid-cols-2 lg:grid-cols-3">
-          {wf.steps.map((s) => (
-            <li key={s.n} className="flex gap-4 bg-ink-900 p-6">
-              <span className="font-display text-sm tabular-nums text-mint">
-                {s.n}
-              </span>
-              <span className="min-w-0">
-                <span className="block text-base font-medium tracking-tight text-bone-50">
-                  {s.title}
-                </span>
-                <span className="mt-1.5 block text-sm leading-relaxed text-bone-400">
-                  {s.body}
-                </span>
-              </span>
-            </li>
-          ))}
-          <li className="bg-ink-800/60 p-6">
-            <span className="block text-[10px] uppercase tracking-ultra text-bone-500">
-              {wf.resultsLabel}
-            </span>
-            <span className="mt-3 flex flex-wrap gap-1.5">
+            <div className="mt-5 flex flex-wrap gap-1.5">
               {wf.results.map((r) => (
                 <span
                   key={r}
-                  className="rounded-full border border-line/15 bg-ink-900 px-3 py-1 text-xs text-bone-200"
+                  className="rounded-full border border-line/15 bg-ink-800/60 px-3 py-1 text-xs text-bone-200"
                 >
                   {r}
                 </span>
               ))}
-            </span>
-          </li>
-        </ol>
+            </div>
 
-        {/* the outputs themselves live on the case page — one clear way in */}
-        {p.galleries?.length ? (
-          <Reveal>
             <Link
               href={`/work/${p.slug}`}
-              className="group mt-6 flex flex-col gap-4 rounded-2xl border border-line/12 bg-ink-800/40 px-6 py-6 transition-colors duration-300 hover:border-mint/40 hover:bg-ink-800/70 sm:flex-row sm:items-center sm:justify-between"
+              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-bone-50 px-6 py-3 text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.03]"
             >
-              <span>
-                <span className="block text-base font-medium tracking-tight text-bone-50">
-                  {tr.title ?? p.title}
+              {t.case.readMore}
+              {p.galleries?.length ? (
+                <span className="text-ink-900/55">
+                  ·{" "}
+                  {p.galleries.reduce((n, grp) => n + grp.items.length, 0)}
                 </span>
-                <span className="mt-1 block text-sm text-bone-400">
-                  {p.galleries
-                    .map((grp) => `${grp.label} (${grp.items.length})`)
-                    .join(" · ")}
-                </span>
-              </span>
-              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-mint/45 px-6 py-3 text-sm font-medium text-mint transition-colors duration-300 group-hover:bg-mint group-hover:text-ink-900">
-                {t.case.readMore}
-                <span aria-hidden className="rtl:rotate-180">
-                  →
-                </span>
+              ) : null}
+              <span aria-hidden className="rtl:rotate-180">
+                →
               </span>
             </Link>
           </Reveal>
-        ) : null}
+        </div>
+
+        {/* steps — one horizontal rail instead of a six-card block */}
+        <Reveal delay={0.1} className="lg:col-span-12">
+          <ol className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {wf.steps.map((s) => (
+              <li
+                key={s.n}
+                className="w-[15rem] shrink-0 snap-start rounded-xl border border-line/12 bg-ink-800/40 p-4"
+              >
+                <span className="font-display text-xs tabular-nums text-mint">
+                  {s.n}
+                </span>
+                <span className="mt-1.5 block text-sm font-medium tracking-tight text-bone-50">
+                  {s.title}
+                </span>
+                <span className="mt-1 block text-xs leading-relaxed text-bone-400">
+                  {s.body}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </article>
     </section>
   );

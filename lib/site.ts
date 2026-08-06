@@ -2,9 +2,9 @@ export const site = {
   name: "Mohamed Tarek",
   role: "Sr Designer, Team Lead",
   roleFull: "Sr Designer, Team Lead",
-  title: "Mohamed Tarek — Sr Designer, Team Lead | Graphic Design & Art Direction",
+  title: "Mohamed Tarek, Sr Designer, Team Lead | Graphic Design & Art Direction",
   description:
-    "Mohamed Tarek is a Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. He builds brand identities, ad campaigns, social media systems, key visuals and motion — and is available for full-time, remote, freelance and hybrid roles.",
+    "Mohamed Tarek is a Sr Designer and Team Lead based in Egypt, working across Egypt, Saudi Arabia and Kuwait. He builds brand identities, ad campaigns, social media systems, key visuals and motion, and is available for full-time, remote, freelance and hybrid roles.",
   availability: "Full-time · Remote · Freelance · Hybrid",
   url: "https://mohamed-sr-designer.github.io/mohamed-tarek-portfolio",
   email: "mohamed.tarek.ahmed1@gmail.com",
@@ -19,7 +19,7 @@ export const site = {
   markets: "Egypt · Saudi Arabia · Kuwait",
 };
 
-// `copy` is what lands on the clipboard — the raw, usable value rather than
+// `copy` is what lands on the clipboard, the raw, usable value rather than
 // the prettified one shown on screen.
 export const contacts = [
   {

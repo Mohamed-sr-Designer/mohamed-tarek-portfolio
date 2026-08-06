@@ -1,4 +1,4 @@
-// Full EN/AR dictionary — every user-facing string on the site lives here.
+// Full EN/AR dictionary, every user-facing string on the site lives here.
 // Components read dict[lang] via useLang().
 
 export type Lang = "en" | "ar";
@@ -9,12 +9,12 @@ const en = {
     about: "About",
     contact: "Contact",
     letsTalk: "Let's talk",
-    roleTag: "— Sr Designer, Team Lead",
+    roleTag: "· Sr Designer, Team Lead",
     langBtn: "عربي",
   },
   hero: {
-    avail: "Available — Full-time · Remote · Freelance · Hybrid",
-    portfolio: "Portfolio — 2026",
+    avail: "Available, Full-time · Remote · Freelance · Hybrid",
+    portfolio: "Portfolio · 2026",
     intro: "Mohamed Tarek · Sr Designer, Team Lead · based in Egypt",
     l1: "The graphic designer",
     l2: "brands call when they",
@@ -23,7 +23,7 @@ const en = {
     ctaPrimary: "Selected work",
     ctaSecondary: "Hire me ↗",
     markets:
-      "Working across Egypt · Saudi Arabia · Kuwait — strategy first, craft always.",
+      "Working across Egypt · Saudi Arabia · Kuwait, strategy first, craft always.",
     chipRole: "SR DESIGNER, TEAM LEAD · EGYPT",
     chipBadge: "ART DIRECTION",
   },
@@ -32,7 +32,7 @@ const en = {
     h2a: "Work, organised by the",
     h2i: "industry",
     h2b: "it was built for.",
-    note: "Case studies grouped by industry — pick a sector, open a case.",
+    note: "Case studies grouped by industry, pick a sector, open a case.",
     viewCase: "VIEW CASE ↗",
     sectors: {
       "AI Workflow": "AI Workflow",
@@ -45,19 +45,19 @@ const en = {
     } as Record<string, string>,
     blurbs: {
       "AI Workflow":
-        "AI-produced photo and video campaigns — planned as a system, from first prompt to final asset library.",
+        "AI-produced photo and video campaigns, planned as a system, from first prompt to final asset library.",
       Technology:
-        "Cybersecurity and HR-SaaS campaigns — complex products made human, in Arabic and English.",
+        "Cybersecurity and HR-SaaS campaigns, complex products made human, in Arabic and English.",
       "Food & Retail":
-        "Premium gifting and produce brands — identity, packaging and campaigns that sell the feeling.",
+        "Premium gifting and produce brands, identity, packaging and campaigns that sell the feeling.",
       "Real Estate":
         "Bilingual AR/EN campaigns for luxury developments in Makkah and the Gulf.",
       "Marketing & Agency":
         "3D concept campaigns and scalable social systems for agencies and multi-brand feeds.",
       Hospitality:
-        "B2B hospitality supply made five-star — cinematic key visuals and cross-channel social.",
+        "B2B hospitality supply made five-star, cinematic key visuals and cross-channel social.",
       Automotive:
-        "Geely & GWM key visuals — retouching, colour grading and calm, premium light.",
+        "Geely & GWM key visuals, retouching, colour grading and calm, premium light.",
     } as Record<string, string>,
   },
   // Per-project card + case copy (slug-keyed). Anything missing falls back EN.
@@ -69,8 +69,9 @@ const en = {
     label: "AI Work Flow",
     h2a: "The process comes",
     h2i: "first",
-    h2b: "— then the work.",
+    h2b: ", then the work.",
     note: "Two productions planned as systems: read the flow, then see what it produced.",
+    pick: "Pick a production",
   },
   master: {
     label: "Master Visuals",
@@ -111,37 +112,37 @@ const en = {
     h2a: "What I can",
     h2i: "do",
     h2b: "for your brand.",
-    note: "Available for full-time, remote, freelance and hybrid roles —",
+    note: "Available for full-time, remote, freelance and hybrid roles, ",
     noteLink: "start a conversation ↗",
     items: [
       {
         title: "Brand Identity",
-        desc: "Logos, visual systems, packaging and guidelines — identities built to scale from a business card to a delivery fleet.",
+        desc: "Logos, visual systems, packaging and guidelines, identities built to scale from a business card to a delivery fleet.",
         tags: ["Logo & Wordmark", "Visual System", "Packaging"],
       },
       {
         title: "Campaigns & Key Visuals",
-        desc: "Advertising campaigns and hero visuals for real estate, automotive, SaaS and hospitality — concept to final art.",
+        desc: "Advertising campaigns and hero visuals for real estate, automotive, SaaS and hospitality, concept to final art.",
         tags: ["Campaign Concept", "Key Visuals", "Bilingual AR/EN"],
       },
       {
         title: "Social Media Systems",
-        desc: "Repeatable, on-brand feeds — grids, templates and content systems that keep quality high at posting speed.",
+        desc: "Repeatable, on-brand feeds, grids, templates and content systems that keep quality high at posting speed.",
         tags: ["Templates", "Content Design", "Feed Systems"],
       },
       {
         title: "Art & Creative Direction",
-        desc: "Leading designers and owning the visual language — briefs, reviews and standards that lift the whole output.",
+        desc: "Leading designers and owning the visual language, briefs, reviews and standards that lift the whole output.",
         tags: ["Team Leadership", "Concepting", "Quality Control"],
       },
       {
         title: "AI-Assisted Production",
-        desc: "Campaign-grade imagery and AI voice-over produced with AI tooling — directed, curated and finished to a professional standard.",
+        desc: "Campaign-grade imagery and AI voice-over produced with AI tooling, directed, curated and finished to a professional standard.",
         tags: ["AI Imaging", "Prompt Engineering", "AI Voice-Over", "Retouching"],
       },
       {
         title: "Motion & Web",
-        desc: "Reels, promos and edits — plus designed-and-shipped websites, vibe-coded end to end like this portfolio.",
+        desc: "Reels, promos and edits, plus designed-and-shipped websites, vibe-coded end to end like this portfolio.",
         tags: ["Video & Reels", "Motion Graphics", "Web Design"],
       },
     ],
@@ -151,22 +152,29 @@ const en = {
     h2a: "When a still isn't",
     h2i: "enough",
     h2b: ".",
-    note: "Brand films, social reels and animation — tap the speaker to hear it, or expand any clip to watch larger.",
+    note: "Brand films, social reels and animation, tap the speaker to hear it, or expand any clip to watch larger.",
     landscape: "Landscape",
     portrait: "Portrait",
   },
+  type: {
+    label: "Type Design",
+    h2a: "Letters drawn",
+    h2i: "by hand",
+    h2b: ".",
+    note: "Custom Arabic and Latin lettering, logotypes, campaign headlines and wordmarks built letter by letter.",
+  },
   web: {
     label: "Vibe Coding",
-    h2a: "I design — then I",
+    h2a: "I design, then I",
     h2i: "ship the code",
     h2b: ".",
-    note: "Live websites I designed and built through vibe coding — AI-assisted development. Even this portfolio is vibe-coded. Pick one to preview it.",
+    note: "Live websites I designed and built through vibe coding, AI-assisted development. Even this portfolio is vibe-coded. Pick one to preview it.",
     live: "Live ↗",
     visit: "Open live site",
     sites: "sites shipped",
   },
   social: {
-    label: "Selected designs — a continuous wall of work",
+    label: "Selected designs, a continuous wall of work",
     browse: "Browse the work ↑",
   },
   hire: {
@@ -174,7 +182,7 @@ const en = {
     h2a: "Have a brand that needs",
     h2i: "direction",
     h2b: "?",
-    body: "I am open to full-time, remote, freelance and hybrid roles across Egypt · Saudi Arabia · Kuwait. Tell me what you're building — I'll tell you how design gets it there.",
+    body: "I am open to full-time, remote, freelance and hybrid roles across Egypt · Saudi Arabia · Kuwait. Tell me what you're building, I'll tell you how design gets it there.",
     wa: "WhatsApp me ↗",
     all: "All contact options",
   },
@@ -189,18 +197,12 @@ const en = {
   about: {
     label: "About",
     heroBio:
-      "More than five years turning business problems into visual answers — brand identities, campaigns and social systems for companies across Egypt, Saudi Arabia and Kuwait. Today I lead a design team, and I am looking for the next place to build one.",
-    record: [
-      { n: "5+", l: "years in design" },
-      { n: "3", l: "markets served" },
-      { n: "~1,200", l: "students taught" },
-      { n: "11", l: "case studies" },
-    ],
-    intro1: "A designer who leads — treating every brand as a",
+      "More than five years turning business problems into visual answers: brand identities, campaigns and social systems for companies across Egypt, Saudi Arabia and Kuwait. Today I lead a design team, and I am looking for the next place to build one.",
+    intro1: "A designer who leads, treating every brand as a",
     introAccent: "business problem",
     intro2: "with a creative answer.",
-    bio1: "I'm Mohamed Tarek, a Sr Designer and Team Lead — based in Egypt with professional experience across the Egyptian, Saudi and Kuwaiti markets — focused on clean, strategic, performance-driven design that strengthens brand identity and supports real marketing objectives.",
-    bio2: "I work across branding, campaigns, social systems, key visuals and motion — skilled in Adobe Photoshop and Illustrator, UI design, and AI-powered creative tools I use to ideate and deliver modern work tailored to Middle East markets. Alongside client work, I teach graphic design as an instructor, mentoring the next wave of designers.",
+    bio1: "I'm Mohamed Tarek, a Sr Designer and Team Lead, based in Egypt with professional experience across the Egyptian, Saudi and Kuwaiti markets, focused on clean, strategic, performance-driven design that strengthens brand identity and supports real marketing objectives.",
+    bio2: "I work across branding, campaigns, social systems, key visuals and motion, skilled in Adobe Photoshop and Illustrator, UI design, and AI-powered creative tools I use to ideate and deliver modern work tailored to Middle East markets. Alongside client work, I teach graphic design as an instructor, mentoring the next wave of designers.",
     coreFocus: "Core focus",
     traitsLabel: "Personal traits",
     focus: ["2D Visual Design", "Brand Systems", "AI Prompt Engineering", "AI Voice-Over"],
@@ -218,19 +220,24 @@ const en = {
     h2a: "The companies that",
     h2i: "shaped",
     h2b: "me.",
-    note: "Across Egypt & Saudi Arabia — newest first. From graphic designer, to teaching, to leading an art team.",
+    note: "Across Egypt & Saudi Arabia, newest first. From graphic designer, to teaching, to leading an art team.",
     now: "Now",
     promoted: "↑ Promoted",
     returned: "↩ Returned to lead",
+    earlier: "Earlier at Osolutions · three years of promotions",
+    filterHint: "Filter by commitment",
+    all: "All roles",
+    fullTime: "Full-time",
+    partTime: "Part-time · Remote",
   },
   teach: {
     label: "Teaching",
-    h2a: "I don't just lead designers —",
+    h2a: "I don't just lead designers, ",
     h2i: "I make them",
     h2b: ".",
-    note: "Instructor across four academies — and an on-call advisor, visiting teams to solve design problems on the ground.",
+    note: "Instructor across four academies, and an on-call advisor, visiting teams to solve design problems on the ground.",
     statNote:
-      "Close to 1,200 students graduated across 49 cohorts — numbers are approximate, and still counting.",
+      "Close to 1,200 students graduated across 49 cohorts, numbers are approximate, and still counting.",
     stats: [
       { n: "~1,200", l: "students graduated" },
       { n: "49", l: "cohorts taught" },
@@ -240,10 +247,10 @@ const en = {
     role: "Design Instructor",
     academies: [
       {
-        name: "SOIC — School of Cinema",
+        name: "SOIC, School of Cinema",
         logo: "/orgs/soic.webp",
         now: true,
-        desc: "Teaching design craft inside a filmmaking school — visual storytelling, key art and campaign thinking for cinema.",
+        desc: "Teaching design craft inside a filmmaking school, visual storytelling, key art and campaign thinking for cinema.",
       },
       {
         name: "EDUX Academy",
@@ -254,13 +261,13 @@ const en = {
       {
         name: "Easily",
         now: false,
-        desc: "Full essentials journey — Photoshop, Illustrator and Figma; ad campaigns, UI/UX, moodboards, storyboards, insights, concept development and execution.",
+        desc: "Full essentials journey, Photoshop, Illustrator and Figma; ad campaigns, UI/UX, moodboards, storyboards, insights, concept development and execution.",
       },
       {
         name: "Raya Academy",
         logo: "/orgs/raya.webp",
         now: false,
-        desc: "Hands-on graphic design cohorts — photo manipulation, landing pages and branding, taught project by project.",
+        desc: "Hands-on graphic design cohorts, photo manipulation, landing pages and branding, taught project by project.",
       },
     ],
   },
@@ -269,22 +276,22 @@ const en = {
     h2a: "From a brief to a",
     h2i: "decision",
     h2b: ".",
-    note: "Direction is decision-making — the path I take every brand through, from understanding to execution.",
+    note: "Direction is decision-making, the path I take every brand through, from understanding to execution.",
     steps: [
       {
         n: "01",
         title: "Research",
-        body: "I start with the business, the market and the audience — what the brand needs to achieve, and what everyone else is already saying.",
+        body: "I start with the business, the market and the audience, what the brand needs to achieve, and what everyone else is already saying.",
       },
       {
         n: "02",
         title: "Insight",
-        body: "I find the one truth that unlocks the work — the tension that makes people care. The insight is the strategy in a single sentence.",
+        body: "I find the one truth that unlocks the work, the tension that makes people care. The insight is the strategy in a single sentence.",
       },
       {
         n: "03",
         title: "Concept",
-        body: "I translate the insight into a creative idea big enough to live across channels — a platform, not a poster.",
+        body: "I translate the insight into a creative idea big enough to live across channels, a platform, not a poster.",
       },
       {
         n: "04",
@@ -294,7 +301,7 @@ const en = {
       {
         n: "05",
         title: "Execution",
-        body: "I bring it to life and hold the bar across every touchpoint — from the hero frame to the smallest story.",
+        body: "I bring it to life and hold the bar across every touchpoint, from the hero frame to the smallest story.",
       },
     ],
   },
@@ -331,7 +338,7 @@ const en = {
     pillars: [
       {
         k: "Where I am",
-        v: "An art Team Lead with a designer's craft and a strategist's instinct — already leading the team and building work that performs in market.",
+        v: "An art Team Lead with a designer's craft and a strategist's instinct, already leading the team and building work that performs in market.",
       },
       {
         k: "Where I'm heading",
@@ -339,7 +346,7 @@ const en = {
       },
       {
         k: "Why direction",
-        v: "My strongest work was never about decoration — it's about decisions. That's where strategy, craft and leadership meet.",
+        v: "My strongest work was never about decoration, it's about decisions. That's where strategy, craft and leadership meet.",
       },
     ],
   },
@@ -368,6 +375,7 @@ const en = {
     ctaBtn: "Start a conversation ↗",
     cont: "Continue",
     readMore: "See the full case",
+    showAll: "Show all",
     finalVideos: "Final Videos",
     interactive: "Interactive",
     prev: "Previous",
@@ -382,12 +390,12 @@ const ar: typeof en = {
     about: "عنّي",
     contact: "تواصل",
     letsTalk: "لنتحدث",
-    roleTag: "— مصمم أول، قائد فريق",
+    roleTag: "· مصمم أول، قائد فريق",
     langBtn: "EN",
   },
   hero: {
-    avail: "متاح — دوام كامل · عن بُعد · فريلانس · هجين",
-    portfolio: "بورتفوليو — ٢٠٢٦",
+    avail: "متاح، دوام كامل · عن بُعد · فريلانس · هجين",
+    portfolio: "بورتفوليو · ٢٠٢٦",
     intro: "محمد طارق · مصمم أول، قائد فريق · مقيم في مصر",
     l1: "المصمّم الذي تناديه",
     l2: "العلامات التجارية حين",
@@ -395,7 +403,7 @@ const ar: typeof en = {
     l3accent: "لا تُنسى.",
     ctaPrimary: "أعمال مختارة",
     ctaSecondary: "وظّفني ↗",
-    markets: "أعمل عبر مصر · السعودية · الكويت — الاستراتيجية أولًا، والحِرفة دائمًا.",
+    markets: "أعمل عبر مصر · السعودية · الكويت، الاستراتيجية أولًا، والحِرفة دائمًا.",
     chipRole: "مصمم أول، قائد فريق · مصر",
     chipBadge: "آرت دايركشن",
   },
@@ -404,7 +412,7 @@ const ar: typeof en = {
     h2a: "الأعمال، منظّمة حسب",
     h2i: "الصناعة",
     h2b: "التي صُمّمت لها.",
-    note: "دراسات حالة مجمّعة حسب الصناعة — اختر قطاعًا وافتح الحالة.",
+    note: "دراسات حالة مجمّعة حسب الصناعة، اختر قطاعًا وافتح الحالة.",
     viewCase: "عرض الحالة ↗",
     sectors: {
       "AI Workflow": "سير عمل الذكاء الاصطناعي",
@@ -417,22 +425,22 @@ const ar: typeof en = {
     },
     blurbs: {
       "AI Workflow":
-        "حملات صور وفيديو منتجة بالذكاء الاصطناعي — مخطّطة كنظام، من أول برومبت لآخر أصل.",
+        "حملات صور وفيديو منتجة بالذكاء الاصطناعي، مخطّطة كنظام، من أول برومبت لآخر أصل.",
       Technology:
-        "حملات للأمن السيبراني وأنظمة الموارد البشرية — منتجات معقّدة تصل للناس ببساطة، بالعربية والإنجليزية.",
+        "حملات للأمن السيبراني وأنظمة الموارد البشرية، منتجات معقّدة تصل للناس ببساطة، بالعربية والإنجليزية.",
       "Food & Retail":
-        "علامات هدايا ومنتجات مميّزة — هوية وتغليف وحملات تبيع الإحساس قبل المنتج.",
+        "علامات هدايا ومنتجات مميّزة، هوية وتغليف وحملات تبيع الإحساس قبل المنتج.",
       "Real Estate": "حملات ثنائية اللغة لمشاريع فاخرة في مكة والخليج.",
       "Marketing & Agency":
         "حملات مفاهيم ثلاثية الأبعاد وأنظمة سوشيال قابلة للتوسّع للوكالات.",
       Hospitality:
-        "توريدات الضيافة بمظهر خمس نجوم — صور رئيسية سينمائية وسوشيال متكامل.",
-      Automotive: "الصور الرئيسية لجيلي وGWM — ريتاتش وتلوين وضوء هادئ فاخر.",
+        "توريدات الضيافة بمظهر خمس نجوم، صور رئيسية سينمائية وسوشيال متكامل.",
+      Automotive: "الصور الرئيسية لجيلي وGWM، ريتاتش وتلوين وضوء هادئ فاخر.",
     },
   },
   projects: {
     'photo-sessions': {
-      title: 'جلسات تصوير بالذكاء الاصطناعي — مكتبة منتجات متكاملة',
+      title: 'جلسات تصوير بالذكاء الاصطناعي، مكتبة منتجات متكاملة',
       tagline: 'من صور منتج عادية إلى مكتبة فاخرة ومتّسقة.',
       category: 'إنتاج صور بالذكاء الاصطناعي',
       challenge:
@@ -441,16 +449,16 @@ const ar: typeof en = {
         'خطّطت الجلسة بالكامل قبل أي إنتاج: حدّدت المنتجات والزوايا والشكل النهائي أولًا، وبعدين أنتجتها بأدوات الذكاء الاصطناعي وأنهيتها بالريتاتش، عشان كل إطار يشترك في نفس الإضاءة والتكوين والإحساس الفاخر.',
     },
     'video-production': {
-      title: 'إنتاج فيديو بالذكاء الاصطناعي — نظام واحد مترابط',
-      tagline: 'نظام واحد مخطّط، وأفلام كتير — بدل تصوير منفصل لكل فيديو.',
+      title: 'إنتاج فيديو بالذكاء الاصطناعي، نظام واحد مترابط',
+      tagline: 'نظام واحد مخطّط، وأفلام كتير، بدل تصوير منفصل لكل فيديو.',
       category: 'إنتاج فيديو بالذكاء الاصطناعي',
       challenge:
-        'الحملة كانت محتاجة كذا فيديو في نفس الوقت — أفلام رئيسية ومقاطع سوشيال ولقطات مساندة. التعامل مع كل واحد كمشروع منفصل كان هيكسر اللغة البصرية ويكرّر نفس الشغل مرات كتير.',
+        'الحملة كانت محتاجة كذا فيديو في نفس الوقت، أفلام رئيسية ومقاطع سوشيال ولقطات مساندة. التعامل مع كل واحد كمشروع منفصل كان هيكسر اللغة البصرية ويكرّر نفس الشغل مرات كتير.',
       strategy:
         'بنيت الحملة كنظام إنتاج واحد. الشخصيات والمشاهد اتحدّدت من البداية واتربطت ببعض، فاللقطة الواحدة المخطّطة تخدم أكتر من فيديو والحملة كلها تفضل بشكل واحد.',
     },
     amam: {
-      title: 'أمام · درة العروس — حياة على الماء',
+      title: 'أمام · درة العروس، حياة على الماء',
       tagline: 'بعنا الويك-إند، مش الأمتار.',
       category: 'عقارات · حملة',
       challenge:
@@ -459,13 +467,13 @@ const ar: typeof en = {
         'ابدأ باللحظات اللي الناس بتشتريها فعلًا: جيت سكي الضهر، ويخت وقت الغروب، ووقت عيلة جنب المسبح. كل بوست بيعرض حياة الأول والعقار تاني، ماسكهم خط عربي هادي واحد ونفس ضوء الماء الدافي.',
     },
     'el-raghi': {
-      title: 'الراجحي — مبني ليدوم',
+      title: 'الراجحي، مبني ليدوم',
       tagline: 'بُني بإتقان ليمنحك جودة تدوم لسنوات.',
       category: 'عقارات · سوشيال',
     },
     'tilal-v': {
-      title: 'تلال فيليدج — حيث تجد الحياة مكانها',
-      tagline: 'بعنا الانتماء والإيمان — مش الأمتار.',
+      title: 'تلال فيليدج، حيث تجد الحياة مكانها',
+      tagline: 'بعنا الانتماء والإيمان، مش الأمتار.',
       category: 'عقارات · حملة سوشيال',
       challenge:
         'مجتمع سكني مميّز في مكة، في فئة كل مطوّر فيها بيعلن نفس المواصفات. تلال كانت محتاجة تبيع إحساس تربية عيلة في مكان له معنى.',
@@ -473,32 +481,32 @@ const ar: typeof en = {
         'القرب من الحرم مش ميزة، ده أسلوب حياة. بنيت الحملة على «حيث تجد الحياة مكانها»: لحظات عائلية وضوء المغرب والمدينة في الكادر، عشان الموقع نفسه يوصّل الرسالة.',
     },
     'fresh-valley': {
-      title: 'فريش فالي — فاخرة بطبيعتها',
+      title: 'فريش فالي، فاخرة بطبيعتها',
       tagline: 'منتجات يومية تبان فاخرة عن قصد.',
       category: 'أغذية وتجزئة · سوشيال',
     },
     gf: {
-      title: 'جيلت فري — بلا ندم، طعم بس',
+      title: 'جيلت فري، بلا ندم، طعم بس',
       tagline: 'حلويات تبان دسمة وتفضل خفيفة.',
       category: 'أغذية وتجزئة · سوشيال',
     },
     'the-nine': {
-      title: 'ذا ناين — قهوة ومطبخ',
+      title: 'ذا ناين، قهوة ومطبخ',
       tagline: 'قهوة مختصة بشكل أبيض وأسود نظيف.',
       category: 'أغذية وتجزئة · سوشيال',
     },
     'hr-link': {
-      title: 'إتش آر لينك — برمجيات تُباع ببساطة',
+      title: 'إتش آر لينك، برمجيات تُباع ببساطة',
       tagline: 'نظام موارد بشرية بإحساس سهل، مش تقني.',
       category: 'SaaS · سوشيال',
     },
     'next-academy': {
-      title: 'نكست أكاديمي — مهارات تجذب',
+      title: 'نكست أكاديمي، مهارات تجذب',
       tagline: 'بوستات تدريب مبنية لتحويل الاهتمام إلى تسجيل.',
       category: 'تعليم · سوشيال',
     },
     'brand-vitals': {
-      title: 'براند فايتلز — تسويق مبني بالمكعبات',
+      title: 'براند فايتلز، تسويق مبني بالمكعبات',
       tagline: 'نصائح تسويق شكلها صندوق ألعاب وتوصل كلكمة.',
       category: 'تسويق · سوشيال',
     },
@@ -507,8 +515,9 @@ const ar: typeof en = {
     label: "سير عمل الذكاء الاصطناعي",
     h2a: "الطريقة",
     h2i: "أولًا",
-    h2b: "— وبعدها الشغل.",
+    h2b: "، وبعدها الشغل.",
     note: "إنتاجان مخطّطان كنظام: اقرأ الفلو الأول، وبعدها شوف نتيجته.",
+    pick: "اختر إنتاجًا",
   },
   master: {
     label: "الفيجوالز الرئيسية",
@@ -549,37 +558,37 @@ const ar: typeof en = {
     h2a: "ماذا أستطيع أن",
     h2i: "أفعل",
     h2b: "لعلامتك.",
-    note: "متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين —",
+    note: "متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين، ",
     noteLink: "ابدأ محادثة ↗",
     items: [
       {
         title: "الهوية البصرية",
-        desc: "شعارات وأنظمة بصرية وتغليف وأدلّة استخدام — هويات تتوسّع من كرت العمل حتى أسطول التوزيع.",
+        desc: "شعارات وأنظمة بصرية وتغليف وأدلّة استخدام، هويات تتوسّع من كرت العمل حتى أسطول التوزيع.",
         tags: ["الشعار", "النظام البصري", "التغليف"],
       },
       {
         title: "الحملات والصور الرئيسية",
-        desc: "حملات إعلانية وصور بطولية للعقارات والسيارات والتقنية والضيافة — من الفكرة إلى الفن النهائي.",
+        desc: "حملات إعلانية وصور بطولية للعقارات والسيارات والتقنية والضيافة، من الفكرة إلى الفن النهائي.",
         tags: ["فكرة الحملة", "صور رئيسية", "عربي/إنجليزي"],
       },
       {
         title: "أنظمة السوشيال ميديا",
-        desc: "فيدات متّسقة قابلة للتكرار — شبكات وقوالب وأنظمة محتوى تحافظ على الجودة بسرعة النشر.",
+        desc: "فيدات متّسقة قابلة للتكرار، شبكات وقوالب وأنظمة محتوى تحافظ على الجودة بسرعة النشر.",
         tags: ["قوالب", "تصميم محتوى", "أنظمة فيد"],
       },
       {
         title: "الإخراج الفني والإبداعي",
-        desc: "قيادة المصممين وامتلاك اللغة البصرية — بريفات ومراجعات ومعايير ترفع مستوى الإنتاج كله.",
+        desc: "قيادة المصممين وامتلاك اللغة البصرية، بريفات ومراجعات ومعايير ترفع مستوى الإنتاج كله.",
         tags: ["قيادة فريق", "بناء المفاهيم", "ضبط الجودة"],
       },
       {
         title: "إنتاج بالذكاء الاصطناعي",
-        desc: "صور بمستوى الحملات وتعليق صوتي بالذكاء الاصطناعي — مُخرجة ومنتقاة ومعالَجة باحترافية.",
+        desc: "صور بمستوى الحملات وتعليق صوتي بالذكاء الاصطناعي، مُخرجة ومنتقاة ومعالَجة باحترافية.",
         tags: ["تصوير AI", "هندسة البرومبت", "تعليق صوتي AI", "ريتاتش"],
       },
       {
         title: "الموشن والويب",
-        desc: "ريلز وبرومو ومونتاج — ومواقع مصمَّمة ومبنية بالكامل بالتطوير المعزّز بالذكاء الاصطناعي، مثل هذا الموقع.",
+        desc: "ريلز وبرومو ومونتاج، ومواقع مصمَّمة ومبنية بالكامل بالتطوير المعزّز بالذكاء الاصطناعي، مثل هذا الموقع.",
         tags: ["فيديو وريلز", "موشن جرافيك", "تصميم مواقع"],
       },
     ],
@@ -589,13 +598,20 @@ const ar: typeof en = {
     h2a: "حين لا تكفي",
     h2i: "الصورة الثابتة",
     h2b: ".",
-    note: "أفلام علامات وريلز وأنيميشن — اضغط السماعة للصوت، أو كبّر أي مقطع.",
+    note: "أفلام علامات وريلز وأنيميشن، اضغط السماعة للصوت، أو كبّر أي مقطع.",
     landscape: "أفقي",
     portrait: "رأسي",
   },
+  type: {
+    label: "تصميم حروف",
+    h2a: "حروفٌ تُرسَم",
+    h2i: "باليد",
+    h2b: ".",
+    note: "حروف عربية ولاتينية مخصّصة، لوجوتايبات وعناوين حملات وكلمات مرسومة حرفًا حرفًا.",
+  },
   web: {
     label: "فايب كودينج",
-    h2a: "أصمّم — ثم",
+    h2a: "أصمّم، ثم",
     h2i: "أشحن الكود",
     h2b: ".",
     note: "مواقع حيّة صمّمتها وبنيتها بالتطوير المعزّز بالذكاء الاصطناعي. حتى هذا البورتفوليو مبني بنفس الطريقة. اختر موقعًا لمعاينته.",
@@ -604,7 +620,7 @@ const ar: typeof en = {
     sites: "موقع منشور",
   },
   social: {
-    label: "تصاميم مختارة — جدار متواصل من الأعمال",
+    label: "تصاميم مختارة، جدار متواصل من الأعمال",
     browse: "تصفّح الأعمال ↑",
   },
   hire: {
@@ -612,7 +628,7 @@ const ar: typeof en = {
     h2a: "عندك علامة تحتاج",
     h2i: "اتجاهًا",
     h2b: "؟",
-    body: "أنا متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين عبر مصر · السعودية · الكويت. احكِ لي ما تبنيه — وسأخبرك كيف يوصله التصميم.",
+    body: "أنا متاح لأدوار دوام كامل وعن بُعد وفريلانس وهجين عبر مصر · السعودية · الكويت. احكِ لي ما تبنيه، وسأخبرك كيف يوصله التصميم.",
     wa: "راسلني واتساب ↗",
     all: "كل وسائل التواصل",
   },
@@ -627,18 +643,12 @@ const ar: typeof en = {
   about: {
     label: "عنّي",
     heroBio:
-      "أكتر من خمس سنين بحوّل فيها مشاكل الشغل لإجابات بصرية — هويات وحملات وأنظمة سوشيال لشركات في مصر والسعودية والكويت. دلوقتي بقود فريق تصميم، وبدوّر على المكان الجاي اللي أبني فيه فريق.",
-    record: [
-      { n: "+٥", l: "سنوات في التصميم" },
-      { n: "٣", l: "أسواق" },
-      { n: "~١٢٠٠", l: "طالب تدرّب" },
-      { n: "١١", l: "دراسة حالة" },
-    ],
-    intro1: "مصمّم يقود — يتعامل مع كل علامة بوصفها",
+      "أكتر من خمس سنين بحوّل فيها مشاكل الشغل لإجابات بصرية: هويات وحملات وأنظمة سوشيال لشركات في مصر والسعودية والكويت. دلوقتي بقود فريق تصميم، وبدوّر على المكان الجاي اللي أبني فيه فريق.",
+    intro1: "مصمّم يقود، يتعامل مع كل علامة بوصفها",
     introAccent: "مشكلة عمل",
     intro2: "لها إجابة إبداعية.",
-    bio1: "أنا محمد طارق، مصمم أول وقائد فريق — مقيم في مصر وبخبرة مهنية عبر الأسواق المصرية والسعودية والكويتية، أركّز على تصميم نظيف واستراتيجي مدفوع بالأداء يقوّي هوية العلامة ويخدم أهداف التسويق الحقيقية.",
-    bio2: "أعمل عبر البراندينج والحملات وأنظمة السوشيال والصور الرئيسية والموشن — متمكّن من فوتوشوب وإليستريتور وتصميم الواجهات وأدوات الذكاء الاصطناعي الإبداعية التي أستخدمها لابتكار وتسليم أعمال حديثة تناسب أسواق الشرق الأوسط. وإلى جانب عمل العملاء، أدرّس الجرافيك ديزاين كمُحاضر وأوجّه الجيل القادم من المصممين.",
+    bio1: "أنا محمد طارق، مصمم أول وقائد فريق، مقيم في مصر وبخبرة مهنية عبر الأسواق المصرية والسعودية والكويتية، أركّز على تصميم نظيف واستراتيجي مدفوع بالأداء يقوّي هوية العلامة ويخدم أهداف التسويق الحقيقية.",
+    bio2: "أعمل عبر البراندينج والحملات وأنظمة السوشيال والصور الرئيسية والموشن، متمكّن من فوتوشوب وإليستريتور وتصميم الواجهات وأدوات الذكاء الاصطناعي الإبداعية التي أستخدمها لابتكار وتسليم أعمال حديثة تناسب أسواق الشرق الأوسط. وإلى جانب عمل العملاء، أدرّس الجرافيك ديزاين كمُحاضر وأوجّه الجيل القادم من المصممين.",
     coreFocus: "التركيز الأساسي",
     traitsLabel: "سمات شخصية",
     focus: ["تصميم بصري 2D", "أنظمة العلامات", "هندسة برومبت AI", "تعليق صوتي AI"],
@@ -656,18 +666,23 @@ const ar: typeof en = {
     h2a: "الشركات التي",
     h2i: "صنعتني",
     h2b: ".",
-    note: "عبر مصر والسعودية — الأحدث أولًا. من مصمّم جرافيك، إلى التدريس، إلى قيادة فريق فني.",
+    note: "عبر مصر والسعودية، الأحدث أولًا. من مصمّم جرافيك، إلى التدريس، إلى قيادة فريق فني.",
     now: "الآن",
     promoted: "↑ ترقية",
     returned: "↩ عاد ليقود",
+    earlier: "سابقًا في Osolutions · ثلاث سنوات من الترقيات",
+    filterHint: "تصفية حسب نوع الالتزام",
+    all: "كل الأدوار",
+    fullTime: "دوام كامل",
+    partTime: "جزئي · عن بُعد",
   },
   teach: {
     label: "التدريس",
-    h2a: "لا أقود المصممين فقط —",
+    h2a: "لا أقود المصممين فقط، ",
     h2i: "أنا أصنعهم",
     h2b: ".",
-    note: "مُحاضر في أربع أكاديميات — ومستشار عند الطلب، أزور الفرق لحل مشكلات التصميم على أرض الواقع.",
-    statNote: "قرابة ١٢٠٠ طالب تخرّجوا عبر ٤٩ دفعة — الأرقام تقريبية، وما زالت تنمو.",
+    note: "مُحاضر في أربع أكاديميات، ومستشار عند الطلب، أزور الفرق لحل مشكلات التصميم على أرض الواقع.",
+    statNote: "قرابة ١٢٠٠ طالب تخرّجوا عبر ٤٩ دفعة، الأرقام تقريبية، وما زالت تنمو.",
     stats: [
       { n: "~١٢٠٠", l: "طالب متخرّج" },
       { n: "٤٩", l: "دفعة تدريبية" },
@@ -677,10 +692,10 @@ const ar: typeof en = {
     role: "مُحاضر تصميم",
     academies: [
       {
-        name: "SOIC — مدرسة السينما",
+        name: "SOIC، مدرسة السينما",
         logo: "/orgs/soic.webp",
         now: true,
-        desc: "تدريس حِرفة التصميم داخل مدرسة لصناعة الأفلام — السرد البصري والكي-آرت وتفكير الحملات للسينما.",
+        desc: "تدريس حِرفة التصميم داخل مدرسة لصناعة الأفلام، السرد البصري والكي-آرت وتفكير الحملات للسينما.",
       },
       {
         name: "EDUX أكاديمي",
@@ -691,13 +706,13 @@ const ar: typeof en = {
       {
         name: "Easily",
         now: false,
-        desc: "رحلة أساسيات كاملة — فوتوشوب وإليستريتور وفيجما؛ حملات إعلانية وUI/UX ومودبورد وستوري بورد وإنسايتس وتطوير مفاهيم وتنفيذ.",
+        desc: "رحلة أساسيات كاملة، فوتوشوب وإليستريتور وفيجما؛ حملات إعلانية وUI/UX ومودبورد وستوري بورد وإنسايتس وتطوير مفاهيم وتنفيذ.",
       },
       {
         name: "راية أكاديمي",
         logo: "/orgs/raya.webp",
         now: false,
-        desc: "دفعات جرافيك عملية — فوتو مانيبيوليشن وصفحات هبوط وبراندينج، مشروعًا بمشروع.",
+        desc: "دفعات جرافيك عملية، فوتو مانيبيوليشن وصفحات هبوط وبراندينج، مشروعًا بمشروع.",
       },
     ],
   },
@@ -706,22 +721,22 @@ const ar: typeof en = {
     h2a: "من البريف إلى",
     h2i: "قرار",
     h2b: ".",
-    note: "الإخراج هو صناعة القرار — المسار الذي آخذ فيه كل علامة، من الفهم حتى التنفيذ.",
+    note: "الإخراج هو صناعة القرار، المسار الذي آخذ فيه كل علامة، من الفهم حتى التنفيذ.",
     steps: [
       {
         n: "01",
         title: "البحث",
-        body: "أبدأ من العمل والسوق والجمهور — ما الذي تحتاج العلامة تحقيقه، وما الذي يقوله الجميع بالفعل.",
+        body: "أبدأ من العمل والسوق والجمهور، ما الذي تحتاج العلامة تحقيقه، وما الذي يقوله الجميع بالفعل.",
       },
       {
         n: "02",
         title: "الإنسايت",
-        body: "أجد الحقيقة الواحدة التي تفتح العمل — التوتّر الذي يجعل الناس تهتم. الإنسايت هو الاستراتيجية في جملة.",
+        body: "أجد الحقيقة الواحدة التي تفتح العمل، التوتّر الذي يجعل الناس تهتم. الإنسايت هو الاستراتيجية في جملة.",
       },
       {
         n: "03",
         title: "الفكرة",
-        body: "أترجم الإنسايت إلى فكرة إبداعية كبيرة تكفي لتعيش عبر القنوات — منصة، لا بوستر.",
+        body: "أترجم الإنسايت إلى فكرة إبداعية كبيرة تكفي لتعيش عبر القنوات، منصة، لا بوستر.",
       },
       {
         n: "04",
@@ -731,7 +746,7 @@ const ar: typeof en = {
       {
         n: "05",
         title: "التنفيذ",
-        body: "أحوّلها إلى واقع وأحافظ على المستوى في كل نقطة تماس — من الإطار البطولي حتى أصغر ستوري.",
+        body: "أحوّلها إلى واقع وأحافظ على المستوى في كل نقطة تماس، من الإطار البطولي حتى أصغر ستوري.",
       },
     ],
   },
@@ -768,7 +783,7 @@ const ar: typeof en = {
     pillars: [
       {
         k: "أين أنا",
-        v: "قائد فريق فني بحِرفة مصمّم وحدس استراتيجي — أقود الفريق فعلًا وأبني أعمالًا تُحقق نتائج في السوق.",
+        v: "قائد فريق فني بحِرفة مصمّم وحدس استراتيجي، أقود الفريق فعلًا وأبني أعمالًا تُحقق نتائج في السوق.",
       },
       {
         k: "إلى أين أتجه",
@@ -776,7 +791,7 @@ const ar: typeof en = {
       },
       {
         k: "لماذا الإخراج",
-        v: "أقوى أعمالي لم تكن يومًا عن الزخرفة — بل عن القرارات. هناك تلتقي الاستراتيجية والحِرفة والقيادة.",
+        v: "أقوى أعمالي لم تكن يومًا عن الزخرفة، بل عن القرارات. هناك تلتقي الاستراتيجية والحِرفة والقيادة.",
       },
     ],
   },
@@ -805,6 +820,7 @@ const ar: typeof en = {
     ctaBtn: "ابدأ محادثة ↗",
     cont: "تابع",
     readMore: "شاهد الحالة كاملة",
+    showAll: "عرض الكل",
     finalVideos: "الفيديوهات النهائية",
     interactive: "تفاعلي",
     prev: "السابق",

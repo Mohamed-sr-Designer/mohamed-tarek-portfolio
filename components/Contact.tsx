@@ -11,7 +11,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 overflow-hidden border-t border-line/10 py-24 md:py-36"
+      className="relative scroll-mt-24 overflow-hidden border-t border-line/10 section-y"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute bottom-[-30%] left-1/2 h-[50vw] w-[50vw] -translate-x-1/2 rounded-full bg-electric/10 blur-[140px]" />
@@ -23,10 +23,12 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h2 className="mt-10 max-w-4xl text-balance font-sans text-5xl font-light leading-[1.02] tracking-tightest text-bone-50 md:text-8xl">
+          {/* h1 on the contact page: it is a standalone route, and every page
+              needs exactly one top-level heading for search and screen readers */}
+          <h1 className="mt-10 max-w-4xl text-balance font-sans text-5xl font-light leading-[1.02] tracking-tightest text-bone-50 md:text-8xl">
             {t.contact.h2a}{" "}
             <span className="font-serif italic text-mint">{t.contact.h2i}</span>
-          </h2>
+          </h1>
         </Reveal>
 
         <Reveal delay={0.1}>

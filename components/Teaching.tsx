@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
 import { useLang } from "@/lib/i18n";
 
-// Teaching & mentorship — a recruiter-friendly proof of leadership:
+// Teaching & mentorship, a recruiter-friendly proof of leadership:
 // four academies, ~1,200 graduates, plus on-site design advisory.
 export default function Teaching() {
   const { t } = useLang();
@@ -14,7 +14,7 @@ export default function Teaching() {
       id="teaching"
       className="border-y border-line/10 bg-ink-800/40 scroll-mt-24"
     >
-      <div className="container-edge mx-auto max-w-edge py-24 md:py-32">
+      <div className="container-edge mx-auto max-w-edge section-y">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Reveal>

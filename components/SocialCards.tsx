@@ -104,7 +104,7 @@ export default function SocialCards() {
   return (
     <section
       id="social"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 py-24 md:py-32"
+      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
     >
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>

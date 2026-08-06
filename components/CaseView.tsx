@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { Carousel } from "@/components/ui/Carousel";
+import CaseGalleries from "@/components/CaseGalleries";
 import ThemeToggle from "@/components/ThemeToggle";
 import { site } from "@/lib/site";
 import { useLang } from "@/lib/i18n";
@@ -30,9 +31,11 @@ export default function CaseView({ project }: { project: Project }) {
   // 8 tiles in a 9-tile grid.
   const gallery = [...project.gallery].reverse();
   const others = projects.filter((p) => p.slug !== project.slug);
-  const caseVideos = (motionData as Clip[]).filter((c) =>
-    (project.videoSlugs ?? []).includes(c.slug)
-  );
+  // Deduped by slug: a clip can appear in motion.json under more than one
+  // collection, which was rendering the same film twice on the video case.
+  const caseVideos = (motionData as Clip[])
+    .filter((c) => (project.videoSlugs ?? []).includes(c.slug))
+    .filter((c, i, all) => all.findIndex((x) => x.slug === c.slug) === i);
   // On workflow cases the flow diagram is the lead visual.
   const leadIsFlow = Boolean(project.workflow?.image);
   const leadVisual = project.workflow?.image ?? project.hero;
@@ -200,40 +203,10 @@ export default function CaseView({ project }: { project: Project }) {
         </section>
       ) : null}
 
-      {/* named gallery groups (Before / After, Characters / Scenes …) —
-          same masonry markup as the standard gallery, one block per group */}
-      {project.galleries?.map((grp) => (
-        <section
-          key={grp.label}
-          className="container-edge mx-auto max-w-edge pb-14 md:pb-20"
-        >
-          <Reveal>
-            <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-              <h2 className="text-2xl font-semibold tracking-tight text-bone-50 md:text-3xl">
-                {grp.label}
-              </h2>
-              {grp.note ? (
-                <p className="text-sm text-bone-400">{grp.note}</p>
-              ) : null}
-            </div>
-          </Reveal>
-          <div className="gap-3 [column-fill:_balance] columns-2 md:columns-3">
-            {grp.items.map((g) => (
-              <figure
-                key={g.src}
-                className="mb-3 break-inside-avoid overflow-hidden rounded-lg bg-ink-700"
-              >
-                <Media
-                  src={g.src}
-                  alt={g.caption ?? `${title} — ${grp.label}`}
-                  sizes="(max-width: 640px) 50vw, 33vw"
-                  className="h-auto w-full"
-                />
-              </figure>
-            ))}
-          </div>
-        </section>
-      ))}
+      {/* named gallery groups (Before / After, Characters / Scenes …) */}
+      {project.galleries?.length ? (
+        <CaseGalleries groups={project.galleries} title={title} />
+      ) : null}
 
       {/* final videos */}
       {caseVideos.length > 0 ? (

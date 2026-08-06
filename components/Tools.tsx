@@ -49,7 +49,7 @@ function ToolCard({ t }: { t: Tool }) {
 export default function Tools() {
   const { t } = useLang();
   return (
-    <section className="container-edge mx-auto max-w-edge py-20 md:py-28">
+    <section className="container-edge mx-auto max-w-edge section-y">
       <Reveal>
         <SectionLabel>{t.tools.label}</SectionLabel>
       </Reveal>

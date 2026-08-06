@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Media } from "@/components/ui/Media";
 import { useLang } from "@/lib/i18n";
 
-// The brands behind the work — a recruiter usually looks for this first.
+// The brands behind the work, a recruiter usually looks for this first.
 const logos = Array.from({ length: 36 }, (_, i) =>
   String(i + 1).padStart(2, "0")
 );

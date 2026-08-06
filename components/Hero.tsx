@@ -89,7 +89,7 @@ export default function Hero() {
         </motion.div>
 
         <div className="mt-8 grid items-center gap-8 lg:mt-10 lg:grid-cols-12 lg:gap-14">
-          {/* Left — statement */}
+          {/* Left, statement */}
           <div className="order-2 lg:order-1 lg:col-span-7">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -161,7 +161,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — portrait */}
+          {/* Right, portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -172,8 +172,8 @@ export default function Hero() {
               <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-mint/25 via-transparent to-electric/25 blur-2xl" />
               <div className="relative overflow-hidden rounded-[1.6rem] border border-line/15 bg-ink-700 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
                 <Media
-                  src="/me/portrait.webp"
-                  alt="Mohamed Tarek — graphic designer and art director"
+                  src="/me/portrait-2026.webp"
+                  alt="Mohamed Tarek, Sr Designer, Team Lead"
                   sizes="(max-width: 1024px) 80vw, 34vw"
                   className="h-auto w-full"
                   priority

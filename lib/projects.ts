@@ -75,7 +75,7 @@ export const projects: Project[] = [
   {
     slug: "photo-sessions",
     index: "01",
-    title: "AI Photo Sessions — Product Library at Scale",
+    title: "AI Photo Sessions, Product Library at Scale",
     client: "Hospitality Amenities",
     year: "2025",
     category: "AI Photo Production",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     discipline: "Photo Production · AI Imaging · Retouch",
     accent: "mint",
     summary:
-      "A full product photo library built with a planned AI production flow — from plain reference shots to a premium, consistent set ready for campaigns.",
+      "A full product photo library built with a planned AI production flow, from plain reference shots to a premium, consistent set ready for campaigns.",
     tagline: "From plain product shots to a premium, consistent library.",
     cover: "/work/photo-sessions/after-01.webp",
     hero: "/work/photo-sessions/after-03.webp",
@@ -96,12 +96,12 @@ export const projects: Project[] = [
     gallery: [],
     galleries: [
       {
-        label: "Before — Original Images",
+        label: "Before",
         note: "The source product shots the session started from.",
         items: g(...seq("/work/photo-sessions/before-", 1, 15)),
       },
       {
-        label: "After — Final Library",
+        label: "After",
         note: "The finished, premium set delivered for campaigns.",
         items: g(...seq("/work/photo-sessions/after-", 1, 12)),
       },
@@ -155,7 +155,7 @@ export const projects: Project[] = [
   {
     slug: "video-production",
     index: "02",
-    title: "AI Video Production — One Connected System",
+    title: "AI Video Production, One Connected System",
     client: "Campaign Production",
     year: "2025",
     category: "AI Video Production",
@@ -163,14 +163,14 @@ export const projects: Project[] = [
     discipline: "Character Design · Scene Construction · Film",
     accent: "electric",
     summary:
-      "A full campaign built as one connected production system — characters, scenes and story links planned first, so every shot works across several deliverables.",
-    tagline: "One planned system, many films — instead of many separate shoots.",
+      "A full campaign built as one connected production system, characters, scenes and story links planned first, so every shot works across several deliverables.",
+    tagline: "One planned system, many films, instead of many separate shoots.",
     // a real scene from the film, not a character sheet
     cover: "/work/video-production/sc-01.webp",
     hero: "/work/video-production/sc-01.webp",
     tags: ["AI Video", "Character Design", "Storyboard", "Campaign"],
     challenge:
-      "The campaign needed several videos at once — hero films, social cuts and supporting clips. Treating each one as its own project would break the visual language and repeat the same work again and again.",
+      "The campaign needed several videos at once, hero films, social cuts and supporting clips. Treating each one as its own project would break the visual language and repeat the same work again and again.",
     strategy:
       "I built the campaign as a single production system. Characters and scenes were defined up front and connected to each other, so one planned shot could serve several videos while the whole campaign kept one look.",
     contribution: ["Character Planning", "Scene Mapping", "Production Flow", "Art Direction"],
@@ -240,7 +240,7 @@ export const projects: Project[] = [
   {
     slug: "amam",
     index: "03",
-    title: "Amam · Durrat Al Arous — Life on the Water",
+    title: "Amam · Durrat Al Arous, Life on the Water",
     client: "Amam Real Estate · Durrat Al Arous",
     year: "2025",
     category: "Real Estate · Campaign",
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     discipline: "Campaign · Social System · Bilingual",
     accent: "electric",
     summary:
-      "A lifestyle campaign for a waterfront resort community — selling the weekend you get, not the square metres you buy.",
+      "A lifestyle campaign for a waterfront resort community, selling the weekend you get, not the square metres you buy.",
     tagline: "We sold the weekend, not the square metres.",
     cover: "/work/amam-re/01.webp",
     hero: "/work/amam-re/02.webp",
@@ -258,16 +258,21 @@ export const projects: Project[] = [
     strategy:
       "Lead with the moments people actually buy: jet skis at noon, a boat at sunset, family time by the pool. Every post shows a life first and the property second, held together by one calm Arabic type style and the same warm water light.",
     direction:
-      "Sunlit blues and sand tones, wide open water, and unhurried lifestyle framing — premium without shouting.",
+      "Sunlit blues and sand tones, wide open water, and unhurried lifestyle framing, premium without shouting.",
     execution:
       "A full campaign set of lifestyle key visuals and social posts covering watersports, villas, family time and sunset moments, all bilingual and ready for the feed.",
     impact:
       "A waterfront community that reads as a lifestyle brand, giving the sales team warm interest instead of cold price questions.",
     contribution: ["Campaign Direction", "Key Visuals", "Social System", "Bilingual Layout"],
-    gallery: g(...seq("/work/amam-re/", 1, 14)),
+    // 12 and 13 are dropped: they repeat the "كل إطلالة" villa-and-pool frame
+    // that 09-11 already cover.
+    gallery: g(
+      ...seq("/work/amam-re/", 1, 11),
+      "/work/amam-re/14.webp"
+    ),
     strategyBlock: {
       toneLabel: "Tone of voice",
-      tone: "Warm, refined and human-centered — celebrating comfort, belonging, family connections and everyday moments through a seamless lifestyle experience that inspires ease and confidence.",
+      tone: "Warm, refined and human-centered, celebrating comfort, belonging, family connections and everyday moments through a seamless lifestyle experience that inspires ease and confidence.",
       toneTraits: ["Luxurious, never stiff", "Warm and close", "Confident, no hype"],
       pillarsLabel: "Content pillars",
       pillars: [
@@ -282,7 +287,7 @@ export const projects: Project[] = [
   {
     slug: "el-raghi",
     index: "04",
-    title: "Al Rajhi — Built to Last",
+    title: "Al Rajhi, Built to Last",
     client: "Al Rajhi Union · Rawdah Residences",
     year: "2025",
     category: "Real Estate · Social",
@@ -291,7 +296,7 @@ export const projects: Project[] = [
     accent: "electric",
     simple: true,
     summary:
-      "Social media design for a residential development — architectural photography, quiet sunset light and confident Arabic type that signals quality.",
+      "Social media design for a residential development, architectural photography, quiet sunset light and confident Arabic type that signals quality.",
     tagline: "Built with care, so quality lasts for years.",
     cover: "/work/social/el-raghi/01.webp",
     hero: "/work/social/el-raghi/02.webp",
@@ -302,7 +307,7 @@ export const projects: Project[] = [
   {
     slug: "tilal-v",
     index: "05",
-    title: "Tilal Village — Where Life Finds Its Place",
+    title: "Tilal Village, Where Life Finds Its Place",
     client: "Tilal Village · Makkah",
     year: "2025",
     category: "Real Estate · Social Campaign",
@@ -310,8 +315,8 @@ export const projects: Project[] = [
     discipline: "Campaign · Social System · Bilingual",
     accent: "mint",
     summary:
-      "A social campaign for a residential community minutes from the Haram — built on belonging and family life, not floor plans.",
-    tagline: "We sold belonging and faith — not square metres.",
+      "A social campaign for a residential community minutes from the Haram, built on belonging and family life, not floor plans.",
+    tagline: "We sold belonging and faith, not square metres.",
     cover: "/work/tilal-social/01.webp",
     hero: "/work/tilal-social/03.webp",
     tags: ["Real Estate", "Campaign", "Bilingual AR/EN", "Social System"],
@@ -322,7 +327,7 @@ export const projects: Project[] = [
     direction:
       "Golden evening light, classical facades and quiet family scenes, with one bilingual type system so every post is recognisably Tilal.",
     execution:
-      "A rolling social system — hero campaign frames, lifestyle posts, interior reveals and aerials — plus the supporting website visual.",
+      "A rolling social system, hero campaign frames, lifestyle posts, interior reveals and aerials, plus the supporting website visual.",
     impact:
       "A development that reads as a home rather than an investment listing, and a feed that stays consistent as it scales.",
     contribution: ["Campaign Direction", "Key Visuals", "Social System", "Bilingual Layout"],
@@ -331,7 +336,7 @@ export const projects: Project[] = [
   {
     slug: "fresh-valley",
     index: "06",
-    title: "Fresh Valley — Premium by Nature",
+    title: "Fresh Valley, Premium by Nature",
     client: "Fresh Valley",
     year: "2025",
     category: "Food & Retail · Social",
@@ -340,7 +345,7 @@ export const projects: Project[] = [
     accent: "mint",
     simple: true,
     summary:
-      "Social media design for a premium produce brand — natural light, kraft texture and a green identity that makes everyday produce feel premium.",
+      "Social media design for a premium produce brand, natural light, kraft texture and a green identity that makes everyday produce feel premium.",
     tagline: "Everyday produce, made to look deliberately premium.",
     cover: "/work/social/fresh-valley/01.webp",
     hero: "/work/social/fresh-valley/02.webp",
@@ -351,7 +356,7 @@ export const projects: Project[] = [
   {
     slug: "gf",
     index: "07",
-    title: "Guilt Free — No Regrets, Just Flavour",
+    title: "Guilt Free, No Regrets, Just Flavour",
     client: "Guilt Free",
     year: "2025",
     category: "Food & Retail · Social",
@@ -360,7 +365,7 @@ export const projects: Project[] = [
     accent: "mint",
     simple: true,
     summary:
-      "Social media design for a healthy dessert brand — playful colour, flying crumbs and appetite-first framing that still feels light.",
+      "Social media design for a healthy dessert brand, playful colour, flying crumbs and appetite-first framing that still feels light.",
     tagline: "Dessert that looks indulgent and still feels light.",
     // lead with the product shots, not the typographic posts
     cover: "/work/social/gf/06.webp",
@@ -377,7 +382,7 @@ export const projects: Project[] = [
   {
     slug: "the-nine",
     index: "08",
-    title: "THE NINE — Coffee & Kitchen",
+    title: "THE NINE, Coffee & Kitchen",
     client: "THE NINE",
     year: "2025",
     category: "Food & Retail · Social",
@@ -386,7 +391,7 @@ export const projects: Project[] = [
     accent: "mint",
     simple: true,
     summary:
-      "Social media design for a specialty café — a black and white brand world where the food and the pour do all the talking.",
+      "Social media design for a specialty café, a black and white brand world where the food and the pour do all the talking.",
     tagline: "Specialty coffee, served with a clean black-and-white look.",
     cover: "/work/social/the-nine/01.webp",
     hero: "/work/social/the-nine/02.webp",
@@ -397,7 +402,7 @@ export const projects: Project[] = [
   {
     slug: "hr-link",
     index: "09",
-    title: "HR Link — Software, Sold Simply",
+    title: "HR Link, Software, Sold Simply",
     client: "HR Link",
     year: "2025",
     category: "SaaS · Social",
@@ -406,7 +411,7 @@ export const projects: Project[] = [
     accent: "electric",
     simple: true,
     summary:
-      "Social media design for an HR software platform — every post answers one real worry and shows the product solving it.",
+      "Social media design for an HR software platform, every post answers one real worry and shows the product solving it.",
     tagline: "HR software made to feel effortless, not technical.",
     cover: "/work/social/hr-link/01.webp",
     hero: "/work/social/hr-link/02.webp",
@@ -417,7 +422,7 @@ export const projects: Project[] = [
   {
     slug: "next-academy",
     index: "10",
-    title: "NEXT Academy — Skills, Recruited",
+    title: "NEXT Academy, Skills, Recruited",
     client: "NEXT Academy",
     year: "2025",
     category: "Education · Social",
@@ -426,7 +431,7 @@ export const projects: Project[] = [
     accent: "electric",
     simple: true,
     summary:
-      "Social media design for a training academy — sharp, high-contrast posts built to turn interest into enrolment.",
+      "Social media design for a training academy, sharp, high-contrast posts built to turn interest into enrolment.",
     tagline: "Training posts built to convert interest into enrolment.",
     cover: "/work/social/next-academy/01.webp",
     hero: "/work/social/next-academy/02.webp",
@@ -437,7 +442,7 @@ export const projects: Project[] = [
   {
     slug: "brand-vitals",
     index: "11",
-    title: "BrandVitals — Marketing, Built in Blocks",
+    title: "BrandVitals, Marketing, Built in Blocks",
     client: "BrandVitals",
     year: "2025",
     category: "Marketing · Social",
@@ -446,7 +451,7 @@ export const projects: Project[] = [
     accent: "electric",
     simple: true,
     summary:
-      "Social media design for a marketing agency — familiar toy blocks turned into sharp visual metaphors for tired marketing truths.",
+      "Social media design for a marketing agency, familiar toy blocks turned into sharp visual metaphors for tired marketing truths.",
     tagline: "Marketing advice that looks like a toy box and lands like a punch.",
     cover: "/work/social/brand-vitals/01.webp",
     hero: "/work/social/brand-vitals/02.webp",
