@@ -12,7 +12,7 @@ import { withBase } from "@/lib/base";
 // Storyboards — the frame-by-frame plan behind the films. Wide boards, shown
 // full width with a lightbox, because the panels carry readable detail.
 // Board 02 leads — its frames are the stronger opener — then 01, then 03.
-// 04 is a 3-across x 4-down matrix built from the film's scene frames
+// 04 is a 4-across x 3-down matrix built from the film's scene frames
 // (scripts/build-storyboard-04.mjs).
 const boards = ["02", "01", "03", "04"].map(
   (n) => `/work/storyboards/${n}.webp`

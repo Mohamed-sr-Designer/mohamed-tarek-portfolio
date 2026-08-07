@@ -8,14 +8,18 @@ import { Media } from "@/components/ui/Media";
 import { withBase } from "@/lib/base";
 import { useLang } from "@/lib/i18n";
 
-// Custom lettering, Arabic and Latin.
+// Custom Arabic and Latin lettering, produced with AI tooling and finished by
+// hand-off into logotypes and campaign headlines.
 //
-// Each piece ships as two cuts on transparent alpha: a white one for dark mode
-// and a black one for light. They sit straight on the page background — no tile
-// behind them — so the letterforms read as artwork rather than as thumbnails.
+// Presented as a continuous auto-scrolling loop rather than a grid: the pieces
+// have very different proportions, so a fixed grid left them floating at odd
+// sizes with nothing lining up. In a strip they each keep their natural width
+// and share one baseline. Each piece ships as two cuts on transparent alpha —
+// white for dark mode, black for light — so the letterforms sit straight on
+// the page with no tile behind them.
 //
-// Pieces 07 and 08 only exist as one full-colour cut, so those keep a dark
-// plate in both themes; their white elements would vanish on the light page.
+// Pieces 07 and 08 exist only as a single full-colour cut whose white elements
+// would vanish on the light theme, so those two keep a fixed dark plate.
 const PLATED = new Set([7, 8]);
 
 const pieces = Array.from({ length: 8 }, (_, i) => {
@@ -27,6 +31,86 @@ const pieces = Array.from({ length: 8 }, (_, i) => {
     plated: PLATED.has(i + 1),
   };
 });
+
+function Piece({
+  piece,
+  index,
+  onOpen,
+  label,
+}: {
+  piece: (typeof pieces)[number];
+  index: number;
+  onOpen: (src: string) => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(piece.dark)}
+      aria-label={`${label} ${index + 1}`}
+      className={`group relative h-32 w-56 shrink-0 rounded-xl px-6 py-4 transition-transform duration-500 ease-cinema hover:scale-[1.05] sm:h-40 sm:w-72 sm:px-8 sm:py-5 ${
+        piece.plated ? "bg-[#100F0D]" : ""
+      }`}
+    >
+      {/* white cut, dark theme */}
+      <span className="absolute inset-0 hidden p-5 dark:block sm:p-7">
+        <span className="relative block h-full w-full">
+          <Media
+            src={piece.dark}
+            alt={`${label} ${index + 1}`}
+            fill
+            sizes="288px"
+            className="object-contain"
+          />
+        </span>
+      </span>
+      {/* black cut, light theme */}
+      <span className="absolute inset-0 block p-5 dark:hidden sm:p-7">
+        <span className="relative block h-full w-full">
+          <Media
+            src={piece.plated ? piece.dark : piece.light}
+            alt={`${label} ${index + 1}`}
+            fill
+            sizes="288px"
+            className="object-contain"
+          />
+        </span>
+      </span>
+    </button>
+  );
+}
+
+function Row({
+  onOpen,
+  label,
+  reverse,
+}: {
+  onOpen: (src: string) => void;
+  label: string;
+  reverse?: boolean;
+}) {
+  // the set is rendered twice so the -50% keyframe lands on a seamless join
+  const track = [...pieces, ...pieces];
+  return (
+    <div className="flex w-max">
+      <div
+        className={`flex w-max items-center gap-6 pe-6 sm:gap-10 sm:pe-10 ${
+          reverse ? "animate-marquee-rev" : "animate-marquee"
+        } motion-reduce:animate-none group-hover/strip:[animation-play-state:paused]`}
+      >
+        {track.map((p, i) => (
+          <Piece
+            key={`${p.id}-${i}`}
+            piece={p}
+            index={i % pieces.length}
+            onOpen={onOpen}
+            label={label}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function TypeDesign() {
   const { t } = useLang();
@@ -44,86 +128,35 @@ export default function TypeDesign() {
   }, [open]);
 
   return (
-    <section
-      id="type"
-      className="container-edge mx-auto max-w-edge scroll-mt-24 section-y"
-    >
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <Reveal>
-            <SectionLabel>{t.type.label}</SectionLabel>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
-              {t.type.h2a}{" "}
-              <span className="font-serif font-normal italic text-mint">
-                {t.type.h2i}
-              </span>
-              {t.type.h2b}
-            </h2>
+    <section id="type" className="scroll-mt-24 section-y">
+      <div className="container-edge mx-auto max-w-edge">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Reveal>
+              <SectionLabel>{t.type.label}</SectionLabel>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-bone-50 md:text-6xl">
+                {t.type.h2a}{" "}
+                <span className="font-serif font-normal italic text-mint">
+                  {t.type.h2i}
+                </span>
+                {t.type.h2b}
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.1}>
+            <p className="max-w-xs text-sm leading-relaxed text-bone-400">
+              {t.type.note}
+            </p>
           </Reveal>
         </div>
-        <Reveal delay={0.1}>
-          <p className="max-w-xs text-sm leading-relaxed text-bone-400">
-            {t.type.note}
-          </p>
-        </Reveal>
       </div>
 
-      {/* Laid out like a type specimen sheet: a hairline lattice, one piece per
-          cell, plenty of room around the letterforms.
-          The lattice comes from a 1px grid gap over a faint line colour with
-          cells painted in the page colour — so the rules read as rules and the
-          artwork still sits on the page, with no tile behind it in either
-          theme. An earlier version floated the pieces in a plain gapped grid;
-          because they have very different proportions, nothing lined up. */}
-      <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-line/12 sm:grid-cols-3 lg:grid-cols-4">
-        {pieces.map((p, i) => (
-          <button
-            key={p.id}
-            type="button"
-            onClick={() => setOpen(p.dark)}
-            aria-label={`${t.type.label} ${i + 1} — ${t.master.expand}`}
-            className={`group relative aspect-[5/4] p-8 transition-colors duration-500 md:p-11 ${
-              p.plated
-                ? "bg-[#100F0D]"
-                : "bg-ink-900 hover:bg-ink-800"
-            }`}
-          >
-            <span
-              className={`absolute left-4 top-4 font-serif text-xs italic transition-colors duration-300 group-hover:text-mint ${
-                p.plated ? "text-white/35" : "text-bone-500"
-              }`}
-            >
-              {p.id}
-            </span>
-
-            {/* the artwork sits inside the padded cell at ~78% width, so the
-                letterforms read as specimens rather than filling the tile */}
-            <span className="relative mx-auto block h-full w-[78%] transition-transform duration-700 ease-cinema group-hover:scale-[1.06]">
-              {/* white cut, dark theme */}
-              <span className="absolute inset-0 hidden dark:block">
-                <Media
-                  src={p.dark}
-                  alt={`${t.type.label} ${i + 1}`}
-                  fill
-                  sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw, 21vw"
-                  className="object-contain"
-                />
-              </span>
-              {/* black cut, light theme */}
-              <span className="absolute inset-0 block dark:hidden">
-                <Media
-                  src={p.plated ? p.dark : p.light}
-                  alt={`${t.type.label} ${i + 1}`}
-                  fill
-                  sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw, 21vw"
-                  className="object-contain"
-                />
-              </span>
-            </span>
-          </button>
-        ))}
+      {/* full-bleed strip; pauses on hover so a piece can be opened */}
+      <div className="group/strip mt-12 flex flex-col gap-6 overflow-hidden sm:gap-10">
+        <Row onOpen={setOpen} label={t.type.label} />
+        <Row onOpen={setOpen} label={t.type.label} reverse />
       </div>
 
       <AnimatePresence>

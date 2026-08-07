@@ -1,5 +1,5 @@
 // Composes a fourth storyboard from the AI Video Production scenes, laid out
-// as a 3-across x 4-down matrix of numbered frames on the same dark board as
+// as a 4-across x 3-down matrix of numbered frames on the same dark board as
 // the other three. Twelve frames: scenes 5 and 11 are dropped from the run of
 // fourteen because they repeat the beat either side of them.
 import sharp from "sharp";
@@ -12,8 +12,8 @@ const PROJECT = path.resolve(__dirname, "..");
 const PUBLIC = path.join(PROJECT, "public");
 const SRC = path.join(PUBLIC, "work", "video-production");
 
-const COLS = 3;
-const ROWS = 4;
+const COLS = 4;
+const ROWS = 3;
 const CW = 400; // 16:9 frame
 const CH = Math.round((CW * 9) / 16);
 const CAP = 30; // caption strip under each frame

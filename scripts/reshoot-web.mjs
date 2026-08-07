@@ -43,12 +43,23 @@ const SCALE = 1; // deviceScaleFactor 2 stalls the headless compositor on the
 // in headless and in a real browser, so no capture setting can rescue it; it
 // needs fixing in the miraf-district project itself. Until then, shoot a
 // section further down the page that composes cleanly.
-const SITES = [
+const ALL_SITES = [
   ["hrlink", "https://mohamed-sr-designer.github.io/hrlink-redesign/"],
   ["baleine", "https://mohamed-sr-designer.github.io/baleine-bleu-maison/"],
   ["miraf", "https://mohamed-sr-designer.github.io/miraf-district/", { scrollY: 1000 }],
   ["jadeite", "https://mohamed-sr-designer.github.io/jadeite-office-villas/"],
+  ["hrpath", "https://mohamed-sr-designer.github.io/hrpath-redesign/"],
+  ["tilal", "https://mohamed-sr-designer.github.io/tilal-village/"],
+  ["fresh-valley", "https://mohamed-sr-designer.github.io/fresh-valley/"],
+  ["soic", "https://mohamed-sr-designer.github.io/soic-campus/"],
+  ["the9", "https://mohamed-sr-designer.github.io/the-9-menu/"],
 ];
+
+// `node scripts/reshoot-web.mjs hrpath tilal` re-shoots just those two
+const only = process.argv.slice(2);
+const SITES = only.length
+  ? ALL_SITES.filter(([slug]) => only.includes(slug))
+  : ALL_SITES;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

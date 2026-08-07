@@ -158,10 +158,10 @@ const en = {
   },
   type: {
     label: "Type Design",
-    h2a: "Letters drawn",
-    h2i: "from scratch",
+    h2a: "Letters shaped",
+    h2i: "with AI",
     h2b: ".",
-    note: "Custom Arabic and Latin lettering, logotypes, campaign headlines and wordmarks built letter by letter.",
+    note: "Custom Arabic and Latin lettering produced with AI tooling, then art-directed and finished into logotypes, campaign headlines and wordmarks.",
   },
   web: {
     label: "Vibe Coding",
@@ -604,10 +604,10 @@ const ar: typeof en = {
   },
   type: {
     label: "تصميم حروف",
-    h2a: "حروفٌ تُرسَم",
-    h2i: "من الصفر",
+    h2a: "حروفٌ تتشكّل",
+    h2i: "بالذكاء الاصطناعي",
     h2b: ".",
-    note: "حروف عربية ولاتينية مخصّصة، لوجوتايبات وعناوين حملات وكلمات مرسومة حرفًا حرفًا.",
+    note: "حروف عربية ولاتينية مخصّصة أُنتجت بأدوات الذكاء الاصطناعي، ثم أُخرجت فنيًا وأُنهيت كلوجوتايبات وعناوين حملات وكلمات.",
   },
   web: {
     label: "فايب كودينج",
