@@ -4,6 +4,7 @@ import AboutHero from "@/components/AboutHero";
 import About from "@/components/About";
 import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
+import Recommendations from "@/components/Recommendations";
 import Teaching from "@/components/Teaching";
 import Skills from "@/components/Skills";
 import Tools from "@/components/Tools";
@@ -41,6 +42,7 @@ export default function AboutPage() {
       <About />
       <Clients />
       <Experience />
+      <Recommendations />
       <Teaching />
       <Skills />
       <Tools />

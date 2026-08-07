@@ -131,14 +131,15 @@ export default function ContactModal() {
               ))}
             </div>
 
-            {/* primary action */}
+            {/* primary action — brand orange with white type, so it reads as
+                the one thing to press rather than another neutral pill */}
             <a
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative mt-5 block rounded-full bg-bone-50 px-6 py-3.5 text-center text-sm font-medium text-ink-900 transition-transform duration-300 hover:scale-[1.02]"
+              className="relative mt-5 block rounded-full bg-mint px-6 py-3.5 text-center text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgb(var(--mint)/0.7)] transition-transform duration-300 hover:scale-[1.02]"
             >
-              {t.hire.wa}
+              {t.contact.startProject}
             </a>
           </motion.div>
         </motion.div>

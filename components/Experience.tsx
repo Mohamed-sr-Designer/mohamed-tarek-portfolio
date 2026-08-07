@@ -7,82 +7,97 @@ import { Toggle } from "@/components/ui/Toggle";
 import { Media } from "@/components/ui/Media";
 import { useLang } from "@/lib/i18n";
 
-type Role = { title: string; period: string; current?: boolean; returned?: boolean };
+type Role = { title: string; period: string };
 type Job = {
   company: string;
   type: string;
   period: string;
   place: string;
   current?: boolean;
+  returned?: boolean; // came back to the same company in a bigger role
   note: string;
   logo?: string;
-  roles?: Role[]; // promotion ladder (newest first)
+  roles?: Role[]; // ladder within one company, newest first
   role?: string; // single role
 };
 
 // Verified work history, newest to oldest (provided by Mohamed).
+// Osolutions appears twice on purpose: once at the top for the return as Art
+// Team Lead, and again lower down for the first stint and its three
+// promotions. One combined card hid the fact that he left and was brought
+// back to lead.
 const jobs: Job[] = [
   {
     company: "Osolutions",
     logo: "/orgs/osolutions.webp",
+    role: "Art Team Lead",
     type: "Full-time · On-site",
-    period: "Jan 2023 — Aug 2024 · Returned May 2026 — Present",
-    place: "Makkah, KSA",
+    period: "May 2026 — Present",
+    place: "Cairo, Egypt",
     current: true,
-    note: "Joined as a Graphic Designer and grew all the way to Senior, moved on in Aug 2024 to broaden my range, then returned in May 2026 to lead the art team and own the brand's visual standard.",
-    // The return is its own chapter, it is split off from the three-year
-    // promotion ladder of the first stint rather than sitting on top of it.
-    roles: [
-      { title: "Team Lead", period: "May 2026 — Present", current: true, returned: true },
-      { title: "Senior Graphic Designer", period: "2024 — Aug 2024" },
-      { title: "Mid-Level Designer", period: "Jan 2024" },
-      { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
-    ],
+    returned: true,
+    note: "Returned to lead the art team: mentoring designers to a high creative standard, turning business requirements into visual solutions with cross-functional teams, reviewing work for brand consistency, and planning workloads and creative workflows so the team keeps developing.",
   },
   {
     company: "JUMPPEAK",
     logo: "/orgs/jumppeak.webp",
     role: "Senior Graphic Designer, Team Lead",
     type: "Full-time",
-    period: "Mar — May 2026",
+    period: "Mar 2026 — May 2026",
     place: "Al Jizah, Egypt",
-    note: "Led junior and mid-level designers; refined brand visuals for consistency across platforms.",
+    note: "Built on-brand graphics for websites, apps and social; worked with the art director to keep brand visuals consistent across platforms; led junior and mid-level designers on assets optimised for multimedia.",
   },
   {
     company: "Prepd",
     logo: "/orgs/prepd.webp",
     role: "Senior Graphic Designer",
     type: "Part-time · Remote",
-    period: "Nov 2025 — May 2026",
-    place: "Makkah, KSA",
-    note: "High-impact marketing materials and digital interfaces that positioned Prepd as a memorable, premium brand.",
+    period: "Nov 2025 — Jul 2026",
+    place: "Makkah, Saudi Arabia",
+    note: "High-impact marketing materials that lifted Prepd's brand visibility, plus digital interfaces built for a better experience. Partnered with cross-functional teams on consistent messaging across every touchpoint, positioning the brand as premium and memorable.",
   },
   {
     company: "Bundle IMS",
     logo: "/orgs/bundle.webp",
-    role: "Senior / Visual Designer",
-    type: "Full-time · Automotive · BTL",
+    role: "Senior Graphic Designer, Visual Designer",
+    type: "Full-time · On-site",
     period: "Aug 2025 — Mar 2026",
     place: "Giza, Egypt",
-    note: "Worked with the creative lead on an automotive campaign, BTL, brand activation and event management, concept to execution.",
+    note: "Worked with the art director on an automotive campaign, running BTL activity from concept to execution: brand activation and event management, graphic design and visual communication, creative direction support and marketing collateral.",
   },
   {
     company: "Teaching Planet Academy",
     logo: "/orgs/teaching.webp",
-    role: "Senior Designer & Graphic Design Instructor",
-    type: "Part-time · Instructor",
+    type: "Part-time · Hybrid",
     period: "May 2022 — Dec 2025",
     place: "Giza, Egypt",
-    note: "Designed brand materials and taught Photoshop, Illustrator and InDesign through hands-on sessions.",
+    note: "Designed marketing materials and digital interfaces, then taught the craft: Photoshop, Illustrator and InDesign across twelve-session cohorts, with hands-on projects and assignments.",
+    roles: [
+      { title: "Senior Graphic Designer", period: "Jan 2025 — Dec 2025" },
+      { title: "Graphic Design Instructor", period: "May 2022 — Dec 2024" },
+    ],
+  },
+  {
+    company: "Osolutions",
+    logo: "/orgs/osolutions.webp",
+    type: "Full-time · On-site",
+    period: "Jan 2023 — Aug 2024",
+    place: "Cairo, Egypt",
+    note: "Joined as a Graphic Designer and moved up twice in under two years. Led branding, social campaigns and digital marketing assets for a range of clients, worked with marketing and account teams on concepts that matched campaign objectives, and kept visual consistency across platforms while raising production efficiency.",
+    roles: [
+      { title: "Senior Graphic Designer", period: "Aug 2024" },
+      { title: "Mid-Level Designer", period: "Jan 2024 — Aug 2024" },
+      { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
+    ],
   },
   {
     company: "Flowrista",
     logo: "/orgs/flowrista.webp",
     role: "Senior Graphic Designer",
-    type: "Full-time",
-    period: "Jan — Aug 2025",
+    type: "Full-time · On-site",
+    period: "Jan 2025 — Aug 2025",
     place: "New Cairo, Egypt",
-    note: "Floral-gifting brand, marketing materials, digital interfaces and video that made gifting unforgettable.",
+    note: "Marketing materials and digital interfaces for a floral-gifting brand, plus photo shooting and retouching that redefined its visual identity. Worked across teams on cohesive messaging and helped make the gifting experience unforgettable.",
   },
   {
     company: "Pala De 7",
@@ -90,105 +105,61 @@ const jobs: Job[] = [
     role: "Senior Graphic Designer",
     type: "Freelance · Remote",
     period: "Jul 2024 — Jul 2025",
-    place: "Jeddah, KSA",
-    note: "Led social-media graphics and UI in Adobe and Figma, keeping the padel brand consistent and engaging.",
+    place: "Jeddah, Saudi Arabia",
+    note: "Led social-media graphics and UI in Adobe and Figma to project deadlines, keeping the padel brand's visual identity consistent and engaging and folding stakeholder feedback into the work.",
   },
   {
     company: "Alkhabeer for Training",
-    role: "Graphic & UI Designer",
+    logo: "/orgs/alkhabeer.webp",
+    role: "Graphic Designer & UI Designer",
     type: "Part-time · Remote",
     period: "Oct 2023 — Aug 2024",
-    place: "Riyadh, KSA",
-    note: "Digital assets for web, app, social and video, backed by style guides and a strong brand persona.",
+    place: "Riyadh, Saudi Arabia",
+    note: "Digital assets for web, apps, social and video, backed by meticulous style guides and a firm grasp of the brand persona so every piece carried the same narrative.",
   },
   {
     company: "Raya Academy",
     logo: "/orgs/raya.webp",
     role: "Graphic Design Instructor",
-    type: "Part-time · Instructor",
+    type: "Part-time · On-site",
     period: "Nov 2022 — Nov 2023",
     place: "Cairo, Egypt",
-    note: "Taught Photoshop, Illustrator and InDesign across offline sessions; mentored students to real proficiency.",
+    note: "Taught Photoshop, Illustrator and InDesign across twelve offline sessions, guiding students through hands-on projects until the principles stuck.",
   },
 ];
 
-function Rung({
-  role,
-  lead,
-  badge,
-}: {
-  role: Role;
-  lead?: boolean;
-  badge?: string;
-}) {
+// Roles held inside one company, newest first. Every rung above the first
+// hire is a step up, so all but the last carry the promotion badge.
+function Ladder({ roles, promoted }: { roles: Role[]; promoted: string }) {
   return (
-    <li className="relative pl-6 pb-5 last:pb-0">
-      <span
-        className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ${
-          role.current ? "bg-mint" : "bg-bone-500"
-        }`}
-      />
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <div className="flex items-center gap-2">
+    <ol className="relative ml-1 border-l border-line/15">
+      {roles.map((r, i) => (
+        <li key={r.title} className="relative pb-5 pl-6 last:pb-0">
           <span
-            className={`text-base md:text-lg ${
-              lead ? "font-medium text-bone-50" : "text-bone-200"
+            className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full ${
+              i === 0 ? "bg-mint" : "bg-bone-500"
             }`}
-          >
-            {role.title}
-          </span>
-          {badge ? (
-            <span className="text-[10px] uppercase tracking-widest text-mint">
-              {badge}
-            </span>
-          ) : null}
-        </div>
-        <span className="text-xs text-bone-400">{role.period}</span>
-      </div>
-    </li>
-  );
-}
-
-// The current role sits on its own; everything before it is grouped underneath
-// as the earlier stint, so a three-year promotion ladder reads as one block
-// rather than blurring into the return.
-function Ladder({
-  roles,
-  promoted,
-  returned,
-  earlier,
-}: {
-  roles: Role[];
-  promoted: string;
-  returned: string;
-  earlier: string;
-}) {
-  const lead = roles[0];
-  const rest = roles.slice(1);
-
-  return (
-    <>
-      <ol className="relative ml-1 border-l border-line/15">
-        <Rung role={lead} lead badge={lead.returned ? returned : undefined} />
-      </ol>
-
-      {rest.length ? (
-        <div className="mt-5 border-t border-line/10 pt-5">
-          <p className="mb-3 text-[10px] uppercase tracking-ultra text-bone-500">
-            {earlier}
-          </p>
-          <ol className="relative ml-1 border-l border-line/15">
-            {rest.map((r, i) => (
-              <Rung
-                key={r.title}
-                role={r}
-                badge={i !== rest.length - 1 ? promoted : undefined}
-              />
-            ))}
-          </ol>
-        </div>
-      ) : null}
-    </>
+          />
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <div className="flex items-center gap-2">
+              <span
+                className={`text-base md:text-lg ${
+                  i === 0 ? "font-medium text-bone-50" : "text-bone-200"
+                }`}
+              >
+                {r.title}
+              </span>
+              {i !== roles.length - 1 ? (
+                <span className="text-[10px] uppercase tracking-widest text-mint">
+                  {promoted}
+                </span>
+              ) : null}
+            </div>
+            <span className="text-xs text-bone-400">{r.period}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -286,6 +257,11 @@ export default function Experience() {
                       {t.exp.now}
                     </span>
                   ) : null}
+                  {j.returned ? (
+                    <span className="rounded-full border border-line/25 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-bone-300">
+                      {t.exp.returned}
+                    </span>
+                  ) : null}
                 </div>
                 {j.role ? <p className="mt-1.5 text-bone-200">{j.role}</p> : null}
                 <p className="mt-2 text-sm text-bone-200">{j.period}</p>
@@ -296,12 +272,7 @@ export default function Experience() {
 
               <div className="md:col-span-8">
                 {j.roles ? (
-                  <Ladder
-                    roles={j.roles}
-                    promoted={t.exp.promoted}
-                    returned={t.exp.returned}
-                    earlier={t.exp.earlier}
-                  />
+                  <Ladder roles={j.roles} promoted={t.exp.promoted} />
                 ) : null}
                 <p
                   className={`text-pretty text-sm leading-relaxed text-bone-400 md:text-base ${

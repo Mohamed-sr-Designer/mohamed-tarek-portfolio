@@ -153,10 +153,9 @@ export default function TypeDesign() {
         </div>
       </div>
 
-      {/* full-bleed strip; pauses on hover so a piece can be opened */}
-      <div className="group/strip mt-12 flex flex-col gap-6 overflow-hidden sm:gap-10">
+      {/* one full-bleed strip; pauses on hover so a piece can be opened */}
+      <div className="group/strip mt-12 overflow-hidden">
         <Row onOpen={setOpen} label={t.type.label} />
-        <Row onOpen={setOpen} label={t.type.label} reverse />
       </div>
 
       <AnimatePresence>
