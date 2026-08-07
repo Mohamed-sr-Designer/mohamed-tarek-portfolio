@@ -101,13 +101,14 @@ for (const f of folders) {
 }
 
 // ---- new key visual --------------------------------------------------------
-console.log(
-  "  master 10 <- New KV.png  " +
-    (await put(path.join(DROP, "New KV.png"), "work/master/10.webp", {
-      width: 2000,
-      withoutEnlargement: true,
-    }))
-);
+// Deliberately not imported any more: New KV.png went in as work/master/10.webp
+// and was then pulled from the section along with 09. Re-enable this block only
+// if that visual is wanted back.
+//
+// await put(path.join(DROP, "New KV.png"), "work/master/10.webp", {
+//   width: 2000,
+//   withoutEnlargement: true,
+// });
 
 // ---- new social designs for the bottom slider ------------------------------
 const sliderDir = path.join(DROP, "New Social Media Designs TO slider");

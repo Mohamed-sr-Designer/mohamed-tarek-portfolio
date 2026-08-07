@@ -11,8 +11,9 @@ import { withBase } from "@/lib/base";
 // Master visuals — full campaign boards (key visual + the thinking behind it).
 // Shown as one large featured board with a thumbnail rail underneath, so all
 // nine are reachable without a very long scroll. Click to view full size.
-// 04 (TANK 700) is the hero of this section, then the newest KV, then the rest.
-const ORDER = [4, 10, 1, 2, 3, 5, 6, 7, 8, 9];
+// 04 (TANK 700) is the hero of this section, then the rest in order.
+// 09 (SOC Analyst diploma) and 10 (Makkiyoon) were pulled at his request.
+const ORDER = [4, 1, 2, 3, 5, 6, 7, 8];
 const boards = ORDER.map(
   (n) => `/work/master/${String(n).padStart(2, "0")}.webp`
 );
@@ -92,7 +93,7 @@ export default function MasterVisuals() {
 
         {/* thumbnail rail */}
         <Reveal delay={0.15}>
-          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-10">
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-8">
             {boards.map((src, n) => (
               <button
                 key={src}
