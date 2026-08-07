@@ -78,19 +78,6 @@ const jobs: Job[] = [
     ],
   },
   {
-    company: "Osolutions",
-    logo: "/orgs/osolutions.webp",
-    type: "Full-time · On-site",
-    period: "Jan 2023 — Aug 2024",
-    place: "Cairo, Egypt",
-    note: "Joined as a Graphic Designer and moved up twice in under two years. Led branding, social campaigns and digital marketing assets for a range of clients, worked with marketing and account teams on concepts that matched campaign objectives, and kept visual consistency across platforms while raising production efficiency.",
-    roles: [
-      { title: "Senior Graphic Designer", period: "Aug 2024" },
-      { title: "Mid-Level Designer", period: "Jan 2024 — Aug 2024" },
-      { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
-    ],
-  },
-  {
     company: "Flowrista",
     logo: "/orgs/flowrista.webp",
     role: "Senior Graphic Designer",
@@ -98,6 +85,19 @@ const jobs: Job[] = [
     period: "Jan 2025 — Aug 2025",
     place: "New Cairo, Egypt",
     note: "Marketing materials and digital interfaces for a floral-gifting brand, plus photo shooting and retouching that redefined its visual identity. Worked across teams on cohesive messaging and helped make the gifting experience unforgettable.",
+  },
+  {
+    company: "Osolutions",
+    logo: "/orgs/osolutions.webp",
+    type: "Full-time · On-site",
+    period: "Jan 2023 — Dec 2024",
+    place: "Cairo, Egypt",
+    note: "Joined as a Graphic Designer and moved up twice in under two years. Led branding, social campaigns and digital marketing assets for a range of clients, worked with marketing and account teams on concepts that matched campaign objectives, and kept visual consistency across platforms while raising production efficiency.",
+    roles: [
+      { title: "Senior Graphic Designer", period: "Aug 2024 — Dec 2024" },
+      { title: "Mid-Level Designer", period: "Jan 2024 — Aug 2024" },
+      { title: "Graphic Designer", period: "Jan 2023 — Dec 2023" },
+    ],
   },
   {
     company: "Pala De 7",
